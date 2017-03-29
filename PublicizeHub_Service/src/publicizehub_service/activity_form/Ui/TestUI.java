@@ -10,5 +10,7 @@ package publicizehub_service.activity_form.Ui;
  * @author Jaja
  */
 public class TestUI {
-    
+    public static void main (String args[]){
+        System.out.println("Hello World");
+    }
 }
