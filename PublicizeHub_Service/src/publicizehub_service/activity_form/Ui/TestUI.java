@@ -5,12 +5,16 @@
  */
 package publicizehub_service.activity_form.Ui;
 
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
+
 /**
  *
  * @author Jaja
  */
 public class TestUI {
     public static void main (String args[]){
-        System.out.println("Hello World");
+        ConnectionBuilder connect = new ConnectionBuilder();
+        
+        
     }
 }
