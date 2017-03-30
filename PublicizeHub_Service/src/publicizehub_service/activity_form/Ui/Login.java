@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package publicizehub_service.activity_form.Ui;
-
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Flook
@@ -14,9 +18,12 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public Login() {
+    public Login(){
         initComponents();
+        
+                
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,7 +103,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       
+        JOptionPane.showMessageDialog(null, "sdfsdkjfhsjfgys");
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -130,6 +138,7 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
+                
             }
         });
     }
