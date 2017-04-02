@@ -58,6 +58,7 @@ public class StatusData extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setFocusCycleRoot(false);
         setMinimumSize(new java.awt.Dimension(1024, 768));
+        setPreferredSize(new java.awt.Dimension(1024, 768));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
