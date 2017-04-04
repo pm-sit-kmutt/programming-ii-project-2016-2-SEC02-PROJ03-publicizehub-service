@@ -104,7 +104,7 @@ public class Comment extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setText("Comment");
 
-        jLabel8.setText("แก้ไข................................");
+        jLabel8.setText("แก้ไขข้อมูล");
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
