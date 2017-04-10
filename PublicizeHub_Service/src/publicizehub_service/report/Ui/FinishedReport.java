@@ -10,7 +10,7 @@ package publicizehub_service.report.Ui;
  * @author นัน
  */
 public class FinishedReport extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form FinishedReport
      */
