@@ -5,6 +5,9 @@
  */
 package publicizehub_service.report.Ui;
 
+import java.sql.*;
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
+
 /**
  *
  * @author นัน
@@ -16,6 +19,7 @@ public class FinishedReport extends javax.swing.JFrame {
      */
     public FinishedReport() {
         initComponents();
+        
     }
 
     /**

@@ -7,14 +7,18 @@ package publicizehub_service.report.Ui;
 
 import javax.swing.table.*;
 import java.sql.*;
-import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 /**
  *
  * @author นัน
  */
 public class FinishedReportAdmin extends javax.swing.JFrame {
+    
     DefaultTableModel model; 
+    ResultSet rs;
+    
     /**
      * Creates new form FinishedReportAdmin
      */
@@ -75,7 +79,7 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
             }
         });
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "...", "...", "..." }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "...", "...", "...", "ก" }));
         jComboBox3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox3ActionPerformed(evt);
@@ -84,7 +88,7 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "ภายในมหาลัย", "ภายนอกมหาลัย" }));
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" }));
 
         jButton1.setText("ค้นหา");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +137,8 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
 
         jLabel9.setText("ปีที่ปิดโครงการ");
 
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox6.setMaximumRowCount(20);
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "2557", "2558", "2559", "2560", "2561" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -234,10 +239,9 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
         
         String name = "";
         if(!jTextField1.getText().isEmpty()){
-            name = " and projectNameThai = '"+jTextField1.getText()+"'";
+            name = " and projectNameEnglish LIKE '%"+jTextField1.getText()+"%'";
         }
-        System.out.println(jTextField1.getText());
-
+        
         String department = "";
         if(jComboBox2.isEnabled()){
             if(jComboBox2.getSelectedIndex() != 0){
@@ -256,13 +260,41 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
             type = " and type = 1";
         }
         
-        String endTime = "";
+        String endMonth = "";
+        switch(jComboBox5.getSelectedIndex()){
+            case 1 : endMonth = "01"; break;
+            case 2 : endMonth = "02"; break;
+            case 3 : endMonth = "03"; break;
+            case 4 : endMonth = "04"; break;
+            case 5 : endMonth = "05"; break;
+            case 6 : endMonth = "06"; break;
+            case 7 : endMonth = "07"; break;
+            case 8 : endMonth = "08"; break;
+            case 9 : endMonth = "09"; break;
+            case 10 : endMonth = "10"; break;
+            case 11 : endMonth = "11"; break;
+            case 12 : endMonth = "12"; break;
+        }
         
-        String sql = "select projectNameThai, department, type, endTime from project INNER JOIN place ON project.placeId = place.placeId where status = 0"+name+department+type+endTime;
-        System.out.println(sql);
+        String endYear = "_____";
+        switch(jComboBox6.getSelectedIndex()){
+            case 1 : endYear = "2014-"; break;
+            case 2 : endYear = "2015-"; break;
+            case 3 : endYear = "2016-"; break;
+            case 4 : endYear = "2017-"; break;
+            case 5 : endYear = "2018-"; break;
+        }
+        
+        String endTime = "";
+        if(jComboBox5.getSelectedIndex() != 0 || jComboBox6.getSelectedIndex() != 0){
+            endTime = " and endTime LIKE '"+endYear+endMonth+"%'";
+        }
+        
+        String sql = "select id, projectNameThai, department, type, endTime from project INNER JOIN place ON project.placeId = place.placeId where status = 0"+name+department+type+endTime;
+        //System.out.println(sql);
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            rs = st.executeQuery(sql);
             while (rs.next()) {
                 model.addRow(new Object[0]);
                 model.setValueAt(line+1, line, 0);
@@ -275,19 +307,24 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //กดแล้วกลับไปหน้า home
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // TODO add your handling code here:
-        int a = jTable1.getSelectedRow();
-        System.out.println(a);
-        String b = (String)jTable1.getValueAt(a, 1);
-        System.out.println(b);
+        int selectedRow = jTable1.getSelectedRow();
+        try {
+            rs.absolute(selectedRow+1);
+            int id = rs.getInt("id");
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        
+        
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
