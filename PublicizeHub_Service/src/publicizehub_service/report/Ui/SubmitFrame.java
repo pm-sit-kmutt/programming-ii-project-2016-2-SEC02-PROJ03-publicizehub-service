@@ -4,7 +4,17 @@
  * and open the template in the editor.
  */
 package publicizehub_service.report.Ui;
-
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
+import java.sql.*;
+import java.util.logging.*;
+import javax.swing.*;
+import javax.swing.filechooser.*;
 /**
  *
  * @author นัน
@@ -52,6 +62,9 @@ public class SubmitFrame extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         ButtonUpload = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         ButtonSubmit = new javax.swing.JButton();
         ButtonBack = new javax.swing.JButton();
 
@@ -193,7 +206,7 @@ public class SubmitFrame extends javax.swing.JFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel7.setText("อัพโหลดรูปภาพ อย่างน้อย 10 รูป ");
+        jLabel7.setText("อัพโหลดรูปหลักฐาน");
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -234,10 +247,22 @@ public class SubmitFrame extends javax.swing.JFrame {
         jTable3.setEnabled(false);
         jScrollPane5.setViewportView(jTable3);
 
-        ButtonUpload.setText("อัพโหลด");
+        ButtonUpload.setText("...");
         ButtonUpload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ButtonUploadActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setText("Choose file");
+
+        jLabel2.setText("jLabel2");
+
+        jButton1.setText("Upload");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -266,10 +291,16 @@ public class SubmitFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(ButtonAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
+                        .addGap(122, 122, 122)
                         .addComponent(jLabel7)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ButtonUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(ButtonUpload)
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(362, 362, 362)
                         .addComponent(jLabel8)))
@@ -289,20 +320,20 @@ public class SubmitFrame extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel8)
                 .addGap(15, 15, 15)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ButtonAdd)
-                            .addComponent(jLabel6))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(ButtonUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(15, 15, 15)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ButtonAdd)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(ButtonUpload, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jButton1))
+                .addGap(7, 7, 7)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -382,11 +413,31 @@ public class SubmitFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonBackActionPerformed
 
     private void ButtonSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSubmitActionPerformed
-        // TODO add your handling code here:
+        // ปิดโครงการ
+        Connection con = ConnectionBuilder.getConnection();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select id, numOfStudent, numOfTeacher from project INNER JOIN participants ON project.id = participants.projectId");
+            while(rs.next()){
+                System.out.println(rs.getInt("id"));
+                System.out.println(rs.getInt("numOfStudent"));
+                System.out.println(rs.getInt("numOfStudent"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_ButtonSubmitActionPerformed
 
     private void ButtonUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonUploadActionPerformed
-        // TODO add your handling code here:
+        //หารูป
+        JFileChooser fileopen = new JFileChooser();
+        FileFilter filter = new FileNameExtensionFilter("picture file", "jpg", "jpeg","png");
+        fileopen.setFileFilter(filter);
+        int ret = fileopen.showDialog(null, "Choose file");
+        if(ret == JFileChooser.APPROVE_OPTION){
+            jLabel2.setText(fileopen.getSelectedFile().getPath());
+        }
     }//GEN-LAST:event_ButtonUploadActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -396,6 +447,28 @@ public class SubmitFrame extends javax.swing.JFrame {
     private void ButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAddActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ButtonAddActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //อัฟรูป
+        Connection con = ConnectionBuilder.getConnection();
+        String name = jLabel2.getText();
+        String file = name.substring(name.lastIndexOf('\\')+1, name.length());
+        String desFile = "";
+        System.out.println(name);
+        System.out.println(file);
+        try {
+            desFile = new File(".").getCanonicalPath()+"\\img\\"+file;
+            Files.copy(Paths.get(name), Paths.get(desFile), StandardCopyOption.COPY_ATTRIBUTES, StandardCopyOption.REPLACE_EXISTING);
+            System.out.println(desFile.toString());
+            System.out.println(name);
+            Statement st = con.createStatement();
+            st.executeUpdate("insert into ");
+        } catch (SQLException ex) {
+            Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -438,10 +511,13 @@ public class SubmitFrame extends javax.swing.JFrame {
     private javax.swing.JButton ButtonBack;
     private javax.swing.JButton ButtonSubmit;
     private javax.swing.JButton ButtonUpload;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JDialog jDialog2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

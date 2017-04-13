@@ -203,7 +203,7 @@
           <StringArray count="3">
             <StringItem index="0" value="&#xe40;&#xe25;&#xe37;&#xe2d;&#xe01;"/>
             <StringItem index="1" value="&#xe20;&#xe32;&#xe22;&#xe43;&#xe19;&#xe21;&#xe2b;&#xe32;&#xe25;&#xe31;&#xe22;"/>
-            <StringItem index="2" value="&#xe20;&#xe32;&#xe22;&#xe19;&#xe2d;&#xe01;&#xe21;&#xe2b;&#xe32;&#xe25;&#xe31;&#xe22;"/>
+            <StringItem index="2" value="&#xe19;&#xe2d;&#xe01;&#xe21;&#xe2b;&#xe32;&#xe25;&#xe31;&#xe22;"/>
           </StringArray>
         </Property>
       </Properties>

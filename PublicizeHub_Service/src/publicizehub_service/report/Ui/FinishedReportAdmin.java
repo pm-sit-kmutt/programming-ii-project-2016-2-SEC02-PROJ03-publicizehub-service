@@ -86,7 +86,7 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
             }
         });
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "ภายในมหาลัย", "ภายนอกมหาลัย" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "ภายในมหาลัย", "นอกมหาลัย" }));
 
         jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม" }));
 
@@ -228,6 +228,7 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //กดแล้วทำการดึงข้อมูลที่เลือก ไปลงในตาราง
         Connection con = ConnectionBuilder.getConnection();
+        
         jTable1.setModel(new DefaultTableModel());
         model = (DefaultTableModel)jTable1.getModel();
         model.addColumn("ลำดับ");
@@ -239,7 +240,7 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
         
         String name = "";
         if(!jTextField1.getText().isEmpty()){
-            name = " and projectNameEnglish LIKE '%"+jTextField1.getText()+"%'";
+            name = " and projectNameThai LIKE '%"+jTextField1.getText()+"%'";
         }
         
         String department = "";
@@ -290,15 +291,19 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
             endTime = " and endTime LIKE '"+endYear+endMonth+"%'";
         }
         
-        String sql = "select id, projectNameThai, department, type, endTime from project INNER JOIN place ON project.placeId = place.placeId where status = 0"+name+department+type+endTime;
-        //System.out.println(sql);
+        String sql = "select id, projectNameThai, department, type, endTime from project INNER JOIN place ON project.placeId = place.placeId where status = 0"+name+department+type+endTime+" ORDER BY id";
+        System.out.println(sql);
         try {
             Statement st = con.createStatement();
             rs = st.executeQuery(sql);
             while (rs.next()) {
                 model.addRow(new Object[0]);
                 model.setValueAt(line+1, line, 0);
-                model.setValueAt(rs.getInt("type"), line, 1);
+                if(rs.getInt("type") == 0){
+                    model.setValueAt("ภายในมหาลัย", line, 1);
+                }else if(rs.getInt("type") == 1){
+                    model.setValueAt("นอกมหาลัย", line, 1);
+                }
                 model.setValueAt(rs.getString("projectNameThai"), line, 2);
                 model.setValueAt(rs.getString("department"), line, 3);
                 model.setValueAt(rs.getString("endTime"), line, 4);
@@ -310,6 +315,20 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Connection con = ConnectionBuilder.getConnection();
+        
+        try {
+            PreparedStatement st = con.prepareStatement("select * from a where th = \'ไก่\'");
+            
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                System.out.println(rs.getString("th"));
+                System.out.println(rs.getInt("id"));
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(FinishedReportAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -319,7 +338,7 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
         try {
             rs.absolute(selectedRow+1);
             int id = rs.getInt("id");
-            
+            System.out.println(id);
         } catch (SQLException ex) {
             System.out.println(ex);
         }
