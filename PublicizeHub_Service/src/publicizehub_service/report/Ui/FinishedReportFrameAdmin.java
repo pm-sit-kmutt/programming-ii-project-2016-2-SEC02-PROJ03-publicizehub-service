@@ -14,7 +14,7 @@ import publicizehub_service.connectionBuilder.ConnectionBuilder;
  *
  * @author นัน
  */
-public class FinishedReportAdmin extends javax.swing.JFrame {
+public class FinishedReportFrameAdmin extends javax.swing.JFrame {
     
     DefaultTableModel model; 
     ResultSet rs;
@@ -22,7 +22,7 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
     /**
      * Creates new form FinishedReportAdmin
      */
-    public FinishedReportAdmin() {
+    public FinishedReportFrameAdmin() {
         initComponents();
     }
 
@@ -226,6 +226,7 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //เมื่อกดปุ่มค้นหา
         //กดแล้วทำการดึงข้อมูลที่เลือก ไปลงในตาราง
         Connection con = ConnectionBuilder.getConnection();
         
@@ -286,12 +287,12 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
             case 5 : endYear = "2018-"; break;
         }
         
-        String endTime = "";
+        String closeTime = "";
         if(jComboBox5.getSelectedIndex() != 0 || jComboBox6.getSelectedIndex() != 0){
-            endTime = " and endTime LIKE '"+endYear+endMonth+"%'";
+            closeTime = " and closeTime LIKE '"+endYear+endMonth+"%'";
         }
         
-        String sql = "select id, projectNameThai, department, type, endTime from project INNER JOIN place ON project.placeId = place.placeId where status = 0"+name+department+type+endTime+" ORDER BY id";
+        String sql = "select id, projectNameThai, department, type, closeTime from project INNER JOIN place ON project.placeId = place.placeId where status = 0"+name+department+type+closeTime+" ORDER BY id";
         System.out.println(sql);
         try {
             Statement st = con.createStatement();
@@ -306,7 +307,7 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
                 }
                 model.setValueAt(rs.getString("projectNameThai"), line, 2);
                 model.setValueAt(rs.getString("department"), line, 3);
-                model.setValueAt(rs.getString("endTime"), line, 4);
+                model.setValueAt(rs.getString("closeTime"), line, 4);
                 line = line +1;
             }   
         } catch (SQLException ex) {
@@ -315,6 +316,7 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //เมื่อกดปุ่มย้อนกลับ
         Connection con = ConnectionBuilder.getConnection();
         
         try {
@@ -327,13 +329,14 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
                 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(FinishedReportAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FinishedReportFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        //เมื่อคลิกที่ตาราง
         int selectedRow = jTable1.getSelectedRow();
         try {
             rs.absolute(selectedRow+1);
@@ -347,6 +350,7 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        //เมื่อเลือกค่า jComboBox2
         if(jComboBox2.getSelectedIndex() != 0){
             jComboBox3.setEnabled(false);
         }else
@@ -354,6 +358,7 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        //เมื่อเลือกค่า jComboBox3
         if(jComboBox3.getSelectedIndex() != 0){
             jComboBox2.setEnabled(false);
         }else
@@ -377,20 +382,21 @@ public class FinishedReportAdmin extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FinishedReportAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FinishedReportFrameAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FinishedReportAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FinishedReportFrameAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FinishedReportAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FinishedReportFrameAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FinishedReportAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FinishedReportFrameAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FinishedReportAdmin().setVisible(true);
+                new FinishedReportFrameAdmin().setVisible(true);
             }
         });
     }
