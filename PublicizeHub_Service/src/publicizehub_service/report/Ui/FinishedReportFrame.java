@@ -6,7 +6,11 @@
 package publicizehub_service.report.Ui;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
+import publicizehub_service.activity_form.Ui.User;
 
 /**
  *
@@ -20,6 +24,29 @@ public class FinishedReportFrame extends javax.swing.JFrame {
     public FinishedReportFrame() {
         initComponents();
         
+        jTable1.setModel(new DefaultTableModel());
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        model.addColumn("รายการที่");
+        model.addColumn("ชื่อโครงการ");
+        model.addColumn("ชื่อโครงการ(English)");
+        model.addColumn("วันที่ปิดโครงการ");
+        int line = 0;
+        
+        Connection con = ConnectionBuilder.getConnection();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from project where responsible = "+User.getUsername()+" and status = 0");
+            while(rs.next()){
+                model.addRow(new Object[0]);
+                model.setValueAt(line+1, line, 0);
+                model.setValueAt(rs.getString("projectNameThai"), line, 1);
+                model.setValueAt(rs.getString("projectNameEnglish"), line, 2);
+                model.setValueAt(rs.getString("closeTime"), line, 3);
+                line = line +1;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
 
     /**
@@ -39,27 +66,32 @@ public class FinishedReportFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("รายการที่เสร็จสมบูรณ์");
+        jLabel1.setText("รายการโครงการที่เสร็จสมบูรณ์");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null}
             },
             new String [] {
-                "รายการที่", "ชื่อโคงการ", "วันที่ปิดโครงการ"
+                "รายการที่", "ชื่อโคงการ", "ชื่อโครงการ(English)", "วันที่ปิดโครงการ"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable1);
 
         jButton1.setText("ย้อนกลับ");
@@ -76,22 +108,22 @@ public class FinishedReportFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(406, 406, 406)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(446, 446, 446)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 984, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 984, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(378, 378, 378)
+                        .addComponent(jLabel1)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addGap(37, 37, 37)
+                .addGap(38, 38, 38)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -104,6 +136,13 @@ public class FinishedReportFrame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //กดแล้วกลับไปหน้า home
+        Connection con = ConnectionBuilder.getConnection();
+        try {
+            Statement st = con.createStatement();
+            st.executeUpdate("insert into comment values('a',now(),'b')");
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

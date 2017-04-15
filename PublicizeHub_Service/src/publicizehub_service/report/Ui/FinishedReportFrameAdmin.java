@@ -292,7 +292,7 @@ public class FinishedReportFrameAdmin extends javax.swing.JFrame {
             closeTime = " and closeTime LIKE '"+endYear+endMonth+"%'";
         }
         
-        String sql = "select id, projectNameThai, department, type, closeTime from project INNER JOIN place ON project.placeId = place.placeId where status = 0"+name+department+type+closeTime+" ORDER BY id";
+        String sql = "select * from project where status = 0"+name+department+type+closeTime+" ORDER BY id";
         System.out.println(sql);
         try {
             Statement st = con.createStatement();
@@ -300,9 +300,9 @@ public class FinishedReportFrameAdmin extends javax.swing.JFrame {
             while (rs.next()) {
                 model.addRow(new Object[0]);
                 model.setValueAt(line+1, line, 0);
-                if(rs.getInt("type") == 0){
+                if(rs.getInt("placeType") == 0){
                     model.setValueAt("ภายในมหาลัย", line, 1);
-                }else if(rs.getInt("type") == 1){
+                }else if(rs.getInt("placeType") == 1){
                     model.setValueAt("นอกมหาลัย", line, 1);
                 }
                 model.setValueAt(rs.getString("projectNameThai"), line, 2);

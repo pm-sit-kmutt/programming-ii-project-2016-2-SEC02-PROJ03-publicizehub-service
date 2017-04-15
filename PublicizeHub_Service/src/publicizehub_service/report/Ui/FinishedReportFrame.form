@@ -25,10 +25,6 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="406" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="446" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="115" max="-2" attributes="0"/>
@@ -36,6 +32,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Component id="jScrollPane2" min="-2" pref="984" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="378" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="20" max="32767" attributes="0"/>
@@ -45,9 +45,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="jScrollPane2" min="-2" pref="573" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jButton1" min="-2" pref="43" max="-2" attributes="0"/>
@@ -62,7 +62,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&#xe23;&#xe32;&#xe22;&#xe01;&#xe32;&#xe23;&#xe17;&#xe35;&#xe48;&#xe40;&#xe2a;&#xe23;&#xe47;&#xe08;&#xe2a;&#xe21;&#xe1a;&#xe39;&#xe23;&#xe13;&#xe4c;"/>
+        <Property name="text" type="java.lang.String" value="&#xe23;&#xe32;&#xe22;&#xe01;&#xe32;&#xe23;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;&#xe17;&#xe35;&#xe48;&#xe40;&#xe2a;&#xe23;&#xe47;&#xe08;&#xe2a;&#xe21;&#xe1a;&#xe39;&#xe23;&#xe13;&#xe4c;"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -72,10 +72,11 @@
         <Component class="javax.swing.JTable" name="jTable1">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="4">
-                <Column editable="true" title="&#xe23;&#xe32;&#xe22;&#xe01;&#xe32;&#xe23;&#xe17;&#xe35;&#xe48;" type="java.lang.Integer"/>
-                <Column editable="true" title="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe42;&#xe04;&#xe07;&#xe01;&#xe32;&#xe23;" type="java.lang.Object"/>
-                <Column editable="true" title="&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;&#xe1b;&#xe34;&#xe14;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;" type="java.lang.Object"/>
+              <Table columnCount="4" rowCount="1">
+                <Column editable="false" title="&#xe23;&#xe32;&#xe22;&#xe01;&#xe32;&#xe23;&#xe17;&#xe35;&#xe48;" type="java.lang.Integer"/>
+                <Column editable="false" title="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe42;&#xe04;&#xe07;&#xe01;&#xe32;&#xe23;" type="java.lang.Object"/>
+                <Column editable="false" title="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;(English)" type="java.lang.Object"/>
+                <Column editable="false" title="&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;&#xe1b;&#xe34;&#xe14;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -95,10 +96,15 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
               </TableColumnModel>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+              <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
             </Property>
           </Properties>
         </Component>
