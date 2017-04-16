@@ -109,7 +109,7 @@ public class Tableview extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "ชื่อโครงการ", "ชื่อผู้จัดโครงการ", "ประเภทกิจกรรม"
+                "ชื่อโครงการ", "ชื่อผู้จัดโครงการ", "สถานะของโครงการ"
             }
         ) {
             Class[] types = new Class [] {

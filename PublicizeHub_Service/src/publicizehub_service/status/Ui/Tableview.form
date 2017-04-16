@@ -172,7 +172,7 @@
                   <Table columnCount="3" rowCount="11">
                     <Column editable="true" title="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;" type="java.lang.String"/>
                     <Column editable="true" title="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe1c;&#xe39;&#xe49;&#xe08;&#xe31;&#xe14;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;" type="java.lang.String"/>
-                    <Column editable="true" title="&#xe1b;&#xe23;&#xe30;&#xe40;&#xe20;&#xe17;&#xe01;&#xe34;&#xe08;&#xe01;&#xe23;&#xe23;&#xe21;" type="java.lang.String"/>
+                    <Column editable="true" title="&#xe2a;&#xe16;&#xe32;&#xe19;&#xe30;&#xe02;&#xe2d;&#xe07;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;" type="java.lang.String"/>
                   </Table>
                 </Property>
               </Properties>
