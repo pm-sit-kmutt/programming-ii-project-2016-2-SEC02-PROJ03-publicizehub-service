@@ -48,10 +48,13 @@ public class Tableview extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/status/Ui/1024px-ตราสัญลักษณ์วิสัยทัศน์_มจธ_Graphic_notext.png"))); // NOI18N
 
+        jLabel4.setForeground(new java.awt.Color(255, 102, 0));
         jLabel4.setText("มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี ");
 
+        jLabel5.setForeground(new java.awt.Color(255, 102, 0));
         jLabel5.setText("King Mongkut's University of  Technology Thonburi ");
 
+        jLabel6.setForeground(new java.awt.Color(255, 102, 0));
         jLabel6.setText("มหาวิทยาลัยกับชุมชนเเละสังคม");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
