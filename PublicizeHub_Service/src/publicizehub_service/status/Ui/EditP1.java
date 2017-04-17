@@ -155,7 +155,12 @@ public class EditP1 extends javax.swing.JFrame {
 
         jLabel15.setText("คณะกรรมการจัดทำโครงการ");
 
-        jButton1.setText("หน้าถัดไป");
+        jButton1.setText("ถัดไป");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("ระยะเวลาดำเนินงาน");
 
@@ -288,8 +293,7 @@ public class EditP1 extends javax.swing.JFrame {
                                         .addGap(78, 78, 78)
                                         .addComponent(jButton1)
                                         .addGap(94, 94, 94)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(80, 80, 80)))
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel15)
@@ -445,6 +449,14 @@ public class EditP1 extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        EditP2 ed2 = new EditP2();
+        ed2.setVisible(true);
+
+        setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

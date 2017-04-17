@@ -336,11 +336,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xe14;&#xe39; Comment"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton4">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xe22;&#xe49;&#xe2d;&#xe19;&#xe01;&#xe25;&#xe31;&#xe1a;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
@@ -381,6 +387,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xe16;&#xe31;&#xe14;&#xe44;&#xe1b;"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>

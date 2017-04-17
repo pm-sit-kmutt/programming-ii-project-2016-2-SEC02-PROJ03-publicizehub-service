@@ -152,8 +152,18 @@ public class EditP2 extends javax.swing.JFrame {
         jLabel4.setText("วัตถุประสงค์");
 
         jButton3.setText("ดู Comment");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("ย้อนกลับ");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("แก้ไขข้อมูล");
 
@@ -180,6 +190,11 @@ public class EditP2 extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         jButton1.setText("ถัดไป");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("สถานที่ดำเนินงาน");
 
@@ -320,6 +335,30 @@ public class EditP2 extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        EditP1 ed1 = new EditP1();
+        ed1.setVisible(true);
+
+        setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        EditP3 ed3 = new EditP3();
+        ed3.setVisible(true);
+
+        setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Comment cm = new Comment();
+        cm.setVisible(true);
+
+        setVisible(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
