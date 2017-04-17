@@ -4,19 +4,46 @@
  * and open the template in the editor.
  */
 package publicizehub_service.status.Ui;
-import javax.swing.JOptionPane;
+import javax.swing.table.*;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
 /**
  *
  * @author dell
  */
 public class EditP1 extends javax.swing.JFrame {
+        private ResultSet re;
 
+    public ResultSet getRe() {
+        return re;
+    }
+        
     /**
      * Creates new form Edit
      */
+    int line=0;
     public EditP1() {
         initComponents();
-    }
+       // Connection cn =ConnectionBuilder.getConnection();
+//        try {
+//            Statement st=cn.createStatement();
+//            re=st.executeQuery("select * from project where id=1");
+//            while(re.next()){
+//                jTextField4.setText(re.getString("projectNameThai"));
+//                jTextField1.setText(re.getString("projectNameEnglish"));
+//                jTextField2.setText(re.getString("advisors"));
+//                jTextField3.setText(re.getString("responsible"));
+//                jTextField6.setText(re.getString("startTime"));
+//                jTextField5.setText(re.getString("closeTime"));
+//                
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//                
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -59,15 +86,12 @@ public class EditP1 extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -204,15 +228,6 @@ public class EditP1 extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("เพิ่ม");
-
-        jButton6.setText("เพิ่ม");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -235,14 +250,12 @@ public class EditP1 extends javax.swing.JFrame {
 
         jLabel19.setText("หน้าที่");
 
-        jButton3.setText("เพิ่ม");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton7.setText("เพิ่ม");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton7ActionPerformed(evt);
             }
         });
-
-        jButton7.setText("เพิ่ม");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -303,28 +316,22 @@ public class EditP1 extends javax.swing.JFrame {
                                         .addComponent(jLabel16)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton3)
-                                        .addGap(48, 48, 48)
+                                        .addGap(109, 109, 109)
                                         .addComponent(jLabel9)
                                         .addGap(18, 18, 18)
                                         .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jButton7)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addGap(0, 66, Short.MAX_VALUE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel21)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton5)
-                                        .addGap(24, 24, 24)
+                                        .addGap(81, 81, 81)
                                         .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton6)
-                                        .addContainerGap(24, Short.MAX_VALUE))))
+                                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -356,14 +363,12 @@ public class EditP1 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6)
                             .addComponent(jLabel19)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
                             .addComponent(jLabel21)
-                            .addComponent(jButton5)
                             .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel13)
@@ -373,7 +378,6 @@ public class EditP1 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3)
                     .addComponent(jLabel9)
                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7))
@@ -438,25 +442,37 @@ public class EditP1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField9ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        EditP2 ed2 = new EditP2();
+        EditP2 ed2 = new EditP2(this);
         ed2.setVisible(true);
 
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        String name=jTextField7.getText();
+        String id=jTextField8.getText();
+        String faculty=jTextField10.getText();
+        String job=jTextField9.getText();
+        
+        
+        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+        mb.addRow(new Object[0]);
+        mb.setValueAt(name, line, 0);
+        mb.setValueAt(id, line, 1);
+        mb.setValueAt(faculty, line, 2);
+        mb.setValueAt(job, line, 3);
+        line=line+1;
+        
+        
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -497,10 +513,7 @@ public class EditP1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;

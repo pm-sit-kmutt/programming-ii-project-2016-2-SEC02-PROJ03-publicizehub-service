@@ -5,19 +5,28 @@
  */
 package publicizehub_service.status.Ui;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author dell
  */
 public class EditP3 extends javax.swing.JFrame {
-
+    EditP1 ed1;
+    EditP2 ed2;
+    int line=0;
     /**
      * Creates new form EditP3
      */
     public EditP3() {
         initComponents();
     }
-
+    public EditP3(EditP2 s){
+        ed1=s.ed1;
+        ed2=s;  
+        initComponents();
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +57,6 @@ public class EditP3 extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -56,7 +64,6 @@ public class EditP3 extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -124,6 +131,11 @@ public class EditP3 extends javax.swing.JFrame {
         jLabel8.setText("ผลที่คาดว่าจะได้รับ");
 
         jButton1.setText("เพิ่ม");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -166,14 +178,12 @@ public class EditP3 extends javax.swing.JFrame {
 
         jLabel10.setText("จำนวนเงิน");
 
-        jButton5.setText("เพิ่ม");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButton6.setText("เพิ่ม");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButton6ActionPerformed(evt);
             }
         });
-
-        jButton6.setText("เพิ่ม");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -194,14 +204,12 @@ public class EditP3 extends javax.swing.JFrame {
 
         jLabel13.setText("วันที่ดำเนินการ");
 
-        jButton7.setText("เพิ่ม");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButton8.setText("เพิ่ม");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jButton8ActionPerformed(evt);
             }
         });
-
-        jButton8.setText("เพิ่ม");
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -233,9 +241,7 @@ public class EditP3 extends javax.swing.JFrame {
                                         .addComponent(jLabel12)
                                         .addGap(1, 1, 1)
                                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGap(71, 71, 71)
                                         .addComponent(jLabel13)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,9 +264,7 @@ public class EditP3 extends javax.swing.JFrame {
                                         .addComponent(jLabel7)))
                                 .addGap(18, 18, 18)
                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton5)
-                                .addGap(18, 18, 18)
+                                .addGap(87, 87, 87)
                                 .addComponent(jLabel10)
                                 .addGap(28, 28, 28)
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -286,7 +290,6 @@ public class EditP3 extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton7)
                         .addComponent(jLabel13)
                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton8)))
@@ -306,7 +309,6 @@ public class EditP3 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5)
                     .addComponent(jLabel10)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6))
@@ -348,7 +350,6 @@ public class EditP3 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        EditP2 ed2 = new EditP2();
         ed2.setVisible(true);
 
         setVisible(false);
@@ -358,13 +359,46 @@ public class EditP3 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+        String list=jTextField4.getText();
+        String date=jTextField5.getText();
+        
+        
+        
+        DefaultTableModel mb=(DefaultTableModel) jTable3.getModel();
+        mb.addRow(new Object[0]);
+        mb.setValueAt(list, line, 0);
+        mb.setValueAt(date, line, 1);
+        
+        line=line+1;
+    }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
+        String expected=jTextField1.getText();
+ 
+        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+        mb.addRow(new Object[0]);
+        mb.setValueAt(line+1, line, 0);
+        mb.setValueAt(expected, line, 1);
+        
+        line=line+1;
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        String listt=jTextField2.getText();
+        String many=jTextField3.getText();
+ 
+        DefaultTableModel mb=(DefaultTableModel) jTable2.getModel();
+        mb.addRow(new Object[0]);
+        mb.setValueAt(line+1, line, 0);
+        mb.setValueAt(listt, line, 1);
+        mb.setValueAt(many, line, 2);
+        
+        line=line+1;
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -406,9 +440,7 @@ public class EditP3 extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

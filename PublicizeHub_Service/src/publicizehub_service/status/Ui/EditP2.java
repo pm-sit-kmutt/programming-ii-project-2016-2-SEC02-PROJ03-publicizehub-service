@@ -5,17 +5,38 @@
  */
 package publicizehub_service.status.Ui;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author dell
  */
+
 public class EditP2 extends javax.swing.JFrame {
+    EditP1 ed1;
+    int line=0;
 
     /**
      * Creates new form EditP2
      */
     public EditP2() {
         initComponents();
+        
+    }
+    public EditP2(EditP1 s){
+        ed1=s;
+        initComponents();
+//        ResultSet rs=s.getRe();
+//        try {
+//            jTextArea1.setText(rs.getString("rationale"));
+//            //jTextField1.setText(s.re.getString(""));
+//        } catch (SQLException ex) {
+//            Logger.getLogger(EditP2.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     /**
@@ -176,15 +197,15 @@ public class EditP2 extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "ลำดับ", "วัตถุประสงค์", ""
+                "ลำดับ", "วัตถุประสงค์"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
@@ -326,6 +347,15 @@ public class EditP2 extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        String objective=jTextField3.getText();
+        
+        
+        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+        mb.addRow(new Object[0]);
+        mb.setValueAt(line+1 , line ,0);
+        mb.setValueAt(objective, line, 1);
+       
+        line=line+1;
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -338,7 +368,6 @@ public class EditP2 extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        EditP1 ed1 = new EditP1();
         ed1.setVisible(true);
 
         setVisible(false);
@@ -346,7 +375,7 @@ public class EditP2 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        EditP3 ed3 = new EditP3();
+        EditP3 ed3 = new EditP3(this);
         ed3.setVisible(true);
 
         setVisible(false);
