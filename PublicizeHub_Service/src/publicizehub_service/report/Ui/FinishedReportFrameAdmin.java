@@ -16,7 +16,6 @@ import publicizehub_service.connectionBuilder.ConnectionBuilder;
  */
 public class FinishedReportFrameAdmin extends javax.swing.JFrame {
     
-    DefaultTableModel model; 
     ResultSet rs;
     
     /**
@@ -231,7 +230,7 @@ public class FinishedReportFrameAdmin extends javax.swing.JFrame {
         Connection con = ConnectionBuilder.getConnection();
         
         jTable1.setModel(new DefaultTableModel());
-        model = (DefaultTableModel)jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         model.addColumn("ลำดับ");
         model.addColumn("สถานที่");
         model.addColumn("ชื่อโครงการ");
@@ -317,22 +316,6 @@ public class FinishedReportFrameAdmin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //เมื่อกดปุ่มย้อนกลับ
-        Connection con = ConnectionBuilder.getConnection();
-        
-        try {
-            PreparedStatement st = con.prepareStatement("select * from a where th = \'ไก่\'");
-            
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                System.out.println(rs.getString("th"));
-                System.out.println(rs.getInt("id"));
-                
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(FinishedReportFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -345,8 +328,6 @@ public class FinishedReportFrameAdmin extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        
-        
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
