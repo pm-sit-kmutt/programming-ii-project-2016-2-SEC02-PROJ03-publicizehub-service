@@ -12,13 +12,20 @@ import publicizehub_service.status.Ui.Tableview;
  * @author Flook
  */
 public class KMUTTPublicizeService extends javax.swing.JFrame {
+    User us;
 
+    public KMUTTPublicizeService() {
+    }
     /**
      * Creates new form KMUTTPublicizeService
      */
-    public KMUTTPublicizeService() {
+    
+    
+    
+    public KMUTTPublicizeService(User x) {
+        us=x;
         initComponents();
-        jLabel3.setText(User.getUsername());
+        jLabel3.setText(us.getUsername());
     }
 
     /**

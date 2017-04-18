@@ -155,9 +155,11 @@ public class Login extends javax.swing.JFrame {
         }
         if(!dataname.isEmpty()){
         if(username.equals(dataname)&& password.equals(datapassword)){
-            KMUTTPublicizeService home= new KMUTTPublicizeService();
+            User us=new User();
+            us.setUsername(username);
+            KMUTTPublicizeService home= new KMUTTPublicizeService(us);
             home.setVisible(true);
-            User.setUsername(username);
+           
             setVisible(false);
         }
         }

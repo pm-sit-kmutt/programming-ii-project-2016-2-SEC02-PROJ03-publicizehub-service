@@ -13,12 +13,12 @@ import java.sql.SQLException;
  * @author นัน
  */
 public class User {
-    private static String username = "57130500102";
-    private static String id;
-    private static String firstName;
-    private static String lastName;
-    private static String faculty;
-    private static int status = 0;
+    private String username;
+    private  String id;
+    private  String firstName;
+    private  String lastName;
+    private  String faculty;
+    private  int status = 0;
 
     public User() {
     }
@@ -31,54 +31,55 @@ public class User {
         status = rs.getInt("status");
     }
 
-    public static String getUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public static String getId() {
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public static String getFirstName() {
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
         return firstName;
     }
 
-    public static String getLastName() {
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
         return lastName;
     }
 
-    public static String getFaculty() {
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFaculty() {
         return faculty;
     }
 
-    public static int getStatus() {
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
+
+    public int getStatus() {
         return status;
     }
 
-    public static void setUsername(String username) {
-        User.username = username;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public static void setId(String id) {
-        User.id = id;
-    }
-
-    public static void setFirstName(String firstName) {
-        User.firstName = firstName;
-    }
-
-    public static void setLastName(String lastName) {
-        User.lastName = lastName;
-    }
-
-    public static void setFaculty(String faculty) {
-        User.faculty = faculty;
-    }
-
-    public static void setStatus(int status) {
-        User.status = status;
-    }
-    
+   
     
     
 }
