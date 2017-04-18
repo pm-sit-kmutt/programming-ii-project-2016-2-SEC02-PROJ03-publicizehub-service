@@ -256,9 +256,9 @@ public class FinishedReportFrameAdmin extends javax.swing.JFrame {
         
         String type = "";
         if(jComboBox4.getSelectedIndex() == 1){
-            type = " and type = 0";
+            type = " and placeType = 0";
         }else if(jComboBox4.getSelectedIndex() == 2){
-            type = " and type = 1";
+            type = " and placeType = 1";
         }
         
         String endMonth = "";

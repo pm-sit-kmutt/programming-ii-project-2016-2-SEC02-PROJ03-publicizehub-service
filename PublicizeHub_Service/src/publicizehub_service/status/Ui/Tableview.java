@@ -28,18 +28,18 @@ public class Tableview extends javax.swing.JFrame {
         de.addColumn("สถานะโครงการ");
         int line =0;
         Connection con=ConnectionBuilder.getConnection();
-        try {
-            Statement st=con.createStatement();
-            ResultSet re=st.executeQuery("select projectNameThai , responsible ,status form project where responsible = "+User.getUsername());
-            while(re.next()){
-                de.addRow(new Object[0]);
-                de.setValueAt(re.getString("projectNameThai"), line, 0);
-                de.setValueAt(re.getString("responsible"), line, 1);
-                de.setValueAt(re.getString("status"), line, 2);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Tableview.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            Statement st=con.createStatement();
+//            ResultSet re=st.executeQuery("select projectNameThai , responsible ,status form project where responsible = "+User.getUsername());
+//            while(re.next()){
+//                de.addRow(new Object[0]);
+//                de.setValueAt(re.getString("projectNameThai"), line, 0);
+//                de.setValueAt(re.getString("responsible"), line, 1);
+//                de.setValueAt(re.getString("status"), line, 2);
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Tableview.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     /**
