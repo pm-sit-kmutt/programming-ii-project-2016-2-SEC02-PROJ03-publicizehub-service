@@ -5,6 +5,7 @@
  */
 package publicizehub_service.activity_form.Ui;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
+import publicizehub_service.activity_form.Ui.User;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -156,6 +157,7 @@ public class Login extends javax.swing.JFrame {
         if(username.equals(dataname)&& password.equals(datapassword)){
             KMUTTPublicizeService home= new KMUTTPublicizeService();
             home.setVisible(true);
+            User.setUsername(username);
             setVisible(false);
         }
         }

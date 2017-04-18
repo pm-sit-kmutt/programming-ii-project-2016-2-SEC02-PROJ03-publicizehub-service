@@ -54,6 +54,30 @@ public class User {
     public static int getStatus() {
         return status;
     }
+
+    public static void setUsername(String username) {
+        User.username = username;
+    }
+
+    public static void setId(String id) {
+        User.id = id;
+    }
+
+    public static void setFirstName(String firstName) {
+        User.firstName = firstName;
+    }
+
+    public static void setLastName(String lastName) {
+        User.lastName = lastName;
+    }
+
+    public static void setFaculty(String faculty) {
+        User.faculty = faculty;
+    }
+
+    public static void setStatus(int status) {
+        User.status = status;
+    }
     
     
     
