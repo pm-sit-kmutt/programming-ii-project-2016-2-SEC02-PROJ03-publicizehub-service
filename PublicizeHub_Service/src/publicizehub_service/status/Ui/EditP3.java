@@ -15,6 +15,8 @@ public class EditP3 extends javax.swing.JFrame {
     EditP1 ed1;
     EditP2 ed2;
     int line=0;
+    int line1=0;
+    int line2=0;
     /**
      * Creates new form EditP3
      */
@@ -350,6 +352,7 @@ public class EditP3 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        ed2.ed3=this;
         ed2.setVisible(true);
 
         setVisible(false);
@@ -380,10 +383,10 @@ public class EditP3 extends javax.swing.JFrame {
  
         DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
         mb.addRow(new Object[0]);
-        mb.setValueAt(line+1, line, 0);
-        mb.setValueAt(expected, line, 1);
+        mb.setValueAt(line1+1, line1, 0);
+        mb.setValueAt(expected, line1, 1);
         
-        line=line+1;
+        line1=line1+1;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -393,11 +396,11 @@ public class EditP3 extends javax.swing.JFrame {
  
         DefaultTableModel mb=(DefaultTableModel) jTable2.getModel();
         mb.addRow(new Object[0]);
-        mb.setValueAt(line+1, line, 0);
-        mb.setValueAt(listt, line, 1);
-        mb.setValueAt(many, line, 2);
+        mb.setValueAt(line2+1, line2, 0);
+        mb.setValueAt(listt, line2, 1);
+        mb.setValueAt(many, line2, 2);
         
-        line=line+1;
+        line2=line2+1;
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**

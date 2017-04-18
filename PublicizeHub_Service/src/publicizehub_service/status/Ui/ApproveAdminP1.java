@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 package publicizehub_service.status.Ui;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
 /**
  *
  * @author dell
@@ -16,6 +22,24 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
      */
     public ApproveAdminP1() {
         initComponents();
+//        Connection cn =ConnectionBuilder.getConnection();
+//        
+//        try {
+//            Statement st=cn.createStatement();
+//            re=st.executeQuery("select * from project where id=1");
+//            while(re.next()){
+//                jTextField4.setText(re.getString("projectNameThai"));
+//                jTextField1.setText(re.getString("projectNameEnglish"));
+//                jTextField2.setText(re.getString("advisors"));
+//                jTextField3.setText(re.getString("responsible"));
+//                jTextField6.setText(re.getString("startTime"));
+//                jTextField5.setText(re.getString("closeTime"));
+//                
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+                
     }
 
     /**
@@ -158,6 +182,7 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
 
         jLabel8.setText("ระยะเวลาดำเนินงาน");
 
+        jTextField6.setEnabled(false);
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
@@ -165,23 +190,33 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setEnabled(false);
 
         jLabel17.setText("วันที่เริ่มต้น");
 
         jLabel18.setText("วันที่สิ้นสุด");
 
+        jTextField4.setEnabled(false);
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
 
+        jTextField1.setEnabled(false);
+
+        jTextField2.setEnabled(false);
+
+        jTextField3.setEnabled(false);
+
+        jTextField5.setEnabled(false);
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
             }
         });
 
+        jTextField7.setEnabled(false);
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
@@ -192,6 +227,7 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
 
         jLabel16.setText("รหัสนักศึกษา");
 
+        jTextField9.setEnabled(false);
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField9ActionPerformed(evt);
@@ -222,7 +258,15 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
 
         jLabel19.setText("หน้าที่");
 
+        jTextField10.setEnabled(false);
+
         jButton7.setText("เพิ่ม");
+        jButton7.setEnabled(false);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -295,7 +339,6 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(127, 127, 127))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton4)
                                 .addGap(178, 178, 178)
                                 .addComponent(jButton1)
@@ -416,6 +459,10 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
 
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments

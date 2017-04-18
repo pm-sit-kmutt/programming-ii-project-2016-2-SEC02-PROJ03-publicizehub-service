@@ -15,7 +15,7 @@ import publicizehub_service.connectionBuilder.ConnectionBuilder;
  */
 public class EditP1 extends javax.swing.JFrame {
         private ResultSet re;
-
+        EditP2 ed2 = new EditP2(this);
     public ResultSet getRe() {
         return re;
     }
@@ -26,23 +26,24 @@ public class EditP1 extends javax.swing.JFrame {
     int line=0;
     public EditP1() {
         initComponents();
-       // Connection cn =ConnectionBuilder.getConnection();
-//        try {
-//            Statement st=cn.createStatement();
-//            re=st.executeQuery("select * from project where id=1");
-//            while(re.next()){
-//                jTextField4.setText(re.getString("projectNameThai"));
-//                jTextField1.setText(re.getString("projectNameEnglish"));
-//                jTextField2.setText(re.getString("advisors"));
-//                jTextField3.setText(re.getString("responsible"));
-//                jTextField6.setText(re.getString("startTime"));
-//                jTextField5.setText(re.getString("closeTime"));
-//                
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//                
+        Connection cn =ConnectionBuilder.getConnection();
+        
+        try {
+            Statement st=cn.createStatement();
+            re=st.executeQuery("select * from project where id=1");
+            while(re.next()){
+                jTextField4.setText(re.getString("projectNameThai"));
+                jTextField1.setText(re.getString("projectNameEnglish"));
+                jTextField2.setText(re.getString("advisors"));
+                jTextField3.setText(re.getString("responsible"));
+                jTextField6.setText(re.getString("startTime"));
+                jTextField5.setText(re.getString("closeTime"));
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
    }
 
     /**
@@ -158,7 +159,7 @@ public class EditP1 extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel7.setText("กรอกรายละเอียด");
 
-        jButton2.setText("แก้ไขข้อมูล");
+        jButton2.setText("แก้ไข");
 
         jButton4.setText("ดู Comment");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -289,10 +290,10 @@ public class EditP1 extends javax.swing.JFrame {
                         .addGap(7, 7, 7)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel8)
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(35, 35, 35)
                                         .addComponent(jLabel17)
                                         .addGap(18, 18, 18)
                                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,12 +302,11 @@ public class EditP1 extends javax.swing.JFrame {
                                         .addGap(30, 30, 30)
                                         .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGap(67, 67, 67)
                                         .addComponent(jButton4)
-                                        .addGap(78, 78, 78)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jButton1)
-                                        .addGap(94, 94, 94)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(113, 113, 113)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel15)
@@ -448,7 +448,7 @@ public class EditP1 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        EditP2 ed2 = new EditP2(this);
+       
         ed2.setVisible(true);
 
         setVisible(false);

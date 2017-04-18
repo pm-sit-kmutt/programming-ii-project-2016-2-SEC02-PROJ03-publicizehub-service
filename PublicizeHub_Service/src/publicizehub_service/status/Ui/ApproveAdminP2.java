@@ -5,6 +5,9 @@
  */
 package publicizehub_service.status.Ui;
 
+import java.sql.Connection;
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
+
 /**
  *
  * @author dell
@@ -15,7 +18,8 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
      * Creates new form EditP2
      */
     public ApproveAdminP2() {
-        initComponents();
+        initComponents(); 
+       
     }
 
     /**
@@ -130,12 +134,14 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
 
         jLabel2.setText("จำนวนอาจารย์ที่เข้าร่วมโครงการ");
 
+        jTextField1.setEnabled(false);
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
 
+        jTextField2.setEnabled(false);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -146,6 +152,7 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setEnabled(false);
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel4.setText("วัตถุประสงค์");
@@ -159,7 +166,10 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
             }
         });
 
+        jTextField3.setEnabled(false);
+
         jButton6.setText("เพิ่ม");
+        jButton6.setEnabled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -195,6 +205,8 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
         jLabel5.setText("เลือกสถานที่  (ภายในมหาวิทยาลัย)");
 
         jLabel7.setText("เลือกสถานที่(ภายนอกมหาวิทยาลัย)");
+
+        jTextField4.setEnabled(false);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 

@@ -19,6 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class EditP2 extends javax.swing.JFrame {
     EditP1 ed1;
     int line=0;
+    EditP3 ed3 = new EditP3(this);
 
     /**
      * Creates new form EditP2
@@ -30,6 +31,7 @@ public class EditP2 extends javax.swing.JFrame {
     public EditP2(EditP1 s){
         ed1=s;
         initComponents();
+        
 //        ResultSet rs=s.getRe();
 //        try {
 //            jTextArea1.setText(rs.getString("rationale"));
@@ -186,7 +188,7 @@ public class EditP2 extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("แก้ไขข้อมูล");
+        jButton5.setText("แก้ไข");
 
         jButton6.setText("เพิ่ม");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -368,6 +370,7 @@ public class EditP2 extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        ed1.ed2 = this;
         ed1.setVisible(true);
 
         setVisible(false);
@@ -375,7 +378,7 @@ public class EditP2 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        EditP3 ed3 = new EditP3(this);
+        
         ed3.setVisible(true);
 
         setVisible(false);
