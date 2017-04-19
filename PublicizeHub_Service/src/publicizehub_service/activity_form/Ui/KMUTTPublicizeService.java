@@ -16,6 +16,7 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
     User us;
 
     public KMUTTPublicizeService() {
+        initComponents(); 
     }
     /**
      * Creates new form KMUTTPublicizeService

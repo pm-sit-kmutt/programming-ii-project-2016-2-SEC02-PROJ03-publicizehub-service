@@ -9,6 +9,7 @@ import javax.swing.table.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import publicizehub_service.activity_form.Ui.KMUTTPublicizeService;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 /**
  *
@@ -23,6 +24,10 @@ public class FinishedReportFrameAdmin extends javax.swing.JFrame {
      */
     public FinishedReportFrameAdmin() {
         initComponents();
+    }
+
+    public FinishedReportFrameAdmin(KMUTTPublicizeService aThis) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
