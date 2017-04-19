@@ -5,6 +5,7 @@
  */
 package publicizehub_service.activity_form.Ui;
 
+import publicizehub_service.report.Ui.FinishedReportFrameAdmin;
 import publicizehub_service.status.Ui.Tableview;
 
 /**
@@ -222,6 +223,9 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        FinishedReportFrameAdmin f = new FinishedReportFrameAdmin(this);
+        f.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
