@@ -5,16 +5,23 @@
  */
 package publicizehub_service.report.Ui;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import publicizehub_service.activity_form.Ui.KMUTTPublicizeService;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 
 /**
@@ -22,6 +29,8 @@ import publicizehub_service.connectionBuilder.ConnectionBuilder;
  * @author นัน
  */
 public class SubmitFrame extends javax.swing.JFrame {
+    KMUTTPublicizeService home;
+    String desFile = null;
     Connection con = ConnectionBuilder.getConnection();
     int line = 0;
     /**
@@ -41,8 +50,8 @@ public class SubmitFrame extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -311,11 +320,16 @@ public class SubmitFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // หารูป
         JFileChooser fileopen = new JFileChooser();
-        FileFilter filter = new FileNameExtensionFilter("picture file", "jpg", "jpeg","png");
+        FileFilter filter = new FileNameExtensionFilter("picture file", "jpg", "jpeg", "png");
         fileopen.setFileFilter(filter);
         int ret = fileopen.showDialog(null, "Choose file");
         if(ret == JFileChooser.APPROVE_OPTION){
-            jLabel12.setText(fileopen.getSelectedFile().getPath());
+            String filePath = fileopen.getSelectedFile().getPath();
+            jLabel12.setText(filePath);
+            
+            ImageDialog id = new ImageDialog(this, rootPaneCheckingEnabled);
+            id.setVisible(true);
+            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -323,12 +337,17 @@ public class SubmitFrame extends javax.swing.JFrame {
         // อัฟโหลดรูป
         String filePath = jLabel12.getText();
         String file = filePath.substring(filePath.lastIndexOf('\\')+1, filePath.length());
-        
+        System.out.println(filePath);
+        System.out.println(file);
         if(!filePath.isEmpty()){
             try {
+                desFile = new File(".").getCanonicalPath() + "\\img\\" + file;
+                System.out.println(desFile);
                 Statement st = con.createStatement();
                 //st.executeUpdate("insert ");
             } catch (SQLException ex) {
+                Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
                 Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
 
