@@ -54,7 +54,7 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/activity_form/Ui/kmutt_logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/Image/kmutt_logo.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
         jLabel2.setText("User");

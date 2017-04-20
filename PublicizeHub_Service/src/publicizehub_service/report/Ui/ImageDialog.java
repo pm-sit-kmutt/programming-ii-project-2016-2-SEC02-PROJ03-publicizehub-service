@@ -60,6 +60,7 @@ public class ImageDialog extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(550, 450));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/Image/Pic1.png"))); // NOI18N
         jLabel1.setText("JLabel1");

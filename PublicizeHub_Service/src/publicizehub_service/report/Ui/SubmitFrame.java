@@ -17,7 +17,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
@@ -45,8 +47,6 @@ public class SubmitFrame extends javax.swing.JFrame {
                 jTextField1.setText(rs.getString("projectNameThai"));
                 jTextField5.setText(rs.getString("projectNameEnglish"));
             }
-            rs.close();
-            st.close();
         } catch (SQLException ex) {
             Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -327,9 +327,13 @@ public class SubmitFrame extends javax.swing.JFrame {
             String filePath = fileopen.getSelectedFile().getPath();
             jLabel12.setText(filePath);
             
-            ImageDialog id = new ImageDialog(this, rootPaneCheckingEnabled);
-            id.setVisible(true);
-            
+            JDialog j = new JDialog(this, rootPaneCheckingEnabled);
+            JLabel j1 = new JLabel(new javax.swing.ImageIcon(filePath), JLabel.CENTER);
+            j.add(j1);
+            j.setLocationRelativeTo(null);
+            j.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+            j.pack();
+            j.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
