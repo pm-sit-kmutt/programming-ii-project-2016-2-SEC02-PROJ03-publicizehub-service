@@ -25,15 +25,16 @@ public class ImageDialog extends javax.swing.JDialog {
     public ImageDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setImage();
+        
     }
     
     public void setImage(){
-        ImageIcon icon = new ImageIcon("‪C:\\Users\\sangu\\Desktop\\pixiv50615619.jpg");
-        int w = icon.getIconWidth();
-        int h = icon.getIconHeight();
+        //ImageIcon icon = new ImageIcon("‪C:\\Users\\sangu\\Desktop\\pixiv50615619.jpg");
+        
         //this.setSize(w, h);
-        System.out.println(w+" "+h);
+        
+        //jLabel1.setIcon(new ImageIcon("C:\\Users\\นัน\\Desktop\\Pic5.png"));
+        
         //jLabel1.setIcon(new ImageIcon(icon.getImage().getScaledInstance(w, h, Image.SCALE_DEFAULT)));
 
         
@@ -54,23 +55,53 @@ public class ImageDialog extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(550, 450));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/Image/Pic1.png"))); // NOI18N
+        jLabel1.setText("JLabel1");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/Image/Pic4.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/Image/Pic5.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/Image/kmutt_logo.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 95, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(154, 154, 154))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(98, 98, 98))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 65, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel4)))
+                .addGap(125, 125, 125)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(96, 96, 96))
         );
 
         pack();
@@ -121,5 +152,8 @@ public class ImageDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
