@@ -10,20 +10,28 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
-import publicizehub_service.activity_form.Ui.User;
+import publicizehub_service.activity_form.Ui.*;
 
 /**
  *
  * @author นัน
  */
 public class FinishedReportFrame extends javax.swing.JFrame {
-    
+    KMUTTPublicizeService home;
     /**
      * Creates new form FinishedReport
      */
     public FinishedReportFrame() {
         initComponents();
-        
+    }
+    
+    public FinishedReportFrame(KMUTTPublicizeService home) {
+        this.home = home;
+        initComponents();
+        setFinishedTable();  
+    }
+    
+    public void setFinishedTable(){
         jTable1.setModel(new DefaultTableModel());
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         model.addColumn("รายการที่");
@@ -32,21 +40,21 @@ public class FinishedReportFrame extends javax.swing.JFrame {
         model.addColumn("วันที่ปิดโครงการ");
         int line = 0;
         
-//        Connection con = ConnectionBuilder.getConnection();
-//        try {
-//            Statement st = con.createStatement();
-//            ResultSet rs = st.executeQuery("select * from project where responsible = "+User.getUsername()+" and status = 0");
-//            while(rs.next()){
-//                model.addRow(new Object[0]);
-//                model.setValueAt(line+1, line, 0);
-//                model.setValueAt(rs.getString("projectNameThai"), line, 1);
-//                model.setValueAt(rs.getString("projectNameEnglish"), line, 2);
-//                model.setValueAt(rs.getString("closeTime"), line, 3);
-//                line = line +1;
-//            }
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
+        Connection con = ConnectionBuilder.getConnection();
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from project where responsible = "+User.getUsername()+" and status = 0");
+            while(rs.next()){
+                model.addRow(new Object[0]);
+                model.setValueAt(line+1, line, 0);
+                model.setValueAt(rs.getString("projectNameThai"), line, 1);
+                model.setValueAt(rs.getString("projectNameEnglish"), line, 2);
+                model.setValueAt(rs.getString("closeTime"), line, 3);
+                line = line +1;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
     }
 
     /**
@@ -135,14 +143,8 @@ public class FinishedReportFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //กดแล้วกลับไปหน้า home
-//        Connection con = ConnectionBuilder.getConnection();
-//        try {
-//            Statement st = con.createStatement();
-//            st.executeUpdate("insert into comment values('a',now(),'b')");
-//        } catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
+        home.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

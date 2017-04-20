@@ -5,7 +5,7 @@
  */
 package publicizehub_service.activity_form.Ui;
 
-import publicizehub_service.report.Ui.FinishedReportFrameAdmin;
+import publicizehub_service.report.Ui.*;
 import publicizehub_service.status.Ui.Tableview;
 
 /**
@@ -218,7 +218,7 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        FinishedReportFrameAdmin f = new FinishedReportFrameAdmin(this);
+        FinishedReportFrame f = new FinishedReportFrame(this);
         f.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -233,7 +233,10 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+
+        login_1 login = new login_1();
+        login.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

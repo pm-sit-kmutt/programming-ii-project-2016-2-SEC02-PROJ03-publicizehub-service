@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 package publicizehub_service.activity_form.Ui;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
 /**
  *
  * @author นัน
@@ -21,6 +17,15 @@ public class User {
     private static int status;
 
     public User() {
+    }
+    
+    public static void resetData(){
+        username = "";
+        id = "";
+        firstName = "";
+        lastName = "";
+        faculty = "";
+        status = 9;
     }
     
     public static String getUsername() {
