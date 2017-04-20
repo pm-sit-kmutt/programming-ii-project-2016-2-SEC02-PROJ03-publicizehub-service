@@ -13,23 +13,16 @@ import publicizehub_service.status.Ui.Tableview;
  * @author Flook
  */
 public class KMUTTPublicizeService extends javax.swing.JFrame {
-    User us;
-
-    public KMUTTPublicizeService() {
-        initComponents(); 
-    }
+    
     /**
      * Creates new form KMUTTPublicizeService
      */
     
-    
-    
-    public KMUTTPublicizeService(User x) {
-        us=x;
-        initComponents();
-        jLabel3.setText(us.getUsername());
+    public KMUTTPublicizeService() {
+        initComponents(); 
+        jLabel3.setText(User.getUsername());
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,8 +71,8 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+                .addComponent(jLabel3)
+                .addGap(149, 149, 149))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

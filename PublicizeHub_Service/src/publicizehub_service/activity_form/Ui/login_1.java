@@ -5,6 +5,8 @@
  */
 package publicizehub_service.activity_form.Ui;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 import publicizehub_service.activity_form.Ui.User;
 import java.sql.*;
@@ -23,6 +25,7 @@ public class login_1 extends javax.swing.JFrame {
      */
     public login_1() {
         initComponents();
+        getRootPane().setDefaultButton(jButton1);
     }
 
     /**
@@ -78,20 +81,10 @@ public class login_1 extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(36, 47, 65));
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jPasswordField1.setBackground(new java.awt.Color(36, 47, 65));
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setBorder(null);
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
-            }
-        });
 
         jButton1.setBackground(new java.awt.Color(97, 212, 195));
         jButton1.setText("Login");
@@ -233,19 +226,25 @@ public class login_1 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Connection con = ConnectionBuilder.getConnection();
-        String username =jTextField1.getText();
-        String password =new String (jPasswordField1.getPassword());
+        String username = jTextField1.getText();
+        String password = new String(jPasswordField1.getPassword());
         String dataname = "";
         String datapassword ="";
         System.out.println(username);
         System.out.println(password);
 
         try {
-            Statement st= con.createStatement();
-            ResultSet re=st.executeQuery("select username, password from member where username ='"+username+"' and password = '"+password+"'");
+            Statement st = con.createStatement();
+            ResultSet re = st.executeQuery("select * from member where username ='"+username+"'");
             while(re.next()){
                 dataname=re.getString("username");
                 datapassword=re.getString("password");
+                User.setUsername(re.getString("username"));
+                User.setFirstName(re.getString("firstName"));
+                User.setLastName(re.getString("lastName"));
+                User.setFaculty(re.getString("faculty"));
+                User.setId(re.getString("id"));
+                User.setStatus(re.getInt("status"));
             }
             System.out.println(dataname);
             System.out.println(datapassword);
@@ -254,23 +253,14 @@ public class login_1 extends javax.swing.JFrame {
         }
         if(!dataname.isEmpty()){
             if(username.equals(dataname)&& password.equals(datapassword)){
-                User us=new User();
-                us.setUsername(username);
-                KMUTTPublicizeService home= new KMUTTPublicizeService(us);
+                KMUTTPublicizeService home= new KMUTTPublicizeService();
                 home.setVisible(true);
-
                 setVisible(false);
+            }else{
+                JOptionPane.showMessageDialog(null, "Username or Password incorrect");
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
