@@ -12,13 +12,13 @@ import publicizehub_service.status.Ui.Tableview;
  *
  * @author Flook
  */
-public class KMUTTPublicizeService extends javax.swing.JFrame {
+public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
     
     /**
      * Creates new form KMUTTPublicizeService
      */
     
-    public KMUTTPublicizeService() {
+    public KMUTTPublicizeServiceAdmin() {
         initComponents(); 
         jLabel3.setText(User.getUsername());
     }
@@ -113,7 +113,7 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("ThaiSans Neue", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("ServiceUser");
+        jLabel2.setText("ServiceAdmin");
 
         jLabel3.setFont(new java.awt.Font("ThaiSans Neue", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -245,9 +245,7 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        FinishedReportFrame f = new FinishedReportFrame(this);
-        f.setVisible(true);
-        setVisible(false);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -271,20 +269,21 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(KMUTTPublicizeService.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KMUTTPublicizeServiceAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(KMUTTPublicizeService.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KMUTTPublicizeServiceAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(KMUTTPublicizeService.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KMUTTPublicizeServiceAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(KMUTTPublicizeService.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(KMUTTPublicizeServiceAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new KMUTTPublicizeService().setVisible(true);
+                new KMUTTPublicizeServiceAdmin().setVisible(true);
             }
         });
     }
