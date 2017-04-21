@@ -369,9 +369,8 @@ public class SubmitFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    // หารูป
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // หารูป
         JFileChooser fileopen = new JFileChooser();
         FileFilter filter = new FileNameExtensionFilter("picture file", "jpg", "jpeg", "png");
         fileopen.setFileFilter(filter);
@@ -467,9 +466,8 @@ public class SubmitFrame extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         
     }//GEN-LAST:event_jButton5ActionPerformed
-
+    // ลบรูป
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // ลบรูป
         boolean[] check = new boolean[jTable1.getRowCount()]; //เก็บว่าเลือกลบอันไหน
         for(int i = 0; i < check.length ;i++){
             if(jTable1.getValueAt(i, 2) == null){
@@ -505,9 +503,8 @@ public class SubmitFrame extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton6ActionPerformed
-
+    // คลิกตาราง
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        // คลิก
         int row = jTable1.getSelectedRow();
         int col = jTable1.getSelectedColumn();
         if(col == 1){
@@ -516,12 +513,15 @@ public class SubmitFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     public void openImage(String filePath){
-        JDialog j = new JDialog(this, rootPaneCheckingEnabled);
-        JLabel j1 = new JLabel(new javax.swing.ImageIcon(filePath), JLabel.CENTER);
-        j.add(j1);
-        j.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        j.pack();
-        j.setVisible(true);
+        JDialog jdialog = new JDialog(this, rootPaneCheckingEnabled);
+        JLabel jlabel = new JLabel(new javax.swing.ImageIcon(filePath), JLabel.CENTER);
+        JScrollPane sc = new JScrollPane(jlabel);
+        
+        jdialog.add(sc);
+        jdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        jdialog.pack();
+        jdialog.setVisible(true);
+        
     }
     
     /**
