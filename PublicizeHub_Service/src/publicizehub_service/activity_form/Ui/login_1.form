@@ -93,6 +93,11 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/publicizehub_service/Image/name copy.png"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -280,6 +285,9 @@
             </Container>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/publicizehub_service/Image/kmutt.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="jLabel3"/>
               </Properties>
             </Component>

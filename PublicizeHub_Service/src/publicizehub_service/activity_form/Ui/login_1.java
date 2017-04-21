@@ -57,6 +57,8 @@ public class login_1 extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(97, 212, 195));
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/Image/name copy.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -137,6 +139,7 @@ public class login_1 extends javax.swing.JFrame {
             .addGap(0, 2, Short.MAX_VALUE)
         );
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/Image/kmutt.png"))); // NOI18N
         jLabel3.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
