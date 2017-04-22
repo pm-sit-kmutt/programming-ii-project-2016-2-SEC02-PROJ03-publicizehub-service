@@ -241,7 +241,7 @@ public class FinishedReportFrameAdmin extends javax.swing.JFrame {
         
         String name = "";
         if(!jTextField1.getText().isEmpty()){
-            name = " and projectNameThai LIKE '%"+jTextField1.getText()+"%'";
+            name = " and projectNameThai = '"+jTextField1.getText()+"'";
         }
         
         String department = "";

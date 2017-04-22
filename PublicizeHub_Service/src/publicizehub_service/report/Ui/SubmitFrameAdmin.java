@@ -23,6 +23,7 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
      */
     public SubmitFrameAdmin() {
         initComponents();
+        getRootPane().setDefaultButton(jButton1);
     }
 
     /**
@@ -240,7 +241,7 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         
         String name = "";
         if(!jTextField1.getText().isEmpty()){
-            name = " and projectNameThai LIKE '%"+jTextField1.getText()+"%'";
+            name = " and projectNameThai = '"+jTextField1.getText()+"'";
         }
         
         String department = "";
