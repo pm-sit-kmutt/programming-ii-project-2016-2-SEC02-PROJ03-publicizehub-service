@@ -8,6 +8,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.*;
+import publicizehub_service.activity_form.Ui.KMUTTPublicizeService;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 import publicizehub_service.activity_form.Ui.User;
 /**
@@ -15,31 +16,41 @@ import publicizehub_service.activity_form.Ui.User;
  * @author dell
  */
 public class Tableview extends javax.swing.JFrame {
+    KMUTTPublicizeService home;
 
-    /**
-     * Creates new form Tableview
-     */
     public Tableview() {
         initComponents();
-        jTable1.setModel(new DefaultTableModel());
+    }
+
+    
+    public Tableview(KMUTTPublicizeService home) {
+        initComponents();
+        this.home = home;
         DefaultTableModel de=(DefaultTableModel)jTable1.getModel();
-        de.addColumn("ชื่อโครงการ");
-        de.addColumn("ชื่อผู้จัดทำโครงการ");
-        de.addColumn("สถานะโครงการ");
+        
         int line =0;
         Connection con=ConnectionBuilder.getConnection();
-//        try {
-//            Statement st=con.createStatement();
-//            ResultSet re=st.executeQuery("select projectNameThai , responsible ,status form project where responsible = "+User.getUsername());
-//            while(re.next()){
-//                de.addRow(new Object[0]);
-//                de.setValueAt(re.getString("projectNameThai"), line, 0);
-//                de.setValueAt(re.getString("responsible"), line, 1);
-//                de.setValueAt(re.getString("status"), line, 2);
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Tableview.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            Statement st=con.createStatement();
+            ResultSet re=st.executeQuery("select projectNameThai , openTime, status from project where not status = 0 ");
+            while(re.next()){
+                de.addRow(new Object[0]);
+                de.setValueAt(re.getString("projectNameThai"), line, 0);
+                de.setValueAt(re.getString("openTime"), line, 1);
+                if(re.getString("status").equals("1")){
+                    de.setValueAt("รออนุมัติ", line, 2);
+                }else if(re.getString("status").equals("2")){
+                    de.setValueAt("อนุมัติแล้ว", line, 2);
+                }else if(re.getString("status").equals("3")){
+                    de.setValueAt("แจ้งปิด", line, 2);
+                }
+                
+                line++;
+                System.out.println("dfsdfdrg");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Tableview.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -60,7 +71,7 @@ public class Tableview extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTable1.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -94,6 +105,7 @@ public class Tableview extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setRowHeight(23);
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(350);
@@ -104,27 +116,36 @@ public class Tableview extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(2).setMaxWidth(150);
         }
 
-        jButton1.setText("jButton1");
+        jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
+        jButton1.setText("ย้อนกลับ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(194, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(643, 643, 643)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83)
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
                 .addComponent(jButton1)
-                .addContainerGap(159, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,7 +160,14 @@ public class Tableview extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+       home.setVisible(true);
+       setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
