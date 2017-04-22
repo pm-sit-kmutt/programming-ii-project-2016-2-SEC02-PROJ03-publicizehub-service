@@ -417,10 +417,11 @@ public class SubmitFrame extends javax.swing.JFrame {
             int people = Integer.parseInt(jTextField4.getText());
 
             try {
-                PreparedStatement pt1 = con.prepareStatement("update project set budget = ?, cost = ? where id = ?");
+                PreparedStatement pt1 = con.prepareStatement("update project set budget = ?, cost = ?, placeLocation = ? where id = ?");
                 pt1.setDouble(1, budget);
                 pt1.setDouble(2, pay);
-                pt1.setInt(3, id);
+                pt1.setString(3, "สถานที่ที่มีไก่แจ้");
+                pt1.setInt(4, id);
                 int record = pt1.executeUpdate();
                 pt1.close();
                 PreparedStatement pt2 = con.prepareStatement("update participants set numCome = ? where projectId = ?");
