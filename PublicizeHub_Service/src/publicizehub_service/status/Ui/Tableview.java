@@ -11,13 +11,15 @@ import javax.swing.table.*;
 import publicizehub_service.activity_form.Ui.KMUTTPublicizeService;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 import publicizehub_service.activity_form.Ui.User;
+import publicizehub_service.report.Ui.SubmitFrame;
 /**
  *
  * @author dell
  */
 public class Tableview extends javax.swing.JFrame {
     KMUTTPublicizeService home;
-
+    ResultSet re;
+            
     public Tableview() {
         initComponents();
     }
@@ -26,13 +28,13 @@ public class Tableview extends javax.swing.JFrame {
     public Tableview(KMUTTPublicizeService home) {
         initComponents();
         this.home = home;
-        DefaultTableModel de=(DefaultTableModel)jTable1.getModel();
+        DefaultTableModel de = (DefaultTableModel)jTable1.getModel();
         
         int line =0;
         Connection con=ConnectionBuilder.getConnection();
         try {
-            Statement st=con.createStatement();
-            ResultSet re=st.executeQuery("select projectNameThai , openTime, status from project where not status = 0 ");
+            Statement st = con.createStatement();
+            re = st.executeQuery("select id, projectNameThai, openTime, status from project where not status = 0 and responsible = '"+User.getUsername()+"'");
             while(re.next()){
                 de.addRow(new Object[0]);
                 de.setValueAt(re.getString("projectNameThai"), line, 0);
@@ -44,9 +46,7 @@ public class Tableview extends javax.swing.JFrame {
                 }else if(re.getString("status").equals("3")){
                     de.setValueAt("แจ้งปิด", line, 2);
                 }
-                
                 line++;
-                System.out.println("dfsdfdrg");
             }
         } catch (SQLException ex) {
             Logger.getLogger(Tableview.class.getName()).log(Level.SEVERE, null, ex);
@@ -106,6 +106,11 @@ public class Tableview extends javax.swing.JFrame {
             }
         });
         jTable1.setRowHeight(23);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(350);
@@ -168,6 +173,31 @@ public class Tableview extends javax.swing.JFrame {
        home.setVisible(true);
        setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+       // TODO add your handling code here:
+       int row = jTable1.getSelectedRow();
+       int col = jTable1.getSelectedColumn();
+       int projectId = 0;
+       if (col==2){
+           try {
+               re.absolute(row+1);
+               projectId = re.getInt("id");
+               System.out.println(projectId);
+           } catch (SQLException ex) {
+               Logger.getLogger(Tableview.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           if(jTable1.getValueAt(row, col).equals("รออนุมัติ")){
+               EditP1 e1 = new EditP1(this, projectId);
+               e1.setVisible(true);
+               setVisible(false);
+           }else if(jTable1.getValueAt(row, col).equals("แจ้งปิด")){
+               SubmitFrame sf = new SubmitFrame(this, projectId);
+               sf.setVisible(true);
+               setVisible(false);
+           }
+       }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments

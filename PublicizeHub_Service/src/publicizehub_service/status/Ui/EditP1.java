@@ -14,23 +14,25 @@ import publicizehub_service.connectionBuilder.ConnectionBuilder;
  * @author dell
  */
 public class EditP1 extends javax.swing.JFrame {
-        private ResultSet re;
-        EditP2 ed2 = new EditP2(this);
-    public ResultSet getRe() {
-        return re;
-    }
-        
-    /**
-     * Creates new form Edit
-     */
+    ResultSet re;
+    Tableview table;
+    int projectId;
+    EditP2 ed2 = new EditP2(this);
     int line=0;
+
     public EditP1() {
         initComponents();
+    }
+
+    public EditP1(Tableview table, int projectId) {
+        initComponents();
+        this.table = table;
+        this.projectId = projectId;
         Connection cn =ConnectionBuilder.getConnection();
         
         try {
             Statement st=cn.createStatement();
-            re=st.executeQuery("select * from project where id=1");
+            re=st.executeQuery("select * from project where id = '"+projectId+"'");
             while(re.next()){
                 jTextField4.setText(re.getString("projectNameThai"));
                 jTextField1.setText(re.getString("projectNameEnglish"));
