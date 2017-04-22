@@ -23,10 +23,8 @@ public class EditP1 extends javax.swing.JFrame {
     Tableview table;
     int projectId;
     int line=0;
-    ResultSet re;
-    /**
-     * Creates new form Edit
-     */
+    Connection cn=ConnectionBuilder.getConnection();
+
     public EditP1() {
         initComponents();
     }
@@ -35,10 +33,10 @@ public class EditP1 extends javax.swing.JFrame {
         initComponents();
         this.table=table;
         this.projectId=projectId;
-        Connection cn=ConnectionBuilder.getConnection();
+
         try {
             Statement st=cn.createStatement();
-            re=st.executeQuery("select * from project where id = '"+projectId+"'");
+            ResultSet re=st.executeQuery("select projectNameThai, projectNameEnglish, advisors from project where id = '"+projectId+"'");
             while(re.next()){
                 jTextField4.setText(re.getString("projectNameThai"));
                 jTextField1.setText(re.getString("projectNameEnglish"));
@@ -55,10 +53,9 @@ public class EditP1 extends javax.swing.JFrame {
                 mb.setValueAt(re2.getString("job"), line, 3);
                 line++;
             }
-            
         } catch (SQLException ex) {
             Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
     }
 
     /**
@@ -374,9 +371,8 @@ public class EditP1 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        FromP2 ad2 = new FromP2();
-        ad2.setVisible(true);
-
+        EditP2 ed2 = new EditP2();
+        ed2.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 

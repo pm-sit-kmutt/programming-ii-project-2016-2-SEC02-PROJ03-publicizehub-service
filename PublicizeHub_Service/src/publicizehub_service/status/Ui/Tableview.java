@@ -183,7 +183,6 @@ public class Tableview extends javax.swing.JFrame {
            try {
                re.absolute(row+1);
                projectId = re.getInt("id");
-               System.out.println(projectId);
            } catch (SQLException ex) {
                Logger.getLogger(Tableview.class.getName()).log(Level.SEVERE, null, ex);
            }

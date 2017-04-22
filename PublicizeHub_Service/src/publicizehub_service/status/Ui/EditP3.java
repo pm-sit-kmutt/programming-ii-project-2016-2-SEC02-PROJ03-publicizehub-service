@@ -5,7 +5,9 @@
  */
 package publicizehub_service.status.Ui;
 
+import java.sql.Connection;
 import publicizehub_service.activity_form.Ui.*;
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
 import publicizehub_service.status.Ui.*;
 
 /**
@@ -14,16 +16,19 @@ import publicizehub_service.status.Ui.*;
  */
 public class EditP3 extends javax.swing.JFrame {
 
+    int projectId;
+    int line = 0;
+    int line2 = 0;
+    int line3 = 0;
+    Connection cn=ConnectionBuilder.getConnection();
     /**
      * Creates new form EditP3
      */
+    
     public EditP3() {
         initComponents();
     }
 
-    EditP3(EditP2 aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -305,9 +310,8 @@ public class EditP3 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        FromP2 ad2 = new FromP2();
-        ad2.setVisible(true);
-
+        EditP2 ed2 = new EditP2();
+        ed2.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -346,21 +350,7 @@ public class EditP3 extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
+  
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
