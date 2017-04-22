@@ -23,6 +23,7 @@ public class EditP1 extends javax.swing.JFrame {
     Tableview table;
     int projectId;
     int line=0;
+    ResultSet re;
     /**
      * Creates new form Edit
      */
@@ -37,7 +38,7 @@ public class EditP1 extends javax.swing.JFrame {
         Connection cn=ConnectionBuilder.getConnection();
         try {
             Statement st=cn.createStatement();
-            ResultSet re=st.executeQuery("select * from project where id = '"+projectId+"'");
+            re=st.executeQuery("select * from project where id = '"+projectId+"'");
             while(re.next()){
                 jTextField4.setText(re.getString("projectNameThai"));
                 jTextField1.setText(re.getString("projectNameEnglish"));
@@ -130,11 +131,6 @@ public class EditP1 extends javax.swing.JFrame {
         jTextField4.setBackground(new java.awt.Color(36, 47, 65));
         jTextField4.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
 
         jTextField1.setBackground(new java.awt.Color(36, 47, 65));
         jTextField1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
@@ -147,11 +143,6 @@ public class EditP1 extends javax.swing.JFrame {
         jTextField7.setBackground(new java.awt.Color(36, 47, 65));
         jTextField7.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
 
         jLabel21.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
@@ -164,11 +155,6 @@ public class EditP1 extends javax.swing.JFrame {
         jTextField9.setBackground(new java.awt.Color(36, 47, 65));
         jTextField9.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
 
         jTable1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -253,11 +239,6 @@ public class EditP1 extends javax.swing.JFrame {
         jTextField11.setBackground(new java.awt.Color(36, 47, 65));
         jTextField11.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField11.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
-            }
-        });
 
         jButton2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton2.setText("ย้อนกลับ");
@@ -391,18 +372,6 @@ public class EditP1 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         FromP2 ad2 = new FromP2();
@@ -411,12 +380,10 @@ public class EditP1 extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        table.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -461,38 +428,7 @@ public class EditP1 extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(EditP1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
