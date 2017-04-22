@@ -17,32 +17,38 @@ import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.TabableView;
 import publicizehub_service.activity_form.Ui.KMUTTPublicizeService;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
+import publicizehub_service.status.Ui.Tableview;
 
 /**
  *
  * @author นัน
  */
 public class SubmitFrame extends javax.swing.JFrame {
-    KMUTTPublicizeService home;
     ArrayList<String> file = new ArrayList<>();
     ArrayList<String> name = new ArrayList<>();
     Connection con = ConnectionBuilder.getConnection();
-    int id = 1;
+    Tableview table;
+    int id;
     int line = 0;
     int canRemoveInDatabase = 0;
-    /**
-     * Creates new form SubmitFrame
-     */
+
     public SubmitFrame() {
         initComponents();
+    }
+    
+    public SubmitFrame(Tableview table, int id) {
+        initComponents();
+        this.table = table;
+        this.id = id;
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         model.removeRow(0);
         
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select id, projectNameThai, projectNameEnglish, budget, cost, numOfStudent, numCome from project join participants on participants.projectId = project.id where id = "+id);
+            ResultSet rs = st.executeQuery("select id, projectNameThai, projectNameEnglish, budget, cost, numOfStudent, numCome from project join participants on participants.projectId = project.id where id = '"+id+"'");
             while(rs.next()){
                 id = rs.getInt("id");
                 jTextField1.setText(rs.getString("projectNameThai"));
@@ -465,7 +471,8 @@ public class SubmitFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
     // ย้อนกลับ
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        
+        table.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
     // ลบรูป
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
