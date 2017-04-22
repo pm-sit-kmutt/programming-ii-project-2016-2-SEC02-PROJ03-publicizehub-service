@@ -37,13 +37,24 @@ public class EditP1 extends javax.swing.JFrame {
         Connection cn=ConnectionBuilder.getConnection();
         try {
             Statement st=cn.createStatement();
-            ResultSet re=st.executeQuery("select * from project where id= '"+projectId+"'");
+            ResultSet re=st.executeQuery("select * from project where id = '"+projectId+"'");
             while(re.next()){
                 jTextField4.setText(re.getString("projectNameThai"));
                 jTextField1.setText(re.getString("projectNameEnglish"));
                 jTextField2.setText(re.getString("advisors"));
-                
             }
+            Statement st2=cn.createStatement();
+            ResultSet re2=st2.executeQuery("select * from committee where projectId = '"+projectId+"'");
+            while(re2.next()){
+                DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+                mb.addRow(new Object[0]);
+                mb.setValueAt(re2.getString("name"), line, 0);
+                mb.setValueAt(re2.getString("committeeId"), line, 1);
+                mb.setValueAt(re2.getString("faculty"), line, 2);
+                mb.setValueAt(re2.getString("job"), line, 3);
+                line++;
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -421,7 +432,7 @@ public class EditP1 extends javax.swing.JFrame {
         mb.setValueAt(id, line, 1);
         mb.setValueAt(faculty, line, 2);
         mb.setValueAt(job, line, 3);
-      
+        line++;
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
