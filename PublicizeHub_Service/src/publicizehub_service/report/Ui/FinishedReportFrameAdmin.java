@@ -24,6 +24,7 @@ public class FinishedReportFrameAdmin extends javax.swing.JFrame {
      */
     public FinishedReportFrameAdmin() {
         initComponents();
+        getRootPane().setDefaultButton(jButton1);
     }
 
     /**
