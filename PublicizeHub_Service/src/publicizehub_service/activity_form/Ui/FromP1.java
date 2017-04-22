@@ -86,18 +86,24 @@ public class FromP1 extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("คณะกรรมการจัดทำโครงการ");
 
+        jTextField4.setBackground(new java.awt.Color(36, 47, 65));
         jTextField4.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
 
+        jTextField1.setBackground(new java.awt.Color(36, 47, 65));
         jTextField1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
 
+        jTextField2.setBackground(new java.awt.Color(36, 47, 65));
         jTextField2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
 
+        jTextField7.setBackground(new java.awt.Color(36, 47, 65));
         jTextField7.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(255, 255, 255));
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +120,7 @@ public class FromP1 extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("รหัสนักศึกษา");
 
+        jTextField9.setBackground(new java.awt.Color(36, 47, 65));
         jTextField9.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(255, 255, 255));
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
@@ -158,6 +165,7 @@ public class FromP1 extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("หน้าที่");
 
+        jTextField10.setBackground(new java.awt.Color(36, 47, 65));
         jTextField10.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField10.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -196,6 +204,7 @@ public class FromP1 extends javax.swing.JFrame {
             }
         });
 
+        jTextField11.setBackground(new java.awt.Color(36, 47, 65));
         jTextField11.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField11.setForeground(new java.awt.Color(255, 255, 255));
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
@@ -300,9 +309,9 @@ public class FromP1 extends javax.swing.JFrame {
                     .addComponent(jLabel21)
                     .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -319,7 +328,7 @@ public class FromP1 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
