@@ -19,9 +19,7 @@ public class FromP1 extends javax.swing.JFrame {
         initComponents();
     }
 
-    FromP1(KMUTTPublicizeService aThis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

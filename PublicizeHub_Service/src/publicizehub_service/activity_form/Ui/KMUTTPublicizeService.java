@@ -243,8 +243,8 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        FromP1 f1=new FromP1(this);
-        f1.setVisible(true);
+        FromP1 fr1=new FromP1();
+        fr1.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 

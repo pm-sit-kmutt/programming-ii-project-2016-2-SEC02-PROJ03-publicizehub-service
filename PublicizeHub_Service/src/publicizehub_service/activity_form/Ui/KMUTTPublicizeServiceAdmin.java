@@ -6,6 +6,7 @@
 package publicizehub_service.activity_form.Ui;
 
 import publicizehub_service.report.Ui.*;
+import publicizehub_service.status.Ui.ApproveAdminP1;
 import publicizehub_service.status.Ui.Tableview;
 
 /**
@@ -58,7 +59,7 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
         jLabel1.setText("KMUTTPublicize");
 
         jButton2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton2.setText("ส่งเอกสาร");
+        jButton2.setText("อนุมัติเอกสาร");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -126,7 +127,7 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -241,10 +242,17 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        ApproveAdminP1 approveP1 =new ApproveAdminP1();
+        approveP1.setVisible(true);
+        setVisible(false);
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        FinishedReportFrameAdmin reportAdmin=new FinishedReportFrameAdmin();
+        reportAdmin.setVisible(true);
+        setVisible(false);
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
