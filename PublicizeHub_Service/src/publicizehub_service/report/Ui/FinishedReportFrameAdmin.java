@@ -83,7 +83,9 @@ public class FinishedReportFrameAdmin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
 
+        jTextField1.setBackground(new java.awt.Color(36, 47, 65));
         jTextField1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));

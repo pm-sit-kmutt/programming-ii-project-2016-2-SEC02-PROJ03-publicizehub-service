@@ -97,7 +97,9 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         jComboBox6.setMaximumRowCount(20);
         jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "2557", "2558", "2559", "2560", "2561" }));
 
+        jTextField1.setBackground(new java.awt.Color(36, 47, 65));
         jTextField1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
 
         jComboBox2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "a", "b" }));
