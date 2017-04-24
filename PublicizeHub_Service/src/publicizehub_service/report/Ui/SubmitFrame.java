@@ -230,7 +230,7 @@ public class SubmitFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("ThaiSans Neue", 0, 14)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("ThaiSans Neue", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("File");
 
@@ -312,7 +312,11 @@ public class SubmitFrame extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel9))
+                                        .addComponent(jLabel9))))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(220, 220, 220)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -336,10 +340,6 @@ public class SubmitFrame extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(jButton2)))
                 .addContainerGap(50, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(115, 115, 115)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,7 +379,7 @@ public class SubmitFrame extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -389,7 +389,7 @@ public class SubmitFrame extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -496,17 +496,18 @@ public class SubmitFrame extends javax.swing.JFrame {
             int people = Integer.parseInt(jTextField4.getText());
 
             try {
-                PreparedStatement pt1 = con.prepareStatement("update project set budget = ?, cost = ?, placeLocation = ? where id = ?");
+                PreparedStatement pt1 = con.prepareStatement("update project set budget = ?, cost = ? where id = ?");
                 pt1.setDouble(1, budget);
                 pt1.setDouble(2, pay);
-                pt1.setString(3, "สถานที่ที่มีไก่แจ้");
-                pt1.setInt(4, id);
+                pt1.setInt(3, id);
                 int record = pt1.executeUpdate();
+                System.out.println(record);
                 pt1.close();
                 PreparedStatement pt2 = con.prepareStatement("update participants set numCome = ? where projectId = ?");
                 pt2.setInt(1, people);
                 pt2.setInt(2, id);
                 int record2 = pt2.executeUpdate();
+                System.out.println(record2);
                 pt2.close();
             } catch (SQLException ex) {
                 Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -534,6 +535,7 @@ public class SubmitFrame extends javax.swing.JFrame {
                     pt4.setInt(1, 3);
                     pt4.setInt(2, id);
                     int result = pt4.executeUpdate();
+                    System.out.println(result);
                     pt4.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -589,7 +591,11 @@ public class SubmitFrame extends javax.swing.JFrame {
         int row = jTable1.getSelectedRow();
         int col = jTable1.getSelectedColumn();
         if(col == 1){
-            openImage(file.get(row));
+            try {
+                openImage(new File(".").getCanonicalPath() + "\\img\\" + name.get(row));
+            } catch (IOException ex) {
+                Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }//GEN-LAST:event_jTable1MouseClicked
 

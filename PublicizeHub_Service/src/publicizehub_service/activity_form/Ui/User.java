@@ -9,7 +9,7 @@ package publicizehub_service.activity_form.Ui;
  * @author นัน
  */
 public class User {
-    private static String username = "59130500075";
+    private static String username;
     private static String id;
     private static String firstName;
     private static String lastName;

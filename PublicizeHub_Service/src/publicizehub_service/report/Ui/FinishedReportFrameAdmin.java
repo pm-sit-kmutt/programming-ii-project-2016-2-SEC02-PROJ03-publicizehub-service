@@ -10,6 +10,7 @@ import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import publicizehub_service.activity_form.Ui.KMUTTPublicizeServiceAdmin;
+import publicizehub_service.activity_form.Ui.User;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 /**
  *
@@ -390,10 +391,10 @@ public class FinishedReportFrameAdmin extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         //เมื่อคลิกที่ตาราง
         int selectedRow = jTable1.getSelectedRow();
+        User.setSelectProjectId(selectedRow);
         try {
             rs.absolute(selectedRow+1);
-            int id = rs.getInt("id");
-            System.out.println(id);
+            
         } catch (SQLException ex) {
             System.out.println(ex);
         }
