@@ -186,6 +186,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
@@ -197,6 +198,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&#xe40;&#xe1e;&#xe34;&#xe48;&#xe21;"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -214,6 +216,7 @@
                     <Column editable="true" title="&#xe1c;&#xe25;&#xe17;&#xe35;&#xe48;&#xe04;&#xe27;&#xe32;&#xe14;&#xe27;&#xe48;&#xe32;&#xe08;&#xe30;&#xe44;&#xe14;&#xe49;&#xe23;&#xe31;&#xe1a;" type="java.lang.Object"/>
                   </Table>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -265,6 +268,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
@@ -300,6 +304,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton6">
@@ -311,6 +316,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&#xe40;&#xe1e;&#xe34;&#xe48;&#xe21;"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -329,6 +335,7 @@
                     <Column editable="true" title="&#xe08;&#xe33;&#xe19;&#xe27;&#xe19;&#xe40;&#xe07;&#xe34;&#xe19;" type="java.lang.Object"/>
                   </Table>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -363,6 +370,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel13">
@@ -384,6 +392,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton8">
@@ -395,6 +404,7 @@
               <Color blue="33" green="33" red="33" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&#xe40;&#xe1e;&#xe34;&#xe48;&#xe21;"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane3">
@@ -412,6 +422,7 @@
                     <Column editable="true" title="&#xe23;&#xe30;&#xe22;&#xe30;&#xe40;&#xe27;&#xe25;&#xe32;&#xe43;&#xe19;&#xe01;&#xe32;&#xe23;&#xe14;&#xe33;&#xe40;&#xe19;&#xe34;&#xe19;&#xe01;&#xe32;&#xe23;" type="java.lang.Object"/>
                   </Table>
                 </Property>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
           </SubComponents>

@@ -90,6 +90,7 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jTextField4.setBackground(new java.awt.Color(36, 47, 65));
         jTextField4.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField4.setEnabled(false);
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
@@ -99,14 +100,17 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jTextField1.setBackground(new java.awt.Color(36, 47, 65));
         jTextField1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setEnabled(false);
 
         jTextField2.setBackground(new java.awt.Color(36, 47, 65));
         jTextField2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setEnabled(false);
 
         jTextField7.setBackground(new java.awt.Color(36, 47, 65));
         jTextField7.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField7.setEnabled(false);
         jTextField7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField7ActionPerformed(evt);
@@ -124,6 +128,7 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jTextField9.setBackground(new java.awt.Color(36, 47, 65));
         jTextField9.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField9.setEnabled(false);
         jTextField9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField9ActionPerformed(evt);
@@ -155,6 +160,7 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setEnabled(false);
         jTable1.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(jTable1);
 
@@ -169,9 +175,11 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jTextField10.setBackground(new java.awt.Color(36, 47, 65));
         jTextField10.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField10.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField10.setEnabled(false);
 
         jButton7.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton7.setText("เพิ่ม");
+        jButton7.setEnabled(false);
 
         jPanel1.setBackground(new java.awt.Color(97, 212, 195));
 
@@ -208,6 +216,7 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jTextField11.setBackground(new java.awt.Color(36, 47, 65));
         jTextField11.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField11.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField11.setEnabled(false);
         jTextField11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField11ActionPerformed(evt);

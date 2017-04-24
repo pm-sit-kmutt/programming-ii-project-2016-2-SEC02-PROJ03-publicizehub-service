@@ -152,10 +152,31 @@ public class EditP2 extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "ลำดับ", "วัตถุประสงค์", ""
+                "ลำดับ", "วัตถุประสงค์", "ลบ"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(50);
+        }
 
         jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton1.setText("ถัดไป");
@@ -255,14 +276,16 @@ public class EditP2 extends javax.swing.JFrame {
                                 .addComponent(jLabel4))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jButton4)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton1))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGap(171, 171, 171)
+                                    .addComponent(jButton4)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jButton1))
                                 .addComponent(jTextField3)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)))))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(6, 6, 6))))
                 .addContainerGap(98, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(

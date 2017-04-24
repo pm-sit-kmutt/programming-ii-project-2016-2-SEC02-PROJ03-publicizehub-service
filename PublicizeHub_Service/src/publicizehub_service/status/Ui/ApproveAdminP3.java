@@ -67,10 +67,12 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
 
         jTextField1.setBackground(new java.awt.Color(36, 47, 65));
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setEnabled(false);
 
         jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("เพิ่ม");
+        jButton1.setEnabled(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,6 +85,7 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
                 "ลำดับ", "ผลที่ควาดว่าจะได้รับ"
             }
         ));
+        jTable1.setEnabled(false);
         jScrollPane2.setViewportView(jTable1);
 
         jLabel7.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
@@ -109,6 +112,7 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
 
         jTextField2.setBackground(new java.awt.Color(36, 47, 65));
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setEnabled(false);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -125,10 +129,12 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
 
         jTextField3.setBackground(new java.awt.Color(36, 47, 65));
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField3.setEnabled(false);
 
         jButton6.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton6.setForeground(new java.awt.Color(51, 51, 51));
         jButton6.setText("เพิ่ม");
+        jButton6.setEnabled(false);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -141,6 +147,7 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
                 "ลำดับ", "รายละเอียด", "จำนวนเงิน"
             }
         ));
+        jTable2.setEnabled(false);
         jScrollPane1.setViewportView(jTable2);
 
         jLabel11.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
@@ -153,6 +160,7 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
 
         jTextField4.setBackground(new java.awt.Color(36, 47, 65));
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField4.setEnabled(false);
 
         jLabel13.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -160,10 +168,12 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
 
         jTextField5.setBackground(new java.awt.Color(36, 47, 65));
         jTextField5.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField5.setEnabled(false);
 
         jButton8.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton8.setForeground(new java.awt.Color(51, 51, 51));
         jButton8.setText("เพิ่ม");
+        jButton8.setEnabled(false);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,6 +186,7 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
                 "รายการ", "ระยะเวลาในการดำเนินการ"
             }
         ));
+        jTable3.setEnabled(false);
         jScrollPane3.setViewportView(jTable3);
 
         jPanel3.setBackground(new java.awt.Color(97, 212, 195));

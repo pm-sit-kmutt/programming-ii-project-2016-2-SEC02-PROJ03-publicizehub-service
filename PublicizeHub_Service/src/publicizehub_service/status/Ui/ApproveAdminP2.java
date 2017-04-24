@@ -5,7 +5,14 @@
  */
 package publicizehub_service.status.Ui;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import publicizehub_service.activity_form.Ui.*;
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
 import publicizehub_service.status.Ui.*;
 
 /**
@@ -14,11 +21,29 @@ import publicizehub_service.status.Ui.*;
  */
 public class ApproveAdminP2 extends javax.swing.JFrame {
 
+    int projectId;
+    int line = 0;
+    Connection cn=ConnectionBuilder.getConnection();
+
     /**
      * Creates new form EditP2
      */
+    
+    
     public ApproveAdminP2() {
         initComponents();
+        try {
+            Statement st = cn.createStatement();
+            ResultSet re = st.executeQuery("select * from project where id = '"+projectId+"'");
+            while(re.next()){
+                jTextField4.setText(re.getString("placeLocation"));
+                jTextField5.setText(re.getDate("startTime").toString());
+                jTextField2.setText(re.getDate("endTime").toString());
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ApproveAdminP2.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -31,6 +56,7 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -46,12 +72,15 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -64,9 +93,14 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        jLabel9.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("ระบุสถานที่");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(36, 47, 65));
+        jPanel3.setEnabled(false);
 
         jLabel1.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -74,11 +108,7 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
 
         jTextField1.setBackground(new java.awt.Color(36, 47, 65));
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
+        jTextField1.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -88,6 +118,7 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
+        jTextArea1.setEnabled(false);
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel4.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
@@ -104,9 +135,11 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
 
         jTextField3.setBackground(new java.awt.Color(36, 47, 65));
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField3.setEnabled(false);
 
         jButton6.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton6.setText("เพิ่ม");
+        jButton6.setEnabled(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -127,6 +160,7 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
                 "ลำดับ", "วัตถุประสงค์", ""
             }
         ));
+        jTable1.setEnabled(false);
         jScrollPane2.setViewportView(jTable1);
 
         jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
@@ -143,20 +177,15 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ภายในมหาวิทยาลัย", "ภายนอกมหาวิทยาลัย" }));
-
-        jLabel5.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("เลือกสถานที่  (ภายในมหาวิทยาลัย)");
+        jComboBox1.setEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("เลือกสถานที่(ภายนอกมหาวิทยาลัย)");
+        jLabel7.setText("ระบุสถานที่");
 
         jTextField4.setBackground(new java.awt.Color(36, 47, 65));
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-
-        jComboBox2.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jTextField4.setEnabled(false);
 
         jPanel2.setBackground(new java.awt.Color(97, 212, 195));
 
@@ -178,6 +207,26 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel8.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("ระยะเวลาในการดำเนินงาน");
+
+        jTextField2.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setEnabled(false);
+
+        jTextField5.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField5.setEnabled(false);
+
+        jLabel10.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("เริ่ม");
+
+        jLabel11.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("สิ้นสุด");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -190,19 +239,24 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel1))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel8))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(40, 40, 40)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addGap(66, 66, 66)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel10)
+                                .addGap(6, 6, 6)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))))
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButton6)
                         .addGroup(jPanel3Layout.createSequentialGroup()
@@ -224,25 +278,28 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(181, 181, 181)
+                        .addGap(104, 104, 104)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap(13, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLabel8)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
@@ -286,26 +343,20 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        FromP1 ad1 = new FromP1();
-        ad1.setVisible(true);
-
+        EditP1 ed1 = new EditP1();
+        ed1.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        FromP3 ad3 = new FromP3();
-        ad3.setVisible(true);
-
+        EditP3 ed3 = new EditP3();
+        ed3.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -333,21 +384,7 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -361,14 +398,16 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -377,7 +416,9 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }
