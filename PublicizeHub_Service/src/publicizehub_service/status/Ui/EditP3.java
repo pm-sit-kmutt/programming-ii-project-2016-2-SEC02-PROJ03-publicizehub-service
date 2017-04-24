@@ -74,6 +74,9 @@ public class EditP3 extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("ผลที่คาดว่าจะได้รับ");
 
+        jTextField1.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+
         jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("เพิ่ม");
@@ -113,6 +116,8 @@ public class EditP3 extends javax.swing.JFrame {
             }
         });
 
+        jTextField2.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -126,6 +131,9 @@ public class EditP3 extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("จำนวนเงิน");
+
+        jTextField3.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
 
         jButton6.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton6.setForeground(new java.awt.Color(51, 51, 51));
@@ -152,9 +160,15 @@ public class EditP3 extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("รายการ");
 
+        jTextField4.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+
         jLabel13.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("วันที่ดำเนินการ");
+
+        jTextField5.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
 
         jButton8.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton8.setForeground(new java.awt.Color(51, 51, 51));

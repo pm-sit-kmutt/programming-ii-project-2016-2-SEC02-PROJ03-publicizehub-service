@@ -72,6 +72,8 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("จำนวนนักศึกษาที่เข้าร่วมโครงการ");
 
+        jTextField1.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -82,7 +84,9 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("หลักการเเละเหตุผล");
 
+        jTextArea1.setBackground(new java.awt.Color(36, 47, 65));
         jTextArea1.setColumns(20);
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -97,6 +101,9 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+
+        jTextField3.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
 
         jButton6.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton6.setText("เพิ่ม");
@@ -144,6 +151,9 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("เลือกสถานที่(ภายนอกมหาวิทยาลัย)");
+
+        jTextField4.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
 
         jComboBox2.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
