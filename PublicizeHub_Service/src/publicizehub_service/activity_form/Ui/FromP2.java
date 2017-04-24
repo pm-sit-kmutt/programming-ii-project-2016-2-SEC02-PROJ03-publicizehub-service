@@ -79,6 +79,8 @@ public class FromP2 extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("จำนวนนักศึกษาที่เข้าร่วมโครงการ");
 
+        jTextField1.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -89,7 +91,9 @@ public class FromP2 extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("หลักการเเละเหตุผล");
 
+        jTextArea1.setBackground(new java.awt.Color(36, 47, 65));
         jTextArea1.setColumns(20);
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -104,6 +108,9 @@ public class FromP2 extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+
+        jTextField3.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
 
         jButton6.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton6.setText("เพิ่ม");
@@ -148,6 +155,9 @@ public class FromP2 extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("ระบุสถานที่");
 
+        jTextField4.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
+
         jPanel2.setBackground(new java.awt.Color(97, 212, 195));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/Image/kmutt.png"))); // NOI18N
@@ -172,12 +182,16 @@ public class FromP2 extends javax.swing.JFrame {
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("ระยะเวลาในการดำเนินงาน");
 
+        jTextField2.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
 
+        jTextField5.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -243,7 +257,7 @@ public class FromP2 extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
