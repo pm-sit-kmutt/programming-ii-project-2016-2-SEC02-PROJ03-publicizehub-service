@@ -66,7 +66,7 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton1.setText("ประวัติการใช้งาน");
+        jButton1.setText("ตรวจสอบสถานะ/แก้ไข");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -74,7 +74,7 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
         });
 
         jButton3.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton3.setText("ตรวจสอบ/แก้ไข");
+        jButton3.setText("ประวัติการใช้งาน");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -235,8 +235,9 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        Tableview tv=new Tableview(this);
-        tv.setVisible(true);
+      
+        FinishedReportFrame f = new FinishedReportFrame(this);
+        f.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -246,8 +247,8 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        FinishedReportFrame f = new FinishedReportFrame(this);
-        f.setVisible(true);
+         Tableview tv=new Tableview(this);
+        tv.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
