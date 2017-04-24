@@ -49,7 +49,8 @@ public class SubmitFrame extends javax.swing.JFrame {
         
         try {
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select id, projectNameThai, projectNameEnglish, budget, cost, numOfStudent, numCome from project join participants on participants.projectId = project.id where id = '"+id+"'");
+            ResultSet rs = st.executeQuery("select id, projectNameThai, projectNameEnglish, budget, cost, numOfStudent, numCome from project "
+                    + "join participants on participants.projectId = project.id where id = '"+id+"'");
             while(rs.next()){
                 id = rs.getInt("id");
                 jTextField1.setText(rs.getString("projectNameThai"));
@@ -78,8 +79,6 @@ public class SubmitFrame extends javax.swing.JFrame {
             Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
