@@ -21,7 +21,7 @@ import publicizehub_service.connectionBuilder.ConnectionBuilder;
  */
 public class EditP1 extends javax.swing.JFrame {
     Tableview table;
-    int projectId;
+    int projectId = User.getSelectProjectId();
     int line=0;
     Connection cn=ConnectionBuilder.getConnection();
 
@@ -29,10 +29,9 @@ public class EditP1 extends javax.swing.JFrame {
         initComponents();
     }
     
-    public EditP1(Tableview table, int projectId) {
+    public EditP1(Tableview table) {
         initComponents();
         this.table=table;
-        this.projectId=projectId;
 
         try {
             Statement st=cn.createStatement();
@@ -378,6 +377,7 @@ public class EditP1 extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

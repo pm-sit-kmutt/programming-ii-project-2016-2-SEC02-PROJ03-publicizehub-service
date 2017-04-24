@@ -248,20 +248,34 @@ public class login_1 extends javax.swing.JFrame {
                 User.setId(re.getString("id"));
                 User.setStatus(re.getInt("status"));
             }
+            re.close();
+            st.close();
         } catch (SQLException ex) {
             Logger.getLogger(login_1.class.getName()).log(Level.SEVERE, null, ex);
         }
         if(!dataname.isEmpty()){
             if(username.equals(dataname)&& password.equals(datapassword)){
-                KMUTTPublicizeService home= new KMUTTPublicizeService();
-                home.setVisible(true);
-                setVisible(false);
+                try {
+                    con.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(login_1.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if(User.getStatus() == 0){
+                    KMUTTPublicizeService home = new KMUTTPublicizeService();
+                    home.setVisible(true);
+                    setVisible(false);
+                }else if(User.getStatus() == 1){
+                    KMUTTPublicizeServiceAdmin homeAdmin = new KMUTTPublicizeServiceAdmin();
+                    homeAdmin.setVisible(true);
+                    setVisible(false);
+                }
             }else{
                 JOptionPane.showMessageDialog(null, "Username or Password incorrect");
             }
         }else{
             JOptionPane.showMessageDialog(null, "This Username was not found");
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

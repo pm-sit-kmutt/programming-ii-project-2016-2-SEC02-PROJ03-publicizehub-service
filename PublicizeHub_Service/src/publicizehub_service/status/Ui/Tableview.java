@@ -177,23 +177,27 @@ public class Tableview extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-       // TODO add your handling code here:
-       int row = jTable1.getSelectedRow();
-       int col = jTable1.getSelectedColumn();
-       int projectId = 0;
+       int row = 0;
+       int col = 0;
+       if(jTable1.getValueAt(jTable1.getSelectedRow(), jTable1.getSelectedColumn()) != null){
+            row = jTable1.getSelectedRow();
+            col = jTable1.getSelectedColumn();
+       }
        if (col==2){
            try {
-               re.absolute(row+1);
-               projectId = re.getInt("id");
+               if(!re.isBeforeFirst()){
+                    re.absolute(row+1);
+                    User.setSelectProjectId(re.getInt("id"));
+               }
            } catch (SQLException ex) {
                Logger.getLogger(Tableview.class.getName()).log(Level.SEVERE, null, ex);
            }
            if(jTable1.getValueAt(row, col).equals("รออนุมัติ")){
-               EditP1 e1 = new EditP1(this, projectId);
+               EditP1 e1 = new EditP1(this);
                e1.setVisible(true);
                setVisible(false);
            }else if(jTable1.getValueAt(row, col).equals("แจ้งปิด")){
-               SubmitFrame sf = new SubmitFrame(this, projectId);
+               SubmitFrame sf = new SubmitFrame(this);
                sf.setVisible(true);
                setVisible(false);
            }

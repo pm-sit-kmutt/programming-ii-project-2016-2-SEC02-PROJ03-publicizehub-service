@@ -52,6 +52,9 @@ public class FinishedReportFrame extends javax.swing.JFrame {
                 model.setValueAt(rs.getString("closeTime"), line, 3);
                 line = line +1;
             }
+            rs.close();
+            st.close();
+            con.close();
         } catch (SQLException ex) {
             System.out.println(ex);
         }

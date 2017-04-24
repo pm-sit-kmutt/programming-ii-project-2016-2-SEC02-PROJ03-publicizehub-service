@@ -229,7 +229,8 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        //ย้อนกลับ
+        User.resetData();
         login_1 login = new login_1();
         login.setVisible(true);
         setVisible(false);

@@ -9,12 +9,13 @@ package publicizehub_service.activity_form.Ui;
  * @author นัน
  */
 public class User {
-    private static String username;
+    private static String username = "59130500075";
     private static String id;
     private static String firstName;
     private static String lastName;
     private static String faculty;
     private static int status;
+    private static int selectProjectId;
 
     public User() {
     }
@@ -26,6 +27,7 @@ public class User {
         lastName = "";
         faculty = "";
         status = 9;
+        selectProjectId = 0;
     }
     
     public static String getUsername() {
@@ -76,8 +78,12 @@ public class User {
         User.status = status;
     }
 
-    
+    public static int getSelectProjectId() {
+        return selectProjectId;
+    }
 
-    
-    
+    public static void setSelectProjectId(int selectProjectId) {
+        User.selectProjectId = selectProjectId;
+    }
+
 }
