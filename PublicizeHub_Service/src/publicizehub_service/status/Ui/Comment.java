@@ -5,6 +5,10 @@
  */
 package publicizehub_service.status.Ui;
 
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
 /**
  *
  * @author dell
@@ -17,6 +21,13 @@ public class Comment extends javax.swing.JDialog {
     public Comment(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        Connection con = ConnectionBuilder.getConnection();
+        try {
+            Statement st = con.createStatement();
+        } catch (SQLException ex) {
+            Logger.getLogger(Comment.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
