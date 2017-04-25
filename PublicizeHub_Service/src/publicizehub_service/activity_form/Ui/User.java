@@ -15,7 +15,7 @@ public class User {
     private static String lastName;
     private static String faculty;
     private static int status;
-    private static int selectProjectId;
+    private static int selectProjectId = 1;
 
     public User() {
     }

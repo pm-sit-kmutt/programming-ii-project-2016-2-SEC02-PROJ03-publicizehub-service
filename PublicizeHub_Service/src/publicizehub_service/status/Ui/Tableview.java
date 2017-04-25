@@ -201,6 +201,18 @@ public class Tableview extends javax.swing.JFrame {
                sf.setVisible(true);
                setVisible(false);
            }
+       }if(col==3){
+           try {
+               if(!re.isBeforeFirst()){
+                    re.absolute(row+1);
+                    User.setSelectProjectId(re.getInt("id"));
+               }
+           } catch (SQLException ex) {
+               Logger.getLogger(Tableview.class.getName()).log(Level.SEVERE, null, ex);
+           }
+           Comment cm=new Comment(this, rootPaneCheckingEnabled);
+           cm.setVisible(true);
+           
        }
     }//GEN-LAST:event_jTable1MouseClicked
 
