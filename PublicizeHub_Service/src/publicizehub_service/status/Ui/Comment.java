@@ -8,6 +8,7 @@ package publicizehub_service.status.Ui;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import publicizehub_service.activity_form.Ui.User;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 /**
  *
@@ -24,6 +25,12 @@ public class Comment extends javax.swing.JDialog {
         Connection con = ConnectionBuilder.getConnection();
         try {
             Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from comment where projectId = '"+User.getSelectProjectId()+"'");
+            String[] a = null;
+            while(rs.next()){
+                a = rs.getString("text").split("\\n");    
+            }
+            System.out.println(a.toString());
         } catch (SQLException ex) {
             Logger.getLogger(Comment.class.getName()).log(Level.SEVERE, null, ex);
         }
