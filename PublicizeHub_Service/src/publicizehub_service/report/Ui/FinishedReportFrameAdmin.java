@@ -297,13 +297,8 @@ public class FinishedReportFrameAdmin extends javax.swing.JFrame {
         //กดแล้วทำการดึงข้อมูลที่เลือก ไปลงในตาราง
         Connection con = ConnectionBuilder.getConnection();
         
-        jTable1.setModel(new DefaultTableModel());
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        model.addColumn("ลำดับ");
-        model.addColumn("สถานที่");
-        model.addColumn("ชื่อโครงการ");
-        model.addColumn("สังกัด");
-        model.addColumn("วันที่ปิดโครงการ");
+        model.removeRow(0);
         int line = 0;
         
         String name = "";
@@ -375,7 +370,7 @@ public class FinishedReportFrameAdmin extends javax.swing.JFrame {
                 model.setValueAt(rs.getString("projectNameThai"), line, 2);
                 model.setValueAt(rs.getString("department"), line, 3);
                 model.setValueAt(rs.getString("closeTime"), line, 4);
-                line = line +1;
+                line++;
             }
         } catch (SQLException ex) {
             System.out.println(ex);

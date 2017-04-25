@@ -32,12 +32,8 @@ public class FinishedReportFrame extends javax.swing.JFrame {
     }
     
     public void setFinishedTable(){
-        jTable1.setModel(new DefaultTableModel());
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        model.addColumn("รายการที่");
-        model.addColumn("ชื่อโครงการ");
-        model.addColumn("ชื่อโครงการ(English)");
-        model.addColumn("วันที่ปิดโครงการ");
+        model.removeRow(0);
         int line = 0;
         
         Connection con = ConnectionBuilder.getConnection();
@@ -50,7 +46,7 @@ public class FinishedReportFrame extends javax.swing.JFrame {
                 model.setValueAt(rs.getString("projectNameThai"), line, 1);
                 model.setValueAt(rs.getString("projectNameEnglish"), line, 2);
                 model.setValueAt(rs.getString("closeTime"), line, 3);
-                line = line +1;
+                line++;
             }
             rs.close();
             st.close();

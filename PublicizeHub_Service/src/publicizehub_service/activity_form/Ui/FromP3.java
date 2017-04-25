@@ -437,7 +437,7 @@ public class FromP3 extends javax.swing.JFrame {
         mb.setValueAt(line3+1, line3, 0);
         mb.setValueAt(text, line3, 1);
         mb.setValueAt(money, line3, 2);
-        line1++;
+        line3++;
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**

@@ -301,13 +301,8 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         //กดแล้วทำการดึงข้อมูลที่เลือก ไปลงในตาราง
         Connection con = ConnectionBuilder.getConnection();
 
-        jTable1.setModel(new DefaultTableModel());
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        model.addColumn("ลำดับ");
-        model.addColumn("สถานที่");
-        model.addColumn("ชื่อโครงการ");
-        model.addColumn("สังกัด");
-        model.addColumn("วันที่สิ้นสุดการปฎิบัติโครงการ");
+        model.removeRow(0);
         int line = 0;
 
         String name = "";
