@@ -5,6 +5,7 @@
  */
 package publicizehub_service.activity_form.Ui;
 
+import javax.swing.table.DefaultTableModel;
 import publicizehub_service.status.Ui.*;
 
 /**
@@ -12,6 +13,9 @@ import publicizehub_service.status.Ui.*;
  * @author dell
  */
 public class FromP3 extends javax.swing.JFrame {
+    int line1=0;
+    int line2=0;
+    int line3=0;
 
     /**
      * Creates new form EditP3
@@ -65,11 +69,17 @@ public class FromP3 extends javax.swing.JFrame {
         jLabel8.setText("ผลที่คาดว่าจะได้รับ");
 
         jTextField1.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
 
         jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(51, 51, 51));
         jButton1.setText("เพิ่ม");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,6 +138,7 @@ public class FromP3 extends javax.swing.JFrame {
         });
 
         jTextField2.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,11 +155,17 @@ public class FromP3 extends javax.swing.JFrame {
         jLabel10.setText("จำนวนเงิน");
 
         jTextField3.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField3.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
 
         jButton6.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton6.setForeground(new java.awt.Color(51, 51, 51));
         jButton6.setText("เพิ่ม");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -193,6 +210,7 @@ public class FromP3 extends javax.swing.JFrame {
         jLabel12.setText("รายการ");
 
         jTextField4.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField4.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel13.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
@@ -200,11 +218,17 @@ public class FromP3 extends javax.swing.JFrame {
         jLabel13.setText("วันที่ดำเนินการ");
 
         jTextField5.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField5.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(255, 255, 255));
 
         jButton8.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton8.setForeground(new java.awt.Color(51, 51, 51));
         jButton8.setText("เพิ่ม");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -348,7 +372,7 @@ public class FromP3 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButton3))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -382,6 +406,39 @@ public class FromP3 extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        String list =jTextField4.getText();
+        String date =jTextField5.getText();
+        DefaultTableModel mb=(DefaultTableModel) jTable3.getModel();
+        mb.addRow(new Object[0]); 
+        mb.setValueAt(list, line1, 0);
+        mb.setValueAt(date, line1, 1);
+        line1++;
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String expected =jTextField1.getText();
+        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+        mb.addRow(new Object[0]);
+        mb.setValueAt(line2+1, line2, 0);
+        mb.setValueAt(expected, line2, 1);
+        line2++;
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        String text  =jTextField2.getText();
+        String money =jTextField3.getText();
+        DefaultTableModel mb=(DefaultTableModel) jTable2.getModel();
+        mb.addRow(new Object[0]);
+        mb.setValueAt(line3+1, line3, 0);
+        mb.setValueAt(text, line3, 1);
+        mb.setValueAt(money, line3, 2);
+        line1++;
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

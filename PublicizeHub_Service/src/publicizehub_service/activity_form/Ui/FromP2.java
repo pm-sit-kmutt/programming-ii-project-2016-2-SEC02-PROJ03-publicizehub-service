@@ -5,6 +5,7 @@
  */
 package publicizehub_service.activity_form.Ui;
 
+import javax.swing.table.DefaultTableModel;
 import publicizehub_service.status.Ui.*;
 
 /**
@@ -12,7 +13,7 @@ import publicizehub_service.status.Ui.*;
  * @author dell
  */
 public class FromP2 extends javax.swing.JFrame {
-
+    int line=0;
     /**
      * Creates new form EditP2
      */
@@ -342,6 +343,12 @@ public class FromP2 extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
+        String objective =jTextField3.getText();
+        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+        mb.addRow(new Object[0]);
+        mb.setValueAt(line+1, line, 0);
+        mb.setValueAt(objective, line, 1);
+        line++;
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
