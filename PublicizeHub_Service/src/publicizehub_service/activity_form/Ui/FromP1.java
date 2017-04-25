@@ -6,19 +6,24 @@
 package publicizehub_service.activity_form.Ui;
 import publicizehub_service.status.Ui.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author dell
  */
 public class FromP1 extends javax.swing.JFrame {
-
+    int line = 0;
+    KMUTTPublicizeService home;
     /**
      * Creates new form Edit
      */
     public FromP1() {
         initComponents();
     }
-
+      public FromP1(KMUTTPublicizeService home) {
+        initComponents();
+        this.home=home;
+    }
     
 
     /**
@@ -184,6 +189,11 @@ public class FromP1 extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton7.setText("เพิ่ม");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(97, 212, 195));
 
@@ -384,7 +394,25 @@ public class FromP1 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+         home.setVisible(true);
+          setVisible(false); 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+         String name =jTextField11.getText();
+        String id =jTextField7.getText();
+        String faculty=jTextField10.getText();
+        String job=jTextField9.getText();
+        
+        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+        mb.addRow(new Object[0]);
+        mb.setValueAt(name, line, 0);
+        mb.setValueAt(id, line, 1);
+        mb.setValueAt(faculty, line, 2);
+        mb.setValueAt(job, line, 3);
+        line++;
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
