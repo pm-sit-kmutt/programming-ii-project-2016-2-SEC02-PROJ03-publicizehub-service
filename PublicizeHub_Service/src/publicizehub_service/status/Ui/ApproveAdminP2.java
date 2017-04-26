@@ -344,14 +344,14 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        EditP1 ed1 = new EditP1();
+        ApproveAdminP1 ed1 = new ApproveAdminP1();
         ed1.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        EditP3 ed3 = new EditP3();
+        ApproveAdminP3 ed3 = new ApproveAdminP3();
         ed3.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed

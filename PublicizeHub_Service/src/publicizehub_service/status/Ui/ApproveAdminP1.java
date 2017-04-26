@@ -370,7 +370,7 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        FromP2 ad2 = new FromP2();
+        ApproveAdminP2 ad2 = new ApproveAdminP2();
         ad2.setVisible(true);
 
         setVisible(false);
