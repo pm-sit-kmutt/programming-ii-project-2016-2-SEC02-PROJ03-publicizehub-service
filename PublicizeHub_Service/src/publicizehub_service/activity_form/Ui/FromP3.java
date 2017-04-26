@@ -13,6 +13,7 @@ import publicizehub_service.status.Ui.*;
  * @author dell
  */
 public class FromP3 extends javax.swing.JFrame {
+    FromP1 from1;
     int line1=0;
     int line2=0;
     int line3=0;
@@ -22,6 +23,12 @@ public class FromP3 extends javax.swing.JFrame {
      */
     public FromP3() {
         initComponents();
+    }
+    
+    public FromP3(FromP1 from1) {
+        initComponents();
+        this.from1 = from1;
+
     }
 
     /**
@@ -416,10 +423,7 @@ public class FromP3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        FromP2 ad2 = new FromP2();
-        ad2.setVisible(true);
-
+        from1.p2.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 

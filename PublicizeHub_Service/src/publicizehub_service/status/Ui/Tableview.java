@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import javax.swing.table.*;
 import publicizehub_service.activity_form.Ui.KMUTTPublicizeService;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
-import publicizehub_service.activity_form.Ui.User;
+import publicizehub_service.Class.User;
 import publicizehub_service.report.Ui.SubmitFrame;
 /**
  *

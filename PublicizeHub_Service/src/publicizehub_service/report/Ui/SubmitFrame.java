@@ -17,9 +17,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.TabableView;
-import publicizehub_service.activity_form.Ui.KMUTTPublicizeService;
-import publicizehub_service.activity_form.Ui.User;
+import publicizehub_service.Class.User;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 import publicizehub_service.status.Ui.Tableview;
 

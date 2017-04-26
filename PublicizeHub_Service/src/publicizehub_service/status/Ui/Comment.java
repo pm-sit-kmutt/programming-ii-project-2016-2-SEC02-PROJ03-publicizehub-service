@@ -8,7 +8,7 @@ package publicizehub_service.status.Ui;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import publicizehub_service.activity_form.Ui.User;
+import publicizehub_service.Class.User;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 /**
  *

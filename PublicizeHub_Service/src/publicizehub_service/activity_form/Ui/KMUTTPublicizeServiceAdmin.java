@@ -5,6 +5,7 @@
  */
 package publicizehub_service.activity_form.Ui;
 
+import publicizehub_service.Class.User;
 import publicizehub_service.report.Ui.*;
 import publicizehub_service.status.Ui.ApproveAdminP1;
 import publicizehub_service.status.Ui.Tableview;
@@ -237,7 +238,7 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        SubmitFrameAdmin sfa = new SubmitFrameAdmin();
+        SubmitFrameAdmin sfa = new SubmitFrameAdmin(this);
         sfa.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -251,7 +252,7 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        FinishedReportFrameAdmin reportAdmin=new FinishedReportFrameAdmin();
+        FinishedReportFrameAdmin reportAdmin=new FinishedReportFrameAdmin(this);
         reportAdmin.setVisible(true);
         setVisible(false);
         

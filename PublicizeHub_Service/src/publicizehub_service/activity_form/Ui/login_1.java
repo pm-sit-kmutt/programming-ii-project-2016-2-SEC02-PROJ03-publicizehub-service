@@ -8,7 +8,7 @@ package publicizehub_service.activity_form.Ui;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
-import publicizehub_service.activity_form.Ui.User;
+import publicizehub_service.Class.User;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;

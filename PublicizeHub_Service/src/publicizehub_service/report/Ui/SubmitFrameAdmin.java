@@ -9,13 +9,14 @@ import javax.swing.table.*;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import publicizehub_service.activity_form.Ui.KMUTTPublicizeServiceAdmin;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 /**
  *
  * @author นัน
  */
 public class SubmitFrameAdmin extends javax.swing.JFrame {
-    
+    KMUTTPublicizeServiceAdmin homeAdmin;
     ResultSet rs;
     
     /**
@@ -24,6 +25,12 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
     public SubmitFrameAdmin() {
         initComponents();
         getRootPane().setDefaultButton(jButton1);
+    }
+    
+    public SubmitFrameAdmin(KMUTTPublicizeServiceAdmin homeAdmin) {
+        initComponents();
+        getRootPane().setDefaultButton(jButton1);
+        this.homeAdmin = homeAdmin;
     }
 
     /**

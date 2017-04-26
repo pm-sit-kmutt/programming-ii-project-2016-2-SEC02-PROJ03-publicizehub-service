@@ -5,6 +5,7 @@
  */
 package publicizehub_service.report.Ui;
 
+import publicizehub_service.Class.User;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;

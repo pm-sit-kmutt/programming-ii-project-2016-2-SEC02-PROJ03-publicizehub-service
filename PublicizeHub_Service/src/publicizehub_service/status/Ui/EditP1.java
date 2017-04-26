@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package publicizehub_service.status.Ui;
+import publicizehub_service.Class.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
