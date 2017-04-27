@@ -7,6 +7,7 @@ package publicizehub_service.activity_form.Ui;
 import publicizehub_service.status.Ui.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import publicizehub_service.Class.ProjectDetail;
 /**
  *
  * @author dell
@@ -364,6 +365,10 @@ public class FromP1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ProjectDetail.setProjectNameThai(jTextField4.getText());
+        ProjectDetail.setProjectNameEnglish(jTextField1.getText());
+        ProjectDetail.setAdvisors(jTextField2.getText());
+        
         p2.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed

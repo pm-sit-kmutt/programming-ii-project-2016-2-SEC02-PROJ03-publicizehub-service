@@ -5,7 +5,9 @@
  */
 package publicizehub_service.activity_form.Ui;
 
+import java.sql.Connection;
 import javax.swing.table.DefaultTableModel;
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
 import publicizehub_service.status.Ui.*;
 
 /**
@@ -433,6 +435,8 @@ public class FromP3 extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+         Connection con = ConnectionBuilder.getConnection();
+         
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed

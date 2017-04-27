@@ -14,16 +14,18 @@ public class ProjectDetail {
     private static String responsible;
     private static String projectNameThai;
     private static String projectNameEnglish;
+    private static String Advisors;
     private static String department;
     private static String rationale;
     private static int placeType;
+    private static int people;
     private static String placeLocation;
     private static double budget;
     private static double cost;
-    private static Date openTime;
-    private static Date startTime;
-    private static Date endTime;
-    private static Date closeTime;
+    private static String openTime;
+    private static String startTime;
+    private static String endTime;
+    private static String closeTime;
     private static int status;
     private static String[] objective;
     private static String[] expected;
@@ -31,6 +33,7 @@ public class ProjectDetail {
     private static Participants participants;
     private static Comment[] comment;
 
+    
     public ProjectDetail() {
     }
 
@@ -114,37 +117,39 @@ public class ProjectDetail {
         ProjectDetail.cost = cost;
     }
 
-    public static Date getOpenTime() {
+    public static String getOpenTime() {
         return openTime;
     }
 
-    public static void setOpenTime(Date openTime) {
+    public static void setOpenTime(String openTime) {
         ProjectDetail.openTime = openTime;
     }
 
-    public static Date getStartTime() {
+    public static String getStartTime() {
         return startTime;
     }
 
-    public static void setStartTime(Date startTime) {
+    public static void setStartTime(String startTime) {
         ProjectDetail.startTime = startTime;
     }
 
-    public static Date getEndTime() {
+    public static String getEndTime() {
         return endTime;
     }
 
-    public static void setEndTime(Date endTime) {
+    public static void setEndTime(String endTime) {
         ProjectDetail.endTime = endTime;
     }
 
-    public static Date getCloseTime() {
+    public static String getCloseTime() {
         return closeTime;
     }
 
-    public static void setCloseTime(Date closeTime) {
+    public static void setCloseTime(String closeTime) {
         ProjectDetail.closeTime = closeTime;
     }
+
+  
 
     public static int getStatus() {
         return status;
@@ -192,6 +197,22 @@ public class ProjectDetail {
 
     public static void setComment(Comment[] comment) {
         ProjectDetail.comment = comment;
+    }
+
+    public static String getAdvisors() {
+        return Advisors;
+    }
+
+    public static void setAdvisors(String Advisors) {
+        ProjectDetail.Advisors = Advisors;
+    }
+
+    public static int getPeople() {
+        return people;
+    }
+
+    public static void setPeople(int people) {
+        ProjectDetail.people = people;
     }
     
     
