@@ -5,18 +5,44 @@
  */
 package publicizehub_service.status.Ui;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import publicizehub_service.Class.User;
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
+
 /**
  *
  * @author dell
  */
 public class CommentAdmin extends javax.swing.JDialog {
-
+    Connection con = ConnectionBuilder.getConnection();
     /**
      * Creates new form CommentAdmin
      */
     public CommentAdmin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        getComment();   
+    }
+    
+    public void getComment(){
+        try {
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select * from comment where projectId = '"+User.getSelectProjectId()+"'");
+            while(rs.next()){
+                jTextArea2.setText(rs.getString("text"));
+            }
+            rs.close();
+            st.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Comment.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -35,6 +61,8 @@ public class CommentAdmin extends javax.swing.JDialog {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -77,6 +105,11 @@ public class CommentAdmin extends javax.swing.JDialog {
             }
         });
 
+        jTextArea2.setEditable(false);
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -90,7 +123,8 @@ public class CommentAdmin extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(59, 59, 59))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -98,8 +132,10 @@ public class CommentAdmin extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(86, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addGap(76, 76, 76))
@@ -124,7 +160,40 @@ public class CommentAdmin extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        String text = "";
+        String newText;
+        if(jTextArea1.getText().isEmpty()){
+            try {
+                newText =  jTextArea1.getText();
+                PreparedStatement pt = con.prepareStatement("insert into comment values((select id from project where id = ?), ?, ?)");
+                pt.setInt(1, User.getSelectProjectId());
+                pt.setString(2, User.getUsername());
+                pt.setString(3, newText);
+                int result = pt.executeUpdate();
+                System.out.println(result);
+            } catch (SQLException ex) {
+                Logger.getLogger(CommentAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else {
+            try {
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery("select * from comment where projectId = '"+User.getSelectProjectId()+"'");
+                while(rs.next()){
+                    text = rs.getString("text");
+                }
+                newText =  text+"\n"+jTextArea1.getText();
+                PreparedStatement pt = con.prepareStatement("update comment set text = ? where projectId = ?");
+                pt.setString(1, newText);
+                pt.setInt(2, User.getSelectProjectId());
+                int result = pt.executeUpdate();
+                System.out.println(result);
+
+            } catch (SQLException ex) {
+                Logger.getLogger(CommentAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        jTextArea1.setText("");
+        getComment(); 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -176,6 +245,8 @@ public class CommentAdmin extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables
 }

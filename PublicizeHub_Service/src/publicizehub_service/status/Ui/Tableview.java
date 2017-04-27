@@ -46,6 +46,7 @@ public class Tableview extends javax.swing.JFrame {
                 }else if(re.getString("status").equals("3")){
                     de.setValueAt("แจ้งปิด", line, 2);
                 }
+                de.setValueAt("ดู comment", line, 3);
                 line++;
             }
         } catch (SQLException ex) {
@@ -245,12 +246,13 @@ public class Tableview extends javax.swing.JFrame {
                if(!re.isBeforeFirst()){
                     re.absolute(row+1);
                     User.setSelectProjectId(re.getInt("id"));
+                    Comment cm=new Comment(this, rootPaneCheckingEnabled);
+                    cm.setVisible(true);
                }
            } catch (SQLException ex) {
                Logger.getLogger(Tableview.class.getName()).log(Level.SEVERE, null, ex);
            }
-           Comment cm=new Comment(this, rootPaneCheckingEnabled);
-           cm.setVisible(true);
+           
            
        }
     }//GEN-LAST:event_jTable1MouseClicked

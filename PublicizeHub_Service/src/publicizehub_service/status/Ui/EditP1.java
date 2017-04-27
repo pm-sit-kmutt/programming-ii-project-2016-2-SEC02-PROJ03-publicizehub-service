@@ -24,6 +24,8 @@ import publicizehub_service.report.Ui.SubmitFrame;
  */
 public class EditP1 extends javax.swing.JFrame {
     Tableview table;
+    EditP2 e2;
+    EditP3 e3;
     int projectId = User.getSelectProjectId();
     int line=0;
     Connection cn=ConnectionBuilder.getConnection();
@@ -35,6 +37,8 @@ public class EditP1 extends javax.swing.JFrame {
     public EditP1(Tableview table) {
         initComponents();
         this.table=table;
+        e2 = new EditP2(this);
+        e3 = new EditP3(this);
         DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
         mb.removeRow(0);
         try {

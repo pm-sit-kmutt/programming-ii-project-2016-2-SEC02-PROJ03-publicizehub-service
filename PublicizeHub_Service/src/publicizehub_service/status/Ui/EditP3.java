@@ -22,7 +22,7 @@ import publicizehub_service.status.Ui.*;
  * @author dell
  */
 public class EditP3 extends javax.swing.JFrame {
-   
+    EditP1 edit1;
     int line1 = 0;
     int line2 = 0;
     int line3 = 0;
@@ -31,9 +31,13 @@ public class EditP3 extends javax.swing.JFrame {
     /**
      * Creates new form EditP3
      */
-    
     public EditP3() {
+        initComponents();
+    }
+    
+    public EditP3(EditP1 edit1) {
        initComponents();
+       this.edit1 = edit1;
         DefaultTableModel mb1=(DefaultTableModel) jTable3.getModel();
         mb1.removeRow(0);
         DefaultTableModel mb2=(DefaultTableModel) jTable1.getModel();
@@ -477,8 +481,8 @@ public class EditP3 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        EditP2 ed2 = new EditP2();
-        ed2.setVisible(true);
+        
+        edit1.e2.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
