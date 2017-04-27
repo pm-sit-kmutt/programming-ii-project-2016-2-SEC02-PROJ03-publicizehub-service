@@ -571,10 +571,10 @@ public class EditP3 extends javax.swing.JFrame {
         // TODO add your handling code here:
          boolean[] check = new boolean[jTable2.getRowCount()]; //เก็บว่าเลือกลบอันไหน
         for(int i = 0; i < check.length ;i++){
-            if(jTable2.getValueAt(i, 2) == null){
+            if(jTable2.getValueAt(i, 3) == null){
                 check[i] = false;
             }else {
-                check[i] = (boolean)jTable2.getValueAt(i, 2);
+                check[i] = (boolean)jTable2.getValueAt(i, 3);
             }
         }
         
