@@ -35,7 +35,8 @@ public class EditP1 extends javax.swing.JFrame {
     public EditP1(Tableview table) {
         initComponents();
         this.table=table;
-
+        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+        mb.removeRow(0);
         try {
             Statement st=cn.createStatement();
             ResultSet re=st.executeQuery("select projectNameThai, projectNameEnglish, advisors from project where id = '"+projectId+"'");
@@ -47,7 +48,6 @@ public class EditP1 extends javax.swing.JFrame {
             Statement st2=cn.createStatement();
             ResultSet re2=st2.executeQuery("select * from committee where projectId = '"+projectId+"'");
             while(re2.next()){
-                DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
                 mb.addRow(new Object[0]);
                 mb.setValueAt(re2.getString("name"), line, 0);
                 mb.setValueAt(re2.getString("studentId"), line, 1);
@@ -159,14 +159,6 @@ public class EditP1 extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
                 {null, null, null, null, null}
             },
             new String [] {
@@ -428,11 +420,12 @@ public class EditP1 extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
          boolean[] check = new boolean[jTable1.getRowCount()]; //เก็บว่าเลือกลบอันไหน
+         System.out.println(jTable1.getValueAt(0, 4));
         for(int i = 0; i < check.length ;i++){
-            if(jTable1.getValueAt(i, 2) == null){
+            if(jTable1.getValueAt(i, 4) == null){
                 check[i] = false;
             }else {
-                check[i] = (boolean)jTable1.getValueAt(i, 2);
+                check[i] = (boolean)jTable1.getValueAt(i, 4);
             }
         }
         
@@ -443,9 +436,7 @@ public class EditP1 extends javax.swing.JFrame {
                 line--;
             }
         }
-        for(int i = 0; i< jTable1.getRowCount();i++){ //วนลูปเปลี่ยนลำดับที่
-            model.setValueAt(i+1, i, 0);
-        }
+        
         
     }//GEN-LAST:event_jButton3ActionPerformed
 

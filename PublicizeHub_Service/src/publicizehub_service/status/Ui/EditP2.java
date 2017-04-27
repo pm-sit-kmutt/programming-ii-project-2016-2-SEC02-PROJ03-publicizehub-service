@@ -33,6 +33,8 @@ public class EditP2 extends javax.swing.JFrame {
     
     public EditP2() {
         initComponents();
+        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+        mb.removeRow(0);
         try {
             Statement st = cn.createStatement();
             ResultSet re = st.executeQuery("select * from project where id = '"+User.getSelectProjectId()+"'");
@@ -40,6 +42,16 @@ public class EditP2 extends javax.swing.JFrame {
                 jTextField4.setText(re.getString("placeLocation"));
                 jTextField5.setText(re.getDate("startTime").toString());
                 jTextField2.setText(re.getDate("endTime").toString());
+                
+            }
+            Statement sm = cn.createStatement();
+            ResultSet rs = st.executeQuery("select * from objective where projectId = '"+User.getSelectProjectId()+"'");
+            while(rs.next()){
+                mb.addRow(new Object[0]);
+                mb.setValueAt(line+1, line, 0);
+                mb.setValueAt(rs.getString("text"), line, 1);
+                line++;
+                
             }
             
         } catch (SQLException ex) {
@@ -146,11 +158,6 @@ public class EditP2 extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Angsana New", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
                 {null, null, null}
             },
             new String [] {
@@ -161,7 +168,7 @@ public class EditP2 extends javax.swing.JFrame {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {

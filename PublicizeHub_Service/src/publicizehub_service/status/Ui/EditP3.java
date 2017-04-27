@@ -6,7 +6,13 @@
 package publicizehub_service.status.Ui;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import publicizehub_service.Class.User;
 import publicizehub_service.activity_form.Ui.*;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 import publicizehub_service.status.Ui.*;
@@ -16,19 +22,55 @@ import publicizehub_service.status.Ui.*;
  * @author dell
  */
 public class EditP3 extends javax.swing.JFrame {
-
+   
     int line1 = 0;
     int line2 = 0;
     int line3 = 0;
+    int projectId=User.getSelectProjectId();
     Connection cn=ConnectionBuilder.getConnection();
     /**
      * Creates new form EditP3
      */
     
     public EditP3() {
-        initComponents();
+       initComponents();
+        DefaultTableModel mb1=(DefaultTableModel) jTable3.getModel();
+        mb1.removeRow(0);
+        DefaultTableModel mb2=(DefaultTableModel) jTable1.getModel();
+        mb2.removeRow(0);
+        DefaultTableModel mb3=(DefaultTableModel) jTable2.getModel();
+        mb3.removeRow(0);
+        try {
+            
+            Statement st1=cn.createStatement();
+            ResultSet re1=st1.executeQuery("select * from process where projectId = '"+projectId+"'");
+            while(re1.next()){
+                mb1.addRow(new Object[0]);
+                mb1.setValueAt(re1.getString("text"), line1, 0);
+                mb1.setValueAt(re1.getString("date"), line1, 1); 
+                line1++;
+            }
+            Statement st2=cn.createStatement();
+            ResultSet re2=st2.executeQuery("select * from expected where projectId = '"+projectId+"'");
+            while(re2.next()){
+                mb2.addRow(new Object[0]);
+                mb2.setValueAt(line2+1, line2, 0);
+                mb2.setValueAt(re2.getString("text"), line2, 0);
+                line2++;        
+            }  
+            Statement st3=cn.createStatement();
+            ResultSet re3=st3.executeQuery("select * from money where projectId = '"+projectId+"'");
+            while(re3.next()){
+                mb3.addRow(new Object[0]);
+                mb3.setValueAt(line3+1, line3, 0);
+                mb3.setValueAt(re3.getString("text"), line3, 0);
+                mb3.setValueAt(re3.getString("cust"), line3, 1); 
+                line3++;        
+            }  
+        } catch (SQLException ex) {
+            Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -91,9 +133,6 @@ public class EditP3 extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
                 {null, null, null}
             },
             new String [] {
@@ -175,9 +214,6 @@ public class EditP3 extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
                 {null, null, null, null}
             },
             new String [] {
@@ -236,9 +272,6 @@ public class EditP3 extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
                 {null, null, null}
             },
             new String [] {
@@ -455,6 +488,7 @@ public class EditP3 extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -508,9 +542,6 @@ public class EditP3 extends javax.swing.JFrame {
                 line1--;
             }
         }
-        for(int i = 0; i< jTable3.getRowCount();i++){ //วนลูปเปลี่ยนลำดับที่
-            model.setValueAt(i+1, i, 0);
-        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -540,10 +571,10 @@ public class EditP3 extends javax.swing.JFrame {
         // TODO add your handling code here:
          boolean[] check = new boolean[jTable2.getRowCount()]; //เก็บว่าเลือกลบอันไหน
         for(int i = 0; i < check.length ;i++){
-            if(jTable2.getValueAt(i, 2) == null){
+            if(jTable2.getValueAt(i, 3) == null){
                 check[i] = false;
             }else {
-                check[i] = (boolean)jTable2.getValueAt(i, 2);
+                check[i] = (boolean)jTable2.getValueAt(i, 3);
             }
         }
         
