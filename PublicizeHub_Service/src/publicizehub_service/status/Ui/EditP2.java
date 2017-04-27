@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import publicizehub_service.Class.User;
 import publicizehub_service.activity_form.Ui.*;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 import publicizehub_service.status.Ui.*;
@@ -22,7 +23,6 @@ import publicizehub_service.status.Ui.*;
  */
 public class EditP2 extends javax.swing.JFrame {
 
-    int projectId;
     int line = 0;
     Connection cn=ConnectionBuilder.getConnection();
 
@@ -35,7 +35,7 @@ public class EditP2 extends javax.swing.JFrame {
         initComponents();
         try {
             Statement st = cn.createStatement();
-            ResultSet re = st.executeQuery("select * from project where id = '"+projectId+"'");
+            ResultSet re = st.executeQuery("select * from project where id = '"+User.getSelectProjectId()+"'");
             while(re.next()){
                 jTextField4.setText(re.getString("placeLocation"));
                 jTextField5.setText(re.getDate("startTime").toString());

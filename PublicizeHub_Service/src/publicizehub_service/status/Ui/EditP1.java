@@ -50,7 +50,7 @@ public class EditP1 extends javax.swing.JFrame {
                 DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
                 mb.addRow(new Object[0]);
                 mb.setValueAt(re2.getString("name"), line, 0);
-                mb.setValueAt(re2.getString("committeeId"), line, 1);
+                mb.setValueAt(re2.getString("studentId"), line, 1);
                 mb.setValueAt(re2.getString("faculty"), line, 2);
                 mb.setValueAt(re2.getString("job"), line, 3);
                 line++;
@@ -313,7 +313,7 @@ public class EditP1 extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addGap(220, 220, 220))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 134, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jButton7)
@@ -325,7 +325,7 @@ public class EditP1 extends javax.swing.JFrame {
                                 .addGap(180, 180, 180))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jButton2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

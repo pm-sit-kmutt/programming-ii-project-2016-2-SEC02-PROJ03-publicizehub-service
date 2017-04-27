@@ -17,7 +17,6 @@ import publicizehub_service.status.Ui.*;
  */
 public class EditP3 extends javax.swing.JFrame {
 
-    int projectId;
     int line1 = 0;
     int line2 = 0;
     int line3 = 0;
