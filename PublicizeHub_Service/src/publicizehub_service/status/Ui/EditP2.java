@@ -242,6 +242,11 @@ public class EditP2 extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton2.setText("ลบ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -384,6 +389,29 @@ public class EditP2 extends javax.swing.JFrame {
         ed3.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        boolean[] check = new boolean[jTable1.getRowCount()]; //เก็บว่าเลือกลบอันไหน
+        for(int i = 0; i < check.length ;i++){
+            if(jTable1.getValueAt(i, 2) == null){
+                check[i] = false;
+            }else {
+                check[i] = (boolean)jTable1.getValueAt(i, 2);
+            }
+        }
+        
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        for(int i = check.length-1; i >= 0 ;i--){ //วนลูปลบตัวที่เลือกออก
+            if(check[i]){
+                 model.removeRow(i);
+                line--;
+            }
+        }
+        for(int i = 0; i< jTable1.getRowCount();i++){ //วนลูปเปลี่ยนลำดับที่
+            model.setValueAt(i+1, i, 0);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
     
     /**
      * @param args the command line arguments

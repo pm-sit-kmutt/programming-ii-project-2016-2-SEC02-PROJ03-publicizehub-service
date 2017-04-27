@@ -288,12 +288,27 @@ public class EditP3 extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton2.setText("ลบ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton5.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton5.setText("ลบ");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton7.setText("ลบ");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -474,6 +489,75 @@ public class EditP3 extends javax.swing.JFrame {
         mb.setValueAt(money, line3, 2);
         line3++;
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         boolean[] check = new boolean[jTable3.getRowCount()]; //เก็บว่าเลือกลบอันไหน
+        for(int i = 0; i < check.length ;i++){
+            if(jTable3.getValueAt(i, 2) == null){
+                check[i] = false;
+            }else {
+                check[i] = (boolean)jTable3.getValueAt(i, 2);
+            }
+        }
+        
+        DefaultTableModel model = (DefaultTableModel)jTable3.getModel();
+        for(int i = check.length-1; i >= 0 ;i--){ //วนลูปลบตัวที่เลือกออก
+            if(check[i]){
+                 model.removeRow(i);
+                line1--;
+            }
+        }
+        for(int i = 0; i< jTable3.getRowCount();i++){ //วนลูปเปลี่ยนลำดับที่
+            model.setValueAt(i+1, i, 0);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+         boolean[] check = new boolean[jTable1.getRowCount()]; //เก็บว่าเลือกลบอันไหน
+        for(int i = 0; i < check.length ;i++){
+            if(jTable1.getValueAt(i, 2) == null){
+                check[i] = false;
+            }else {
+                check[i] = (boolean)jTable1.getValueAt(i, 2);
+            }
+        }
+        
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        for(int i = check.length-1; i >= 0 ;i--){ //วนลูปลบตัวที่เลือกออก
+            if(check[i]){
+                 model.removeRow(i);
+                line2--;
+            }
+        }
+        for(int i = 0; i< jTable1.getRowCount();i++){ //วนลูปเปลี่ยนลำดับที่
+            model.setValueAt(i+1, i, 0);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+         boolean[] check = new boolean[jTable2.getRowCount()]; //เก็บว่าเลือกลบอันไหน
+        for(int i = 0; i < check.length ;i++){
+            if(jTable2.getValueAt(i, 2) == null){
+                check[i] = false;
+            }else {
+                check[i] = (boolean)jTable2.getValueAt(i, 2);
+            }
+        }
+        
+        DefaultTableModel model = (DefaultTableModel)jTable2.getModel();
+        for(int i = check.length-1; i >= 0 ;i--){ //วนลูปลบตัวที่เลือกออก
+            if(check[i]){
+                 model.removeRow(i);
+                line3--;
+            }
+        }
+        for(int i = 0; i< jTable2.getRowCount();i++){ //วนลูปเปลี่ยนลำดับที่
+            model.setValueAt(i+1, i, 0);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments

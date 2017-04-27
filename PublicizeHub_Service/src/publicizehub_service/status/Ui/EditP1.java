@@ -427,6 +427,25 @@ public class EditP1 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+         boolean[] check = new boolean[jTable1.getRowCount()]; //เก็บว่าเลือกลบอันไหน
+        for(int i = 0; i < check.length ;i++){
+            if(jTable1.getValueAt(i, 2) == null){
+                check[i] = false;
+            }else {
+                check[i] = (boolean)jTable1.getValueAt(i, 2);
+            }
+        }
+        
+        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        for(int i = check.length-1; i >= 0 ;i--){ //วนลูปลบตัวที่เลือกออก
+            if(check[i]){
+                 model.removeRow(i);
+                line--;
+            }
+        }
+        for(int i = 0; i< jTable1.getRowCount();i++){ //วนลูปเปลี่ยนลำดับที่
+            model.setValueAt(i+1, i, 0);
+        }
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
