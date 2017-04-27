@@ -88,8 +88,10 @@ public class CommentAdmin extends javax.swing.JDialog {
 
         jPanel2.setBackground(new java.awt.Color(36, 47, 65));
 
+        jTextArea1.setBackground(new java.awt.Color(36, 47, 65));
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -106,7 +108,9 @@ public class CommentAdmin extends javax.swing.JDialog {
         });
 
         jTextArea2.setEditable(false);
+        jTextArea2.setBackground(new java.awt.Color(36, 47, 65));
         jTextArea2.setColumns(20);
+        jTextArea2.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 

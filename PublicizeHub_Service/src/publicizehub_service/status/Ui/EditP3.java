@@ -135,6 +135,7 @@ public class EditP3 extends javax.swing.JFrame {
             }
         });
 
+        jTable1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
@@ -216,6 +217,7 @@ public class EditP3 extends javax.swing.JFrame {
             }
         });
 
+        jTable2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
@@ -274,6 +276,7 @@ public class EditP3 extends javax.swing.JFrame {
             }
         });
 
+        jTable3.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}

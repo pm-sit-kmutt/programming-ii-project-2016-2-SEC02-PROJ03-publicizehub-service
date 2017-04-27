@@ -7,7 +7,7 @@ package publicizehub_service.activity_form.Ui;
 
 import publicizehub_service.Class.User;
 import publicizehub_service.report.Ui.*;
-import publicizehub_service.status.Ui.ApproveAdminP1;
+import publicizehub_service.status.Ui.SearchApproveAdmin;
 import publicizehub_service.status.Ui.Tableview;
 
 /**
@@ -244,8 +244,8 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ApproveAdminP1 approveP1 =new ApproveAdminP1();
-        approveP1.setVisible(true);
+        SearchApproveAdmin approve =new SearchApproveAdmin();
+        approve.setVisible(true);
         setVisible(false);
         
     }//GEN-LAST:event_jButton2ActionPerformed
