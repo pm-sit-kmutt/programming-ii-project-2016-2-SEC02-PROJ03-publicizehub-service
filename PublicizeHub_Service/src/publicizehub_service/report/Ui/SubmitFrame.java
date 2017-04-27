@@ -36,12 +36,16 @@ public class SubmitFrame extends javax.swing.JFrame {
 
     public SubmitFrame() {
         initComponents();
+        setDetail();
     }
     
     public SubmitFrame(Tableview table) {
         initComponents();
         this.table = table;
-        
+        setDetail();
+    }
+    
+    public void setDetail(){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         model.removeRow(0);
         
@@ -544,7 +548,7 @@ public class SubmitFrame extends javax.swing.JFrame {
     // ย้อนกลับ
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         table.setVisible(true);
-        setVisible(false);
+        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
     // ลบรูป
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

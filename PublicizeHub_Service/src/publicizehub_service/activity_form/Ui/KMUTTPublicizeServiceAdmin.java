@@ -238,7 +238,7 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        SubmitFrameAdmin sfa = new SubmitFrameAdmin(this);
+        SearchSubmitFrameAdmin sfa = new SearchSubmitFrameAdmin(this);
         sfa.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -252,7 +252,7 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        FinishedReportFrameAdmin reportAdmin=new FinishedReportFrameAdmin(this);
+        SearchFinishedReportFrameAdmin reportAdmin=new SearchFinishedReportFrameAdmin(this);
         reportAdmin.setVisible(true);
         setVisible(false);
         
