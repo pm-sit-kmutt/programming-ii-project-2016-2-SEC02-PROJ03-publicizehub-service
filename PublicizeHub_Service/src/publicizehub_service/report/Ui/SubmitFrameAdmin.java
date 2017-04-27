@@ -135,14 +135,17 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("ระบุ จำนวนผู้เข้าร่วมโครงการที่มาจริง");
 
+        jTextField2.setEditable(false);
         jTextField2.setBackground(new java.awt.Color(36, 47, 65));
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
+        jTextField3.setEditable(false);
         jTextField3.setBackground(new java.awt.Color(36, 47, 65));
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
+        jTextField4.setEditable(false);
         jTextField4.setBackground(new java.awt.Color(36, 47, 65));
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -167,6 +170,7 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("อัฟโหลดรูปภาพหลักฐานค่าใช้จ่าย และ หลักฐานการทำโครงการ อย่างน้อย 10 ภาพ");
 
+        jTextField6.setEditable(false);
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jTextField6.setEnabled(false);
 
@@ -213,6 +217,7 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ชื่อโครงการ");
 
+        jTextField1.setEditable(false);
         jTextField1.setEnabled(false);
 
         jLabel3.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
@@ -276,6 +281,7 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
             }
         });
 
+        jTextField5.setEditable(false);
         jTextField5.setEnabled(false);
 
         jLabel13.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
@@ -548,7 +554,7 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
     // ย้อนกลับ
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         //table.setVisible(true);
-        //dispose();
+        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
     // ลบรูป
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
