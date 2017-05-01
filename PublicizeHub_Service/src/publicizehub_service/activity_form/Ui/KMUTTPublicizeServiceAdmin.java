@@ -240,11 +240,12 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         SearchSubmitFrameAdmin sfa = new SearchSubmitFrameAdmin(this);
         sfa.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        SearchApproveAdmin approve =new SearchApproveAdmin();
+        SearchApproveAdmin approve =new SearchApproveAdmin(this);
         approve.setVisible(true);
         setVisible(false);
         

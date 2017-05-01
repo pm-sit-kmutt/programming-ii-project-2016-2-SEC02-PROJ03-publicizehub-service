@@ -11,17 +11,16 @@ import java.sql.Date;
  *
  * @author นัน
  */
-public class Comment {
-    private static String author;
-    private static Date date;
+public class Process {
     private static String text;
+    private static Date date;
 
-    public static String getAuthor() {
-        return author;
+    public static String getText() {
+        return text;
     }
 
-    public static void setAuthor(String author) {
-        Comment.author = author;
+    public static void setText(String text) {
+        Process.text = text;
     }
 
     public static Date getDate() {
@@ -29,16 +28,6 @@ public class Comment {
     }
 
     public static void setDate(Date date) {
-        Comment.date = date;
+        Process.date = date;
     }
-
-    public static String getText() {
-        return text;
-    }
-
-    public static void setText(String text) {
-        Comment.text = text;
-    }
-    
-    
 }

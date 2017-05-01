@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package publicizehub_service.Class;
-import java.util.Date;
+import java.sql.Date;
 /**
  *
  * @author นัน
@@ -20,19 +20,20 @@ public class ProjectDetail {
     private static int placeType;
     private static int people;
     private static String placeLocation;
+    private static int numOfStudent;
     private static double budget;
     private static double cost;
-    private static String openTime;
-    private static String startTime;
-    private static String endTime;
-    private static String closeTime;
+    private static Date openTime;
+    private static Date startTime;
+    private static Date endTime;
+    private static Date closeTime;
     private static int status;
     private static String[] objective;
     private static String[] expected;
     private static Committee[] committee;
-    private static Participants participants;
     private static Comment[] comment;
-
+    private static Process[] process;
+    private static Money[] money;
     
     public ProjectDetail() {
     }
@@ -115,42 +116,40 @@ public class ProjectDetail {
 
     public static void setCost(double cost) {
         ProjectDetail.cost = cost;
-    }
+    }   
 
-    public static String getOpenTime() {
+    public static Date getOpenTime() {
         return openTime;
     }
 
-    public static void setOpenTime(String openTime) {
+    public static void setOpenTime(Date openTime) {
         ProjectDetail.openTime = openTime;
     }
 
-    public static String getStartTime() {
+    public static Date getStartTime() {
         return startTime;
     }
 
-    public static void setStartTime(String startTime) {
+    public static void setStartTime(Date startTime) {
         ProjectDetail.startTime = startTime;
     }
 
-    public static String getEndTime() {
+    public static Date getEndTime() {
         return endTime;
     }
 
-    public static void setEndTime(String endTime) {
+    public static void setEndTime(Date endTime) {
         ProjectDetail.endTime = endTime;
     }
 
-    public static String getCloseTime() {
+    public static Date getCloseTime() {
         return closeTime;
     }
 
-    public static void setCloseTime(String closeTime) {
+    public static void setCloseTime(Date closeTime) {
         ProjectDetail.closeTime = closeTime;
     }
-
-  
-
+    
     public static int getStatus() {
         return status;
     }
@@ -183,14 +182,6 @@ public class ProjectDetail {
         ProjectDetail.committee = committee;
     }
 
-    public static Participants getParticipants() {
-        return participants;
-    }
-
-    public static void setParticipants(Participants participants) {
-        ProjectDetail.participants = participants;
-    }
-
     public static Comment[] getComment() {
         return comment;
     }
@@ -214,7 +205,29 @@ public class ProjectDetail {
     public static void setPeople(int people) {
         ProjectDetail.people = people;
     }
-    
-    
+
+    public static int getNumOfStudent() {
+        return numOfStudent;
+    }
+
+    public static void setNumOfStudent(int numOfStudent) {
+        ProjectDetail.numOfStudent = numOfStudent;
+    }
+
+    public static Process[] getProcess() {
+        return process;
+    }
+
+    public static void setProcess(Process[] process) {
+        ProjectDetail.process = process;
+    }
+
+    public static Money[] getMoney() {
+        return money;
+    }
+
+    public static void setMoney(Money[] money) {
+        ProjectDetail.money = money;
+    }
     
 }

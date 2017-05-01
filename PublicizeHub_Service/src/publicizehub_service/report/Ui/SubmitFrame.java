@@ -52,7 +52,7 @@ public class SubmitFrame extends javax.swing.JFrame {
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select id, projectNameThai, projectNameEnglish, budget, cost, numOfStudent, numCome from project "
-                    + "join participants on participants.projectId = project.id where id = '"+id+"'");
+                    + "where id = '"+id+"'");
             while(rs.next()){
                 id = rs.getInt("id");
                 jTextField1.setText(rs.getString("projectNameThai"));
@@ -61,6 +61,7 @@ public class SubmitFrame extends javax.swing.JFrame {
                 jTextField3.setText(rs.getString("cost"));
                 jTextField6.setText(rs.getString("numOfStudent"));
                 jTextField4.setText(rs.getString("numCome"));
+                jTextField1.setEnabled(rootPaneCheckingEnabled);
             }
             rs.close();
             st.close();
@@ -497,31 +498,27 @@ public class SubmitFrame extends javax.swing.JFrame {
             int people = Integer.parseInt(jTextField4.getText());
 
             try {
-                PreparedStatement pt1 = con.prepareStatement("update project set budget = ?, cost = ? where id = ?");
+                PreparedStatement pt1 = con.prepareStatement("update project set budget = ?, cost = ?, numCome = ? where id = ?");
                 pt1.setDouble(1, budget);
                 pt1.setDouble(2, pay);
-                pt1.setInt(3, id);
+                pt1.setInt(3, people);
+                pt1.setInt(4, id);
                 int record = pt1.executeUpdate();
                 System.out.println(record);
-                pt1.close();
-                PreparedStatement pt2 = con.prepareStatement("update participants set numCome = ? where projectId = ?");
-                pt2.setInt(1, people);
-                pt2.setInt(2, id);
-                int record2 = pt2.executeUpdate();
-                System.out.println(record2);
-                pt2.close();
+                pt1.close();  
             } catch (SQLException ex) {
                 Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
             } 
            
             for(int i = 0; i < jTable1.getRowCount(); i++){
                 try {
-                    PreparedStatement pt3 = con.prepareStatement("insert into picture values((select id from project where id = ?), ?, ?)");
-                    pt3.setInt(1, id);
-                    pt3.setString(2, name.get(i));
-                    pt3.setString(3, file.get(i));
-                    int record = pt3.executeUpdate();
-                    pt3.close();
+                    PreparedStatement pt2 = con.prepareStatement("insert into picture values((select id from project where id = ?), ?, ?)");
+                    pt2.setInt(1, id);
+                    pt2.setString(2, name.get(i));
+                    pt2.setString(3, file.get(i));
+                    int result = pt2.executeUpdate();
+                    System.out.println(result);
+                    pt2.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -532,12 +529,12 @@ public class SubmitFrame extends javax.swing.JFrame {
             }else {
                 JOptionPane.showMessageDialog(null, "แจ้งปิดโครงการเรียบร้อย");
                 try {
-                    PreparedStatement pt4 = con.prepareStatement("update project set status = ? where id = ?");
-                    pt4.setInt(1, 3);
-                    pt4.setInt(2, id);
-                    int result = pt4.executeUpdate();
+                    PreparedStatement pt3 = con.prepareStatement("update project set status = ? where id = ?");
+                    pt3.setInt(1, 3);
+                    pt3.setInt(2, id);
+                    int result = pt3.executeUpdate();
                     System.out.println(result);
-                    pt4.close();
+                    pt3.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
