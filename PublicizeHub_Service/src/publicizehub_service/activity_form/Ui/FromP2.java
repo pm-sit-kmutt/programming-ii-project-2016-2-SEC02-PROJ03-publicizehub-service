@@ -360,11 +360,11 @@ public class FromP2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         ProjectDetail.setPlaceLocation(jTextField4.getText());
-         ProjectDetail.setStartTime(jTextField5.getText());
-         ProjectDetail.setEndTime(jTextField2.getText());
-         ProjectDetail.setPeople(Integer.parseInt(jTextField1.getText()));
-         ProjectDetail.setRationale(jTextArea1.getText());
+//         ProjectDetail.setPlaceLocation(jTextField4.getText());
+//         ProjectDetail.setStartTime(jTextField5.getText());
+//         ProjectDetail.setEndTime(jTextField2.getText());
+//         ProjectDetail.setPeople(Integer.parseInt(jTextField1.getText()));
+//         ProjectDetail.setRationale(jTextArea1.getText());
         from1.p3.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
