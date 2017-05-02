@@ -23,10 +23,10 @@ public class ProjectDetail {
     private static int numOfStudent;
     private static double budget;
     private static double cost;
-    private static String openTime;
-    private static String startTime;
-    private static String endTime;
-    private static String closeTime;
+    private static Date openTime;
+    private static Date startTime;
+    private static Date endTime;
+    private static Date closeTime;
     private static int status;
     private static String[] objective;
     private static String[] expected;
@@ -34,9 +34,6 @@ public class ProjectDetail {
     private static Comment[] comment;
     private static Process[] process;
     private static Money[] money;
-    
-    public ProjectDetail() {
-    }
 
     public static int getId() {
         return id;
@@ -70,6 +67,14 @@ public class ProjectDetail {
         ProjectDetail.projectNameEnglish = projectNameEnglish;
     }
 
+    public static String getAdvisors() {
+        return Advisors;
+    }
+
+    public static void setAdvisors(String Advisors) {
+        ProjectDetail.Advisors = Advisors;
+    }
+
     public static String getDepartment() {
         return department;
     }
@@ -94,12 +99,28 @@ public class ProjectDetail {
         ProjectDetail.placeType = placeType;
     }
 
+    public static int getPeople() {
+        return people;
+    }
+
+    public static void setPeople(int people) {
+        ProjectDetail.people = people;
+    }
+
     public static String getPlaceLocation() {
         return placeLocation;
     }
 
     public static void setPlaceLocation(String placeLocation) {
         ProjectDetail.placeLocation = placeLocation;
+    }
+
+    public static int getNumOfStudent() {
+        return numOfStudent;
+    }
+
+    public static void setNumOfStudent(int numOfStudent) {
+        ProjectDetail.numOfStudent = numOfStudent;
     }
 
     public static double getBudget() {
@@ -116,42 +137,40 @@ public class ProjectDetail {
 
     public static void setCost(double cost) {
         ProjectDetail.cost = cost;
-    }   
+    }
 
-    public static String getOpenTime() {
+    public static Date getOpenTime() {
         return openTime;
     }
 
-    public static void setOpenTime(String openTime) {
+    public static void setOpenTime(Date openTime) {
         ProjectDetail.openTime = openTime;
     }
 
-    public static String getStartTime() {
+    public static Date getStartTime() {
         return startTime;
     }
 
-    public static void setStartTime(String startTime) {
+    public static void setStartTime(Date startTime) {
         ProjectDetail.startTime = startTime;
     }
 
-    public static String getEndTime() {
+    public static Date getEndTime() {
         return endTime;
     }
 
-    public static void setEndTime(String endTime) {
+    public static void setEndTime(Date endTime) {
         ProjectDetail.endTime = endTime;
     }
 
-    public static String getCloseTime() {
+    public static Date getCloseTime() {
         return closeTime;
     }
 
-    public static void setCloseTime(String closeTime) {
+    public static void setCloseTime(Date closeTime) {
         ProjectDetail.closeTime = closeTime;
     }
 
-
-    
     public static int getStatus() {
         return status;
     }
@@ -192,30 +211,6 @@ public class ProjectDetail {
         ProjectDetail.comment = comment;
     }
 
-    public static String getAdvisors() {
-        return Advisors;
-    }
-
-    public static void setAdvisors(String Advisors) {
-        ProjectDetail.Advisors = Advisors;
-    }
-
-    public static int getPeople() {
-        return people;
-    }
-
-    public static void setPeople(int people) {
-        ProjectDetail.people = people;
-    }
-
-    public static int getNumOfStudent() {
-        return numOfStudent;
-    }
-
-    public static void setNumOfStudent(int numOfStudent) {
-        ProjectDetail.numOfStudent = numOfStudent;
-    }
-
     public static Process[] getProcess() {
         return process;
     }
@@ -231,5 +226,6 @@ public class ProjectDetail {
     public static void setMoney(Money[] money) {
         ProjectDetail.money = money;
     }
+
     
 }

@@ -365,9 +365,9 @@ public class FromP1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ProjectDetail.setProjectNameThai(jTextField4.getText());
-        ProjectDetail.setProjectNameEnglish(jTextField1.getText());
-        ProjectDetail.setAdvisors(jTextField2.getText());
+//        ProjectDetail.setProjectNameThai(jTextField4.getText());
+//        ProjectDetail.setProjectNameEnglish(jTextField1.getText());
+//        ProjectDetail.setAdvisors(jTextField2.getText());
         
         p2.setVisible(true);
         setVisible(false);
