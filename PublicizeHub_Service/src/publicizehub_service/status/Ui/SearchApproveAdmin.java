@@ -20,6 +20,8 @@ import publicizehub_service.connectionBuilder.ConnectionBuilder;
 public class SearchApproveAdmin extends javax.swing.JFrame {
     
     KMUTTPublicizeServiceAdmin homeAdmin;
+    Connection con = ConnectionBuilder.getConnection();
+    Statement st = null;
     ResultSet rs;
     /**
      * Creates new form FinishedReportAdmin
@@ -161,7 +163,7 @@ public class SearchApproveAdmin extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ลำดับ", "สถานที่", "ชื่อโครงการ", "สังกัด", "วันที่ปิดโครงการ"
+                "ลำดับ", "สถานที่", "ชื่อโครงการ", "สังกัด", "วันที่เปิดโครงการ"
             }
         ) {
             Class[] types = new Class [] {
@@ -271,46 +273,73 @@ public class SearchApproveAdmin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //เมื่อกดปุ่มค้นหา
         //กดแล้วทำการดึงข้อมูลที่เลือก ไปลงในตาราง
-        Connection con = ConnectionBuilder.getConnection();
-        
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        model.removeRow(0);
-        int line = 0;
+        int countRow = model.getRowCount();
+        while(countRow != 0){
+            model.removeRow(0);
+            countRow--;
+        }
         
+        int line = 0;
+
         String name = "";
         if(!jTextField1.getText().isEmpty()){
             name = " and projectNameThai = '"+jTextField1.getText()+"'";
         }
-        
+
         String department = "";
         if(jComboBox2.isEnabled()){
             if(jComboBox2.getSelectedIndex() != 0){
                 department = " and department = '"+jComboBox2.getItemAt(jComboBox2.getSelectedIndex())+"'";
-            }  
+            }
         }else {
             if(jComboBox3.getSelectedIndex() != 0){
                 department = " and department = '"+jComboBox3.getItemAt(jComboBox3.getSelectedIndex())+"'";
             }
         }
-        
+
         String type = "";
         if(jComboBox4.getSelectedIndex() == 1){
             type = " and placeType = 0";
         }else if(jComboBox4.getSelectedIndex() == 2){
             type = " and placeType = 1";
         }
-        
-      
-        
-       
-        
-       
-        
-        //String sql = "select * from project where status = 1"+name+department+type+closeTime+" ORDER BY id";
-       // System.out.println(sql);
+
+//        String endMonth = "";
+//        switch(jComboBox5.getSelectedIndex()){
+//            case 1 : endMonth = "01"; break;
+//            case 2 : endMonth = "02"; break;
+//            case 3 : endMonth = "03"; break;
+//            case 4 : endMonth = "04"; break;
+//            case 5 : endMonth = "05"; break;
+//            case 6 : endMonth = "06"; break;
+//            case 7 : endMonth = "07"; break;
+//            case 8 : endMonth = "08"; break;
+//            case 9 : endMonth = "09"; break;
+//            case 10 : endMonth = "10"; break;
+//            case 11 : endMonth = "11"; break;
+//            case 12 : endMonth = "12"; break;
+//        }
+//
+//        String endYear = "_____";
+//        switch(jComboBox6.getSelectedIndex()){
+//            case 1 : endYear = "2014-"; break;
+//            case 2 : endYear = "2015-"; break;
+//            case 3 : endYear = "2016-"; break;
+//            case 4 : endYear = "2017-"; break;
+//            case 5 : endYear = "2018-"; break;
+//        }
+//
+//        String endTime = "";
+//        if(jComboBox5.getSelectedIndex() != 0 || jComboBox6.getSelectedIndex() != 0){
+//            endTime = " and endTime LIKE '"+endYear+endMonth+"%'";
+//        }
+
+        //String sql = "select * from project where status = 3"+name+department+type+endTime+" ORDER BY id";
+        String sql = "select * from project where status = 1"+name+department+type+" ORDER BY id";
         try {
-            Statement st = con.createStatement();
-           // rs = st.executeQuery(sql);
+            st = con.createStatement();
+            rs = st.executeQuery(sql);
             while (rs.next()) {
                 model.addRow(new Object[0]);
                 model.setValueAt(line+1, line, 0);
@@ -321,8 +350,8 @@ public class SearchApproveAdmin extends javax.swing.JFrame {
                 }
                 model.setValueAt(rs.getString("projectNameThai"), line, 2);
                 model.setValueAt(rs.getString("department"), line, 3);
-                model.setValueAt(rs.getString("closeTime"), line, 4);
-                line++;
+                model.setValueAt(rs.getString("endTime"), line, 4);
+                line = line +1;
             }
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -331,19 +360,33 @@ public class SearchApproveAdmin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //เมื่อกดปุ่มย้อนกลับ
+        try {    
+            if(st != null){
+                st.close();
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SearchFinishedReportFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         homeAdmin.setVisible(true);
-        setVisible(false);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         //เมื่อคลิกที่ตาราง
         int selectedRow = jTable1.getSelectedRow();
-        User.setSelectProjectId(selectedRow);
-        try {
-            rs.absolute(selectedRow+1);
-            
-        } catch (SQLException ex) {
-            System.out.println(ex);
+        if(st != null){
+            try {
+                if(!rs.isBeforeFirst()){
+                    rs.absolute(selectedRow+1);
+                    User.setSelectProjectId(rs.getInt("id"));
+                    ApproveAdminP1 a1 = new ApproveAdminP1(this);
+                    a1.setVisible(true);
+                    setVisible(false);
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex);
+            }
         }
     }//GEN-LAST:event_jTable1MouseClicked
 

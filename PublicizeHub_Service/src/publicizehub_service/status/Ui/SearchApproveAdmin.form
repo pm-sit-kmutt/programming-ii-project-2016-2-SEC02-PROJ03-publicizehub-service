@@ -333,7 +333,7 @@
                     <Column editable="false" title="&#xe2a;&#xe16;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;" type="java.lang.Object"/>
                     <Column editable="false" title="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;" type="java.lang.Object"/>
                     <Column editable="false" title="&#xe2a;&#xe31;&#xe07;&#xe01;&#xe31;&#xe14;" type="java.lang.Object"/>
-                    <Column editable="false" title="&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;&#xe1b;&#xe34;&#xe14;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;" type="java.lang.Object"/>
+                    <Column editable="false" title="&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;&#xe40;&#xe1b;&#xe34;&#xe14;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

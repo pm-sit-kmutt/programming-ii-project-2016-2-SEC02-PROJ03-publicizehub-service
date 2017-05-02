@@ -20,8 +20,8 @@ import publicizehub_service.status.Ui.EditP1;
  */
 public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
     KMUTTPublicizeServiceAdmin homeAdmin;
-    Connection con;
-    Statement st;
+    Connection con = ConnectionBuilder.getConnection();
+    Statement st = null;
     ResultSet rs;
     /**
      * Creates new form FinishedReportAdmin
@@ -304,8 +304,7 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
             model.removeRow(0);
             countRow--;
         }
-        
-        con = ConnectionBuilder.getConnection();
+
         int line = 0;
         
         String name = "";
@@ -386,7 +385,9 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //เมื่อกดปุ่มย้อนกลับ
         try {    
-            st.close();
+            if(st != null){
+                st.close();
+            }
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(SearchFinishedReportFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
@@ -398,16 +399,18 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         //เมื่อคลิกที่ตาราง
         int selectedRow = jTable1.getSelectedRow();
-        try {
-            if(!rs.isBeforeFirst()){
-                rs.absolute(selectedRow+1);
-                User.setSelectProjectId(rs.getInt("id"));
-                ApproveAdminP1 a1 = new ApproveAdminP1(this);
-                a1.setVisible(true);
-                setVisible(false);
+        if(st != null){
+            try {
+                if(!rs.isBeforeFirst()){
+                    rs.absolute(selectedRow+1);
+                    User.setSelectProjectId(rs.getInt("id"));
+                    ApproveAdminP1 a1 = new ApproveAdminP1(this);
+                    a1.setVisible(true);
+                    setVisible(false);
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex);
             }
-        } catch (SQLException ex) {
-            System.out.println(ex);
         }
     }//GEN-LAST:event_jTable1MouseClicked
 

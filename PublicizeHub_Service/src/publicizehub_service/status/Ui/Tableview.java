@@ -44,7 +44,7 @@ public class Tableview extends javax.swing.JFrame {
                 }else if(re.getString("status").equals("2")){
                     de.setValueAt("อนุมัติแล้ว", line, 2);
                 }else if(re.getString("status").equals("3")){
-                    de.setValueAt("แจ้งปิด", line, 2);
+                    de.setValueAt("รอปิด", line, 2);
                 }
                 de.setValueAt("ดู comment", line, 3);
                 line++;
@@ -236,7 +236,11 @@ public class Tableview extends javax.swing.JFrame {
                EditP1 e1 = new EditP1(this);
                e1.setVisible(true);
                setVisible(false);
-           }else if(jTable1.getValueAt(row, col).equals("แจ้งปิด")){
+           }else if(jTable1.getValueAt(row, col).equals("อนุมัติแล้ว")){
+               SubmitFrame sf = new SubmitFrame(this);
+               sf.setVisible(true);
+               setVisible(false);
+           }else if(jTable1.getValueAt(row, col).equals("รอปิด")){
                SubmitFrame sf = new SubmitFrame(this);
                sf.setVisible(true);
                setVisible(false);

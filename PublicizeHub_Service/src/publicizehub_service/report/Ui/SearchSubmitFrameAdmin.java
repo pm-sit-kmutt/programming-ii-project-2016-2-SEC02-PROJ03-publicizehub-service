@@ -18,8 +18,8 @@ import publicizehub_service.connectionBuilder.ConnectionBuilder;
  */
 public class SearchSubmitFrameAdmin extends javax.swing.JFrame {
     KMUTTPublicizeServiceAdmin homeAdmin;
-    Connection con;
-    Statement st;
+    Connection con = ConnectionBuilder.getConnection();
+    Statement st = null;
     ResultSet rs;
     
     /**
@@ -293,23 +293,28 @@ public class SearchSubmitFrameAdmin extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         //เมื่อคลิกที่ตาราง
         int selectedRow = jTable1.getSelectedRow();
-        try {
-            if(!rs.isBeforeFirst()){
-                rs.absolute(selectedRow+1);
-                User.setSelectProjectId(rs.getInt("id"));
-                SubmitFrameAdmin sfa = new SubmitFrameAdmin(this);
-                sfa.setVisible(true);
-                setVisible(false);
+        if(st != null){
+            try {
+                System.out.println("sdf");
+                if(!rs.isBeforeFirst()){
+                    rs.absolute(selectedRow+1);
+                    User.setSelectProjectId(rs.getInt("id"));
+                    SubmitFrameAdmin sfa = new SubmitFrameAdmin(this);
+                    sfa.setVisible(true);
+                    setVisible(false);
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex);
             }
-        } catch (SQLException ex) {
-            System.out.println(ex);
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //เมื่อกดปุ่มย้อนกลับ
         try {    
-            st.close();
+            if(st != null){
+                st.close();
+            }
             con.close();
         } catch (SQLException ex) {
             Logger.getLogger(SearchFinishedReportFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
@@ -327,8 +332,7 @@ public class SearchSubmitFrameAdmin extends javax.swing.JFrame {
             model.removeRow(0);
             countRow--;
         }
-        
-        Connection con = ConnectionBuilder.getConnection();   
+       
         int line = 0;
 
         String name = "";
@@ -386,7 +390,7 @@ public class SearchSubmitFrameAdmin extends javax.swing.JFrame {
 
         String sql = "select * from project where status = 3"+name+department+type+endTime+" ORDER BY id";
         try {
-            Statement st = con.createStatement();
+            st = con.createStatement();
             rs = st.executeQuery(sql);
             while (rs.next()) {
                 model.addRow(new Object[0]);
