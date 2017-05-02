@@ -17,30 +17,46 @@ import publicizehub_service.status.Ui.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
+import publicizehub_service.report.Ui.FinishedReportFrame;
 import publicizehub_service.report.Ui.SubmitFrame;
 /**
  *
  * @author dell
  */
 public class EditP1 extends javax.swing.JFrame {
-    Tableview table;
+    Tableview table = null;
+    FinishedReportFrame frf = null;
+    int checkCase = 0;
     EditP2 e2;
     EditP3 e3;
     int projectId = User.getSelectProjectId();
     int line=0;
-    Connection cn=ConnectionBuilder.getConnection();
 
-    public EditP1() {
+    public EditP1() { //ไว้ test
         initComponents();
+        setFrame();
     }
     
     public EditP1(Tableview table) {
         initComponents();
         this.table=table;
+        setFrame();
+        checkCase = 1;
+    }
+    
+    public EditP1(FinishedReportFrame frf){
+        initComponents();
+        this.frf=frf;
+        setFrame();
+        checkCase = 2;
+    }
+    
+    public void setFrame(){
         e2 = new EditP2(this);
         e3 = new EditP3(this);
         DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
         mb.removeRow(0);
+        Connection cn = ConnectionBuilder.getConnection();
         try {
             Statement st=cn.createStatement();
             ResultSet re=st.executeQuery("select projectNameThai, projectNameEnglish, advisors from project where id = '"+projectId+"'");
@@ -59,6 +75,9 @@ public class EditP1 extends javax.swing.JFrame {
                 mb.setValueAt(re2.getString("job"), line, 3);
                 line++;
             }
+            st.close();
+            st2.close();
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
         } 
@@ -400,8 +419,12 @@ public class EditP1 extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        table.setVisible(true);
-        setVisible(false);
+        if(checkCase == 1){
+            table.setVisible(true);
+        }else if(checkCase == 2){
+            frf.setVisible(true);
+        }
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -421,9 +444,9 @@ public class EditP1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-         boolean[] check = new boolean[jTable1.getRowCount()]; //เก็บว่าเลือกลบอันไหน
-         System.out.println(jTable1.getValueAt(0, 4));
+
+        boolean[] check = new boolean[jTable1.getRowCount()]; //เก็บว่าเลือกลบอันไหน
+        System.out.println(jTable1.getValueAt(0, 4));
         for(int i = 0; i < check.length ;i++){
             if(jTable1.getValueAt(i, 4) == null){
                 check[i] = false;

@@ -24,39 +24,45 @@ import publicizehub_service.status.Ui.*;
 public class EditP2 extends javax.swing.JFrame {
     EditP1 edit1;
     int line = 0;
-    Connection cn=ConnectionBuilder.getConnection();
-
+    int projectId = User.getSelectProjectId();
     /**
      * Creates new form EditP2
      */
     public EditP2() {
         initComponents();
+        setFrame();
     }
     
     public EditP2(EditP1 edit1) {
         initComponents();
         this.edit1 = edit1;
-        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+        setFrame();
+    }
+    
+    public void setFrame(){
+        DefaultTableModel mb=(DefaultTableModel)jTable1.getModel();
         mb.removeRow(0);
+        Connection cn=ConnectionBuilder.getConnection();
         try {
-            Statement st = cn.createStatement();
-            ResultSet re = st.executeQuery("select * from project where id = '"+User.getSelectProjectId()+"'");
-            while(re.next()){
-                jTextField4.setText(re.getString("placeLocation"));
-                jTextField5.setText(re.getDate("startTime").toString());
-                jTextField2.setText(re.getDate("endTime").toString());
-                
+            Statement st1 = cn.createStatement();
+            ResultSet re1 = st1.executeQuery("select * from project where id = '"+projectId+"'");
+            while(re1.next()){
+                jComboBox1.setSelectedIndex(re1.getInt("placeType"));
+                jTextField4.setText(re1.getString("placeLocation"));
+                jTextField5.setText(re1.getDate("startTime").toString());
+                jTextField2.setText(re1.getDate("endTime").toString());
             }
-            Statement sm = cn.createStatement();
-            ResultSet rs = st.executeQuery("select * from objective where projectId = '"+User.getSelectProjectId()+"'");
-            while(rs.next()){
+            Statement st2 = cn.createStatement();
+            ResultSet re2 = st2.executeQuery("select * from objective where projectId = '"+projectId+"'");
+            while(re2.next()){
                 mb.addRow(new Object[0]);
                 mb.setValueAt(line+1, line, 0);
-                mb.setValueAt(rs.getString("text"), line, 1);
+                mb.setValueAt(re2.getString("text"), line, 1);
                 line++;
-                
-            }
-            
+            }  
+            st1.close();
+            st2.close();
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(EditP2.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -387,13 +393,11 @@ public class EditP2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
         edit1.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
         edit1.e3.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed

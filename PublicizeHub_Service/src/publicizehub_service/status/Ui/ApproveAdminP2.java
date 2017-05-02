@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import publicizehub_service.Class.User;
 import publicizehub_service.activity_form.Ui.*;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 import publicizehub_service.status.Ui.*;
@@ -20,30 +21,21 @@ import publicizehub_service.status.Ui.*;
  * @author dell
  */
 public class ApproveAdminP2 extends javax.swing.JFrame {
-
-    int projectId;
+    ApproveAdminP1 approve1;
+    int projectId = User.getSelectProjectId();
     int line = 0;
-    Connection cn=ConnectionBuilder.getConnection();
 
     /**
      * Creates new form EditP2
      */
-    
-    
     public ApproveAdminP2() {
         initComponents();
-        try {
-            Statement st = cn.createStatement();
-            ResultSet re = st.executeQuery("select * from project where id = '"+projectId+"'");
-            while(re.next()){
-                jTextField4.setText(re.getString("placeLocation"));
-                jTextField5.setText(re.getDate("startTime").toString());
-                jTextField2.setText(re.getDate("endTime").toString());
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ApproveAdminP2.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
+    }
+    
+    public ApproveAdminP2(ApproveAdminP1 approve1){
+        initComponents();
+        this.approve1 = approve1;
     }
 
     /**
@@ -350,16 +342,12 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        ApproveAdminP1 ed1 = new ApproveAdminP1();
-        ed1.setVisible(true);
+        approve1.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        ApproveAdminP3 ed3 = new ApproveAdminP3();
-        ed3.setVisible(true);
+        approve1.a3.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
     

@@ -12,13 +12,16 @@ import java.util.logging.Logger;
 import publicizehub_service.activity_form.Ui.KMUTTPublicizeServiceAdmin;
 import publicizehub_service.Class.User;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
+import publicizehub_service.status.Ui.ApproveAdminP1;
+import publicizehub_service.status.Ui.EditP1;
 /**
  *
  * @author นัน
  */
 public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
-    
     KMUTTPublicizeServiceAdmin homeAdmin;
+    Connection con;
+    Statement st;
     ResultSet rs;
     /**
      * Creates new form FinishedReportAdmin
@@ -295,10 +298,14 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //เมื่อกดปุ่มค้นหา
         //กดแล้วทำการดึงข้อมูลที่เลือก ไปลงในตาราง
-        Connection con = ConnectionBuilder.getConnection();
-        
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-        model.removeRow(0);
+        int countRow = model.getRowCount();
+        while(countRow != 0){
+            model.removeRow(0);
+            countRow--;
+        }
+        
+        con = ConnectionBuilder.getConnection();
         int line = 0;
         
         String name = "";
@@ -355,9 +362,8 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
         }
         
         String sql = "select * from project where status = 0"+name+department+type+closeTime+" ORDER BY id";
-        System.out.println(sql);
         try {
-            Statement st = con.createStatement();
+            st = con.createStatement();
             rs = st.executeQuery(sql);
             while (rs.next()) {
                 model.addRow(new Object[0]);
@@ -379,17 +385,27 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //เมื่อกดปุ่มย้อนกลับ
+        try {    
+            st.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SearchFinishedReportFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         homeAdmin.setVisible(true);
-        setVisible(false);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         //เมื่อคลิกที่ตาราง
         int selectedRow = jTable1.getSelectedRow();
-        User.setSelectProjectId(selectedRow);
         try {
-            rs.absolute(selectedRow+1);
-            
+            if(!rs.isBeforeFirst()){
+                rs.absolute(selectedRow+1);
+                User.setSelectProjectId(rs.getInt("id"));
+                ApproveAdminP1 a1 = new ApproveAdminP1(this);
+                a1.setVisible(true);
+                setVisible(false);
+            }
         } catch (SQLException ex) {
             System.out.println(ex);
         }

@@ -6,20 +6,47 @@
 package publicizehub_service.status.Ui;
 import publicizehub_service.activity_form.Ui.*;
 import publicizehub_service.status.Ui.*;
-import javax.swing.JOptionPane;
+import publicizehub_service.Class.User;
+import publicizehub_service.report.Ui.SearchFinishedReportFrameAdmin;
 /**
  *
  * @author dell
  */
 public class ApproveAdminP1 extends javax.swing.JFrame {
-
+    SearchApproveAdmin saa;
+    SearchFinishedReportFrameAdmin sfra;
+    int checkCase = 0;
+    ApproveAdminP2 a2;
+    ApproveAdminP3 a3;
+    int projectId = User.getSelectProjectId();
+    int line=0;
     /**
      * Creates new form Edit
      */
     public ApproveAdminP1() {
         initComponents();
     }
-
+    
+    public ApproveAdminP1(SearchApproveAdmin saa){
+        initComponents();
+        this.saa = saa;
+        setFrame();
+        checkCase = 1;
+        
+    }
+    
+    public ApproveAdminP1(SearchFinishedReportFrameAdmin sfra){
+        initComponents();
+        this.sfra = sfra;
+        setFrame();
+        checkCase = 2;
+        
+    }
+    
+     public void setFrame(){
+        a2 = new ApproveAdminP2(this);
+        a3 = new ApproveAdminP3(this);
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -361,10 +388,7 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        ApproveAdminP2 ad2 = new ApproveAdminP2();
-        ad2.setVisible(true);
-
+        a2.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -373,7 +397,12 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField11ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        if(checkCase == 1){
+            saa.setVisible(true);
+        }else if(checkCase == 2){
+            sfra.setVisible(true);
+        }
+        dispose();               
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -403,36 +432,7 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+        //</ed
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {

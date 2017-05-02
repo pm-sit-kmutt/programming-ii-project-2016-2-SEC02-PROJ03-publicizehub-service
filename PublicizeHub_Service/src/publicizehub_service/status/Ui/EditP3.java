@@ -27,25 +27,29 @@ public class EditP3 extends javax.swing.JFrame {
     int line2 = 0;
     int line3 = 0;
     int projectId=User.getSelectProjectId();
-    Connection cn=ConnectionBuilder.getConnection();
     /**
      * Creates new form EditP3
      */
     public EditP3() {
         initComponents();
+        setFrame();
     }
     
     public EditP3(EditP1 edit1) {
        initComponents();
        this.edit1 = edit1;
+       setFrame();
+    }
+    
+    public void setFrame(){
         DefaultTableModel mb1=(DefaultTableModel) jTable3.getModel();
         mb1.removeRow(0);
         DefaultTableModel mb2=(DefaultTableModel) jTable1.getModel();
         mb2.removeRow(0);
         DefaultTableModel mb3=(DefaultTableModel) jTable2.getModel();
         mb3.removeRow(0);
+        Connection cn=ConnectionBuilder.getConnection();
         try {
-            
             Statement st1=cn.createStatement();
             ResultSet re1=st1.executeQuery("select * from process where projectId = '"+projectId+"'");
             while(re1.next()){
@@ -59,7 +63,7 @@ public class EditP3 extends javax.swing.JFrame {
             while(re2.next()){
                 mb2.addRow(new Object[0]);
                 mb2.setValueAt(line2+1, line2, 0);
-                mb2.setValueAt(re2.getString("text"), line2, 0);
+                mb2.setValueAt(re2.getString("text"), line2, 1);
                 line2++;        
             }  
             Statement st3=cn.createStatement();
@@ -67,10 +71,14 @@ public class EditP3 extends javax.swing.JFrame {
             while(re3.next()){
                 mb3.addRow(new Object[0]);
                 mb3.setValueAt(line3+1, line3, 0);
-                mb3.setValueAt(re3.getString("text"), line3, 0);
-                mb3.setValueAt(re3.getString("cust"), line3, 1); 
+                mb3.setValueAt(re3.getString("text"), line3, 1);
+                mb3.setValueAt(re3.getString("cost"), line3, 2); 
                 line3++;        
             }  
+            st1.close();
+            st2.close();
+            st3.close();
+            cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
         }

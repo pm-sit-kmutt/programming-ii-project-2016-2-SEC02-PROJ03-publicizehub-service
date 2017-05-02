@@ -19,7 +19,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import publicizehub_service.Class.User;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
-import publicizehub_service.status.Ui.Tableview;
+
 
 /**
  *
@@ -52,7 +52,7 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select id, projectNameThai, projectNameEnglish, budget, cost, numOfStudent, numCome from project "
-                    + "join participants on participants.projectId = project.id where id = '"+id+"'");
+                    + "where id = '"+id+"'");
             while(rs.next()){
                 id = rs.getInt("id");
                 jTextField1.setText(rs.getString("projectNameThai"));
@@ -62,7 +62,6 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
                 jTextField6.setText(rs.getString("numOfStudent"));
                 jTextField4.setText(rs.getString("numCome"));
             }
-            rs.close();
             st.close();
             Statement st2 = con.createStatement();
             ResultSet rs2 = st2.executeQuery("select * from picture where projectId = "+id);
@@ -75,7 +74,6 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
                 line++;
                 canRemoveInDatabase = 1;
             }
-            rs2.close();
             st2.close();
         } catch (SQLException ex) {
             Logger.getLogger(SubmitFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
@@ -553,7 +551,12 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
     // ย้อนกลับ
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        //table.setVisible(true);
+        try {    
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SearchFinishedReportFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ssf.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
     // ลบรูป

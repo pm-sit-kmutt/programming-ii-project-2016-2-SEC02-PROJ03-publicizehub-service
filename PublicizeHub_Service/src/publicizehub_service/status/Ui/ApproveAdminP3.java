@@ -5,6 +5,7 @@
  */
 package publicizehub_service.status.Ui;
 
+import publicizehub_service.Class.User;
 import publicizehub_service.activity_form.Ui.*;
 import publicizehub_service.status.Ui.*;
 
@@ -13,12 +14,21 @@ import publicizehub_service.status.Ui.*;
  * @author dell
  */
 public class ApproveAdminP3 extends javax.swing.JFrame {
-
+    ApproveAdminP1 approve1;
+    int line1 = 0;
+    int line2 = 0;
+    int line3 = 0;
+    int projectId=User.getSelectProjectId();
     /**
      * Creates new form EditP3
      */
     public ApproveAdminP3() {
         initComponents();
+    }
+    
+    public ApproveAdminP3(ApproveAdminP1 approve1) {
+        initComponents();
+        this.approve1 = approve1;
     }
 
     /**
@@ -362,11 +372,8 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-       ApproveAdminP2 ad2 = new ApproveAdminP2();
-        ad2.setVisible(true);
-
-        setVisible(false);
+       approve1.a2.setVisible(true);
+       setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed

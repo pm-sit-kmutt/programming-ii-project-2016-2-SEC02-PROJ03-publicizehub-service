@@ -61,9 +61,7 @@ public class SubmitFrame extends javax.swing.JFrame {
                 jTextField3.setText(rs.getString("cost"));
                 jTextField6.setText(rs.getString("numOfStudent"));
                 jTextField4.setText(rs.getString("numCome"));
-                jTextField1.setEnabled(rootPaneCheckingEnabled);
             }
-            rs.close();
             st.close();
             Statement st2 = con.createStatement();
             ResultSet rs2 = st2.executeQuery("select * from picture where projectId = "+id);
@@ -76,7 +74,6 @@ public class SubmitFrame extends javax.swing.JFrame {
                 line++;
                 canRemoveInDatabase = 1;
             }
-            rs2.close();
             st2.close();
         } catch (SQLException ex) {
             Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -475,13 +472,11 @@ public class SubmitFrame extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
             }
-
             DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
             model.addRow(new Object[0]);
             model.setValueAt(line+1, line, 0);
             model.setValueAt(name.get(line), line, 1);
             line++;
-
         }
     }//GEN-LAST:event_jButton2ActionPerformed
     // ดู comment
@@ -544,6 +539,11 @@ public class SubmitFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
     // ย้อนกลับ
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        try {    
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SearchFinishedReportFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         table.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -600,13 +600,11 @@ public class SubmitFrame extends javax.swing.JFrame {
     public void openImage(String filePath){
         JDialog jdialog = new JDialog(this, rootPaneCheckingEnabled);
         JLabel jlabel = new JLabel(new javax.swing.ImageIcon(filePath), JLabel.CENTER);
-        JScrollPane sc = new JScrollPane(jlabel);
-        
+        JScrollPane sc = new JScrollPane(jlabel); 
         jdialog.add(sc);
         jdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         jdialog.pack();
         jdialog.setVisible(true);
-        
     }
     
     /**

@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 import publicizehub_service.activity_form.Ui.*;
+import publicizehub_service.status.Ui.EditP1;
 
 /**
  *
@@ -19,28 +20,32 @@ import publicizehub_service.activity_form.Ui.*;
  */
 public class FinishedReportFrame extends javax.swing.JFrame {
     KMUTTPublicizeService home;
+    Connection con;
+    Statement st;
+    ResultSet rs;
     /**
      * Creates new form FinishedReport
      */
     public FinishedReportFrame() {
         initComponents();
+        setFrame();
     }
     
     public FinishedReportFrame(KMUTTPublicizeService home) {
-        this.home = home;
         initComponents();
-        setFinishedTable();  
+        this.home = home;
+        setFrame();  
     }
     
-    public void setFinishedTable(){
+    public void setFrame(){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         model.removeRow(0);
         int line = 0;
         
-        Connection con = ConnectionBuilder.getConnection();
+        con = ConnectionBuilder.getConnection();
         try {
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("select * from project where responsible = "+User.getUsername()+" and status = 0");
+            st = con.createStatement();
+            rs = st.executeQuery("select * from project where responsible = "+User.getUsername()+" and status = 0");
             while(rs.next()){
                 model.addRow(new Object[0]);
                 model.setValueAt(line+1, line, 0);
@@ -49,9 +54,6 @@ public class FinishedReportFrame extends javax.swing.JFrame {
                 model.setValueAt(rs.getString("closeTime"), line, 3);
                 line++;
             }
-            rs.close();
-            st.close();
-            con.close();
         } catch (SQLException ex) {
             System.out.println(ex);
         }
@@ -145,6 +147,11 @@ public class FinishedReportFrame extends javax.swing.JFrame {
             }
         });
         jTable1.getTableHeader().setReorderingAllowed(false);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("ThaiSans Neue", 1, 24)); // NOI18N
@@ -164,7 +171,7 @@ public class FinishedReportFrame extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(49, Short.MAX_VALUE)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
@@ -180,7 +187,7 @@ public class FinishedReportFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,9 +210,30 @@ public class FinishedReportFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {    
+            st.close();
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SearchFinishedReportFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        }
         home.setVisible(true);
-        setVisible(false);
+        dispose();    
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        int selectedRow = jTable1.getSelectedRow();
+        try {
+            if(!rs.isBeforeFirst()){
+                rs.absolute(selectedRow+1);
+                User.setSelectProjectId(rs.getInt("id"));
+                EditP1 e1 = new EditP1(this);
+                e1.setVisible(true);
+                setVisible(false);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
