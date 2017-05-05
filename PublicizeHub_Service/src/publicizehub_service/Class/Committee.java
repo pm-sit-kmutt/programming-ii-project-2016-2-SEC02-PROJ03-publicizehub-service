@@ -5,47 +5,77 @@
  */
 package publicizehub_service.Class;
 
+import javax.swing.JTable;
+
 /**
  *
  * @author นัน
  */
 public class Committee {
-    private static String studentId; 
-    private static String name;
-    private static String faculty;
-    private static String job;
+    private String studentId; 
+    private String name;
+    private String faculty;
+    private String job;
 
-    public static String getStudentId() {
+    public Committee() {
+    }
+
+    public Committee(String studentId, String name, String faculty, String job) {
+        this.studentId = studentId;
+        this.name = name;
+        this.faculty = faculty;
+        this.job = job;
+    }
+    
+    public static Committee[] jTableToArrayCommittee(JTable table){
+        int tableRow = table.getRowCount();
+        Committee[] arrayCommittee = new Committee[tableRow];
+        for (int i = 0; i < tableRow; i++) {
+            arrayCommittee[i] = new Committee(table.getValueAt(i, 0).toString(), table.getValueAt(i, 1).toString(),
+                    table.getValueAt(i, 2).toString(), table.getValueAt(i, 3).toString());
+        }
+        return arrayCommittee;
+    }
+
+    public String getStudentId() {
         return studentId;
     }
 
-    public static void setStudentId(String studentId) {
-        Committee.studentId = studentId;
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 
-    public static void setName(String name) {
-        Committee.name = name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public static String getFaculty() {
+    public String getFaculty() {
         return faculty;
     }
 
-    public static void setFaculty(String faculty) {
-        Committee.faculty = faculty;
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
     }
 
-    public static String getJob() {
+    public String getJob() {
         return job;
     }
 
-    public static void setJob(String job) {
-        Committee.job = job;
+    public void setJob(String job) {
+        this.job = job;
     }
+
+    @Override
+    public String toString() {
+        return "Committee{" + "studentId=" + studentId + ", name=" + name + ", faculty=" + faculty + ", job=" + job + '}';
+    }
+    
+    
+
     
     
 }

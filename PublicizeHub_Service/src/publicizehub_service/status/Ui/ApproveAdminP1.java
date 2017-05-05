@@ -8,6 +8,10 @@ import publicizehub_service.activity_form.Ui.*;
 import publicizehub_service.status.Ui.*;
 import publicizehub_service.Class.User;
 import publicizehub_service.report.Ui.SearchFinishedReportFrameAdmin;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
 /**
  *
  * @author dell
@@ -25,6 +29,7 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
      */
     public ApproveAdminP1() {
         initComponents();
+        setFrame();
     }
     
     public ApproveAdminP1(SearchApproveAdmin saa){
@@ -46,6 +51,14 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
      public void setFrame(){
         a2 = new ApproveAdminP2(this);
         a3 = new ApproveAdminP3(this);
+        Connection con = ConnectionBuilder.getConnection();
+        try {
+            PreparedStatement pt = con.prepareStatement("select ?,? from ? where ? = ?");
+            
+           // ResultSet rs = pt.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(ApproveAdminP1.class.getName()).log(Level.SEVERE, null, ex);
+        }
      }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -76,7 +89,6 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -196,10 +208,6 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jTextField10.setForeground(new java.awt.Color(255, 255, 255));
         jTextField10.setEnabled(false);
 
-        jButton7.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton7.setText("เพิ่ม");
-        jButton7.setEnabled(false);
-
         jPanel1.setBackground(new java.awt.Color(97, 212, 195));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/Image/kmutt.png"))); // NOI18N
@@ -290,23 +298,20 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 130, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel7)
                         .addGap(220, 220, 220))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                        .addGap(88, 88, 88)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton7)
-                                .addGap(232, 232, 232))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addGap(180, 180, 180))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jButton2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -349,15 +354,13 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -445,7 +448,6 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

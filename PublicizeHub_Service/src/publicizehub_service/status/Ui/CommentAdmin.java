@@ -5,14 +5,11 @@
  */
 package publicizehub_service.status.Ui;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Date;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JSpinner;
 import publicizehub_service.Class.User;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 
@@ -29,6 +26,9 @@ public class CommentAdmin extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         getComment();   
+        jSpinner1.setEditor(new JSpinner.DateEditor(jSpinner1, "dd/MM/yyyy"));
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        System.out.println(df.format(jSpinner1.getValue()));
     }
     
     public void getComment(){
@@ -56,6 +56,7 @@ public class CommentAdmin extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jSpinner1 = new javax.swing.JSpinner();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -70,6 +71,9 @@ public class CommentAdmin extends javax.swing.JDialog {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/Image/kmutt.png"))); // NOI18N
 
+        jSpinner1.setModel(new javax.swing.SpinnerDateModel());
+        jSpinner1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -77,12 +81,18 @@ public class CommentAdmin extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 137, Short.MAX_VALUE)
                 .addComponent(jLabel2))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
+                .addGap(139, 139, 139)
+                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -122,22 +132,22 @@ public class CommentAdmin extends javax.swing.JDialog {
                 .addContainerGap(65, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(255, 255, 255))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton1)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(59, 59, 59))))
+                        .addGap(59, 59, 59))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(256, 256, 256))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel1)
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -164,36 +174,38 @@ public class CommentAdmin extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String text = "";
-        String newText;
-        if(jTextArea1.getText().isEmpty()){
-            try {
-                newText =  jTextArea1.getText();
-                PreparedStatement pt = con.prepareStatement("insert into comment values((select id from project where id = ?), ?, ?)");
-                pt.setInt(1, User.getSelectProjectId());
-                pt.setString(2, User.getUsername());
-                pt.setString(3, newText);
-                int result = pt.executeUpdate();
-                System.out.println(result);
-            } catch (SQLException ex) {
-                Logger.getLogger(CommentAdmin.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }else {
-            try {
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery("select * from comment where projectId = '"+User.getSelectProjectId()+"'");
-                while(rs.next()){
-                    text = rs.getString("text");
+        String input = jTextArea1.getText();
+        String oldText = jTextArea2.getText();
+        
+        if(!input.isEmpty()){
+            if(oldText.isEmpty()){
+                try {
+                    PreparedStatement pt = con.prepareStatement("insert into comment values((select id from project where id = ?), ?, ?)");
+                    pt.setInt(1, User.getSelectProjectId());
+                    pt.setString(2, User.getUsername());
+                    pt.setString(3, input);
+                    int result = pt.executeUpdate();
+                    System.out.println(result);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CommentAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                newText =  text+"\n"+jTextArea1.getText();
-                PreparedStatement pt = con.prepareStatement("update comment set text = ? where projectId = ?");
-                pt.setString(1, newText);
-                pt.setInt(2, User.getSelectProjectId());
-                int result = pt.executeUpdate();
-                System.out.println(result);
+            }else {
+                try {
+                    Statement st = con.createStatement();
+                    ResultSet rs = st.executeQuery("select * from comment where projectId = '"+User.getSelectProjectId()+"'");
+                    while(rs.next()){
+                        oldText = rs.getString("text");
+                    }
+                    input =  oldText+"\n"+jTextArea1.getText();
+                    PreparedStatement pt = con.prepareStatement("update comment set text = ? where projectId = ?");
+                    pt.setString(1, input);
+                    pt.setInt(2, User.getSelectProjectId());
+                    int result = pt.executeUpdate();
+                    System.out.println(result);
 
-            } catch (SQLException ex) {
-                Logger.getLogger(CommentAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(CommentAdmin.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
         jTextArea1.setText("");
@@ -250,6 +262,7 @@ public class CommentAdmin extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     // End of variables declaration//GEN-END:variables

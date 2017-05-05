@@ -14,13 +14,13 @@ public class ProjectDetail {
     private static String responsible;
     private static String projectNameThai;
     private static String projectNameEnglish;
-    private static String Advisors;
     private static String department;
+    private static String Advisors;
     private static String rationale;
     private static int placeType;
-    private static int people;
     private static String placeLocation;
     private static int numOfStudent;
+    private static int numCome;
     private static double budget;
     private static double cost;
     private static Date openTime;
@@ -28,13 +28,47 @@ public class ProjectDetail {
     private static Date endTime;
     private static Date closeTime;
     private static int status;
-    private static String[] objective;
-    private static String[] expected;
+    private static String objective;
+    private static String expected;
     private static Committee[] committee;
     private static Comment[] comment;
-    private static Process[] process;
+    private static ProjectProcess[] process;
     private static Money[] money;
 
+    public static void printAll(){
+        System.out.println("responsible: "+responsible); 
+        System.out.println("projectNameThai: "+projectNameThai); 
+        System.out.println("projectNameEnglish: "+projectNameEnglish); 
+        System.out.println("department: "+department); 
+        System.out.println("Advisors: "+Advisors); 
+        System.out.println("rationale: "+rationale); 
+        System.out.println("placeType: "+placeType); 
+        System.out.println("placeLocation: "+placeLocation); 
+        System.out.println("numOfStudent: "+numOfStudent); 
+        System.out.println("numCome: "+numCome); 
+        System.out.println("budget: "+budget); 
+        System.out.println("cost: "+cost); 
+        System.out.println("openTime: "+openTime); 
+        System.out.println("startTime: "+startTime); 
+        System.out.println("endTime: "+endTime); 
+        System.out.println("closeTime: "+closeTime); 
+        System.out.println("status: "+status); 
+        System.out.println("objective: "+objective); 
+        System.out.println("expected: "+expected); 
+        System.out.println("comment: "+comment); 
+        for (Committee committee1 : committee) {
+            System.out.println(committee1);
+        }
+        for (ProjectProcess committee1 : process) {
+            System.out.println(committee1);
+        }
+        for (Money committee1 : money) {
+            System.out.println(committee1);
+        }
+        
+        
+    }
+    
     public static int getId() {
         return id;
     }
@@ -67,20 +101,20 @@ public class ProjectDetail {
         ProjectDetail.projectNameEnglish = projectNameEnglish;
     }
 
-    public static String getAdvisors() {
-        return Advisors;
-    }
-
-    public static void setAdvisors(String Advisors) {
-        ProjectDetail.Advisors = Advisors;
-    }
-
     public static String getDepartment() {
         return department;
     }
 
     public static void setDepartment(String department) {
         ProjectDetail.department = department;
+    }
+
+    public static String getAdvisors() {
+        return Advisors;
+    }
+
+    public static void setAdvisors(String Advisors) {
+        ProjectDetail.Advisors = Advisors;
     }
 
     public static String getRationale() {
@@ -99,14 +133,6 @@ public class ProjectDetail {
         ProjectDetail.placeType = placeType;
     }
 
-    public static int getPeople() {
-        return people;
-    }
-
-    public static void setPeople(int people) {
-        ProjectDetail.people = people;
-    }
-
     public static String getPlaceLocation() {
         return placeLocation;
     }
@@ -121,6 +147,14 @@ public class ProjectDetail {
 
     public static void setNumOfStudent(int numOfStudent) {
         ProjectDetail.numOfStudent = numOfStudent;
+    }
+
+    public static int getNumCome() {
+        return numCome;
+    }
+
+    public static void setNumCome(int numCome) {
+        ProjectDetail.numCome = numCome;
     }
 
     public static double getBudget() {
@@ -179,19 +213,11 @@ public class ProjectDetail {
         ProjectDetail.status = status;
     }
 
-    public static String[] getObjective() {
-        return objective;
-    }
-
-    public static void setObjective(String[] objective) {
+    public static void setObjective(String objective) {
         ProjectDetail.objective = objective;
     }
 
-    public static String[] getExpected() {
-        return expected;
-    }
-
-    public static void setExpected(String[] expected) {
+    public static void setExpected(String expected) {
         ProjectDetail.expected = expected;
     }
 
@@ -211,11 +237,11 @@ public class ProjectDetail {
         ProjectDetail.comment = comment;
     }
 
-    public static Process[] getProcess() {
+    public static ProjectProcess[] getProcess() {
         return process;
     }
 
-    public static void setProcess(Process[] process) {
+    public static void setProcess(ProjectProcess[] process) {
         ProjectDetail.process = process;
     }
 

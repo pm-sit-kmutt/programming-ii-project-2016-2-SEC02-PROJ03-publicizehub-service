@@ -5,30 +5,59 @@
  */
 package publicizehub_service.Class;
 
+import javax.swing.JTable;
+
 
 /**
  *
  * @author นัน
  */
 public class Money {
-    private static String text;
-    private static double cost; 
+    private String text;
+    private double cost;
+    private static double budget = 0;
 
-    public static String getText() {
+    public Money() {
+    }
+
+    public Money(String text, double cost) {
+        this.text = text;
+        this.cost = cost;
+    }
+    
+    public static Money[] jTableToArrayMoney(JTable table){
+        int tableRow = table.getRowCount();
+        Money[] ArrayMoney = new Money[tableRow];
+        for (int i = 0; i < tableRow; i++) {
+            ArrayMoney[i] = new Money(table.getValueAt(i, 1).toString(), (double)table.getValueAt(i, 2));
+            budget += (double)table.getValueAt(i, 2);
+        }
+        return ArrayMoney;
+    }
+
+    public String getText() {
         return text;
     }
 
-    public static void setText(String text) {
-        Money.text = text;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public static double getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public static void setCost(double cost) {
-        Money.cost = cost;
+    public void setCost(double cost) {
+        this.cost = cost;
     }
-    
+
+    public static double getBudget() {
+        return budget;
+    }
+
+    @Override
+    public String toString() {
+        return "Money{" + "text=" + text + ", cost=" + cost + '}';
+    }
     
 }

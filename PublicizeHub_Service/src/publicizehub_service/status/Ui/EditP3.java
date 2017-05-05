@@ -42,11 +42,11 @@ public class EditP3 extends javax.swing.JFrame {
     }
     
     public void setFrame(){
-        DefaultTableModel mb1=(DefaultTableModel) jTable3.getModel();
+        DefaultTableModel mb1=(DefaultTableModel) jTable1.getModel();
         mb1.removeRow(0);
-        DefaultTableModel mb2=(DefaultTableModel) jTable1.getModel();
+        DefaultTableModel mb2=(DefaultTableModel) jTable2.getModel();
         mb2.removeRow(0);
-        DefaultTableModel mb3=(DefaultTableModel) jTable2.getModel();
+        DefaultTableModel mb3=(DefaultTableModel) jTable3.getModel();
         mb3.removeRow(0);
         Connection cn=ConnectionBuilder.getConnection();
         try {
@@ -98,7 +98,7 @@ public class EditP3 extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable2 = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -108,7 +108,7 @@ public class EditP3 extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTable3 = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
@@ -116,7 +116,7 @@ public class EditP3 extends javax.swing.JFrame {
         jTextField5 = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -143,8 +143,8 @@ public class EditP3 extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
             },
@@ -167,12 +167,12 @@ public class EditP3 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane2.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(50);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(50);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(50);
+        jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setMinWidth(50);
+            jTable2.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTable2.getColumnModel().getColumn(2).setMinWidth(50);
+            jTable2.getColumnModel().getColumn(2).setMaxWidth(50);
         }
 
         jLabel7.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
@@ -225,8 +225,8 @@ public class EditP3 extends javax.swing.JFrame {
             }
         });
 
-        jTable2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTable3.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null}
             },
@@ -249,12 +249,12 @@ public class EditP3 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable2);
-        if (jTable2.getColumnModel().getColumnCount() > 0) {
-            jTable2.getColumnModel().getColumn(0).setMinWidth(50);
-            jTable2.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable2.getColumnModel().getColumn(3).setMinWidth(50);
-            jTable2.getColumnModel().getColumn(3).setMaxWidth(50);
+        jScrollPane1.setViewportView(jTable3);
+        if (jTable3.getColumnModel().getColumnCount() > 0) {
+            jTable3.getColumnModel().getColumn(0).setMinWidth(50);
+            jTable3.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTable3.getColumnModel().getColumn(3).setMinWidth(50);
+            jTable3.getColumnModel().getColumn(3).setMaxWidth(50);
         }
 
         jLabel11.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
@@ -284,13 +284,13 @@ public class EditP3 extends javax.swing.JFrame {
             }
         });
 
-        jTable3.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
             },
             new String [] {
-                "รายการ", "ระยะเวลาในการดำเนินการ", "ลบ"
+                "รายการ", "วันที่ดำเนินการ", "ลบ"
             }
         ) {
             Class[] types = new Class [] {
@@ -308,10 +308,10 @@ public class EditP3 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable3);
-        if (jTable3.getColumnModel().getColumnCount() > 0) {
-            jTable3.getColumnModel().getColumn(2).setMinWidth(50);
-            jTable3.getColumnModel().getColumn(2).setMaxWidth(50);
+        jScrollPane3.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(2).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(50);
         }
 
         jPanel3.setBackground(new java.awt.Color(97, 212, 195));
@@ -509,7 +509,7 @@ public class EditP3 extends javax.swing.JFrame {
         // TODO add your handling code here:
         String list =jTextField4.getText();
         String date =jTextField5.getText();
-        DefaultTableModel mb=(DefaultTableModel) jTable3.getModel();
+        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
         mb.addRow(new Object[0]); 
         mb.setValueAt(list, line1, 0);
         mb.setValueAt(date, line1, 1);
@@ -519,7 +519,7 @@ public class EditP3 extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String expected =jTextField1.getText();
-        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+        DefaultTableModel mb=(DefaultTableModel) jTable2.getModel();
         mb.addRow(new Object[0]);
         mb.setValueAt(line2+1, line2, 0);
         mb.setValueAt(expected, line2, 1);
@@ -530,7 +530,7 @@ public class EditP3 extends javax.swing.JFrame {
         // TODO add your handling code here:
         String text  =jTextField2.getText();
         String money =jTextField3.getText();
-        DefaultTableModel mb=(DefaultTableModel) jTable2.getModel();
+        DefaultTableModel mb=(DefaultTableModel) jTable3.getModel();
         mb.addRow(new Object[0]);
         mb.setValueAt(line3+1, line3, 0);
         mb.setValueAt(text, line3, 1);
@@ -539,28 +539,7 @@ public class EditP3 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-         boolean[] check = new boolean[jTable3.getRowCount()]; //เก็บว่าเลือกลบอันไหน
-        for(int i = 0; i < check.length ;i++){
-            if(jTable3.getValueAt(i, 2) == null){
-                check[i] = false;
-            }else {
-                check[i] = (boolean)jTable3.getValueAt(i, 2);
-            }
-        }
-        
-        DefaultTableModel model = (DefaultTableModel)jTable3.getModel();
-        for(int i = check.length-1; i >= 0 ;i--){ //วนลูปลบตัวที่เลือกออก
-            if(check[i]){
-                 model.removeRow(i);
-                line1--;
-            }
-        }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-         boolean[] check = new boolean[jTable1.getRowCount()]; //เก็บว่าเลือกลบอันไหน
+        boolean[] check = new boolean[jTable1.getRowCount()]; //เก็บว่าเลือกลบอันไหน
         for(int i = 0; i < check.length ;i++){
             if(jTable1.getValueAt(i, 2) == null){
                 check[i] = false;
@@ -572,34 +551,54 @@ public class EditP3 extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         for(int i = check.length-1; i >= 0 ;i--){ //วนลูปลบตัวที่เลือกออก
             if(check[i]){
-                 model.removeRow(i);
-                line2--;
+                model.removeRow(i);
+                line1--;
             }
         }
-        for(int i = 0; i< jTable1.getRowCount();i++){ //วนลูปเปลี่ยนลำดับที่
-            model.setValueAt(i+1, i, 0);
-        }
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-         boolean[] check = new boolean[jTable2.getRowCount()]; //เก็บว่าเลือกลบอันไหน
+        boolean[] check = new boolean[jTable2.getRowCount()]; //เก็บว่าเลือกลบอันไหน
         for(int i = 0; i < check.length ;i++){
-            if(jTable2.getValueAt(i, 3) == null){
+            if(jTable2.getValueAt(i, 2) == null){
                 check[i] = false;
             }else {
-                check[i] = (boolean)jTable2.getValueAt(i, 3);
+                check[i] = (boolean)jTable2.getValueAt(i, 2);
             }
         }
         
         DefaultTableModel model = (DefaultTableModel)jTable2.getModel();
         for(int i = check.length-1; i >= 0 ;i--){ //วนลูปลบตัวที่เลือกออก
             if(check[i]){
-                 model.removeRow(i);
-                line3--;
+                model.removeRow(i);
+                line2--;
             }
         }
         for(int i = 0; i< jTable2.getRowCount();i++){ //วนลูปเปลี่ยนลำดับที่
+            model.setValueAt(i+1, i, 0);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        boolean[] check = new boolean[jTable3.getRowCount()]; //เก็บว่าเลือกลบอันไหน
+        for(int i = 0; i < check.length ;i++){
+            if(jTable3.getValueAt(i, 3) == null){
+                check[i] = false;
+            }else {
+                check[i] = (boolean)jTable3.getValueAt(i, 3);
+            }
+        }
+        
+        DefaultTableModel model = (DefaultTableModel)jTable3.getModel();
+        for(int i = check.length-1; i >= 0 ;i--){ //วนลูปลบตัวที่เลือกออก
+            if(check[i]){
+                model.removeRow(i);
+                line3--;
+            }
+        }
+        for(int i = 0; i< jTable3.getRowCount();i++){ //วนลูปเปลี่ยนลำดับที่
             model.setValueAt(i+1, i, 0);
         }
     }//GEN-LAST:event_jButton7ActionPerformed

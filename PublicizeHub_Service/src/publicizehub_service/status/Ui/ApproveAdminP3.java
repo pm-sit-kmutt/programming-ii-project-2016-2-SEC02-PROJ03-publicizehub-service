@@ -87,9 +87,6 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
                 {null, null}
             },
             new String [] {
@@ -217,7 +214,7 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
                 {null, null}
             },
             new String [] {
-                "รายการ", "ระยะเวลาในการดำเนินการ"
+                "รายการ", "วันที่ดำเนินการ"
             }
         ));
         jTable3.setEnabled(false);
