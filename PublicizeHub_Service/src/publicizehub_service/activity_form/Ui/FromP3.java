@@ -5,11 +5,13 @@
  */
 package publicizehub_service.activity_form.Ui;
 
-import java.sql.Connection;
+import java.sql.*;
+import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
 import publicizehub_service.Class.*;
@@ -39,6 +41,36 @@ public class FromP3 extends javax.swing.JFrame {
         jSpinner1.setEditor(new JSpinner.DateEditor(jSpinner1, "dd-MM-yyyy"));     
     }
     
+    public void setProjectDetail() throws ParseException{
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        ProjectDetail.setResponsible(User.getUsername());
+        ProjectDetail.setProjectNameThai(from1.getThaiName().getText());
+        ProjectDetail.setProjectNameEnglish(from1.getEngName().getText());
+        if(from1.getjComboBox1().getSelectedItem().toString().equals("เลือก")){
+            ProjectDetail.setDepartment("");
+        }else{
+            ProjectDetail.setDepartment(from1.getjComboBox1().getSelectedItem().toString());
+        }
+        ProjectDetail.setAdvisors(from1.getAdvisors().getText());
+        ProjectDetail.setRationale(from1.p2.getRationale().getText());
+        ProjectDetail.setPlaceType(from1.p2.getPlaceType().getSelectedIndex());
+        ProjectDetail.setPlaceLocation(from1.p2.getPlaceLocation().getText());
+        ProjectDetail.setNumOfStudent((int)from1.p2.getNumOfStudent().getValue());
+        ProjectDetail.setNumCome(0);
+        ProjectDetail.setBudget(0);
+        ProjectDetail.setOpenTime(new java.sql.Date(new Date().getTime()));
+        ProjectDetail.setStartTime(java.sql.Date.valueOf(df.format((Date)from1.p2.getStartTime().getValue())));
+        ProjectDetail.setEndTime(java.sql.Date.valueOf(df.format((Date)from1.p2.getEndTime().getValue())));
+        ProjectDetail.setCloseTime(null);
+        ProjectDetail.setStatus(1);
+        ProjectDetail.setObjective(from1.p2.getObjective().getText());
+        ProjectDetail.setExpected(expected.getText());
+        ProjectDetail.setCommittee(Committee.jTableToArrayCommittee(from1.getjTable1()));
+        ProjectDetail.setComment(null);
+        ProjectDetail.setProcess(ProjectProcess.jTableToArrayProcess(jTable1));
+        ProjectDetail.setMoney(Money.jTableToArrayMoney(jTable2));
+        ProjectDetail.setCost(Money.getSumCost());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -373,32 +405,55 @@ public class FromP3 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        ProjectDetail.setResponsible(User.getUsername());
-        ProjectDetail.setProjectNameThai(from1.getThaiName().getText());
-        ProjectDetail.setProjectNameEnglish(from1.getEngName().getText());
-        ProjectDetail.setDepartment(from1.getjComboBox1().getSelectedItem().toString());
-        ProjectDetail.setAdvisors(from1.getAdvisors().getText());
-        ProjectDetail.setRationale(from1.p2.getRationale().getText());
-        ProjectDetail.setPlaceType(from1.p2.getPlaceType().getSelectedIndex());
-        ProjectDetail.setPlaceLocation(from1.p2.getPlaceLocation().getText());
-        ProjectDetail.setNumOfStudent((int)from1.p2.getNumOfStudent().getValue());
-        ProjectDetail.setNumCome(0);
-        ProjectDetail.setCost(0);
-        ProjectDetail.setOpenTime(new java.sql.Date(new Date().getTime()));
-        ProjectDetail.setStartTime(java.sql.Date.valueOf(df.format((Date)from1.p2.getStartTime().getValue())));
-        ProjectDetail.setEndTime(java.sql.Date.valueOf(df.format((Date)from1.p2.getEndTime().getValue())));
-        ProjectDetail.setCloseTime(null);
-        ProjectDetail.setStatus(1);
-        ProjectDetail.setObjective(from1.p2.getObjective().getText());
-        ProjectDetail.setExpected(expected.getText());
-        ProjectDetail.setCommittee(Committee.jTableToArrayCommittee(from1.getjTable1()));
-        ProjectDetail.setComment(null);
-        ProjectDetail.setProcess(ProjectProcess.jTableToArrayProcess(jTable1));
-        ProjectDetail.setMoney(Money.jTableToArrayMoney(jTable2));
-        ProjectDetail.setBudget(Money.getBudget());
-        //Connection con = ConnectionBuilder.getConnection();
-        ProjectDetail.printAll();
+        try {
+            setProjectDetail();
+        } catch (ParseException ex) {
+            Logger.getLogger(FromP3.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(ProjectDetail.check()){
+            System.out.println("Ok");
+            Connection con = ConnectionBuilder.getConnection();
+            try {
+                PreparedStatement pt = con.prepareStatement("insert into project "
+                        + "values(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                pt.setString(1, ProjectDetail.getResponsible());
+                pt.setString(2, ProjectDetail.getProjectNameThai());
+                pt.setString(3, ProjectDetail.getProjectNameEnglish());
+                pt.setString(4, ProjectDetail.getDepartment());
+                pt.setString(5, ProjectDetail.getAdvisors());
+                pt.setString(6, ProjectDetail.getRationale());
+                pt.setInt(7, ProjectDetail.getPlaceType());
+                pt.setString(8, ProjectDetail.getPlaceLocation());
+                pt.setInt(9, ProjectDetail.getNumOfStudent());
+                pt.setInt(10, ProjectDetail.getNumCome());
+                pt.setString(11, ProjectDetail.getObjective());
+                pt.setString(12, ProjectDetail.getExpected());
+                pt.setDouble(13, ProjectDetail.getBudget());
+                pt.setDouble(14, ProjectDetail.getCost());
+                pt.setDate(15, ProjectDetail.getOpenTime());
+                pt.setDate(16, ProjectDetail.getStartTime());
+                pt.setDate(17, ProjectDetail.getEndTime());
+                pt.setDate(18, ProjectDetail.getCloseTime());
+                pt.setInt(19, ProjectDetail.getStatus());
+                int a = pt.executeUpdate();
+                System.out.println(a);
+                pt.close();
+                PreparedStatement pt2 =  con.prepareStatement("insert into committee "
+                        + "values((select id form project where ), ?, ?, ?)");
+                Committee[] arryCommittee = ProjectDetail.getCommittee();
+                for (int i = 0; i < arryCommittee.length; i++) {
+                    pt2.setString(1, arryCommittee[i].getStudentId());
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(FromP3.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "เปิดโครงการเรียบร้อย คุณสามารถดูสถานะของโครงการได้ที่ หน้าตรวจสอบสถานะ/แก้ไข");
+            from1.home.setVisible(true);
+            dispose();
+            from1.p2.dispose();
+            from1.dispose();
+        }
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -496,11 +551,6 @@ public class FromP3 extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FromP3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

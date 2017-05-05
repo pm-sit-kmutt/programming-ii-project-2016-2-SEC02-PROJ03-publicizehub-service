@@ -29,6 +29,8 @@ public class Comment extends javax.swing.JDialog {
             while(rs.next()){
                 jTextArea1.setText(rs.getString("text"));
             }
+            st.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Comment.class.getName()).log(Level.SEVERE, null, ex);
         }

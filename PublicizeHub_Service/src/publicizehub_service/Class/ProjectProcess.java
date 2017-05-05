@@ -6,7 +6,11 @@
 package publicizehub_service.Class;
 
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.scene.chart.PieChart;
 import javax.swing.JTable;
 
 /**
@@ -25,13 +29,12 @@ public class ProjectProcess {
         this.date = date;
     }
     
-    public static ProjectProcess[] jTableToArrayProcess(JTable table){
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+    public static ProjectProcess[] jTableToArrayProcess(JTable table) throws ParseException{
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         int tableRow = table.getRowCount();
         ProjectProcess[] ArrayProcess = new ProjectProcess[tableRow];
         for (int i = 0; i < tableRow; i++) {
-            ArrayProcess[i] = new ProjectProcess(table.getValueAt(i, 1).toString(), 
-                    Date.valueOf(df.format((java.util.Date)table.getValueAt(i, 2))));
+            ArrayProcess[i] = new ProjectProcess(table.getValueAt(i, 1).toString(), new Date(df.parse((String) table.getValueAt(i, 2)).getTime()));
         }
         return ArrayProcess;
     }

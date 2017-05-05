@@ -15,7 +15,7 @@ import javax.swing.JTable;
 public class Money {
     private String text;
     private double cost;
-    private static double budget = 0;
+    private static double sumCost = 0;
 
     public Money() {
     }
@@ -30,7 +30,8 @@ public class Money {
         Money[] ArrayMoney = new Money[tableRow];
         for (int i = 0; i < tableRow; i++) {
             ArrayMoney[i] = new Money(table.getValueAt(i, 1).toString(), (double)table.getValueAt(i, 2));
-            budget += (double)table.getValueAt(i, 2);
+            sumCost += (double)table.getValueAt(i, 2);
+            System.out.println(sumCost);
         }
         return ArrayMoney;
     }
@@ -51,8 +52,8 @@ public class Money {
         this.cost = cost;
     }
 
-    public static double getBudget() {
-        return budget;
+    public static double getSumCost() {
+        return sumCost;
     }
 
     @Override

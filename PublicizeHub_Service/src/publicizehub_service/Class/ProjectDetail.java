@@ -5,6 +5,7 @@
  */
 package publicizehub_service.Class;
 import java.sql.Date;
+import javax.swing.JOptionPane;
 /**
  *
  * @author นัน
@@ -34,6 +35,21 @@ public class ProjectDetail {
     private static Comment[] comment;
     private static ProjectProcess[] process;
     private static Money[] money;
+    
+    public static boolean check(){
+        if(responsible.isEmpty() || projectNameThai.isEmpty() || projectNameEnglish.isEmpty() || department.isEmpty() || Advisors.isEmpty() || rationale.isEmpty()
+                || placeLocation.isEmpty() || numOfStudent == 0 || objective.isEmpty() || expected.isEmpty() || committee.length == 0 || process.length == 0 || money.length == 0){
+            if(endTime.before(startTime)){
+                JOptionPane.showMessageDialog(null, "คุณใส่ระยะเวลาในการดำเนินงาน ไม่ถูกต้อง");
+            }else{
+                JOptionPane.showMessageDialog(null, "คุณยังกรอกข้อมูลไม่ครบ");
+            }
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
 
     public static void printAll(){
         System.out.println("responsible: "+responsible); 
@@ -46,6 +62,8 @@ public class ProjectDetail {
         System.out.println("placeLocation: "+placeLocation); 
         System.out.println("numOfStudent: "+numOfStudent); 
         System.out.println("numCome: "+numCome); 
+        System.out.println("objective: "+objective); 
+        System.out.println("expected: "+expected); 
         System.out.println("budget: "+budget); 
         System.out.println("cost: "+cost); 
         System.out.println("openTime: "+openTime); 
@@ -53,20 +71,17 @@ public class ProjectDetail {
         System.out.println("endTime: "+endTime); 
         System.out.println("closeTime: "+closeTime); 
         System.out.println("status: "+status); 
-        System.out.println("objective: "+objective); 
-        System.out.println("expected: "+expected); 
+        
         System.out.println("comment: "+comment); 
         for (Committee committee1 : committee) {
             System.out.println(committee1);
         }
-        for (ProjectProcess committee1 : process) {
-            System.out.println(committee1);
+        for (ProjectProcess projectProcess : process) {
+            System.out.println(projectProcess);
         }
-        for (Money committee1 : money) {
-            System.out.println(committee1);
+        for (Money money : money) {
+            System.out.println(money);
         }
-        
-        
     }
     
     public static int getId() {
@@ -157,6 +172,22 @@ public class ProjectDetail {
         ProjectDetail.numCome = numCome;
     }
 
+    public static String getObjective() {
+        return objective;
+    }
+
+    public static void setObjective(String objective) {
+        ProjectDetail.objective = objective;
+    }
+
+    public static String getExpected() {
+        return expected;
+    }
+
+    public static void setExpected(String expected) {
+        ProjectDetail.expected = expected;
+    }
+
     public static double getBudget() {
         return budget;
     }
@@ -211,14 +242,6 @@ public class ProjectDetail {
 
     public static void setStatus(int status) {
         ProjectDetail.status = status;
-    }
-
-    public static void setObjective(String objective) {
-        ProjectDetail.objective = objective;
-    }
-
-    public static void setExpected(String expected) {
-        ProjectDetail.expected = expected;
     }
 
     public static Committee[] getCommittee() {
