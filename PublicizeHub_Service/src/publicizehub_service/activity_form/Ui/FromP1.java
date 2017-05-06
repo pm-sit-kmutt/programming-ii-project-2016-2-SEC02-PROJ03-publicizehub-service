@@ -145,22 +145,15 @@ public class FromP1 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ชื่อ - นามสกุล", "รหัสนักศึกษา", "คณะ", "หน้าที่", "ลบ"
+                "รหัสนักศึกษา", "ชื่อ - นามสกุล", "คณะ", "หน้าที่", "ลบ"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
             };
-            boolean[] canEdit = new boolean [] {
-                true, true, true, false, true
-            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
         });
         jTable1.getTableHeader().setReorderingAllowed(false);
@@ -408,14 +401,20 @@ public class FromP1 extends javax.swing.JFrame {
         String id =jTextField7.getText();
         String faculty=jTextField10.getText();
         String job=jTextField9.getText();
+        if(!name.isEmpty() && !id.isEmpty() && !faculty.isEmpty() && !job.isEmpty()){
+            DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+            mb.addRow(new Object[0]);
+            mb.setValueAt(id, line, 0);
+            mb.setValueAt(name, line, 1);
+            mb.setValueAt(faculty, line, 2);
+            mb.setValueAt(job, line, 3);
+            line++;
+            jTextField11.setText("");
+            jTextField7.setText("");
+            jTextField10.setText("");
+            jTextField9.setText("");
+        }
         
-        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
-        mb.addRow(new Object[0]);
-        mb.setValueAt(name, line, 0);
-        mb.setValueAt(id, line, 1);
-        mb.setValueAt(faculty, line, 2);
-        mb.setValueAt(job, line, 3);
-        line++;
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

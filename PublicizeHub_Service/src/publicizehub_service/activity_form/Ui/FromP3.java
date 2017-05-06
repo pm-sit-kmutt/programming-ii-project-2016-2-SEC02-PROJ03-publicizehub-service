@@ -438,12 +438,56 @@ public class FromP3 extends javax.swing.JFrame {
                 int a = pt.executeUpdate();
                 System.out.println(a);
                 pt.close();
-                PreparedStatement pt2 =  con.prepareStatement("insert into committee "
-                        + "values((select id form project where ), ?, ?, ?)");
+                
+                PreparedStatement pt2 = con.prepareStatement("select id from project where responsible = ? and projectNameThai = ? and projectNameEnglish = ?");
+                pt2.setString(1, ProjectDetail.getResponsible());
+                pt2.setString(2, ProjectDetail.getProjectNameThai());
+                pt2.setString(3, ProjectDetail.getProjectNameEnglish());
+                ResultSet rs = pt2.executeQuery();
+                while(rs.next()){
+                    ProjectDetail.setId(rs.getInt("id"));
+                }
+                
+                PreparedStatement pt3 =  con.prepareStatement("insert into committee "
+                        + "values(?, ?, ?, ?, ?)");
                 Committee[] arryCommittee = ProjectDetail.getCommittee();
                 for (int i = 0; i < arryCommittee.length; i++) {
-                    pt2.setString(1, arryCommittee[i].getStudentId());
+                    pt3.setInt(1, ProjectDetail.getId());
+                    pt3.setString(2, arryCommittee[i].getStudentId());
+                    pt3.setString(3, arryCommittee[i].getName());
+                    pt3.setString(4, arryCommittee[i].getFaculty());
+                    pt3.setString(5, arryCommittee[i].getJob());
+                    int b = pt3.executeUpdate();
+                    System.out.println(b);
                 }
+                pt3.close();
+                
+                PreparedStatement pt4 =  con.prepareStatement("insert into process "
+                        + "values(?, ?, ?)");
+                ProjectProcess[] arryProcess = ProjectDetail.getProcess();
+                for (int i = 0; i < arryProcess.length; i++) {
+                    pt4.setInt(1, ProjectDetail.getId());
+                    pt4.setString(2, arryProcess[i].getText());
+                    pt4.setDate(3, arryProcess[i].getDate());
+                    int c = pt4.executeUpdate();
+                    System.out.println(c);
+                }
+                pt4.close();
+                
+                PreparedStatement pt5 =  con.prepareStatement("insert into money "
+                        + "values(?, ?, ?)");
+                Money[] arryMoney = ProjectDetail.getMoney();
+                for (int i = 0; i < arryMoney.length; i++) {
+                    pt5.setInt(1, ProjectDetail.getId());
+                    pt5.setString(2, arryMoney[i].getText());
+                    pt5.setDouble(3, arryMoney[i].getCost());
+                    int d = pt5.executeUpdate();
+                    System.out.println(d);
+                }
+                
+                pt5.close();
+                pt2.close();
+                con.close();
             } catch (SQLException ex) {
                 Logger.getLogger(FromP3.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -458,26 +502,33 @@ public class FromP3 extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        String list =jTextField4.getText();
+        String list = jTextField4.getText();
         String date = df.format(jSpinner1.getValue());
-        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
-        mb.addRow(new Object[0]); 
-        mb.setValueAt(line1+1, line1, 0);
-        mb.setValueAt(list, line1, 1);
-        mb.setValueAt(date, line1, 2);
-        line1++;
+        if(!list.isEmpty() && !date.isEmpty()){
+            DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+            mb.addRow(new Object[0]); 
+            mb.setValueAt(line1+1, line1, 0);
+            mb.setValueAt(list, line1, 1);
+            mb.setValueAt(date, line1, 2);
+            line1++;
+            jTextField4.setText("");
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         String text  = jTextField2.getText();
         double money = (double)jSpinner2.getValue();
-        DefaultTableModel mb=(DefaultTableModel) jTable2.getModel();
-        mb.addRow(new Object[0]);
-        mb.setValueAt(line2+1, line2, 0);
-        mb.setValueAt(text, line2, 1);
-        mb.setValueAt(money, line2, 2);
-        line2++;
+        if(!text.isEmpty() && money != 0){
+            DefaultTableModel mb=(DefaultTableModel) jTable2.getModel();
+            mb.addRow(new Object[0]);
+            mb.setValueAt(line2+1, line2, 0);
+            mb.setValueAt(text, line2, 1);
+            mb.setValueAt(money, line2, 2);
+            line2++;
+            jTextField2.setText("");
+            jSpinner2.setValue(0);
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
