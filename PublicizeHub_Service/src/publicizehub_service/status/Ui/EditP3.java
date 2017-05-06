@@ -5,17 +5,14 @@
  */
 package publicizehub_service.status.Ui;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
 import publicizehub_service.Class.User;
-import publicizehub_service.activity_form.Ui.*;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
-import publicizehub_service.status.Ui.*;
 
 /**
  *
@@ -25,7 +22,6 @@ public class EditP3 extends javax.swing.JFrame {
     EditP1 edit1;
     int line1 = 0;
     int line2 = 0;
-    int line3 = 0;
     int projectId=User.getSelectProjectId();
     /**
      * Creates new form EditP3
@@ -42,46 +38,42 @@ public class EditP3 extends javax.swing.JFrame {
     }
     
     public void setFrame(){
-//        DefaultTableModel mb1=(DefaultTableModel) jTable1.getModel();
-//        mb1.removeRow(0);
-//        DefaultTableModel mb2=(DefaultTableModel) jTable2.getModel();
-//        mb2.removeRow(0);
-//        DefaultTableModel mb3=(DefaultTableModel) jTable3.getModel();
-//        mb3.removeRow(0);
-//        Connection cn=ConnectionBuilder.getConnection();
-//        try {
-//            Statement st1=cn.createStatement();
-//            ResultSet re1=st1.executeQuery("select * from process where projectId = '"+projectId+"'");
-//            while(re1.next()){
-//                mb1.addRow(new Object[0]);
-//                mb1.setValueAt(re1.getString("text"), line1, 0);
-//                mb1.setValueAt(re1.getString("date"), line1, 1); 
-//                line1++;
-//            }
-//            Statement st2=cn.createStatement();
-//            ResultSet re2=st2.executeQuery("select * from expected where projectId = '"+projectId+"'");
-//            while(re2.next()){
-//                mb2.addRow(new Object[0]);
-//                mb2.setValueAt(line2+1, line2, 0);
-//                mb2.setValueAt(re2.getString("text"), line2, 1);
-//                line2++;        
-//            }  
-//            Statement st3=cn.createStatement();
-//            ResultSet re3=st3.executeQuery("select * from money where projectId = '"+projectId+"'");
-//            while(re3.next()){
-//                mb3.addRow(new Object[0]);
-//                mb3.setValueAt(line3+1, line3, 0);
-//                mb3.setValueAt(re3.getString("text"), line3, 1);
-//                mb3.setValueAt(re3.getString("cost"), line3, 2); 
-//                line3++;        
-//            }  
-//            st1.close();
-//            st2.close();
-//            st3.close();
-//            cn.close();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        jSpinner1.setEditor(new JSpinner.DateEditor(jSpinner1, "dd-MM-yyyy"));
+        DefaultTableModel mb1=(DefaultTableModel) jTable1.getModel();
+        DefaultTableModel mb2=(DefaultTableModel) jTable2.getModel();
+
+        Connection cn=ConnectionBuilder.getConnection();
+        try {
+            Statement st = cn.createStatement();
+            ResultSet re = st.executeQuery("select expected from project where id = '"+projectId+"'");
+            while(re.next()){
+                jTextArea1.setText(re.getString("expected"));
+            }
+            Statement st2 = cn.createStatement();
+            ResultSet re2 = st2.executeQuery("select * from process where projectId = '"+projectId+"'");
+            while(re2.next()){
+                mb1.addRow(new Object[0]);
+                mb1.setValueAt(line1+1, line1, 0);
+                mb1.setValueAt(re2.getString("text"), line1, 1);
+                mb1.setValueAt(re2.getString("date"), line1, 2); 
+                line1++;
+            }
+            Statement st3 = cn.createStatement();
+            ResultSet re3 = st3.executeQuery("select * from money where projectId = '"+projectId+"'");
+            while(re3.next()){
+                mb2.addRow(new Object[0]);
+                mb2.setValueAt(line2+1, line2, 0);
+                mb2.setValueAt(re3.getString("text"), line2, 1);
+                mb2.setValueAt(re3.getDouble("cost"), line2, 2);
+                line2++;        
+            }  
+            st.close();
+            st2.close();
+            st3.close();
+            cn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -102,7 +94,7 @@ public class EditP3 extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTable2 = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
@@ -152,11 +144,6 @@ public class EditP3 extends javax.swing.JFrame {
         jTextField2.setBackground(new java.awt.Color(36, 47, 65));
         jTextField2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -171,8 +158,8 @@ public class EditP3 extends javax.swing.JFrame {
             }
         });
 
-        jTable3.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTable2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -195,15 +182,15 @@ public class EditP3 extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable3.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable3);
-        if (jTable3.getColumnModel().getColumnCount() > 0) {
-            jTable3.getColumnModel().getColumn(0).setMinWidth(50);
-            jTable3.getColumnModel().getColumn(0).setMaxWidth(50);
-            jTable3.getColumnModel().getColumn(2).setMinWidth(100);
-            jTable3.getColumnModel().getColumn(2).setMaxWidth(100);
-            jTable3.getColumnModel().getColumn(3).setMinWidth(50);
-            jTable3.getColumnModel().getColumn(3).setMaxWidth(50);
+        jTable2.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setMinWidth(50);
+            jTable2.getColumnModel().getColumn(0).setMaxWidth(50);
+            jTable2.getColumnModel().getColumn(2).setMinWidth(100);
+            jTable2.getColumnModel().getColumn(2).setMaxWidth(100);
+            jTable2.getColumnModel().getColumn(3).setMinWidth(50);
+            jTable2.getColumnModel().getColumn(3).setMaxWidth(50);
         }
 
         jLabel11.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
@@ -305,6 +292,7 @@ public class EditP3 extends javax.swing.JFrame {
         jTextArea1.setBackground(new java.awt.Color(36, 47, 65));
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
         jTextArea1.setRows(5);
         jScrollPane4.setViewportView(jTextArea1);
 
@@ -424,50 +412,51 @@ public class EditP3 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
         edit1.e2.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-        String list =jTextField4.getText();
-//        String date =jTextField5.getText();
-//        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
-//        mb.addRow(new Object[0]); 
-//        mb.setValueAt(list, line1, 0);
-//        mb.setValueAt(date, line1, 1);
-        line1++;
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String list = jTextField4.getText();
+        String date = df.format(jSpinner1.getValue());
+        if(!list.isEmpty() && !date.isEmpty()){
+            DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+            mb.addRow(new Object[0]); 
+            mb.setValueAt(line1+1, line1, 0);
+            mb.setValueAt(list, line1, 1);
+            mb.setValueAt(date, line1, 2);
+            line1++;
+            jTextField4.setText("");
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        String text  =jTextField2.getText();
-//        String money =jTextField3.getText();
-//        DefaultTableModel mb=(DefaultTableModel) jTable3.getModel();
-//        mb.addRow(new Object[0]);
-//        mb.setValueAt(line3+1, line3, 0);
-//        mb.setValueAt(text, line3, 1);
-//        mb.setValueAt(money, line3, 2);
-        line3++;
+        String text  = jTextField2.getText();
+        double money = (double)jSpinner2.getValue();
+        if(!text.isEmpty() && money != 0){
+            DefaultTableModel mb=(DefaultTableModel) jTable2.getModel();
+            mb.addRow(new Object[0]);
+            mb.setValueAt(line2+1, line2, 0);
+            mb.setValueAt(text, line2, 1);
+            mb.setValueAt(money, line2, 2);
+            line2++;
+            jTextField2.setText("");
+            jSpinner2.setValue(0);
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         boolean[] check = new boolean[jTable1.getRowCount()]; //เก็บว่าเลือกลบอันไหน
         for(int i = 0; i < check.length ;i++){
-            if(jTable1.getValueAt(i, 2) == null){
+            if(jTable1.getValueAt(i, 3) == null){
                 check[i] = false;
             }else {
-                check[i] = (boolean)jTable1.getValueAt(i, 2);
+                check[i] = (boolean)jTable1.getValueAt(i, 3);
             }
         }
         
@@ -478,27 +467,29 @@ public class EditP3 extends javax.swing.JFrame {
                 line1--;
             }
         }
+        for(int i = 0; i< jTable1.getRowCount();i++){ //วนลูปเปลี่ยนลำดับที่
+            model.setValueAt(i+1, i, 0);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-        boolean[] check = new boolean[jTable3.getRowCount()]; //เก็บว่าเลือกลบอันไหน
+        boolean[] check = new boolean[jTable2.getRowCount()]; //เก็บว่าเลือกลบอันไหน
         for(int i = 0; i < check.length ;i++){
-            if(jTable3.getValueAt(i, 3) == null){
+            if(jTable2.getValueAt(i, 3) == null){
                 check[i] = false;
             }else {
-                check[i] = (boolean)jTable3.getValueAt(i, 3);
+                check[i] = (boolean)jTable2.getValueAt(i, 3);
             }
         }
         
-        DefaultTableModel model = (DefaultTableModel)jTable3.getModel();
+        DefaultTableModel model = (DefaultTableModel)jTable2.getModel();
         for(int i = check.length-1; i >= 0 ;i--){ //วนลูปลบตัวที่เลือกออก
             if(check[i]){
                 model.removeRow(i);
-                line3--;
+                line2--;
             }
         }
-        for(int i = 0; i< jTable3.getRowCount();i++){ //วนลูปเปลี่ยนลำดับที่
+        for(int i = 0; i< jTable2.getRowCount();i++){ //วนลูปเปลี่ยนลำดับที่
             model.setValueAt(i+1, i, 0);
         }
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -561,7 +552,7 @@ public class EditP3 extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;

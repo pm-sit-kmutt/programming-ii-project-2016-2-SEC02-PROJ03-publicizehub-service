@@ -5,20 +5,12 @@
  */
 package publicizehub_service.status.Ui;
 import publicizehub_service.Class.User;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import publicizehub_service.activity_form.Ui.*;
-import publicizehub_service.status.Ui.*;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
-import publicizehub_service.report.Ui.FinishedReportFrame;
-import publicizehub_service.report.Ui.SubmitFrame;
+import publicizehub_service.report.Ui.*;
 /**
  *
  * @author dell
@@ -55,22 +47,22 @@ public class EditP1 extends javax.swing.JFrame {
         e2 = new EditP2(this);
         e3 = new EditP3(this);
         DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
-        mb.removeRow(0);
         Connection cn = ConnectionBuilder.getConnection();
         try {
             Statement st=cn.createStatement();
-            ResultSet re=st.executeQuery("select projectNameThai, projectNameEnglish, advisors from project where id = '"+projectId+"'");
+            ResultSet re=st.executeQuery("select projectNameThai, projectNameEnglish, department, advisors from project where id = '"+projectId+"'");
             while(re.next()){
                 jTextField4.setText(re.getString("projectNameThai"));
                 jTextField1.setText(re.getString("projectNameEnglish"));
+                jComboBox1.setSelectedItem(re.getString("department"));
                 jTextField2.setText(re.getString("advisors"));
             }
             Statement st2=cn.createStatement();
             ResultSet re2=st2.executeQuery("select * from committee where projectId = '"+projectId+"'");
             while(re2.next()){
                 mb.addRow(new Object[0]);
-                mb.setValueAt(re2.getString("name"), line, 0);
-                mb.setValueAt(re2.getString("studentId"), line, 1);
+                mb.setValueAt(re2.getString("studentId"), line, 0);
+                mb.setValueAt(re2.getString("name"), line, 1);
                 mb.setValueAt(re2.getString("faculty"), line, 2);
                 mb.setValueAt(re2.getString("job"), line, 3);
                 line++;
@@ -106,12 +98,12 @@ public class EditP1 extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        jTextField10 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel9 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jTextField10 = new javax.swing.JTextField();
+        jTextField9 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -177,9 +169,9 @@ public class EditP1 extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("รหัสนักศึกษา");
 
-        jTextField9.setBackground(new java.awt.Color(36, 47, 65));
-        jTextField9.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jTextField9.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField10.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField10.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jTextField10.setForeground(new java.awt.Color(255, 255, 255));
 
         jTable1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -213,9 +205,9 @@ public class EditP1 extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("หน้าที่");
 
-        jTextField10.setBackground(new java.awt.Color(36, 47, 65));
-        jTextField10.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jTextField10.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField9.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField9.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jTextField9.setForeground(new java.awt.Color(255, 255, 255));
 
         jButton7.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton7.setText("เพิ่ม");
@@ -336,7 +328,7 @@ public class EditP1 extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel19)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -346,7 +338,7 @@ public class EditP1 extends javax.swing.JFrame {
                                                 .addComponent(jButton7)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(jButton3))
-                                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(69, 69, 69))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -381,10 +373,10 @@ public class EditP1 extends javax.swing.JFrame {
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(jLabel19)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7)
@@ -430,25 +422,27 @@ public class EditP1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
         String name =jTextField11.getText();
         String id =jTextField7.getText();
         String faculty=jTextField10.getText();
         String job=jTextField9.getText();
-        
-        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
-        mb.addRow(new Object[0]);
-        mb.setValueAt(name, line, 0);
-        mb.setValueAt(id, line, 1);
-        mb.setValueAt(faculty, line, 2);
-        mb.setValueAt(job, line, 3);
-        line++;
+        if(!name.isEmpty() && !id.isEmpty() && !faculty.isEmpty() && !job.isEmpty()){
+            DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+            mb.addRow(new Object[0]);
+            mb.setValueAt(id, line, 0);
+            mb.setValueAt(name, line, 1);
+            mb.setValueAt(faculty, line, 2);
+            mb.setValueAt(job, line, 3);
+            line++;
+            jTextField11.setText("");
+            jTextField7.setText("");
+            jTextField9.setText("");
+            jTextField10.setText("");
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
         boolean[] check = new boolean[jTable1.getRowCount()]; //เก็บว่าเลือกลบอันไหน
-        System.out.println(jTable1.getValueAt(0, 4));
         for(int i = 0; i < check.length ;i++){
             if(jTable1.getValueAt(i, 4) == null){
                 check[i] = false;
@@ -464,8 +458,7 @@ public class EditP1 extends javax.swing.JFrame {
                 line--;
             }
         }
-        
-        
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

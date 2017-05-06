@@ -131,7 +131,7 @@
                                           <Component id="jTextField7" min="-2" pref="137" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jTextField9" min="-2" pref="137" max="-2" attributes="0"/>
+                                          <Component id="jTextField10" min="-2" pref="137" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
@@ -142,7 +142,7 @@
                                                   <EmptySpace max="32767" attributes="0"/>
                                                   <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="jTextField10" min="-2" pref="137" max="-2" attributes="0"/>
+                                              <Component id="jTextField9" min="-2" pref="137" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -191,10 +191,10 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField9" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jTextField10" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField10" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jTextField9" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -332,7 +332,7 @@
             <Property name="text" type="java.lang.String" value="&#xe23;&#xe2b;&#xe31;&#xe2a;&#xe19;&#xe31;&#xe01;&#xe28;&#xe36;&#xe01;&#xe29;&#xe32;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField9">
+        <Component class="javax.swing.JTextField" name="jTextField10">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="41" green="2f" red="24" type="rgb"/>
@@ -424,7 +424,7 @@
             <Property name="text" type="java.lang.String" value="&#xe2b;&#xe19;&#xe49;&#xe32;&#xe17;&#xe35;&#xe48;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField10">
+        <Component class="javax.swing.JTextField" name="jTextField9">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="41" green="2f" red="24" type="rgb"/>

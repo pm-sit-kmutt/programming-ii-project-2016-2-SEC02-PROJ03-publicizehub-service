@@ -5,15 +5,7 @@
  */
 package publicizehub_service.activity_form.Ui;
 
-import java.util.Date;
-import javax.swing.JComboBox;
-import javax.swing.JSpinner;
-import javax.swing.JTable;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
-import publicizehub_service.Class.ProjectDetail;
-import publicizehub_service.status.Ui.*;
+import javax.swing.*;
 
 /**
  *
@@ -27,8 +19,6 @@ public class FromP2 extends javax.swing.JFrame {
      */
     public FromP2() {
         initComponents();
-        startTime.setEditor(new JSpinner.DateEditor(startTime, "dd-MM-yyyy")); 
-        endTime.setEditor(new JSpinner.DateEditor(endTime, "dd-MM-yyyy")); 
     }
     
     public FromP2(FromP1 from1) {
@@ -65,9 +55,6 @@ public class FromP2 extends javax.swing.JFrame {
     public JTextArea getObjective() {
         return objective;
     }
-    
-
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

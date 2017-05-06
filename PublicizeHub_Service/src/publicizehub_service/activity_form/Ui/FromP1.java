@@ -4,13 +4,8 @@
  * and open the template in the editor.
  */
 package publicizehub_service.activity_form.Ui;
-import javax.swing.JComboBox;
-import publicizehub_service.status.Ui.*;
-import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import publicizehub_service.Class.ProjectDetail;
 /**
  *
  * @author dell
@@ -414,7 +409,6 @@ public class FromP1 extends javax.swing.JFrame {
             jTextField10.setText("");
             jTextField9.setText("");
         }
-        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

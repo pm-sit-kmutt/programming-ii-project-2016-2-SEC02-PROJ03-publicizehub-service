@@ -5,17 +5,12 @@
  */
 package publicizehub_service.status.Ui;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JSpinner;
 import publicizehub_service.Class.User;
-import publicizehub_service.activity_form.Ui.*;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
-import publicizehub_service.status.Ui.*;
 
 /**
  *
@@ -23,7 +18,6 @@ import publicizehub_service.status.Ui.*;
  */
 public class EditP2 extends javax.swing.JFrame {
     EditP1 edit1;
-    int line = 0;
     int projectId = User.getSelectProjectId();
     /**
      * Creates new form EditP2
@@ -40,28 +34,22 @@ public class EditP2 extends javax.swing.JFrame {
     }
     
     public void setFrame(){
-//        DefaultTableModel mb=(DefaultTableModel)jTable1.getModel();
-//        mb.removeRow(0);
-        Connection cn=ConnectionBuilder.getConnection();
+        jSpinner2.setEditor(new JSpinner.DateEditor(jSpinner2, "dd-MM-yyyy")); 
+        jSpinner3.setEditor(new JSpinner.DateEditor(jSpinner3, "dd-MM-yyyy")); 
+        Connection cn =ConnectionBuilder.getConnection();
         try {
-            Statement st1 = cn.createStatement();
-            ResultSet re1 = st1.executeQuery("select * from project where id = '"+projectId+"'");
-            while(re1.next()){
-                jComboBox1.setSelectedIndex(re1.getInt("placeType"));
-                jTextField4.setText(re1.getString("placeLocation"));
-//                jTextField5.setText(re1.getDate("startTime").toString());
-//                jTextField2.setText(re1.getDate("endTime").toString());
+            Statement st = cn.createStatement();
+            ResultSet re = st.executeQuery("select * from project where id = '"+projectId+"'");
+            while(re.next()){
+                jComboBox1.setSelectedIndex(re.getInt("placeType"));
+                jTextField4.setText(re.getString("placeLocation"));
+                jSpinner2.setValue(re.getDate("startTime"));
+                jSpinner3.setValue(re.getDate("endTime"));
+                jSpinner4.setValue(re.getInt("numOfStudent"));
+                jTextArea1.setText("rationale");
+                jTextArea2.setText("objective");
             }
-            Statement st2 = cn.createStatement();
-            ResultSet re2 = st2.executeQuery("select * from objective where projectId = '"+projectId+"'");
-            while(re2.next()){
-//                mb.addRow(new Object[0]);
-//                mb.setValueAt(line+1, line, 0);
-//                mb.setValueAt(re2.getString("text"), line, 1);
-                line++;
-            }  
-            st1.close();
-            st2.close();
+            st.close();
             cn.close();
         } catch (SQLException ex) {
             Logger.getLogger(EditP2.class.getName()).log(Level.SEVERE, null, ex);

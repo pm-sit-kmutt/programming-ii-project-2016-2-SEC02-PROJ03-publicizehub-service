@@ -6,9 +6,8 @@
 package publicizehub_service.activity_form.Ui;
 
 import java.sql.*;
-import java.text.ParseException;
+import java.text.*;
 import java.util.Date;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -518,7 +517,6 @@ public class FromP3 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
         String text  = jTextField2.getText();
         double money = (double)jSpinner2.getValue();
         if(!text.isEmpty() && money != 0){
@@ -557,7 +555,6 @@ public class FromP3 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
         boolean[] check = new boolean[jTable2.getRowCount()]; //เก็บว่าเลือกลบอันไหน
         for(int i = 0; i < check.length ;i++){
             if(jTable2.getValueAt(i, 3) == null){
