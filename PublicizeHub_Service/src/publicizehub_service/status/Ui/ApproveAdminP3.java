@@ -6,8 +6,13 @@
 package publicizehub_service.status.Ui;
 
 import publicizehub_service.Class.User;
-import publicizehub_service.activity_form.Ui.*;
-import publicizehub_service.status.Ui.*;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.table.DefaultTableModel;
+import publicizehub_service.connectionBuilder.ConnectionBuilder;
 
 /**
  *
@@ -17,19 +22,58 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
     ApproveAdminP1 approve1;
     int line1 = 0;
     int line2 = 0;
-    int line3 = 0;
     int projectId=User.getSelectProjectId();
-    /**
-     * Creates new form EditP3
-     */
+
     public ApproveAdminP3() {
         initComponents();
+        setFrame();
     }
     
     public ApproveAdminP3(ApproveAdminP1 approve1) {
         initComponents();
         this.approve1 = approve1;
+        setFrame();
     }
+    
+    public void setFrame(){
+        jSpinner1.setEditor(new JSpinner.DateEditor(jSpinner1, "dd-MM-yyyy"));
+        DefaultTableModel mb1=(DefaultTableModel) jTable1.getModel();
+        DefaultTableModel mb2=(DefaultTableModel) jTable2.getModel();
+
+        Connection cn=ConnectionBuilder.getConnection();
+        try {
+            Statement st = cn.createStatement();
+            ResultSet re = st.executeQuery("select expected from project where id = '"+projectId+"'");
+            while(re.next()){
+                expected.setText(re.getString("expected"));
+            }
+            Statement st2 = cn.createStatement();
+            ResultSet re2 = st2.executeQuery("select * from process where projectId = '"+projectId+"'");
+            while(re2.next()){
+                mb1.addRow(new Object[0]);
+                mb1.setValueAt(line1+1, line1, 0);
+                mb1.setValueAt(re2.getString("text"), line1, 1);
+                mb1.setValueAt(re2.getString("date"), line1, 2); 
+                line1++;
+            }
+            Statement st3 = cn.createStatement();
+            ResultSet re3 = st3.executeQuery("select * from money where projectId = '"+projectId+"'");
+            while(re3.next()){
+                mb2.addRow(new Object[0]);
+                mb2.setValueAt(line2+1, line2, 0);
+                mb2.setValueAt(re3.getString("text"), line2, 1);
+                mb2.setValueAt(re3.getDouble("cost"), line2, 2);
+                line2++;        
+            }  
+            st.close();
+            st2.close();
+            st3.close();
+            cn.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,11 +131,6 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
         jTextField2.setEditable(false);
         jTextField2.setBackground(new java.awt.Color(36, 47, 65));
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -263,14 +302,14 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4)))
+                                .addComponent(jButton4))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(52, 52, 52))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -323,16 +362,28 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        int ans = JOptionPane.showConfirmDialog(null, "คุณแน่ใจแล้วใช่หรือไม่?", "Confirm", JOptionPane.YES_NO_OPTION);
+
+        if(ans == 0){
+            Connection con =  ConnectionBuilder.getConnection();
+            try {
+                Statement st = con.createStatement();
+                st.executeUpdate("update project set status = 2 where id = '"+projectId+"'");
+                st.close();
+                con.close();
+                approve1.saa.setVisible(true);
+                dispose();
+                approve1.a2.dispose();
+                approve1.dispose();
+            } catch (SQLException ex) {
+                Logger.getLogger(ApproveAdminP3.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
         CommentAdmin coma = new CommentAdmin(this, rootPaneCheckingEnabled);
         coma.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -367,20 +418,6 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ApproveAdminP3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

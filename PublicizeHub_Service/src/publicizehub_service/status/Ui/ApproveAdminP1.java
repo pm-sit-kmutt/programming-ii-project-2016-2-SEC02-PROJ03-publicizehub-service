@@ -11,6 +11,7 @@ import publicizehub_service.report.Ui.SearchFinishedReportFrameAdmin;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 /**
  *
@@ -51,14 +52,33 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
      public void setFrame(){
         a2 = new ApproveAdminP2(this);
         a3 = new ApproveAdminP3(this);
-        Connection con = ConnectionBuilder.getConnection();
+        DefaultTableModel mb=(DefaultTableModel) jTable1.getModel();
+        Connection cn = ConnectionBuilder.getConnection();
         try {
-            PreparedStatement pt = con.prepareStatement("select ?,? from ? where ? = ?");
-            
-           // ResultSet rs = pt.executeQuery();
+            Statement st=cn.createStatement();
+            ResultSet re=st.executeQuery("select projectNameThai, projectNameEnglish, department, advisors from project where id = '"+projectId+"'");
+            while(re.next()){
+                thaiName.setText(re.getString("projectNameThai"));
+                engName.setText(re.getString("projectNameEnglish"));
+                jComboBox1.setSelectedItem(re.getString("department"));
+                advisors.setText(re.getString("advisors"));
+            }
+            Statement st2=cn.createStatement();
+            ResultSet re2=st2.executeQuery("select * from committee where projectId = '"+projectId+"'");
+            while(re2.next()){
+                mb.addRow(new Object[0]);
+                mb.setValueAt(re2.getString("studentId"), line, 0);
+                mb.setValueAt(re2.getString("name"), line, 1);
+                mb.setValueAt(re2.getString("faculty"), line, 2);
+                mb.setValueAt(re2.getString("job"), line, 3);
+                line++;
+            }
+            st.close();
+            st2.close();
+            cn.close();
         } catch (SQLException ex) {
-            Logger.getLogger(ApproveAdminP1.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
+        } 
      }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,9 +97,9 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        thaiName = new javax.swing.JTextField();
+        engName = new javax.swing.JTextField();
+        advisors = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -128,38 +148,28 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("คณะกรรมการจัดทำโครงการ");
 
-        jTextField4.setEditable(false);
-        jTextField4.setBackground(new java.awt.Color(36, 47, 65));
-        jTextField4.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.setEnabled(false);
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
+        thaiName.setEditable(false);
+        thaiName.setBackground(new java.awt.Color(36, 47, 65));
+        thaiName.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        thaiName.setForeground(new java.awt.Color(255, 255, 255));
+        thaiName.setEnabled(false);
 
-        jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(36, 47, 65));
-        jTextField1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField1.setEnabled(false);
+        engName.setEditable(false);
+        engName.setBackground(new java.awt.Color(36, 47, 65));
+        engName.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        engName.setForeground(new java.awt.Color(255, 255, 255));
+        engName.setEnabled(false);
 
-        jTextField2.setEditable(false);
-        jTextField2.setBackground(new java.awt.Color(36, 47, 65));
-        jTextField2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setEnabled(false);
+        advisors.setEditable(false);
+        advisors.setBackground(new java.awt.Color(36, 47, 65));
+        advisors.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        advisors.setForeground(new java.awt.Color(255, 255, 255));
+        advisors.setEnabled(false);
 
         jTextField7.setBackground(new java.awt.Color(36, 47, 65));
         jTextField7.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(255, 255, 255));
         jTextField7.setEnabled(false);
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
 
         jLabel21.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
@@ -173,11 +183,6 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jTextField9.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(255, 255, 255));
         jTextField9.setEnabled(false);
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
 
         jTable1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -249,11 +254,6 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jTextField11.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField11.setForeground(new java.awt.Color(255, 255, 255));
         jTextField11.setEnabled(false);
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
-            }
-        });
 
         jButton2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton2.setText("ย้อนกลับ");
@@ -269,6 +269,7 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
 
         jComboBox1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "กลุ่มนักร้องประสานเสียง", "กลุ่มนักศึกษาคณะ ภาควิชา", "กลุ่มนักศึกษาทุนการศึกษา", "กลุ่มนักศึกษาทุนเพชรพระจอมเกล้า", "ชมรม 2B-KMUTT", "ชมรม Formula Student", "ชมรม KMUTT Cover Dance Club", "ชมรม KMUTT E-Sports", "ชมรม KMUTT Entrepreneur Club", "ชมรม KMUTT Green Heart", "ชมรมการลงทุน", "ชมรมคอมพิวเตอร์", "ชมรมจักรยานสีเขียว", "ชมรมดนตรีไทยและนาฎศิลป์", "ชมรมดาบสากล", "ชมรมดินสอสีขาว", "ชมรมติว", "ชมรมเทควันโด", "ชมรมเทนนิส", "ชมรมเทเบิลเทนนิส", "ชมรมธนบุรีโรบอทคอนเทส", "ชมรมนักวิทยุสมัครเล่นและเทคโนโลยีอวกาศเพื่อการวิจัย", "ชมรมนักศึกษาคริสเตียน", "ชมรมนักศึกษามุสลิม", "ชมรมบริดจ์", "ชมรมบันเทิงและดนตรีสากล", "ชมรมบาสเกตบอล", "ชมรมแบดมินตัน", "ชมรมเปตอง", "ชมรมพัฒนาเกมส์", "ชมรมพัฒนาศักยภาพและคุณธรรม", "ชมรมพุทธศาสตร์", "ชมรมเพาะกาย", "ชมรมฟุตซอล", "ชมรมฟุตบอล", "ชมรมไฟฟ้าวิชาการ", "ชมรมยูโด", "ชมรมรักบี้ฟุตบอล", "ชมรมโรตาแรคท์", "ชมรมแลกเปลี่ยนวัฒนธรรมนานาชาติ", "ชมรมวรรณศิลป์", "ชมรมวอลเลย์บอล", "ชมรมศิลปวัฒนธรรมทักษิณ", "ชมรมศิลปวัฒนธรรมล้านนา", "ชมรมศิลปวัฒนธรรมอีสาน", "ชมรมศิลปะภาพวาดการ์ตูนและวัฒนธรรมญี่ปุ่นสมัยนิยม", "ชมรมศิลปะและการถ่ายภาพ", "ชมรมสันทนาการและเชียร์", "ชมรมสัมปชัญโญสโมสร", "ชมรมหมากกระดาน", "ชมรมอนุรักษ์ทรัพยากรธรรมชาติและสิ่งแวดล้อม", "ชมรมอาสาพัฒนาชนบท", "ชมรมอิเล็กทรอนิกส์บางมด", "ชมรมอูคูเลเล่", "สภานักศึกษา", "สโมสรนักศึกษาคณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี", "สโมสรนักศึกษาคณะเทคโนโลยีสารสนเทศ", "สโมสรนักศึกษาคณะวิทยาศาสตร์", "สโมสรนักศึกษาคณะวิศวกรรมศาสตร์", "สโมสรนักศึกษาคณะสถาปัตยกรรมศาสตร์และการออกแบบ", "สโมสรนักศึกษาโครงการร่วมบริหารหลักสูตรมีเดียอาตส์และเทคโนโลยี", "สื่อสารมวลชนและเทคโนโลยีมีเดีย", "หอพักนักศึกษา", "องค์การนักศึกษา", "คณะพลังงานสิ่งแวดล้อมและวัสดุ", "คณะวิศวกรรมศาสตร์", "คณะเทคโนโลยีสารสนเทศ", "คณะศิลปศาสตร์", "คณะทรัพยากรชีวภาพและเทคโนโลยี", "คณะสถาปัตยกรรมศาสตร์และการออกแบบ", "คณะวิทยาศาสตร์", "คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี", "สำนักงานอธิการบดี", "สำนักคอมพิวเตอร์", "สำนักสวนอุตสาหกรรม", "สำนักหอสมุด", "สำนักบริหารอาคารและสถานที่", "สำนักบัณฑิตศึกษาและกิจการนานาชาติ", "สำนักวิจัยและบริการวิทยาศาสตร์และเทคโนโลยี", "สถาบันการเรียนรู้", "สถาบันวิทยาการหุ่นยนต์ภาคสนาม", "ศูนย์การจัดการด้านพลังงานสิ่งแวดล้อมความปลอดภัยและอาชีวอนามัย", "บัณฑิตวิทยาลัยร่วมด้านพลังงานและสิ่งแวดล้อม", "บัณฑิตวิทยาลัยการจัดการและนวัตกรรม", "หน่วยงานในกำกับมหาวิทยาลัย" }));
+        jComboBox1.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -308,9 +309,9 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
                                         .addComponent(jLabel10)
                                         .addGap(30, 30, 30)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(engName, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(thaiName, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(advisors, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(96, 96, 96)
@@ -346,15 +347,15 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(thaiName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(engName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(advisors, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -397,26 +398,10 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         a2.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(checkCase == 1){
@@ -465,6 +450,8 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField advisors;
+    private javax.swing.JTextField engName;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -486,12 +473,10 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField thaiName;
     // End of variables declaration//GEN-END:variables
 }

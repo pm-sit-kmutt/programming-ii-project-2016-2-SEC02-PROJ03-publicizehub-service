@@ -25,10 +25,6 @@ public class FromP3 extends javax.swing.JFrame {
     int line1=0;
     int line2=0;
 
-
-    /**
-     * Creates new form EditP3
-     */
     public FromP3() {
         initComponents();
         jSpinner1.setEditor(new JSpinner.DateEditor(jSpinner1, "dd-MM-yyyy"));
@@ -65,7 +61,6 @@ public class FromP3 extends javax.swing.JFrame {
         ProjectDetail.setObjective(from1.p2.getObjective().getText());
         ProjectDetail.setExpected(expected.getText());
         ProjectDetail.setCommittee(Committee.jTableToArrayCommittee(from1.getjTable1()));
-        ProjectDetail.setComment(null);
         ProjectDetail.setProcess(ProjectProcess.jTableToArrayProcess(jTable1));
         ProjectDetail.setMoney(Money.jTableToArrayMoney(jTable2));
         ProjectDetail.setCost(Money.getSumCost());
@@ -412,7 +407,6 @@ public class FromP3 extends javax.swing.JFrame {
             Logger.getLogger(FromP3.class.getName()).log(Level.SEVERE, null, ex);
         }
         if(ProjectDetail.check()){
-            System.out.println("Ok");
             Connection con = ConnectionBuilder.getConnection();
             try {
                 PreparedStatement pt = con.prepareStatement("insert into project "
@@ -422,11 +416,11 @@ public class FromP3 extends javax.swing.JFrame {
                 pt.setString(3, ProjectDetail.getProjectNameEnglish());
                 pt.setString(4, ProjectDetail.getDepartment());
                 pt.setString(5, ProjectDetail.getAdvisors());
-                pt.setString(6, ProjectDetail.getRationale());
-                pt.setInt(7, ProjectDetail.getPlaceType());
-                pt.setString(8, ProjectDetail.getPlaceLocation());
-                pt.setInt(9, ProjectDetail.getNumOfStudent());
-                pt.setInt(10, ProjectDetail.getNumCome());
+                pt.setInt(6, ProjectDetail.getPlaceType());
+                pt.setString(7, ProjectDetail.getPlaceLocation());
+                pt.setInt(8, ProjectDetail.getNumOfStudent());
+                pt.setInt(9, ProjectDetail.getNumCome());
+                pt.setString(10, ProjectDetail.getRationale());
                 pt.setString(11, ProjectDetail.getObjective());
                 pt.setString(12, ProjectDetail.getExpected());
                 pt.setDouble(13, ProjectDetail.getBudget());
@@ -485,7 +479,6 @@ public class FromP3 extends javax.swing.JFrame {
                     int d = pt5.executeUpdate();
                     System.out.println(d);
                 }
-                
                 pt5.close();
                 pt2.close();
                 con.close();

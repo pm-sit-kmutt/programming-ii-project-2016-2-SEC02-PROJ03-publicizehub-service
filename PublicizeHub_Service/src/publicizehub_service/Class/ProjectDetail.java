@@ -32,12 +32,11 @@ public class ProjectDetail {
     private static String objective;
     private static String expected;
     private static Committee[] committee;
-    private static Comment[] comment;
     private static ProjectProcess[] process;
     private static Money[] money;
     
     public static boolean check(){
-        if(responsible.isEmpty() || projectNameThai.isEmpty() || projectNameEnglish.isEmpty() || department.isEmpty() || Advisors.isEmpty() || rationale.isEmpty()
+        if(projectNameThai.isEmpty() || projectNameEnglish.isEmpty() || department.isEmpty() || Advisors.isEmpty() || rationale.isEmpty()
                 || placeLocation.isEmpty() || numOfStudent == 0 || objective.isEmpty() || expected.isEmpty() || committee.length == 0 || process.length == 0 || money.length == 0){
             if(endTime.before(startTime)){
                 JOptionPane.showMessageDialog(null, "คุณใส่ระยะเวลาในการดำเนินงาน ไม่ถูกต้อง");
@@ -50,39 +49,37 @@ public class ProjectDetail {
         }
     }
     
-
-    public static void printAll(){
-        System.out.println("responsible: "+responsible); 
-        System.out.println("projectNameThai: "+projectNameThai); 
-        System.out.println("projectNameEnglish: "+projectNameEnglish); 
-        System.out.println("department: "+department); 
-        System.out.println("Advisors: "+Advisors); 
-        System.out.println("rationale: "+rationale); 
-        System.out.println("placeType: "+placeType); 
-        System.out.println("placeLocation: "+placeLocation); 
-        System.out.println("numOfStudent: "+numOfStudent); 
-        System.out.println("numCome: "+numCome); 
-        System.out.println("objective: "+objective); 
-        System.out.println("expected: "+expected); 
-        System.out.println("budget: "+budget); 
-        System.out.println("cost: "+cost); 
-        System.out.println("openTime: "+openTime); 
-        System.out.println("startTime: "+startTime); 
-        System.out.println("endTime: "+endTime); 
-        System.out.println("closeTime: "+closeTime); 
-        System.out.println("status: "+status); 
-        
-        System.out.println("comment: "+comment); 
-        for (Committee committee1 : committee) {
-            System.out.println(committee1);
-        }
-        for (ProjectProcess projectProcess : process) {
-            System.out.println(projectProcess);
-        }
-        for (Money money : money) {
-            System.out.println(money);
-        }
-    }
+//    public static void printAll(){
+//        System.out.println("responsible: "+responsible); 
+//        System.out.println("projectNameThai: "+projectNameThai); 
+//        System.out.println("projectNameEnglish: "+projectNameEnglish); 
+//        System.out.println("department: "+department); 
+//        System.out.println("Advisors: "+Advisors); 
+//        System.out.println("rationale: "+rationale); 
+//        System.out.println("placeType: "+placeType); 
+//        System.out.println("placeLocation: "+placeLocation); 
+//        System.out.println("numOfStudent: "+numOfStudent); 
+//        System.out.println("numCome: "+numCome); 
+//        System.out.println("objective: "+objective); 
+//        System.out.println("expected: "+expected); 
+//        System.out.println("budget: "+budget); 
+//        System.out.println("cost: "+cost); 
+//        System.out.println("openTime: "+openTime); 
+//        System.out.println("startTime: "+startTime); 
+//        System.out.println("endTime: "+endTime); 
+//        System.out.println("closeTime: "+closeTime); 
+//        System.out.println("status: "+status); 
+//
+//        for (Committee committee1 : committee) {
+//            System.out.println(committee1);
+//        }
+//        for (ProjectProcess projectProcess : process) {
+//            System.out.println(projectProcess);
+//        }
+//        for (Money money : money) {
+//            System.out.println(money);
+//        }
+//    }
     
     public static int getId() {
         return id;
@@ -250,14 +247,6 @@ public class ProjectDetail {
 
     public static void setCommittee(Committee[] committee) {
         ProjectDetail.committee = committee;
-    }
-
-    public static Comment[] getComment() {
-        return comment;
-    }
-
-    public static void setComment(Comment[] comment) {
-        ProjectDetail.comment = comment;
     }
 
     public static ProjectProcess[] getProcess() {

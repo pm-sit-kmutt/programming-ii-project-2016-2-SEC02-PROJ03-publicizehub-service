@@ -44,7 +44,7 @@ public class Tableview extends javax.swing.JFrame {
                 }else if(re.getString("status").equals("2")){
                     de.setValueAt("อนุมัติแล้ว", line, 2);
                 }else if(re.getString("status").equals("3")){
-                    de.setValueAt("รอปิด", line, 2);
+                    de.setValueAt("รอปิดโครงการ", line, 2);
                 }
                 de.setValueAt("ดู comment", line, 3);
                 line++;
@@ -240,7 +240,7 @@ public class Tableview extends javax.swing.JFrame {
                SubmitFrame sf = new SubmitFrame(this);
                sf.setVisible(true);
                setVisible(false);
-           }else if(jTable1.getValueAt(row, col).equals("รอปิด")){
+           }else if(jTable1.getValueAt(row, col).equals("รอปิดโครงการ")){
                SubmitFrame sf = new SubmitFrame(this);
                sf.setVisible(true);
                setVisible(false);

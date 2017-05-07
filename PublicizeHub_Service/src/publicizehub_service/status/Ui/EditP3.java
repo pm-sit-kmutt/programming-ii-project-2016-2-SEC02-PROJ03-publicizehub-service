@@ -6,12 +6,14 @@
 package publicizehub_service.status.Ui;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
+import java.text.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
-import publicizehub_service.Class.User;
+import publicizehub_service.Class.*;
+import publicizehub_service.activity_form.Ui.FromP3;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 
 /**
@@ -23,9 +25,7 @@ public class EditP3 extends javax.swing.JFrame {
     int line1 = 0;
     int line2 = 0;
     int projectId=User.getSelectProjectId();
-    /**
-     * Creates new form EditP3
-     */
+
     public EditP3() {
         initComponents();
         setFrame();
@@ -47,7 +47,7 @@ public class EditP3 extends javax.swing.JFrame {
             Statement st = cn.createStatement();
             ResultSet re = st.executeQuery("select expected from project where id = '"+projectId+"'");
             while(re.next()){
-                jTextArea1.setText(re.getString("expected"));
+                expected.setText(re.getString("expected"));
             }
             Statement st2 = cn.createStatement();
             ResultSet re2 = st2.executeQuery("select * from process where projectId = '"+projectId+"'");
@@ -74,6 +74,30 @@ public class EditP3 extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public void setProjectDetail() throws ParseException{
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        ProjectDetail.setProjectNameThai(edit1.getThaiName().getText());
+        ProjectDetail.setProjectNameEnglish(edit1.getEngName().getText());
+        if(edit1.getjComboBox1().getSelectedItem().toString().equals("เลือก")){
+            ProjectDetail.setDepartment("");
+        }else{
+            ProjectDetail.setDepartment(edit1.getjComboBox1().getSelectedItem().toString());
+        }
+        ProjectDetail.setAdvisors(edit1.getAdvisors().getText());
+        ProjectDetail.setRationale(edit1.e2.getRationale().getText());
+        ProjectDetail.setPlaceType(edit1.e2.getPlaceType().getSelectedIndex());
+        ProjectDetail.setPlaceLocation(edit1.e2.getPlaceLocation().getText());
+        ProjectDetail.setNumOfStudent((int)edit1.e2.getNumOfStudent().getValue());
+        ProjectDetail.setStartTime(java.sql.Date.valueOf(df.format((java.util.Date)edit1.e2.getStartTime().getValue())));
+        ProjectDetail.setEndTime(java.sql.Date.valueOf(df.format((java.util.Date)edit1.e2.getEndTime().getValue())));
+        ProjectDetail.setObjective(edit1.e2.getObjective().getText());
+        ProjectDetail.setExpected(expected.getText());
+        ProjectDetail.setCommittee(Committee.jTableToArrayCommittee(edit1.getjTable1()));
+        ProjectDetail.setProcess(ProjectProcess.jTableToArrayProcess(jTable1));
+        ProjectDetail.setMoney(Money.jTableToArrayMoney(jTable2));
+        ProjectDetail.setCost(Money.getSumCost());
     }
 
     /**
@@ -107,7 +131,7 @@ public class EditP3 extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        expected = new javax.swing.JTextArea();
         jSpinner1 = new javax.swing.JSpinner();
         jSpinner2 = new javax.swing.JSpinner();
 
@@ -289,12 +313,12 @@ public class EditP3 extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setBackground(new java.awt.Color(36, 47, 65));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jTextArea1.setForeground(new java.awt.Color(255, 255, 255));
-        jTextArea1.setRows(5);
-        jScrollPane4.setViewportView(jTextArea1);
+        expected.setBackground(new java.awt.Color(36, 47, 65));
+        expected.setColumns(20);
+        expected.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        expected.setForeground(new java.awt.Color(255, 255, 255));
+        expected.setRows(5);
+        jScrollPane4.setViewportView(expected);
 
         jSpinner1.setModel(new javax.swing.SpinnerDateModel());
 
@@ -417,7 +441,93 @@ public class EditP3 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
+        try {
+            setProjectDetail();
+        } catch (ParseException ex) {
+            Logger.getLogger(FromP3.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(ProjectDetail.check()){
+            Connection con = ConnectionBuilder.getConnection();
+            try {
+                PreparedStatement pt = con.prepareStatement("update project set projectNameThai = ?, projectNameEnglish = ?, department = ?, "
+                        + "advisors = ?, placeType = ?, placeLocation = ?, numOfStudent = ?, rationale = ?, objective = ?, expected = ?, cost = ?, "
+                        + "startTime = ?, endTime = ? where id = ?");
+                pt.setString(1, ProjectDetail.getProjectNameThai());
+                pt.setString(2, ProjectDetail.getProjectNameEnglish());
+                pt.setString(3, ProjectDetail.getDepartment());
+                pt.setString(4, ProjectDetail.getAdvisors());
+                pt.setInt(5, ProjectDetail.getPlaceType());
+                pt.setString(6, ProjectDetail.getPlaceLocation());
+                pt.setInt(7, ProjectDetail.getNumOfStudent());
+                pt.setString(8, ProjectDetail.getRationale());
+                pt.setString(9, ProjectDetail.getObjective());
+                pt.setString(10, ProjectDetail.getExpected());
+                pt.setDouble(11, ProjectDetail.getCost());
+                pt.setDate(12, ProjectDetail.getStartTime());
+                pt.setDate(13, ProjectDetail.getEndTime());
+                pt.setInt(14, projectId);
+                int a = pt.executeUpdate();
+                System.out.println(a);
+                pt.close();
+                
+                Statement stD = con.createStatement();
+                int delete = stD.executeUpdate("delete from committee where projectId = '"+projectId+"'");
+                Statement stD2 = con.createStatement();
+                int delete2 = stD2.executeUpdate("delete from process where projectId = '"+projectId+"'");
+                Statement stD3 = con.createStatement();
+                int delete3 = stD3.executeUpdate("delete from money where projectId = '"+projectId+"'");
+                stD.close();
+                stD2.close();
+                stD3.close();
+                
+                PreparedStatement pt2 =  con.prepareStatement("insert into committee "
+                        + "values(?, ?, ?, ?, ?)");
+                Committee[] arryCommittee = ProjectDetail.getCommittee();
+                for (int i = 0; i < arryCommittee.length; i++) {
+                    pt2.setInt(1, projectId);
+                    pt2.setString(2, arryCommittee[i].getStudentId());
+                    pt2.setString(3, arryCommittee[i].getName());
+                    pt2.setString(4, arryCommittee[i].getFaculty());
+                    pt2.setString(5, arryCommittee[i].getJob());
+                    int b = pt2.executeUpdate();
+                    System.out.println(b);
+                }
+                pt2.close();
+                
+                PreparedStatement pt3 =  con.prepareStatement("insert into process "
+                        + "values(?, ?, ?)");
+                ProjectProcess[] arryProcess = ProjectDetail.getProcess();
+                for (int i = 0; i < arryProcess.length; i++) {
+                    pt3.setInt(1, projectId);
+                    pt3.setString(2, arryProcess[i].getText());
+                    pt3.setDate(3, arryProcess[i].getDate());
+                    int c = pt3.executeUpdate();
+                    System.out.println(c);
+                }
+                pt3.close();
+                
+                PreparedStatement pt4 =  con.prepareStatement("insert into money "
+                        + "values(?, ?, ?)");
+                Money[] arryMoney = ProjectDetail.getMoney();
+                for (int i = 0; i < arryMoney.length; i++) {
+                    pt4.setInt(1, projectId);
+                    pt4.setString(2, arryMoney[i].getText());
+                    pt4.setDouble(3, arryMoney[i].getCost());
+                    int d = pt4.executeUpdate();
+                    System.out.println(d);
+                }
+                pt4.close();
+
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(FromP3.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "แก้ไขสำเร็จ คุณสามารถดูสถานะของโครงการได้ที่ หน้าตรวจสอบสถานะ/แก้ไข");
+            edit1.table.setVisible(true);
+            dispose();
+            edit1.e2.dispose();
+            edit1.dispose();
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -531,6 +641,7 @@ public class EditP3 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea expected;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -553,7 +664,6 @@ public class EditP3 extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
