@@ -43,6 +43,7 @@ public class EditP1 extends javax.swing.JFrame {
         initComponents();
         this.frf=frf;
         setFrame();
+        e3.getjButton4().setEnabled(false);
         checkCase = 2;
     }
     
@@ -77,7 +78,7 @@ public class EditP1 extends javax.swing.JFrame {
             Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
         } 
     }
-
+    
     public JTextField getAdvisors() {
         return advisors;
     }

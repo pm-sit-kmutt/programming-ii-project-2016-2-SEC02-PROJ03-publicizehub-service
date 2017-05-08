@@ -157,7 +157,7 @@
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="1">
-                    <Column editable="false" title="&#xe23;&#xe32;&#xe22;&#xe01;&#xe32;&#xe23;&#xe17;&#xe35;&#xe48;" type="java.lang.Integer"/>
+                    <Column editable="false" title="&#xe25;&#xe33;&#xe14;&#xe31;&#xe1a;" type="java.lang.Integer"/>
                     <Column editable="false" title="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe42;&#xe04;&#xe07;&#xe01;&#xe32;&#xe23;" type="java.lang.Object"/>
                     <Column editable="false" title="&#xe0a;&#xe37;&#xe48;&#xe2d;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;(English)" type="java.lang.Object"/>
                     <Column editable="false" title="&#xe27;&#xe31;&#xe19;&#xe17;&#xe35;&#xe48;&#xe1b;&#xe34;&#xe14;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;" type="java.lang.Object"/>
@@ -165,7 +165,7 @@
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                    <Column maxWidth="50" minWidth="50" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>
                       <Renderer/>

@@ -46,7 +46,7 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         this.sfra = sfra;
         setFrame();
         checkCase = 2;
-        
+        a3.getjButton4().setEnabled(false);
     }
     
      public void setFrame(){
@@ -152,24 +152,20 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         thaiName.setBackground(new java.awt.Color(36, 47, 65));
         thaiName.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         thaiName.setForeground(new java.awt.Color(255, 255, 255));
-        thaiName.setEnabled(false);
 
         engName.setEditable(false);
         engName.setBackground(new java.awt.Color(36, 47, 65));
         engName.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         engName.setForeground(new java.awt.Color(255, 255, 255));
-        engName.setEnabled(false);
 
         advisors.setEditable(false);
         advisors.setBackground(new java.awt.Color(36, 47, 65));
         advisors.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         advisors.setForeground(new java.awt.Color(255, 255, 255));
-        advisors.setEnabled(false);
 
         jTextField7.setBackground(new java.awt.Color(36, 47, 65));
         jTextField7.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField7.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField7.setEnabled(false);
 
         jLabel21.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
@@ -182,7 +178,6 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jTextField9.setBackground(new java.awt.Color(36, 47, 65));
         jTextField9.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField9.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField9.setEnabled(false);
 
         jTable1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -216,7 +211,6 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jTextField10.setBackground(new java.awt.Color(36, 47, 65));
         jTextField10.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField10.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField10.setEnabled(false);
 
         jPanel1.setBackground(new java.awt.Color(97, 212, 195));
 
@@ -253,7 +247,6 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         jTextField11.setBackground(new java.awt.Color(36, 47, 65));
         jTextField11.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField11.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField11.setEnabled(false);
 
         jButton2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jButton2.setText("ย้อนกลับ");

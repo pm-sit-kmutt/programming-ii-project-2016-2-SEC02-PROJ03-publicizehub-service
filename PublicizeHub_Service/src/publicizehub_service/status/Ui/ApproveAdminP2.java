@@ -158,7 +158,6 @@ public class ApproveAdminP2 extends javax.swing.JFrame {
         placeLocation.setEditable(false);
         placeLocation.setBackground(new java.awt.Color(36, 47, 65));
         placeLocation.setForeground(new java.awt.Color(255, 255, 255));
-        placeLocation.setEnabled(false);
 
         jPanel2.setBackground(new java.awt.Color(97, 212, 195));
 

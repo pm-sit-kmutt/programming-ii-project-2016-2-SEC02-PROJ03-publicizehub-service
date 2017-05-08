@@ -9,6 +9,7 @@ import publicizehub_service.Class.User;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
@@ -72,6 +73,10 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(EditP1.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public JButton getjButton4() {
+        return jButton4;
     }
     
 

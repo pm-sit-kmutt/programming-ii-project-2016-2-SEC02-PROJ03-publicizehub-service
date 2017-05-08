@@ -9,6 +9,7 @@ import java.sql.*;
 import java.text.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
@@ -98,6 +99,10 @@ public class EditP3 extends javax.swing.JFrame {
         ProjectDetail.setProcess(ProjectProcess.jTableToArrayProcess(jTable1));
         ProjectDetail.setMoney(Money.jTableToArrayMoney(jTable2));
         ProjectDetail.setCost(Money.getSumCost());
+    }
+
+    public JButton getjButton4() {
+        return jButton4;
     }
 
     /**

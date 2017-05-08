@@ -128,7 +128,7 @@ public class FinishedReportFrame extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "รายการที่", "ชื่อโคงการ", "ชื่อโครงการ(English)", "วันที่ปิดโครงการ"
+                "ลำดับ", "ชื่อโคงการ", "ชื่อโครงการ(English)", "วันที่ปิดโครงการ"
             }
         ) {
             Class[] types = new Class [] {
@@ -153,6 +153,10 @@ public class FinishedReportFrame extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+        }
 
         jLabel1.setFont(new java.awt.Font("ThaiSans Neue", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
