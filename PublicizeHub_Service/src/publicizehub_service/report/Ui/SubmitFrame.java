@@ -34,20 +34,19 @@ public class SubmitFrame extends javax.swing.JFrame {
     int id = User.getSelectProjectId();
     int line = 0;
     int oldPic = 0;
-    int canRemoveInDatabase = 0;
 
     public SubmitFrame() {
         initComponents();
-        setDetail();
+        setFrame();
     }
     
     public SubmitFrame(Tableview table) {
         initComponents();
         this.table = table;
-        setDetail();
+        setFrame();
     }
     
-    public void setDetail(){
+    public void setFrame(){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         model.removeRow(0);
         
@@ -74,7 +73,6 @@ public class SubmitFrame extends javax.swing.JFrame {
                 model.setValueAt(line+1, line, 0);
                 model.setValueAt(rs2.getString("name"), line, 1);
                 line++;
-                canRemoveInDatabase = 1;
             }
             oldPic = line;
             st2.close();
@@ -167,6 +165,7 @@ public class SubmitFrame extends javax.swing.JFrame {
 
         jTextField6.setEditable(false);
         jTextField6.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField6.setForeground(new java.awt.Color(255, 255, 255));
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         jLabel14.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
@@ -221,6 +220,7 @@ public class SubmitFrame extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel11.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -280,6 +280,7 @@ public class SubmitFrame extends javax.swing.JFrame {
 
         jTextField5.setEditable(false);
         jTextField5.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField5.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel13.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -380,17 +381,12 @@ public class SubmitFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel9)))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
                         .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
@@ -409,10 +405,12 @@ public class SubmitFrame extends javax.swing.JFrame {
                             .addComponent(jButton1)
                             .addComponent(jLabel12)
                             .addComponent(jButton2)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -470,15 +468,16 @@ public class SubmitFrame extends javax.swing.JFrame {
             String filePath = fileopen.getSelectedFile().getPath();
             jLabel12.setText(filePath);
             openImage(filePath);
-            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
     // อัฟโหลดรูป
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String filePath = jLabel12.getText();
-        name.add(filePath.substring(filePath.lastIndexOf('\\')+1, filePath.length()));
-        
-        if(!filePath.isEmpty()){
+        String fileName = filePath.substring(filePath.lastIndexOf('\\')+1, filePath.length());
+        if(!filePath.isEmpty() && name.contains(fileName)){
+            System.out.println("fdsfsef");
+        }else{
+            name.add(fileName);
             try {
                 file.add(new File(".").getCanonicalPath() + "\\img\\" + name.get(line));
                 Files.copy(Paths.get(filePath),Paths.get(file.get(line)),StandardCopyOption.COPY_ATTRIBUTES,StandardCopyOption.REPLACE_EXISTING);
@@ -528,6 +527,7 @@ public class SubmitFrame extends javax.swing.JFrame {
                     int result = pt2.executeUpdate();
                     System.out.println(result);
                     pt2.close();
+                    oldPic = jTable1.getRowCount();
                 } catch (SQLException ex) {
                     Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -583,17 +583,17 @@ public class SubmitFrame extends javax.swing.JFrame {
                 file.remove(i);
                 model.removeRow(i);
                 line--;
-                if(canRemoveInDatabase == 1){
-                    try {
-                        PreparedStatement pt = con.prepareStatement("delete from picture where name = ?");
-                        pt.setString(1, delete);
-                        int result = pt.executeUpdate();
-                        System.out.println(result);
-                        pt.close();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                
+                try {
+                    PreparedStatement pt = con.prepareStatement("delete from picture where name = ?");
+                    pt.setString(1, delete);
+                    int result = pt.executeUpdate();
+                    System.out.println(result);
+                    pt.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
             }
         }
         
@@ -621,6 +621,7 @@ public class SubmitFrame extends javax.swing.JFrame {
         JScrollPane sc = new JScrollPane(jlabel); 
         jdialog.add(sc);
         jdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        jdialog.setLocation(300,200);
         jdialog.pack();
         jdialog.setVisible(true);
     }
