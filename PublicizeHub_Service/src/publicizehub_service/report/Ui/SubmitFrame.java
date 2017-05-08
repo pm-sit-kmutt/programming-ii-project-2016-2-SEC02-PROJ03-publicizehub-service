@@ -19,6 +19,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import publicizehub_service.Class.User;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
+import publicizehub_service.status.Ui.Comment;
 import publicizehub_service.status.Ui.Tableview;
 
 /**
@@ -135,6 +136,7 @@ public class SubmitFrame extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("ระบุ จำนวนผู้เข้าร่วมโครงการที่มาจริง");
 
+        jTextField3.setEditable(false);
         jTextField3.setBackground(new java.awt.Color(36, 47, 65));
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -163,8 +165,9 @@ public class SubmitFrame extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("อัฟโหลดรูปภาพหลักฐานค่าใช้จ่าย และ หลักฐานการทำโครงการ อย่างน้อย 10 ภาพ");
 
+        jTextField6.setEditable(false);
+        jTextField6.setBackground(new java.awt.Color(36, 47, 65));
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextField6.setEnabled(false);
 
         jLabel14.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
@@ -194,12 +197,19 @@ public class SubmitFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.getTableHeader().setReorderingAllowed(false);
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(60);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(60);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(50);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(50);
+        }
 
         jLabel1.setFont(new java.awt.Font("ThaiSans Neue", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,7 +219,8 @@ public class SubmitFrame extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ชื่อโครงการ");
 
-        jTextField1.setEnabled(false);
+        jTextField1.setEditable(false);
+        jTextField1.setBackground(new java.awt.Color(36, 47, 65));
 
         jLabel11.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -267,7 +278,8 @@ public class SubmitFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextField5.setEnabled(false);
+        jTextField5.setEditable(false);
+        jTextField5.setBackground(new java.awt.Color(36, 47, 65));
 
         jLabel13.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
@@ -306,9 +318,9 @@ public class SubmitFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel2))
-                        .addGap(53, 53, 53)
+                        .addGap(34, 34, 34)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
                             .addComponent(jTextField5)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel11)
@@ -339,14 +351,14 @@ public class SubmitFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(151, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(247, 247, 247))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton3)
-                        .addGap(38, 38, 38)
+                        .addGap(35, 35, 35)
                         .addComponent(jButton4)
                         .addGap(34, 34, 34)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -400,9 +412,7 @@ public class SubmitFrame extends javax.swing.JFrame {
                             .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -484,7 +494,8 @@ public class SubmitFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
     // ดู comment
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
+        Comment cm=new Comment(this, rootPaneCheckingEnabled);
+        cm.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
     // ปิดโครงการ
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -525,7 +536,6 @@ public class SubmitFrame extends javax.swing.JFrame {
             if(jTable1.getRowCount() < 10){
                 JOptionPane.showMessageDialog(null, "ต้องอัฟโหลดรูปภาพอย่างน้อย 10 รูป");
             }else {
-                JOptionPane.showMessageDialog(null, "แจ้งปิดโครงการเรียบร้อย");
                 try {
                     PreparedStatement pt3 = con.prepareStatement("update project set status = ? where id = ?");
                     pt3.setInt(1, 3);
@@ -533,9 +543,14 @@ public class SubmitFrame extends javax.swing.JFrame {
                     int result = pt3.executeUpdate();
                     System.out.println(result);
                     pt3.close();
+                    con.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                JOptionPane.showMessageDialog(null, "แจ้งปิดโครงการเรียบร้อย");
+                table.setFrame();
+                table.setVisible(true);
+                dispose();
             }
             
         }

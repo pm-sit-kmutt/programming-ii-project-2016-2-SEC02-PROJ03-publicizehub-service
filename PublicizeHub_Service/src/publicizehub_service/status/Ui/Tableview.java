@@ -18,22 +18,28 @@ import publicizehub_service.report.Ui.SubmitFrame;
  */
 public class Tableview extends javax.swing.JFrame {
     KMUTTPublicizeService home;
+    Connection con;
+    Statement st;
     ResultSet re;
             
     public Tableview() {
         initComponents();
+        setFrame();
     }
 
     
     public Tableview(KMUTTPublicizeService home) {
         initComponents();
         this.home = home;
+        setFrame();
+    }
+    
+    public void setFrame(){
         DefaultTableModel de = (DefaultTableModel)jTable1.getModel();
-        
         int line =0;
-        Connection con=ConnectionBuilder.getConnection();
+        con = ConnectionBuilder.getConnection();
         try {
-            Statement st = con.createStatement();
+            st = con.createStatement();
             re = st.executeQuery("select id, projectNameThai, openTime, status from project where not status = 0 and responsible = '"+User.getUsername()+"'");
             while(re.next()){
                 de.addRow(new Object[0]);
@@ -101,7 +107,6 @@ public class Tableview extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
@@ -211,9 +216,8 @@ public class Tableview extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-       home.setVisible(true);
-       setVisible(false);
+        home.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
