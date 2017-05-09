@@ -400,12 +400,13 @@ public class SubmitFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel12)
-                            .addComponent(jButton2)
-                            .addComponent(jButton6))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel11)
+                                .addComponent(jButton1)
+                                .addComponent(jLabel12)
+                                .addComponent(jButton2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -474,9 +475,7 @@ public class SubmitFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String filePath = jLabel12.getText();
         String fileName = filePath.substring(filePath.lastIndexOf('\\')+1, filePath.length());
-        if(!filePath.isEmpty() && name.contains(fileName)){
-            System.out.println("fdsfsef");
-        }else{
+        if(!filePath.isEmpty() && !name.contains(fileName)){
             name.add(fileName);
             try {
                 file.add(new File(".").getCanonicalPath() + "\\img\\" + name.get(line));
@@ -583,7 +582,7 @@ public class SubmitFrame extends javax.swing.JFrame {
                 file.remove(i);
                 model.removeRow(i);
                 line--;
-                
+                oldPic--;
                 try {
                     PreparedStatement pt = con.prepareStatement("delete from picture where name = ?");
                     pt.setString(1, delete);

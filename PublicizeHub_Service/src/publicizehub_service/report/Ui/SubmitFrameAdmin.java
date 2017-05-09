@@ -135,6 +135,7 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
+        jTextField4.setEditable(false);
         jTextField4.setBackground(new java.awt.Color(36, 47, 65));
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -274,6 +275,7 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("ระบุ จำนวนงบ ทีได้");
 
+        jTextField2.setEditable(false);
         jTextField2.setBackground(new java.awt.Color(36, 47, 65));
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
