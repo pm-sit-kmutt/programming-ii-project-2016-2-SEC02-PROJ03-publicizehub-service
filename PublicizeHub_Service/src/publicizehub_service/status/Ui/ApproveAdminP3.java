@@ -75,10 +75,13 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
         }
     }
 
-    public JButton getjButton4() {
-        return jButton4;
+    public JButton getApproveButton() {
+        return ApproveButton;
     }
-    
+
+    public JButton getDeleteButton() {
+        return deleteButton;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -92,7 +95,7 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        ApproveButton = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -111,6 +114,7 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        deleteButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -124,12 +128,12 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("รายละเอียดงบประมาณ");
 
-        jButton4.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(51, 51, 51));
-        jButton4.setText("อนุมัติ");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        ApproveButton.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        ApproveButton.setForeground(new java.awt.Color(51, 51, 51));
+        ApproveButton.setText("อนุมัติ");
+        ApproveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                ApproveButtonActionPerformed(evt);
             }
         });
 
@@ -272,6 +276,14 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
             jTable2.getColumnModel().getColumn(2).setMaxWidth(100);
         }
 
+        deleteButton.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        deleteButton.setText("ลบโครงการนี้");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -304,17 +316,22 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(87, 87, 87)
+                                .addComponent(deleteButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(ApproveButton)))
                         .addGap(52, 52, 52))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -346,8 +363,9 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ApproveButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -367,7 +385,7 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void ApproveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApproveButtonActionPerformed
         int ans = JOptionPane.showConfirmDialog(null, "คุณแน่ใจแล้วใช่หรือไม่?", "Confirm", JOptionPane.YES_NO_OPTION);
 
         if(ans == 0){
@@ -377,16 +395,16 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
                 st.executeUpdate("update project set status = 2 where id = '"+projectId+"'");
                 st.close();
                 con.close();
-                approve1.saa.setVisible(true);
-                dispose();
-                approve1.a2.dispose();
-                approve1.dispose();
             } catch (SQLException ex) {
                 Logger.getLogger(ApproveAdminP3.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+            JOptionPane.showMessageDialog(null, "อนุมัติโครงการเรียบร้อย");
+            approve1.saa.setVisible(true);
+            dispose();
+            approve1.a2.dispose();
+            approve1.dispose();
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_ApproveButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         CommentAdmin coma = new CommentAdmin(this, rootPaneCheckingEnabled);
@@ -397,6 +415,38 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
         approve1.a2.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        int ans = JOptionPane.showConfirmDialog(null, "คุณต้องการลบโครงการนี้ใช่หรือไม่?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if(ans == 0){
+            Connection con = ConnectionBuilder.getConnection();
+            try {
+                Statement st = con.createStatement();
+                st.executeUpdate("delete from committee where projectId = '"+projectId+"'");
+                st.close();
+                
+                Statement st2 = con.createStatement();
+                st2.executeUpdate("delete from money where projectId = '"+projectId+"'");
+                st2.close();
+                
+                Statement st3 = con.createStatement();
+                st3.executeUpdate("delete from process where projectId = '"+projectId+"'");
+                st3.close();
+                
+                Statement st4 = con.createStatement();
+                st4.executeUpdate("delete from project where id = '"+projectId+"'");
+                st4.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ApproveAdminP3.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "ลบโครงการเรียบร้อย");
+            approve1.saa.setVisible(true);
+            dispose();
+            approve1.a2.dispose();
+            approve1.dispose();
+        }
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -435,10 +485,11 @@ public class ApproveAdminP3 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ApproveButton;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JTextArea expected;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

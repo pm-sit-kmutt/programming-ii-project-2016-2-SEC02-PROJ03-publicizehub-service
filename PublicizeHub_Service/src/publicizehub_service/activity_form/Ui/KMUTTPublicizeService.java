@@ -59,7 +59,7 @@ public class KMUTTPublicizeService extends javax.swing.JFrame {
         jLabel1.setText("KMUTTPublicize");
 
         jButton2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton2.setText("ส่งเอกสาร");
+        jButton2.setText("เปิดโครงการ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

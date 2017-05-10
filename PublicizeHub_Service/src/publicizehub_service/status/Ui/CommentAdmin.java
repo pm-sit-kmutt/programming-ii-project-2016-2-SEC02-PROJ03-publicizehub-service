@@ -8,6 +8,7 @@ package publicizehub_service.status.Ui;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import publicizehub_service.Class.User;
 import publicizehub_service.connectionBuilder.ConnectionBuilder;
 
@@ -16,17 +17,19 @@ import publicizehub_service.connectionBuilder.ConnectionBuilder;
  * @author dell
  */
 public class CommentAdmin extends javax.swing.JDialog {
-    Connection con = ConnectionBuilder.getConnection();
+
     /**
      * Creates new form CommentAdmin
      */
     public CommentAdmin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        getRootPane().setDefaultButton(jButton1);
         getComment();   
     }
     
     public void getComment(){
+        Connection con = ConnectionBuilder.getConnection();
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select * from comment where projectId = '"+User.getSelectProjectId()+"'");
@@ -35,6 +38,7 @@ public class CommentAdmin extends javax.swing.JDialog {
             }
             rs.close();
             st.close();
+            con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Comment.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -58,6 +62,7 @@ public class CommentAdmin extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -95,7 +100,7 @@ public class CommentAdmin extends javax.swing.JDialog {
         jLabel1.setText("Comment");
 
         jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton1.setText("ส่งComment");
+        jButton1.setText("ส่ง Comment");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -109,22 +114,32 @@ public class CommentAdmin extends javax.swing.JDialog {
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
+        jButton2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jButton2.setText("ล้าง Comment");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(65, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(256, 256, 256))))
+                .addContainerGap(215, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(256, 256, 256))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(293, 293, 293)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,12 +147,14 @@ public class CommentAdmin extends javax.swing.JDialog {
                 .addGap(38, 38, 38)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                .addGap(37, 37, 37)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addGap(76, 76, 76))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -164,6 +181,7 @@ public class CommentAdmin extends javax.swing.JDialog {
         String oldText = jTextArea2.getText();
         
         if(!input.isEmpty()){
+            Connection con = ConnectionBuilder.getConnection();
             if(oldText.isEmpty()){
                 try {
                     PreparedStatement pt = con.prepareStatement("insert into comment values((select id from project where id = ?), ?, ?)");
@@ -172,6 +190,8 @@ public class CommentAdmin extends javax.swing.JDialog {
                     pt.setString(3, input);
                     int result = pt.executeUpdate();
                     System.out.println(result);
+                    pt.close();
+                    con.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(CommentAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -188,7 +208,9 @@ public class CommentAdmin extends javax.swing.JDialog {
                     pt.setInt(2, User.getSelectProjectId());
                     int result = pt.executeUpdate();
                     System.out.println(result);
-
+                    st.close();
+                    pt.close();
+                    con.close();
                 } catch (SQLException ex) {
                     Logger.getLogger(CommentAdmin.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -197,6 +219,23 @@ public class CommentAdmin extends javax.swing.JDialog {
         jTextArea1.setText("");
         getComment(); 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int ans = JOptionPane.showConfirmDialog(null, "คุณต้องการล้างคอมเม้นใช่หรือไม่?", "Confirm", JOptionPane.YES_NO_OPTION);
+        if(ans == 0){
+            Connection con = ConnectionBuilder.getConnection();
+            try {
+                PreparedStatement pt = con.prepareStatement("delete from comment where projectId = ?");
+                pt.setInt(1, User.getSelectProjectId());
+                pt.executeUpdate();
+                pt.close();
+                con.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CommentAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        jTextArea2.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -242,6 +281,7 @@ public class CommentAdmin extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

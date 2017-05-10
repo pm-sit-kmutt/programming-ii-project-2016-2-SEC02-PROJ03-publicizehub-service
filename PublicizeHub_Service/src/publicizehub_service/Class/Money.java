@@ -28,10 +28,10 @@ public class Money {
     public static Money[] jTableToArrayMoney(JTable table){
         int tableRow = table.getRowCount();
         Money[] ArrayMoney = new Money[tableRow];
+        sumCost = 0;
         for (int i = 0; i < tableRow; i++) {
             ArrayMoney[i] = new Money(table.getValueAt(i, 1).toString(), (double)table.getValueAt(i, 2));
             sumCost += (double)table.getValueAt(i, 2);
-            System.out.println(sumCost);
         }
         return ArrayMoney;
     }

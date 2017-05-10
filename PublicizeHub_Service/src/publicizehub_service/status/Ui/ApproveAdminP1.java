@@ -46,7 +46,8 @@ public class ApproveAdminP1 extends javax.swing.JFrame {
         this.sfra = sfra;
         setFrame();
         checkCase = 2;
-        a3.getjButton4().setEnabled(false);
+        a3.getApproveButton().setEnabled(false);
+        a3.getDeleteButton().setEnabled(false);
     }
     
      public void setFrame(){
