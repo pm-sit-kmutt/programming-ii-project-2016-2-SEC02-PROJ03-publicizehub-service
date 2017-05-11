@@ -24,7 +24,7 @@ public class CommentAdmin extends javax.swing.JDialog {
     public CommentAdmin(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        getRootPane().setDefaultButton(jButton1);
+        getRootPane().setDefaultButton(sentComment);
         getComment();   
     }
     
@@ -59,10 +59,10 @@ public class CommentAdmin extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        sentComment = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
+        deleteComment = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,11 +99,11 @@ public class CommentAdmin extends javax.swing.JDialog {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Comment");
 
-        jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton1.setText("ส่ง Comment");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        sentComment.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        sentComment.setText("ส่ง Comment");
+        sentComment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                sentCommentActionPerformed(evt);
             }
         });
 
@@ -114,11 +114,11 @@ public class CommentAdmin extends javax.swing.JDialog {
         jTextArea2.setRows(5);
         jScrollPane2.setViewportView(jTextArea2);
 
-        jButton2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton2.setText("ล้าง Comment");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        deleteComment.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        deleteComment.setText("ล้าง Comment");
+        deleteComment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                deleteCommentActionPerformed(evt);
             }
         });
 
@@ -134,9 +134,9 @@ public class CommentAdmin extends javax.swing.JDialog {
                 .addGap(35, 35, 35)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(deleteComment)
                         .addGap(293, 293, 293)
-                        .addComponent(jButton1))
+                        .addComponent(sentComment))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -152,8 +152,8 @@ public class CommentAdmin extends javax.swing.JDialog {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sentComment, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteComment, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(57, 57, 57))
         );
 
@@ -176,7 +176,7 @@ public class CommentAdmin extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void sentCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sentCommentActionPerformed
         String input = jTextArea1.getText();
         String oldText = jTextArea2.getText();
         
@@ -218,9 +218,9 @@ public class CommentAdmin extends javax.swing.JDialog {
         }
         jTextArea1.setText("");
         getComment(); 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_sentCommentActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void deleteCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteCommentActionPerformed
         int ans = JOptionPane.showConfirmDialog(null, "คุณต้องการล้างคอมเม้นใช่หรือไม่?", "Confirm", JOptionPane.YES_NO_OPTION);
         if(ans == 0){
             Connection con = ConnectionBuilder.getConnection();
@@ -235,7 +235,7 @@ public class CommentAdmin extends javax.swing.JDialog {
             }
         }
         jTextArea2.setText("");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_deleteCommentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -280,8 +280,7 @@ public class CommentAdmin extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton deleteComment;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
@@ -290,5 +289,6 @@ public class CommentAdmin extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JButton sentComment;
     // End of variables declaration//GEN-END:variables
 }
