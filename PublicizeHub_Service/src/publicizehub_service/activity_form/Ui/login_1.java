@@ -25,7 +25,7 @@ public class login_1 extends javax.swing.JFrame {
      */
     public login_1() {
         initComponents();
-        getRootPane().setDefaultButton(jButton1);
+        getRootPane().setDefaultButton(logIn);
     }
 
     /**
@@ -43,7 +43,7 @@ public class login_1 extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        logIn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -87,13 +87,13 @@ public class login_1 extends javax.swing.JFrame {
         jPasswordField1.setForeground(new java.awt.Color(255, 255, 255));
         jPasswordField1.setBorder(null);
 
-        jButton1.setBackground(new java.awt.Color(97, 212, 195));
-        jButton1.setFont(new java.awt.Font("ThaiSans Neue", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(36, 47, 65));
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        logIn.setBackground(new java.awt.Color(97, 212, 195));
+        logIn.setFont(new java.awt.Font("ThaiSans Neue", 1, 24)); // NOI18N
+        logIn.setForeground(new java.awt.Color(36, 47, 65));
+        logIn.setText("Login");
+        logIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                logInActionPerformed(evt);
             }
         });
 
@@ -166,7 +166,7 @@ public class login_1 extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(logIn, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
@@ -190,7 +190,7 @@ public class login_1 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logIn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -228,7 +228,7 @@ public class login_1 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void logInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInActionPerformed
         Connection con = ConnectionBuilder.getConnection();
         String username = jTextField1.getText();
         String password = new String(jPasswordField1.getPassword());
@@ -276,7 +276,7 @@ public class login_1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "This Username was not found");
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_logInActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,7 +314,6 @@ public class login_1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -327,5 +326,6 @@ public class login_1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton logIn;
     // End of variables declaration//GEN-END:variables
 }

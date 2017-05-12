@@ -74,13 +74,13 @@ public class FromP1 extends javax.swing.JFrame {
         advisors = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton7 = new javax.swing.JButton();
+        insert = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        next = new javax.swing.JButton();
+        back = new javax.swing.JButton();
+        delete = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -158,11 +158,11 @@ public class FromP1 extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(4).setMaxWidth(50);
         }
 
-        jButton7.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton7.setText("เพิ่ม");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        insert.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        insert.setText("เพิ่ม");
+        insert.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                insertActionPerformed(evt);
             }
         });
 
@@ -190,27 +190,27 @@ public class FromP1 extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("กรอกรายละเอียด");
 
-        jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton1.setText("หน้าถัดไป");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        next.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        next.setText("หน้าถัดไป");
+        next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                nextActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton2.setText("ย้อนกลับ");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        back.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        back.setText("ย้อนกลับ");
+        back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                backActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton3.setText("ลบ");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        delete.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        delete.setText("ลบ");
+        delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                deleteActionPerformed(evt);
             }
         });
 
@@ -281,13 +281,13 @@ public class FromP1 extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jButton2)
+                                    .addComponent(back)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton1))
+                                    .addComponent(next))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jButton7)
+                                    .addComponent(insert)
                                     .addGap(30, 30, 30)
-                                    .addComponent(jButton3))
+                                    .addComponent(delete))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(jLabel15)
                                     .addGap(118, 118, 118))
@@ -355,14 +355,14 @@ public class FromP1 extends javax.swing.JFrame {
                         .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(jButton7))
+                    .addComponent(delete)
+                    .addComponent(insert))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
 
@@ -381,17 +381,17 @@ public class FromP1 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         p2.setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_nextActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         home.setVisible(true);
         setVisible(false); 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_backActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void insertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertActionPerformed
         String name =jTextField11.getText();
         String id =jTextField7.getText();
         String faculty=jTextField10.getText();
@@ -409,9 +409,9 @@ public class FromP1 extends javax.swing.JFrame {
             jTextField10.setText("");
             jTextField9.setText("");
         }
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_insertActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:  
         boolean[] check = new boolean[jTable1.getRowCount()]; //เก็บว่าเลือกลบอันไหน
         for(int i = 0; i < check.length ;i++){
@@ -429,7 +429,7 @@ public class FromP1 extends javax.swing.JFrame {
                 line--;
             }
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_deleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -469,11 +469,10 @@ public class FromP1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField advisors;
+    private javax.swing.JButton back;
+    private javax.swing.JButton delete;
     private javax.swing.JTextField engName;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton insert;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -497,6 +496,7 @@ public class FromP1 extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JButton next;
     private javax.swing.JTextField thaiName;
     // End of variables declaration//GEN-END:variables
 }

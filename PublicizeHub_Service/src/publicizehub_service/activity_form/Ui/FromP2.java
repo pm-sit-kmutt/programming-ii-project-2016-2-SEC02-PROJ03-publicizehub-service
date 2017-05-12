@@ -72,8 +72,8 @@ public class FromP2 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         rationale = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        back = new javax.swing.JButton();
+        next = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         placeType = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
@@ -127,19 +127,19 @@ public class FromP2 extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("วัตถุประสงค์");
 
-        jButton4.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton4.setText("ย้อนกลับ");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        back.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        back.setText("ย้อนกลับ");
+        back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                backActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton1.setText("หน้าถัดไป");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        next.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        next.setText("หน้าถัดไป");
+        next.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                nextActionPerformed(evt);
             }
         });
 
@@ -190,12 +190,8 @@ public class FromP2 extends javax.swing.JFrame {
         jLabel11.setText("สิ้นสุด");
 
         startTime.setModel(new javax.swing.SpinnerDateModel());
-        startTime.setMinimumSize(new java.awt.Dimension(103, 20));
-        startTime.setPreferredSize(new java.awt.Dimension(103, 20));
 
         endTime.setModel(new javax.swing.SpinnerDateModel());
-        endTime.setMinimumSize(new java.awt.Dimension(103, 20));
-        endTime.setPreferredSize(new java.awt.Dimension(103, 20));
 
         numOfStudent.setModel(new javax.swing.SpinnerNumberModel());
 
@@ -267,9 +263,9 @@ public class FromP2 extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)
+                        .addComponent(back)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(next)
                         .addGap(69, 69, 69))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -305,8 +301,8 @@ public class FromP2 extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(next, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -328,15 +324,15 @@ public class FromP2 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         from1.setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_backActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         from1.p3.setVisible(true);
         setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_nextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -375,9 +371,8 @@ public class FromP2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton back;
     private javax.swing.JSpinner endTime;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -394,6 +389,7 @@ public class FromP2 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton next;
     private javax.swing.JSpinner numOfStudent;
     private javax.swing.JTextArea objective;
     private javax.swing.JTextField placeLocation;
