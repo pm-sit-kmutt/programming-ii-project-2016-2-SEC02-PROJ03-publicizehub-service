@@ -107,13 +107,13 @@ public class SubmitFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        selectImage = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        upload = new javax.swing.JButton();
+        watchComment = new javax.swing.JButton();
+        closedProject = new javax.swing.JButton();
+        back = new javax.swing.JButton();
+        deleteImage = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -226,55 +226,55 @@ public class SubmitFrame extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("เลือกรูปภาพ");
 
-        jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton1.setText("...");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        selectImage.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        selectImage.setText("...");
+        selectImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                selectImageActionPerformed(evt);
             }
         });
 
         jLabel12.setFont(new java.awt.Font("ThaiSans Neue", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton2.setText("อัฟโหลด");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        upload.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        upload.setText("อัฟโหลด");
+        upload.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                uploadActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton3.setText("ดู comment");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        watchComment.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        watchComment.setText("ดู comment");
+        watchComment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                watchCommentActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton4.setText("ปิดโครงการ");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        closedProject.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        closedProject.setText("ปิดโครงการ");
+        closedProject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                closedProjectActionPerformed(evt);
             }
         });
 
-        jButton5.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton5.setText("ย้อนกลับ");
-        jButton5.setPreferredSize(new java.awt.Dimension(85, 23));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        back.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        back.setText("ย้อนกลับ");
+        back.setPreferredSize(new java.awt.Dimension(85, 23));
+        back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                backActionPerformed(evt);
             }
         });
 
-        jButton6.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton6.setText("ลบรูป");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        deleteImage.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        deleteImage.setText("ลบรูป");
+        deleteImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                deleteImageActionPerformed(evt);
             }
         });
 
@@ -326,13 +326,13 @@ public class SubmitFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
+                        .addComponent(selectImage)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(upload)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(deleteImage, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -358,11 +358,11 @@ public class SubmitFrame extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(247, 247, 247))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(watchComment)
                         .addGap(35, 35, 35)
-                        .addComponent(jButton4)
+                        .addComponent(closedProject)
                         .addGap(34, 34, 34)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(140, 140, 140))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -401,12 +401,12 @@ public class SubmitFrame extends javax.swing.JFrame {
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(deleteImage, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel11)
-                                .addComponent(jButton1)
+                                .addComponent(selectImage)
                                 .addComponent(jLabel12)
-                                .addComponent(jButton2)))
+                                .addComponent(upload)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -414,9 +414,9 @@ public class SubmitFrame extends javax.swing.JFrame {
                         .addComponent(jLabel8)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(watchComment, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(closedProject, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16))
         );
 
@@ -460,7 +460,7 @@ public class SubmitFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     // หารูป
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void selectImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectImageActionPerformed
         JFileChooser fileopen = new JFileChooser();
         FileFilter filter = new FileNameExtensionFilter("picture file", "jpg", "jpeg", "png");
         fileopen.setFileFilter(filter);
@@ -470,9 +470,9 @@ public class SubmitFrame extends javax.swing.JFrame {
             jLabel12.setText(filePath);
             openImage(filePath);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_selectImageActionPerformed
     // อัฟโหลดรูป
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void uploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadActionPerformed
         String filePath = jLabel12.getText();
         String fileName = filePath.substring(filePath.lastIndexOf('\\')+1, filePath.length());
         if(!filePath.isEmpty() && !name.contains(fileName)){
@@ -489,14 +489,14 @@ public class SubmitFrame extends javax.swing.JFrame {
             model.setValueAt(name.get(line), line, 1);
             line++;
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_uploadActionPerformed
     // ดู comment
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void watchCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_watchCommentActionPerformed
         Comment cm=new Comment(this, rootPaneCheckingEnabled);
         cm.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_watchCommentActionPerformed
     // ปิดโครงการ
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void closedProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closedProjectActionPerformed
         if(jTextField2.getText().isEmpty() || jTextField3.getText().isEmpty() || jTextField4.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "โปรดกรอกข้อมูลให้ครบทุกช่อง");
         }else {
@@ -553,9 +553,9 @@ public class SubmitFrame extends javax.swing.JFrame {
             }
             
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_closedProjectActionPerformed
     // ย้อนกลับ
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         try {    
             con.close();
         } catch (SQLException ex) {
@@ -563,9 +563,9 @@ public class SubmitFrame extends javax.swing.JFrame {
         }
         table.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_backActionPerformed
     // ลบรูป
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void deleteImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteImageActionPerformed
         boolean[] check = new boolean[jTable1.getRowCount()]; //เก็บว่าเลือกลบอันไหน
         for(int i = 0; i < check.length ;i++){
             if(jTable1.getValueAt(i, 2) == null){
@@ -600,7 +600,7 @@ public class SubmitFrame extends javax.swing.JFrame {
             model.setValueAt(i+1, i, 0);
         }
         
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_deleteImageActionPerformed
     // คลิกตาราง
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         int row = jTable1.getSelectedRow();
@@ -662,12 +662,9 @@ public class SubmitFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton back;
+    private javax.swing.JButton closedProject;
+    private javax.swing.JButton deleteImage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -693,5 +690,8 @@ public class SubmitFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JButton selectImage;
+    private javax.swing.JButton upload;
+    private javax.swing.JButton watchComment;
     // End of variables declaration//GEN-END:variables
 }

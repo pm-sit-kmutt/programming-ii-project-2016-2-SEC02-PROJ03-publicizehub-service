@@ -28,13 +28,13 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
      */
     public SearchFinishedReportFrameAdmin() {
         initComponents();
-        getRootPane().setDefaultButton(jButton1);
+        getRootPane().setDefaultButton(Search);
     }
     
     public SearchFinishedReportFrameAdmin(KMUTTPublicizeServiceAdmin homeAdmin) {
         initComponents();
         this.homeAdmin = homeAdmin;
-        getRootPane().setDefaultButton(jButton1);
+        getRootPane().setDefaultButton(Search);
     }
 
     /**
@@ -51,8 +51,8 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        facultyComboBox = new javax.swing.JComboBox<>();
+        samoComboBox = new javax.swing.JComboBox<>();
         jComboBox4 = new javax.swing.JComboBox<>();
         jComboBox5 = new javax.swing.JComboBox<>();
         jComboBox6 = new javax.swing.JComboBox<>();
@@ -62,10 +62,10 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        back = new javax.swing.JButton();
+        Search = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        searchReport = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(36, 47, 65));
@@ -101,19 +101,19 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("ชื่อโครงการ");
 
-        jComboBox2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "สำนักงานอธิการบดี", "คณะพลังงานสิ่งแวดล้อมและวัสดุ", "สำนักคอมพิวเตอร์", "คณะวิศวกรรมศาสตร์", "สถาบันวิทยาการหุ่นยนต์ภาคสนาม", "สำนักสวนอุตสาหกรรม", "สำนักหอสมุด", "บัณฑิตวิทยาลัยร่วมด้านพลังงานและสิ่งแวดล้อม", "ศูนย์การจัดการด้านพลังงานสิ่งแวดล้อมความปลอดภัยและอาชีวอนามัย", "บัณฑิตวิทยาลัยการจัดการและนวัตกรรม", "หน่วยงานในกำกับมหาวิทยาลัย", "สำนักบัณฑิตศึกษาและกิจการนานาชาติ", "สำนักวิจัยและบริการวิทยาศาสตร์และเทคโนโลยี", "คณะเทคโนโลยีสารสนเทศ", "สถาบันการเรียนรู้", "คณะศิลปศาสตร์", "สถาบันพัฒนาและฝึกอบรมโรงงานต้นแบบ", "สำนักบริหารอาคารและสถานที่", "คณะทรัพยากรชีวภาพและเทคโนโลยี", "คณะสถาปัตยกรรมศาสตร์และการออกแบบ", "โครงการที่ปรึกษาตรวจสอบ", "วิทยาลัยสหวิทยาการ", "คณะวิทยาศาสตร์", "โครงการบริหารก่อสร้าง", "คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        facultyComboBox.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        facultyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "สำนักงานอธิการบดี", "คณะพลังงานสิ่งแวดล้อมและวัสดุ", "สำนักคอมพิวเตอร์", "คณะวิศวกรรมศาสตร์", "สถาบันวิทยาการหุ่นยนต์ภาคสนาม", "สำนักสวนอุตสาหกรรม", "สำนักหอสมุด", "บัณฑิตวิทยาลัยร่วมด้านพลังงานและสิ่งแวดล้อม", "ศูนย์การจัดการด้านพลังงานสิ่งแวดล้อมความปลอดภัยและอาชีวอนามัย", "บัณฑิตวิทยาลัยการจัดการและนวัตกรรม", "หน่วยงานในกำกับมหาวิทยาลัย", "สำนักบัณฑิตศึกษาและกิจการนานาชาติ", "สำนักวิจัยและบริการวิทยาศาสตร์และเทคโนโลยี", "คณะเทคโนโลยีสารสนเทศ", "สถาบันการเรียนรู้", "คณะศิลปศาสตร์", "สถาบันพัฒนาและฝึกอบรมโรงงานต้นแบบ", "สำนักบริหารอาคารและสถานที่", "คณะทรัพยากรชีวภาพและเทคโนโลยี", "คณะสถาปัตยกรรมศาสตร์และการออกแบบ", "โครงการที่ปรึกษาตรวจสอบ", "วิทยาลัยสหวิทยาการ", "คณะวิทยาศาสตร์", "โครงการบริหารก่อสร้าง", "คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี" }));
+        facultyComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                facultyComboBoxActionPerformed(evt);
             }
         });
 
-        jComboBox3.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "กลุ่มนักร้องประสานเสียง", "กลุ่มนักศึกษาคณะ ภาควิชา", "กลุ่มนักศึกษาทุนการศึกษา", "กลุ่มนักศึกษาทุนเพชรพระจอมเกล้า", "ชมรม 2B-KMUTT", "ชมรม Formula Student", "ชมรม KMUTT Cover Dance Club", "ชมรม KMUTT E-Sports", "ชมรม KMUTT Entrepreneur Club", "ชมรม KMUTT Green Heart", "ชมรมการลงทุน", "ชมรมคอมพิวเตอร์", "ชมรมจักรยานสีเขียว", "ชมรมดนตรีไทยและนาฎศิลป์", "ชมรมดาบสากล", "ชมรมดินสอสีขาว", "ชมรมติว", "ชมรมเทควันโด", "ชมรมเทนนิส", "ชมรมเทเบิลเทนนิส", "ชมรมธนบุรีโรบอทคอนเทส", "ชมรมนักวิทยุสมัครเล่นและเทคโนโลยีอวกาศเพื่อการวิจัย", "ชมรมนักศึกษาคริสเตียน", "ชมรมนักศึกษามุสลิม", "ชมรมบริดจ์", "ชมรมบันเทิงและดนตรีสากล", "ชมรมบาสเกตบอล", "ชมรมแบดมินตัน", "ชมรมเปตอง", "ชมรมพัฒนาเกมส์", "ชมรมพัฒนาศักยภาพและคุณธรรม", "ชมรมพุทธศาสตร์", "ชมรมเพาะกาย", "ชมรมฟุตซอล", "ชมรมฟุตบอล", "ชมรมไฟฟ้าวิชาการ", "ชมรมยูโด", "ชมรมรักบี้ฟุตบอล", "ชมรมโรตาแรคท์", "ชมรมแลกเปลี่ยนวัฒนธรรมนานาชาติ", "ชมรมวรรณศิลป์", "ชมรมวอลเลย์บอล", "ชมรมศิลปวัฒนธรรมทักษิณ", "ชมรมศิลปวัฒนธรรมล้านนา", "ชมรมศิลปวัฒนธรรมอีสาน", "ชมรมศิลปะภาพวาดการ์ตูนและวัฒนธรรมญี่ปุ่นสมัยนิยม", "ชมรมศิลปะและการถ่ายภาพ", "ชมรมสันทนาการและเชียร์", "ชมรมสัมปชัญโญสโมสร", "ชมรมหมากกระดาน", "ชมรมอนุรักษ์ทรัพยากรธรรมชาติและสิ่งแวดล้อม", "ชมรมอาสาพัฒนาชนบท", "ชมรมอิเล็กทรอนิกส์บางมด", "ชมรมอูคูเลเล่", "สภานักศึกษา", "สโมสรนักศึกษาคณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี", "สโมสรนักศึกษาคณะเทคโนโลยีสารสนเทศ", "สโมสรนักศึกษาคณะวิทยาศาสตร์", "สโมสรนักศึกษาคณะวิศวกรรมศาสตร์", "สโมสรนักศึกษาคณะสถาปัตยกรรมศาสตร์และการออกแบบ", "สโมสรนักศึกษาโครงการร่วมบริหารหลักสูตรมีเดียอาตส์และเทคโนโลยี", "สื่อสารมวลชนและเทคโนโลยีมีเดีย", "หอพักนักศึกษา", "องค์การนักศึกษา" }));
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        samoComboBox.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        samoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "กลุ่มนักร้องประสานเสียง", "กลุ่มนักศึกษาคณะ ภาควิชา", "กลุ่มนักศึกษาทุนการศึกษา", "กลุ่มนักศึกษาทุนเพชรพระจอมเกล้า", "ชมรม 2B-KMUTT", "ชมรม Formula Student", "ชมรม KMUTT Cover Dance Club", "ชมรม KMUTT E-Sports", "ชมรม KMUTT Entrepreneur Club", "ชมรม KMUTT Green Heart", "ชมรมการลงทุน", "ชมรมคอมพิวเตอร์", "ชมรมจักรยานสีเขียว", "ชมรมดนตรีไทยและนาฎศิลป์", "ชมรมดาบสากล", "ชมรมดินสอสีขาว", "ชมรมติว", "ชมรมเทควันโด", "ชมรมเทนนิส", "ชมรมเทเบิลเทนนิส", "ชมรมธนบุรีโรบอทคอนเทส", "ชมรมนักวิทยุสมัครเล่นและเทคโนโลยีอวกาศเพื่อการวิจัย", "ชมรมนักศึกษาคริสเตียน", "ชมรมนักศึกษามุสลิม", "ชมรมบริดจ์", "ชมรมบันเทิงและดนตรีสากล", "ชมรมบาสเกตบอล", "ชมรมแบดมินตัน", "ชมรมเปตอง", "ชมรมพัฒนาเกมส์", "ชมรมพัฒนาศักยภาพและคุณธรรม", "ชมรมพุทธศาสตร์", "ชมรมเพาะกาย", "ชมรมฟุตซอล", "ชมรมฟุตบอล", "ชมรมไฟฟ้าวิชาการ", "ชมรมยูโด", "ชมรมรักบี้ฟุตบอล", "ชมรมโรตาแรคท์", "ชมรมแลกเปลี่ยนวัฒนธรรมนานาชาติ", "ชมรมวรรณศิลป์", "ชมรมวอลเลย์บอล", "ชมรมศิลปวัฒนธรรมทักษิณ", "ชมรมศิลปวัฒนธรรมล้านนา", "ชมรมศิลปวัฒนธรรมอีสาน", "ชมรมศิลปะภาพวาดการ์ตูนและวัฒนธรรมญี่ปุ่นสมัยนิยม", "ชมรมศิลปะและการถ่ายภาพ", "ชมรมสันทนาการและเชียร์", "ชมรมสัมปชัญโญสโมสร", "ชมรมหมากกระดาน", "ชมรมอนุรักษ์ทรัพยากรธรรมชาติและสิ่งแวดล้อม", "ชมรมอาสาพัฒนาชนบท", "ชมรมอิเล็กทรอนิกส์บางมด", "ชมรมอูคูเลเล่", "สภานักศึกษา", "สโมสรนักศึกษาคณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี", "สโมสรนักศึกษาคณะเทคโนโลยีสารสนเทศ", "สโมสรนักศึกษาคณะวิทยาศาสตร์", "สโมสรนักศึกษาคณะวิศวกรรมศาสตร์", "สโมสรนักศึกษาคณะสถาปัตยกรรมศาสตร์และการออกแบบ", "สโมสรนักศึกษาโครงการร่วมบริหารหลักสูตรมีเดียอาตส์และเทคโนโลยี", "สื่อสารมวลชนและเทคโนโลยีมีเดีย", "หอพักนักศึกษา", "องค์การนักศึกษา" }));
+        samoComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                samoComboBoxActionPerformed(evt);
             }
         });
 
@@ -151,23 +151,23 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ค้นหาประวัติเอกสาร");
 
-        jButton2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton2.setText("ย้อนกลับ");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        back.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        back.setText("ย้อนกลับ");
+        back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                backActionPerformed(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton1.setText("ค้นหา");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Search.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        Search.setText("ค้นหา");
+        Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SearchActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        searchReport.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null}
             },
@@ -190,16 +190,16 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        searchReport.getTableHeader().setReorderingAllowed(false);
+        searchReport.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                searchReportMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(50);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+        jScrollPane1.setViewportView(searchReport);
+        if (searchReport.getColumnModel().getColumnCount() > 0) {
+            searchReport.getColumnModel().getColumn(0).setMinWidth(50);
+            searchReport.getColumnModel().getColumn(0).setMaxWidth(50);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -223,8 +223,8 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
                             .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextField1)
                             .addComponent(jComboBox5, 0, 263, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, 1, Short.MAX_VALUE)
-                            .addComponent(jComboBox3, 0, 1, Short.MAX_VALUE)))
+                            .addComponent(facultyComboBox, 0, 1, Short.MAX_VALUE)
+                            .addComponent(samoComboBox, 0, 1, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -236,9 +236,9 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(29, 29, 29))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(Search)
                         .addGap(91, 91, 91)
-                        .addComponent(jButton2)
+                        .addComponent(back)
                         .addGap(74, 74, 74))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -253,11 +253,11 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(facultyComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(samoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -272,8 +272,8 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
                     .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(Search)
+                    .addComponent(back))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
@@ -299,10 +299,10 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
         //เมื่อกดปุ่มค้นหา
         //กดแล้วทำการดึงข้อมูลที่เลือก ไปลงในตาราง
-        DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+        DefaultTableModel model = (DefaultTableModel)searchReport.getModel();
         int countRow = model.getRowCount();
         while(countRow != 0){
             model.removeRow(0);
@@ -317,13 +317,13 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
         }
         
         String department = "";
-        if(jComboBox2.isEnabled()){
-            if(jComboBox2.getSelectedIndex() != 0){
-                department = " and department = '"+jComboBox2.getItemAt(jComboBox2.getSelectedIndex())+"'";
+        if(facultyComboBox.isEnabled()){
+            if(facultyComboBox.getSelectedIndex() != 0){
+                department = " and department = '"+facultyComboBox.getItemAt(facultyComboBox.getSelectedIndex())+"'";
             }  
         }else {
-            if(jComboBox3.getSelectedIndex() != 0){
-                department = " and department = '"+jComboBox3.getItemAt(jComboBox3.getSelectedIndex())+"'";
+            if(samoComboBox.getSelectedIndex() != 0){
+                department = " and department = '"+samoComboBox.getItemAt(samoComboBox.getSelectedIndex())+"'";
             }
         }
         
@@ -384,9 +384,9 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SearchActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         //เมื่อกดปุ่มย้อนกลับ
         try {    
             if(st != null){
@@ -398,11 +398,11 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
         }
         homeAdmin.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_backActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void searchReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchReportMouseClicked
         //เมื่อคลิกที่ตาราง
-        int selectedRow = jTable1.getSelectedRow();
+        int selectedRow = searchReport.getSelectedRow();
         if(st != null){
             try {
                 if(!rs.isBeforeFirst()){
@@ -416,23 +416,23 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
                 System.out.println(ex);
             }
         }
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_searchReportMouseClicked
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void facultyComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facultyComboBoxActionPerformed
         //เมื่อเลือกค่า jComboBox2
-        if(jComboBox2.getSelectedIndex() != 0){
-            jComboBox3.setEnabled(false);
+        if(facultyComboBox.getSelectedIndex() != 0){
+            samoComboBox.setEnabled(false);
         }else
-            jComboBox3.setEnabled(true);
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+            samoComboBox.setEnabled(true);
+    }//GEN-LAST:event_facultyComboBoxActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void samoComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_samoComboBoxActionPerformed
         //เมื่อเลือกค่า jComboBox3
-        if(jComboBox3.getSelectedIndex() != 0){
-            jComboBox2.setEnabled(false);
+        if(samoComboBox.getSelectedIndex() != 0){
+            facultyComboBox.setEnabled(false);
         }else
-            jComboBox2.setEnabled(true);
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+            facultyComboBox.setEnabled(true);
+    }//GEN-LAST:event_samoComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -473,10 +473,9 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    private javax.swing.JButton Search;
+    private javax.swing.JButton back;
+    private javax.swing.JComboBox<String> facultyComboBox;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
@@ -491,7 +490,8 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<String> samoComboBox;
+    private javax.swing.JTable searchReport;
     // End of variables declaration//GEN-END:variables
 }

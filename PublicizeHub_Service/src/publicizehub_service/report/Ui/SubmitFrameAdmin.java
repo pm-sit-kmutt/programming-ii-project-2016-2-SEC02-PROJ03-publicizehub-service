@@ -103,13 +103,13 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        selectImage = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        upload = new javax.swing.JButton();
+        sendComment = new javax.swing.JButton();
+        closeProject = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        deleteImage = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -223,30 +223,30 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("เลือกรูปภาพ");
 
-        jButton1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton1.setText("...");
-        jButton1.setEnabled(false);
+        selectImage.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        selectImage.setText("...");
+        selectImage.setEnabled(false);
 
         jLabel12.setFont(new java.awt.Font("ThaiSans Neue", 0, 16)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton2.setText("อัฟโหลด");
-        jButton2.setEnabled(false);
+        upload.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        upload.setText("อัฟโหลด");
+        upload.setEnabled(false);
 
-        jButton3.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton3.setText("ส่ง comment");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        sendComment.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        sendComment.setText("ส่ง comment");
+        sendComment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                sendCommentActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton4.setText("ปิดโครงการ");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        closeProject.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        closeProject.setText("ปิดโครงการ");
+        closeProject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                closeProjectActionPerformed(evt);
             }
         });
 
@@ -259,9 +259,9 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jButton6.setText("ลบรูป");
-        jButton6.setEnabled(false);
+        deleteImage.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        deleteImage.setText("ลบรูป");
+        deleteImage.setEnabled(false);
 
         jTextField5.setEditable(false);
         jTextField5.setBackground(new java.awt.Color(36, 47, 65));
@@ -312,13 +312,13 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
+                        .addComponent(selectImage)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(upload)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(deleteImage, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -344,9 +344,9 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(247, 247, 247))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(sendComment)
                         .addGap(35, 35, 35)
-                        .addComponent(jButton4)
+                        .addComponent(closeProject)
                         .addGap(34, 34, 34)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(140, 140, 140))))
@@ -388,10 +388,10 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
-                            .addComponent(jButton1)
+                            .addComponent(selectImage)
                             .addComponent(jLabel12)
-                            .addComponent(jButton2)
-                            .addComponent(jButton6))
+                            .addComponent(upload)
+                            .addComponent(deleteImage))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -399,8 +399,8 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
                         .addComponent(jLabel8)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sendComment, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(closeProject, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16))
         );
@@ -446,12 +446,12 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
    // ส่ง comment
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void sendCommentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendCommentActionPerformed
         CommentAdmin cma = new CommentAdmin(this, rootPaneCheckingEnabled);
         cma.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_sendCommentActionPerformed
     // ปิดโครงการ
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void closeProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeProjectActionPerformed
         if(jTable1.getRowCount() < 10){
             JOptionPane.showMessageDialog(null, "ต้องอัฟโหลดรูปภาพอย่างน้อย 10 รูป");
         }else {
@@ -474,7 +474,7 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
             ssfa.setVisible(true);
             dispose();
         }   
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_closeProjectActionPerformed
     // ย้อนกลับ
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {    
@@ -547,12 +547,9 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton closeProject;
+    private javax.swing.JButton deleteImage;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -578,5 +575,8 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JButton selectImage;
+    private javax.swing.JButton sendComment;
+    private javax.swing.JButton upload;
     // End of variables declaration//GEN-END:variables
 }
