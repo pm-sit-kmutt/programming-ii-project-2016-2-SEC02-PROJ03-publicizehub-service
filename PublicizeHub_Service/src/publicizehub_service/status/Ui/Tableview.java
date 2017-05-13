@@ -35,7 +35,7 @@ public class Tableview extends javax.swing.JFrame {
     }
     
     public void setFrame(){
-        DefaultTableModel de = (DefaultTableModel)jTable1.getModel();
+        DefaultTableModel de = (DefaultTableModel)viewProject.getModel();
         int line =0;
         con = ConnectionBuilder.getConnection();
         try {
@@ -74,7 +74,7 @@ public class Tableview extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        viewProject = new javax.swing.JTable();
         back = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
@@ -104,8 +104,8 @@ public class Tableview extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
 
-        jTable1.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        viewProject.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
+        viewProject.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -137,22 +137,22 @@ public class Tableview extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setRowHeight(23);
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        viewProject.setRowHeight(23);
+        viewProject.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
+                viewProjectMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(180);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(180);
-            jTable1.getColumnModel().getColumn(1).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(120);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(120);
-            jTable1.getColumnModel().getColumn(3).setMinWidth(120);
-            jTable1.getColumnModel().getColumn(3).setMaxWidth(120);
+        jScrollPane1.setViewportView(viewProject);
+        if (viewProject.getColumnModel().getColumnCount() > 0) {
+            viewProject.getColumnModel().getColumn(0).setMinWidth(180);
+            viewProject.getColumnModel().getColumn(0).setMaxWidth(180);
+            viewProject.getColumnModel().getColumn(1).setMinWidth(100);
+            viewProject.getColumnModel().getColumn(1).setMaxWidth(100);
+            viewProject.getColumnModel().getColumn(2).setMinWidth(120);
+            viewProject.getColumnModel().getColumn(2).setMaxWidth(120);
+            viewProject.getColumnModel().getColumn(3).setMinWidth(120);
+            viewProject.getColumnModel().getColumn(3).setMaxWidth(120);
         }
 
         back.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
@@ -220,12 +220,12 @@ public class Tableview extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_backActionPerformed
 
-    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+    private void viewProjectMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewProjectMouseClicked
        int row = 0;
        int col = 0;
-       if(jTable1.getValueAt(jTable1.getSelectedRow(), jTable1.getSelectedColumn()) != null){
-            row = jTable1.getSelectedRow();
-            col = jTable1.getSelectedColumn();
+       if(viewProject.getValueAt(viewProject.getSelectedRow(), viewProject.getSelectedColumn()) != null){
+            row = viewProject.getSelectedRow();
+            col = viewProject.getSelectedColumn();
        }
        if (col==2){
            try {
@@ -236,15 +236,15 @@ public class Tableview extends javax.swing.JFrame {
            } catch (SQLException ex) {
                Logger.getLogger(Tableview.class.getName()).log(Level.SEVERE, null, ex);
            }
-           if(jTable1.getValueAt(row, col).equals("รออนุมัติ")){
+           if(viewProject.getValueAt(row, col).equals("รออนุมัติ")){
                EditP1 e1 = new EditP1(this);
                e1.setVisible(true);
                setVisible(false);
-           }else if(jTable1.getValueAt(row, col).equals("อนุมัติแล้ว")){
+           }else if(viewProject.getValueAt(row, col).equals("อนุมัติแล้ว")){
                SubmitFrame sf = new SubmitFrame(this);
                sf.setVisible(true);
                setVisible(false);
-           }else if(jTable1.getValueAt(row, col).equals("รอปิดโครงการ")){
+           }else if(viewProject.getValueAt(row, col).equals("รอปิดโครงการ")){
                SubmitFrame sf = new SubmitFrame(this);
                sf.setVisible(true);
                setVisible(false);
@@ -263,7 +263,7 @@ public class Tableview extends javax.swing.JFrame {
            
            
        }
-    }//GEN-LAST:event_jTable1MouseClicked
+    }//GEN-LAST:event_viewProjectMouseClicked
 
     /**
      * @param args the command line arguments
@@ -307,7 +307,7 @@ public class Tableview extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTable viewProject;
     // End of variables declaration//GEN-END:variables
 }
