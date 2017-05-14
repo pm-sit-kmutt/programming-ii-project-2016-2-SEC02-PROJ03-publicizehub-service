@@ -462,7 +462,7 @@ public class SubmitFrame extends javax.swing.JFrame {
     // หารูป
     private void selectImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectImageActionPerformed
         JFileChooser fileopen = new JFileChooser();
-        FileFilter filter = new FileNameExtensionFilter("picture file", "jpg", "jpeg", "png");
+        FileFilter filter = new FileNameExtensionFilter("picture file", "jpg", "jpeg", "png", "gif");
         fileopen.setFileFilter(filter);
         int ret = fileopen.showDialog(null, "Choose file");
         if(ret == JFileChooser.APPROVE_OPTION){

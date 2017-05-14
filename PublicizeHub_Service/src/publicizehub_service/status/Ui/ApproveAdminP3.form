@@ -132,13 +132,11 @@
                   <Component id="jScrollPane1" min="-2" pref="100" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                          <Component id="sentComment" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                          <Component id="deleteData" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="deleteData" alignment="1" min="-2" pref="34" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="3" attributes="0">
                           <Component id="approve" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="back" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
+                          <Component id="sentComment" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
