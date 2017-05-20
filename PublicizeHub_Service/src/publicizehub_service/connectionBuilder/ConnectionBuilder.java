@@ -17,10 +17,10 @@ public class ConnectionBuilder {
         Connection con = null;
         try{
             Class.forName("com.mysql.jdbc.Driver"); 
-            con = DriverManager.getConnection("jdbc:mysql://10.4.56.8:3306/publicService?characterEncoding=UTF-8", "public-3", "public");
+            con = DriverManager.getConnection("jdbc:mysql://10.4.56.11:3306/publicService?characterEncoding=UTF-8", "public-3", "public");
             System.out.println("yes");
         }catch(Exception ex){
-            System.err.println("Connect db error "+ex);
+            ex.printStackTrace();
         }
         return con;
     }

@@ -5,10 +5,10 @@
  */
 package publicizehub_service.activity_form.Ui;
 
+import publicizehub_service.calendar_Ui.ActivityCalendar;
 import publicizehub_service.Class.User;
 import publicizehub_service.report.Ui.*;
 import publicizehub_service.status.Ui.SearchApproveAdmin;
-import publicizehub_service.status.Ui.Tableview;
 
 /**
  *
@@ -49,6 +49,13 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -57,9 +64,9 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("ThaiSans Neue", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("KMUTTPublicize");
+        jLabel1.setText("KMUTTPublicizeHub");
 
-        ApproveProject.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        ApproveProject.setFont(new java.awt.Font("ThaiSans Neue", 0, 22)); // NOI18N
         ApproveProject.setText("อนุมัติเอกสาร");
         ApproveProject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,7 +74,7 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
             }
         });
 
-        historyAdmin.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        historyAdmin.setFont(new java.awt.Font("ThaiSans Neue", 0, 22)); // NOI18N
         historyAdmin.setText("ประวัติเอกสาร");
         historyAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,7 +82,7 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
             }
         });
 
-        closeProject.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        closeProject.setFont(new java.awt.Font("ThaiSans Neue", 0, 22)); // NOI18N
         closeProject.setText("ปิดโครงการ");
         closeProject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,7 +90,7 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
             }
         });
 
-        outProgram.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        outProgram.setFont(new java.awt.Font("ThaiSans Neue", 0, 22)); // NOI18N
         outProgram.setText("ออกจากระบบ");
         outProgram.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,7 +98,7 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
             }
         });
 
-        calendar.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        calendar.setFont(new java.awt.Font("ThaiSans Neue", 0, 22)); // NOI18N
         calendar.setText("ปฏิทิน");
         calendar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,34 +136,38 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(historyAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ApproveProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(closeProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(outProgram, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(calendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(146, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(historyAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ApproveProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(closeProject, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(outProgram, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(calendar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(4, 4, 4)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -172,7 +183,7 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
                 .addComponent(calendar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(outProgram, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -193,21 +204,73 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/Image/kmutt.png"))); // NOI18N
         jLabel4.setText("jLabel3");
 
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/publicizehub_service/Image/มหาลัย.png"))); // NOI18N
+
+        jLabel11.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jLabel11.setText("หรือข้อผิดพลาดได้อย่างรวดเร็ว โดยไม่จำเป็นต้องเดินทางหรือจัดส่งด้วยตนเอง และแก้ไขได้ทันที");
+
+        jLabel10.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jLabel10.setText("จัดทำ ระบบจัดส่งเอกสารที่สามารถส่งเอกสารหรือเปิดปิดโครงการได้อย่างรวดเร็ว สามารถรู้ปัญหา");
+
+        jLabel9.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jLabel9.setText("หรือต้องรอเจ้าหน้าที่ยืนยัน และการเดินทางที่เป็นปัญหา ก่อให้เกิดความล่าช้าและสูญเสียเวลา เราจึง");
+
+        jLabel8.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jLabel8.setText("ทั้งนอกและในมหาวิทยาลัย ปัจจุบันการส่งเอกสารสำคัญในการสมัครโครงการจะต้องส่งด้วยตนเอง ");
+
+        jLabel7.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jLabel7.setText("ซึ่งจัดทำขึ้นมาโดยมีจุดมุ่งหมายเพื่อสร้างระบบจัดทำส่งเอกสาร ของโครงการต่างๆ ของมหาวิทยาลัย");
+
+        jLabel6.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jLabel6.setText("KMUTTPublicize Service เป็นระบบที่จัดทำขึ้นเพื่อมหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(470, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(443, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel7)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel8)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel9)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel10)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel11)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -231,32 +294,34 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
 
     private void outProgramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outProgramActionPerformed
         //ย้อนกลับ
+        dispose();
         User.resetData();
         login_1 login = new login_1();
         login.setVisible(true);
-        dispose();
     }//GEN-LAST:event_outProgramActionPerformed
 
     private void closeProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeProjectActionPerformed
+        setVisible(false);
         SearchSubmitFrameAdmin sfa = new SearchSubmitFrameAdmin(this);
         sfa.setVisible(true);
-        setVisible(false);
     }//GEN-LAST:event_closeProjectActionPerformed
 
     private void ApproveProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApproveProjectActionPerformed
+        setVisible(false);
         SearchApproveAdmin approve =new SearchApproveAdmin(this);
         approve.setVisible(true);
-        setVisible(false);
     }//GEN-LAST:event_ApproveProjectActionPerformed
 
     private void historyAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyAdminActionPerformed
+        setVisible(false);
         SearchFinishedReportFrameAdmin reportAdmin=new SearchFinishedReportFrameAdmin(this);
         reportAdmin.setVisible(true);
-        setVisible(false);
     }//GEN-LAST:event_historyAdminActionPerformed
 
     private void calendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calendarActionPerformed
-        // TODO add your handling code here:
+        setVisible(false);
+        ActivityCalendar ac = new ActivityCalendar(this);
+        ac.setVisible(true);
     }//GEN-LAST:event_calendarActionPerformed
 
     /**
@@ -302,10 +367,17 @@ public class KMUTTPublicizeServiceAdmin extends javax.swing.JFrame {
     private javax.swing.JButton closeProject;
     private javax.swing.JButton historyAdmin;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

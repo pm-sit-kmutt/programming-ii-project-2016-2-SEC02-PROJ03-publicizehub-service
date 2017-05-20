@@ -8,9 +8,6 @@ package publicizehub_service.Class;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.scene.chart.PieChart;
 import javax.swing.JTable;
 
 /**
@@ -34,7 +31,7 @@ public class ProjectProcess {
         int tableRow = table.getRowCount();
         ProjectProcess[] ArrayProcess = new ProjectProcess[tableRow];
         for (int i = 0; i < tableRow; i++) {
-            ArrayProcess[i] = new ProjectProcess(table.getValueAt(i, 1).toString(), new Date(df.parse((String) table.getValueAt(i, 2)).getTime()));
+            ArrayProcess[i] = new ProjectProcess(table.getValueAt(i, 1).toString(), new Date(df.parse((String)table.getValueAt(i, 2)).getTime()));
         }
         return ArrayProcess;
     }

@@ -5,11 +5,9 @@
  */
 package publicizehub_service.report.Ui;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.awt.Image;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,21 +23,21 @@ import publicizehub_service.status.Ui.CommentAdmin;
  * @author นัน
  */
 public class SubmitFrameAdmin extends javax.swing.JFrame {
-    ArrayList<String> file = new ArrayList<>();
-    ArrayList<String> name = new ArrayList<>();
-    Connection con = ConnectionBuilder.getConnection();
-    SearchSubmitFrameAdmin ssfa;
-    int id = User.getSelectProjectId();
-    int line = 0;
+    private ArrayList<String> name = new ArrayList<>();
+    private ArrayList<byte[]> byteArray = new ArrayList<>();
+    private Connection con;
+    private SearchSubmitFrameAdmin ssfa;
+    private int id = User.getSelectProjectId();
+    private int line = 0;
 
     public SubmitFrameAdmin() {
         initComponents();
-        setFrame();
     }
     
     public SubmitFrameAdmin(SearchSubmitFrameAdmin ssfa) {
         initComponents();
         this.ssfa = ssfa;
+        con = ConnectionBuilder.getConnection();
         setFrame();
     }
     
@@ -65,7 +63,7 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
             ResultSet rs2 = st2.executeQuery("select * from picture where projectId = "+id);
             while(rs2.next()){
                 name.add(rs2.getString("name"));
-                file.add(rs2.getString("file"));
+                byteArray.add(rs2.getBytes("image"));
                 model.addRow(new Object[0]);
                 model.setValueAt(line+1, line, 0);
                 model.setValueAt(rs2.getString("name"), line, 1);
@@ -132,11 +130,13 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
 
         jTextField3.setEditable(false);
         jTextField3.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         jTextField4.setEditable(false);
         jTextField4.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
@@ -157,11 +157,12 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         jLabel9.setText("บาท");
 
         jLabel10.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setForeground(new java.awt.Color(255, 0, 51));
         jLabel10.setText("อัฟโหลดรูปภาพหลักฐานค่าใช้จ่าย และ หลักฐานการทำโครงการ อย่างน้อย 10 ภาพ");
 
         jTextField6.setEditable(false);
         jTextField6.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(255, 255, 255));
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
@@ -203,13 +204,13 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(60);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(60);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(50);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(50);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(70);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(70);
         }
 
         jLabel1.setFont(new java.awt.Font("ThaiSans Neue", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("แจ้งปิดโครงการ");
+        jLabel1.setText("ยืนยันการปิดโครงการ");
 
         jLabel2.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -217,6 +218,7 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel11.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
@@ -265,6 +267,7 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
 
         jTextField5.setEditable(false);
         jTextField5.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel13.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
@@ -273,10 +276,11 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("ระบุ จำนวนงบ ทีได้");
+        jLabel3.setText("ระบุจำนวนงบที่ได้");
 
         jTextField2.setEditable(false);
         jTextField2.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
@@ -338,18 +342,18 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(145, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(247, 247, 247))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(sendComment)
                         .addGap(35, 35, 35)
                         .addComponent(closeProject)
                         .addGap(34, 34, 34)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(140, 140, 140))))
+                        .addGap(140, 140, 140))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(227, 227, 227))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,21 +386,21 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(selectImage)
-                            .addComponent(jLabel12)
-                            .addComponent(upload)
-                            .addComponent(deleteImage))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel7)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(selectImage)
+                    .addComponent(jLabel12)
+                    .addComponent(upload)
+                    .addComponent(deleteImage))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sendComment, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -458,12 +462,12 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
             try {
                 int ans = JOptionPane.showConfirmDialog(null, "คุณแน่ใจแล้วใช่ไหม?", "Confirm", JOptionPane.YES_NO_OPTION);
                 if(ans == 0){
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
                     PreparedStatement pt3 = con.prepareStatement("update project set status = ?, closeTime = ? where id = ?");
                     pt3.setInt(1, 0);
-                    pt3.setDate(2, new Date(new java.util.Date().getTime()));
+                    pt3.setDate(2, Date.valueOf(df.format(new java.util.Date().getTime())));
                     pt3.setInt(3, id);
-                    int result = pt3.executeUpdate();
-                    System.out.println(result);
+                    pt3.executeUpdate();
                     pt3.close();
                     con.close();
                 }
@@ -490,22 +494,19 @@ public class SubmitFrameAdmin extends javax.swing.JFrame {
         int row = jTable1.getSelectedRow();
         int col = jTable1.getSelectedColumn();
         if(col == 1){
-            try {
-                openImage(new File(".").getCanonicalPath() + "\\img\\" + name.get(row));
-                } catch (IOException ex) {
-                    Logger.getLogger(SubmitFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+            openImage(byteArray.get(row));
+        }
     }//GEN-LAST:event_jTable1MouseClicked
 
-    public void openImage(String filePath){
+    public void openImage(byte[] fileBytes){
         JDialog jdialog = new JDialog(this, rootPaneCheckingEnabled);
-        JLabel jlabel = new JLabel(new javax.swing.ImageIcon(filePath), JLabel.CENTER);
+        jdialog.setSize(700, 600);
+        Image img = getToolkit().createImage(fileBytes);
+        JLabel jlabel = new JLabel(new ImageIcon(img), JLabel.CENTER);
         JScrollPane sc = new JScrollPane(jlabel); 
         jdialog.add(sc);
         jdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        jdialog.setLocation(300,200);
-        jdialog.pack();
+        jdialog.setLocation(350,200);
         jdialog.setVisible(true);
     }
     

@@ -37,49 +37,57 @@ public class ProjectDetail {
     
     public static boolean check(){
         if(projectNameThai.isEmpty() || projectNameEnglish.isEmpty() || department.isEmpty() || Advisors.isEmpty() || rationale.isEmpty()
-                || placeLocation.isEmpty() || numOfStudent == 0 || objective.isEmpty() || expected.isEmpty() || committee.length == 0 || process.length == 0 || money.length == 0){
-            if(endTime.before(startTime)){
-                JOptionPane.showMessageDialog(null, "คุณใส่ระยะเวลาในการดำเนินงาน ไม่ถูกต้อง");
-            }else{
-                JOptionPane.showMessageDialog(null, "คุณยังกรอกข้อมูลไม่ครบ");
-            }
+                || placeLocation.isEmpty() || numOfStudent == 0 || objective.isEmpty() || expected.isEmpty()){
+            JOptionPane.showMessageDialog(null, "คุณยังกรอกข้อมูลไม่ครบ");
             return false;
-        }else{
+        } else if(committee.length == 0){
+            JOptionPane.showMessageDialog(null, "ต้องมีคณะกรรมการจัดทำโครงการอย่างน้อย 1 คน");
+            return false;
+        } else if(process.length == 0){
+            JOptionPane.showMessageDialog(null, "ต้องมีขั้นตอนการดำเนินงานอย่างน้อย 1 รายการ");
+            return false;
+        } else if(money.length == 0){
+            JOptionPane.showMessageDialog(null, "ต้องมีรายละเอียดค่าใช้จ่ายอย่างน้อย 1 รายการ");
+            return false;
+        } else if (endTime.before(startTime)){
+            JOptionPane.showMessageDialog(null, "คุณใส่ระยะเวลาในการดำเนินงานไม่ถูกต้อง");
+            return false;
+        } else {
             return true;
         }
     }
     
-//    public static void printAll(){
-//        System.out.println("responsible: "+responsible); 
-//        System.out.println("projectNameThai: "+projectNameThai); 
-//        System.out.println("projectNameEnglish: "+projectNameEnglish); 
-//        System.out.println("department: "+department); 
-//        System.out.println("Advisors: "+Advisors); 
-//        System.out.println("rationale: "+rationale); 
-//        System.out.println("placeType: "+placeType); 
-//        System.out.println("placeLocation: "+placeLocation); 
-//        System.out.println("numOfStudent: "+numOfStudent); 
-//        System.out.println("numCome: "+numCome); 
-//        System.out.println("objective: "+objective); 
-//        System.out.println("expected: "+expected); 
-//        System.out.println("budget: "+budget); 
-//        System.out.println("cost: "+cost); 
-//        System.out.println("openTime: "+openTime); 
-//        System.out.println("startTime: "+startTime); 
-//        System.out.println("endTime: "+endTime); 
-//        System.out.println("closeTime: "+closeTime); 
-//        System.out.println("status: "+status); 
-//
-//        for (Committee committee1 : committee) {
-//            System.out.println(committee1);
-//        }
-//        for (ProjectProcess projectProcess : process) {
-//            System.out.println(projectProcess);
-//        }
-//        for (Money money : money) {
-//            System.out.println(money);
-//        }
-//    }
+    public static void printAll(){
+        System.out.println("responsible: "+responsible); 
+        System.out.println("projectNameThai: "+projectNameThai); 
+        System.out.println("projectNameEnglish: "+projectNameEnglish); 
+        System.out.println("department: "+department); 
+        System.out.println("Advisors: "+Advisors); 
+        System.out.println("rationale: "+rationale); 
+        System.out.println("placeType: "+placeType); 
+        System.out.println("placeLocation: "+placeLocation); 
+        System.out.println("numOfStudent: "+numOfStudent); 
+        System.out.println("numCome: "+numCome); 
+        System.out.println("objective: "+objective); 
+        System.out.println("expected: "+expected); 
+        System.out.println("budget: "+budget); 
+        System.out.println("cost: "+cost); 
+        System.out.println("openTime: "+openTime); 
+        System.out.println("startTime: "+startTime); 
+        System.out.println("endTime: "+endTime); 
+        System.out.println("closeTime: "+closeTime); 
+        System.out.println("status: "+status); 
+
+        for (Committee committee1 : committee) {
+            System.out.println(committee1);
+        }
+        for (ProjectProcess projectProcess : process) {
+            System.out.println(projectProcess);
+        }
+        for (Money money : money) {
+            System.out.println(money);
+        }
+    }
     
     public static int getId() {
         return id;

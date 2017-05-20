@@ -77,80 +77,106 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="engName" alignment="1" min="-2" pref="271" max="-2" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jComboBox1" min="-2" pref="271" max="-2" attributes="0"/>
-                                          <Component id="advisors" min="-2" pref="271" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="seeComment" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="back" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="next" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="jScrollPane1" min="-2" pref="490" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
+                                      <Component id="check6" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                              </Group>
-                              <Component id="thaiName" alignment="1" min="-2" pref="271" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="57" pref="122" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="220" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="99" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jScrollPane1" min="-2" pref="471" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="back" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jLabel21" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel9" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="next" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="jComboBox2" alignment="0" pref="0" max="32767" attributes="0"/>
+                                                  <Component id="jTextField11" alignment="0" min="-2" pref="152" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="jLabel16" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jLabel19" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="jTextField7" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="jTextField9" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="alert" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="insert" min="-2" pref="71" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                                              <Component id="delete" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jTextField11" min="-2" pref="137" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jTextField7" min="-2" pref="137" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="advisors" min="-2" pref="271" max="-2" attributes="0"/>
+                                              <Component id="jComboBox1" min="-2" pref="271" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jTextField10" min="-2" pref="137" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                                  <Component id="insert" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="delete" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Component id="jTextField9" min="-2" pref="137" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="32767" attributes="0"/>
+                                              <Component id="thaiName" min="-2" pref="271" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="engName" min="-2" pref="271" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="check1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="check2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="check3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="check4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="250" max="-2" attributes="0"/>
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace pref="53" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -160,55 +186,75 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="thaiName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="check1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="engName" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="check2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="advisors" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="check3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jComboBox1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="check4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField11" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField7" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField11" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBox2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField7" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField9" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTextField10" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField9" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="insert" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="delete" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="insert" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="alert" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="105" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane1" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                      <Component id="check6" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="next" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="back" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="seeComment" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="12" max="32767" attributes="0"/>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -247,24 +293,13 @@
             <Property name="text" type="java.lang.String" value="&#xe2d;&#xe32;&#xe08;&#xe32;&#xe23;&#xe22;&#xe4c;&#xe17;&#xe35;&#xe48;&#xe1b;&#xe23;&#xe36;&#xe01;&#xe29;&#xe32;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel15">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="24" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&#xe04;&#xe13;&#xe30;&#xe01;&#xe23;&#xe23;&#xe21;&#xe01;&#xe32;&#xe23;&#xe08;&#xe31;&#xe14;&#xe17;&#xe33;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="thaiName">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="41" green="2f" red="24" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="18" style="0"/>
+              <Font name="Tahoma" size="16" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -277,7 +312,7 @@
               <Color blue="41" green="2f" red="24" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="18" style="0"/>
+              <Font name="Tahoma" size="16" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -290,163 +325,12 @@
               <Color blue="41" green="2f" red="24" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="18" style="0"/>
+              <Font name="Tahoma" size="16" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField7">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="41" green="2f" red="24" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="18" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel21">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="20" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&#xe0a;&#xe37;&#xe48;&#xe2d;-&#xe19;&#xe32;&#xe21;&#xe2a;&#xe01;&#xe38;&#xe25;"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel16">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="20" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&#xe23;&#xe2b;&#xe31;&#xe2a;&#xe19;&#xe31;&#xe01;&#xe28;&#xe36;&#xe01;&#xe29;&#xe32;"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField10">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="41" green="2f" red="24" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="18" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="ThaiSans Neue" size="18" style="0"/>
-                </Property>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="0">
-                    <Column editable="true" title="&#xe23;&#xe2b;&#xe31;&#xe2a;&#xe19;&#xe31;&#xe01;&#xe28;&#xe36;&#xe01;&#xe29;&#xe32;" type="java.lang.Object"/>
-                    <Column editable="true" title="&#xe0a;&#xe37;&#xe48;&#xe2d; - &#xe19;&#xe32;&#xe21;&#xe2a;&#xe01;&#xe38;&#xe25;" type="java.lang.Object"/>
-                    <Column editable="true" title="&#xe04;&#xe13;&#xe30;" type="java.lang.Object"/>
-                    <Column editable="true" title="&#xe2b;&#xe19;&#xe49;&#xe32;&#xe17;&#xe35;&#xe48;" type="java.lang.Object"/>
-                    <Column editable="true" title="&#xe25;&#xe1a;" type="java.lang.Boolean"/>
-                  </Table>
-                </Property>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                  <TableColumnModel selectionModel="0">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="50" minWidth="50" prefWidth="-1" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                  </TableColumnModel>
-                </Property>
-                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
-                </Property>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Component class="javax.swing.JLabel" name="jLabel9">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="20" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&#xe04;&#xe13;&#xe30;"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel19">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="20" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&#xe2b;&#xe19;&#xe49;&#xe32;&#xe17;&#xe35;&#xe48;"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField9">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="41" green="2f" red="24" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="18" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="insert">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="18" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&#xe40;&#xe1e;&#xe34;&#xe48;&#xe21;"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertActionPerformed"/>
-          </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel1">
           <Properties>
@@ -495,52 +379,6 @@
             <Property name="text" type="java.lang.String" value="&#xe01;&#xe23;&#xe2d;&#xe01;&#xe23;&#xe32;&#xe22;&#xe25;&#xe30;&#xe40;&#xe2d;&#xe35;&#xe22;&#xe14;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="next">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="18" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&#xe2b;&#xe19;&#xe49;&#xe32;&#xe16;&#xe31;&#xe14;&#xe44;&#xe1b;"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextField11">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="41" green="2f" red="24" type="rgb"/>
-            </Property>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="18" style="0"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="back">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="18" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&#xe22;&#xe49;&#xe2d;&#xe19;&#xe01;&#xe25;&#xe31;&#xe1a;"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="delete">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="ThaiSans Neue" size="18" style="0"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="&#xe25;&#xe1a;"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel14">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -558,7 +396,7 @@
               <Font name="ThaiSans Neue" size="18" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="86">
+              <StringArray count="87">
                 <StringItem index="0" value="&#xe40;&#xe25;&#xe37;&#xe2d;&#xe01;"/>
                 <StringItem index="1" value="&#xe01;&#xe25;&#xe38;&#xe48;&#xe21;&#xe19;&#xe31;&#xe01;&#xe23;&#xe49;&#xe2d;&#xe07;&#xe1b;&#xe23;&#xe30;&#xe2a;&#xe32;&#xe19;&#xe40;&#xe2a;&#xe35;&#xe22;&#xe07;"/>
                 <StringItem index="2" value="&#xe01;&#xe25;&#xe38;&#xe48;&#xe21;&#xe19;&#xe31;&#xe01;&#xe28;&#xe36;&#xe01;&#xe29;&#xe32;&#xe04;&#xe13;&#xe30; &#xe20;&#xe32;&#xe04;&#xe27;&#xe34;&#xe0a;&#xe32;"/>
@@ -632,25 +470,293 @@
                 <StringItem index="70" value="&#xe04;&#xe13;&#xe30;&#xe2a;&#xe16;&#xe32;&#xe1b;&#xe31;&#xe15;&#xe22;&#xe01;&#xe23;&#xe23;&#xe21;&#xe28;&#xe32;&#xe2a;&#xe15;&#xe23;&#xe4c;&#xe41;&#xe25;&#xe30;&#xe01;&#xe32;&#xe23;&#xe2d;&#xe2d;&#xe01;&#xe41;&#xe1a;&#xe1a;"/>
                 <StringItem index="71" value="&#xe04;&#xe13;&#xe30;&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe28;&#xe32;&#xe2a;&#xe15;&#xe23;&#xe4c;"/>
                 <StringItem index="72" value="&#xe04;&#xe13;&#xe30;&#xe04;&#xe23;&#xe38;&#xe28;&#xe32;&#xe2a;&#xe15;&#xe23;&#xe4c;&#xe2d;&#xe38;&#xe15;&#xe2a;&#xe32;&#xe2b;&#xe01;&#xe23;&#xe23;&#xe21;&#xe41;&#xe25;&#xe30;&#xe40;&#xe17;&#xe04;&#xe42;&#xe19;&#xe42;&#xe25;&#xe22;&#xe35;"/>
-                <StringItem index="73" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe07;&#xe32;&#xe19;&#xe2d;&#xe18;&#xe34;&#xe01;&#xe32;&#xe23;&#xe1a;&#xe14;&#xe35;"/>
-                <StringItem index="74" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe04;&#xe2d;&#xe21;&#xe1e;&#xe34;&#xe27;&#xe40;&#xe15;&#xe2d;&#xe23;&#xe4c;"/>
-                <StringItem index="75" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe2a;&#xe27;&#xe19;&#xe2d;&#xe38;&#xe15;&#xe2a;&#xe32;&#xe2b;&#xe01;&#xe23;&#xe23;&#xe21;"/>
-                <StringItem index="76" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe2b;&#xe2d;&#xe2a;&#xe21;&#xe38;&#xe14;"/>
-                <StringItem index="77" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe1a;&#xe23;&#xe34;&#xe2b;&#xe32;&#xe23;&#xe2d;&#xe32;&#xe04;&#xe32;&#xe23;&#xe41;&#xe25;&#xe30;&#xe2a;&#xe16;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;"/>
-                <StringItem index="78" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe1a;&#xe31;&#xe13;&#xe11;&#xe34;&#xe15;&#xe28;&#xe36;&#xe01;&#xe29;&#xe32;&#xe41;&#xe25;&#xe30;&#xe01;&#xe34;&#xe08;&#xe01;&#xe32;&#xe23;&#xe19;&#xe32;&#xe19;&#xe32;&#xe0a;&#xe32;&#xe15;&#xe34;"/>
-                <StringItem index="79" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe27;&#xe34;&#xe08;&#xe31;&#xe22;&#xe41;&#xe25;&#xe30;&#xe1a;&#xe23;&#xe34;&#xe01;&#xe32;&#xe23;&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe28;&#xe32;&#xe2a;&#xe15;&#xe23;&#xe4c;&#xe41;&#xe25;&#xe30;&#xe40;&#xe17;&#xe04;&#xe42;&#xe19;&#xe42;&#xe25;&#xe22;&#xe35;"/>
-                <StringItem index="80" value="&#xe2a;&#xe16;&#xe32;&#xe1a;&#xe31;&#xe19;&#xe01;&#xe32;&#xe23;&#xe40;&#xe23;&#xe35;&#xe22;&#xe19;&#xe23;&#xe39;&#xe49;"/>
-                <StringItem index="81" value="&#xe2a;&#xe16;&#xe32;&#xe1a;&#xe31;&#xe19;&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe01;&#xe32;&#xe23;&#xe2b;&#xe38;&#xe48;&#xe19;&#xe22;&#xe19;&#xe15;&#xe4c;&#xe20;&#xe32;&#xe04;&#xe2a;&#xe19;&#xe32;&#xe21;"/>
-                <StringItem index="82" value="&#xe28;&#xe39;&#xe19;&#xe22;&#xe4c;&#xe01;&#xe32;&#xe23;&#xe08;&#xe31;&#xe14;&#xe01;&#xe32;&#xe23;&#xe14;&#xe49;&#xe32;&#xe19;&#xe1e;&#xe25;&#xe31;&#xe07;&#xe07;&#xe32;&#xe19;&#xe2a;&#xe34;&#xe48;&#xe07;&#xe41;&#xe27;&#xe14;&#xe25;&#xe49;&#xe2d;&#xe21;&#xe04;&#xe27;&#xe32;&#xe21;&#xe1b;&#xe25;&#xe2d;&#xe14;&#xe20;&#xe31;&#xe22;&#xe41;&#xe25;&#xe30;&#xe2d;&#xe32;&#xe0a;&#xe35;&#xe27;&#xe2d;&#xe19;&#xe32;&#xe21;&#xe31;&#xe22;"/>
-                <StringItem index="83" value="&#xe1a;&#xe31;&#xe13;&#xe11;&#xe34;&#xe15;&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe25;&#xe31;&#xe22;&#xe23;&#xe48;&#xe27;&#xe21;&#xe14;&#xe49;&#xe32;&#xe19;&#xe1e;&#xe25;&#xe31;&#xe07;&#xe07;&#xe32;&#xe19;&#xe41;&#xe25;&#xe30;&#xe2a;&#xe34;&#xe48;&#xe07;&#xe41;&#xe27;&#xe14;&#xe25;&#xe49;&#xe2d;&#xe21;"/>
-                <StringItem index="84" value="&#xe1a;&#xe31;&#xe13;&#xe11;&#xe34;&#xe15;&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe25;&#xe31;&#xe22;&#xe01;&#xe32;&#xe23;&#xe08;&#xe31;&#xe14;&#xe01;&#xe32;&#xe23;&#xe41;&#xe25;&#xe30;&#xe19;&#xe27;&#xe31;&#xe15;&#xe01;&#xe23;&#xe23;&#xe21;"/>
-                <StringItem index="85" value="&#xe2b;&#xe19;&#xe48;&#xe27;&#xe22;&#xe07;&#xe32;&#xe19;&#xe43;&#xe19;&#xe01;&#xe33;&#xe01;&#xe31;&#xe1a;&#xe21;&#xe2b;&#xe32;&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe25;&#xe31;&#xe22;"/>
+                <StringItem index="73" value="&#xe2a;&#xe16;&#xe32;&#xe1a;&#xe31;&#xe19;&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe01;&#xe32;&#xe23;&#xe2b;&#xe38;&#xe48;&#xe19;&#xe22;&#xe19;&#xe15;&#xe4c;&#xe20;&#xe32;&#xe04;&#xe2a;&#xe19;&#xe32;&#xe21;"/>
+                <StringItem index="74" value="&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;&#xe23;&#xe48;&#xe27;&#xe21;&#xe1a;&#xe23;&#xe34;&#xe2b;&#xe32;&#xe23;&#xe2b;&#xe25;&#xe31;&#xe01;&#xe2a;&#xe39;&#xe15;&#xe23;&#xe21;&#xe35;&#xe40;&#xe14;&#xe35;&#xe22;&#xe2d;&#xe32;&#xe15;&#xe2a;&#xe4c;&#xe41;&#xe25;&#xe30;&#xe40;&#xe17;&#xe04;&#xe42;&#xe19;&#xe42;&#xe25;&#xe22;&#xe35;&#xe21;&#xe35;&#xe40;&#xe14;&#xe35;&#xe22;"/>
+                <StringItem index="75" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe07;&#xe32;&#xe19;&#xe2d;&#xe18;&#xe34;&#xe01;&#xe32;&#xe23;&#xe1a;&#xe14;&#xe35;"/>
+                <StringItem index="76" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe04;&#xe2d;&#xe21;&#xe1e;&#xe34;&#xe27;&#xe40;&#xe15;&#xe2d;&#xe23;&#xe4c;"/>
+                <StringItem index="77" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe2a;&#xe27;&#xe19;&#xe2d;&#xe38;&#xe15;&#xe2a;&#xe32;&#xe2b;&#xe01;&#xe23;&#xe23;&#xe21;"/>
+                <StringItem index="78" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe2b;&#xe2d;&#xe2a;&#xe21;&#xe38;&#xe14;"/>
+                <StringItem index="79" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe1a;&#xe23;&#xe34;&#xe2b;&#xe32;&#xe23;&#xe2d;&#xe32;&#xe04;&#xe32;&#xe23;&#xe41;&#xe25;&#xe30;&#xe2a;&#xe16;&#xe32;&#xe19;&#xe17;&#xe35;&#xe48;"/>
+                <StringItem index="80" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe1a;&#xe31;&#xe13;&#xe11;&#xe34;&#xe15;&#xe28;&#xe36;&#xe01;&#xe29;&#xe32;&#xe41;&#xe25;&#xe30;&#xe01;&#xe34;&#xe08;&#xe01;&#xe32;&#xe23;&#xe19;&#xe32;&#xe19;&#xe32;&#xe0a;&#xe32;&#xe15;&#xe34;"/>
+                <StringItem index="81" value="&#xe2a;&#xe33;&#xe19;&#xe31;&#xe01;&#xe27;&#xe34;&#xe08;&#xe31;&#xe22;&#xe41;&#xe25;&#xe30;&#xe1a;&#xe23;&#xe34;&#xe01;&#xe32;&#xe23;&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe28;&#xe32;&#xe2a;&#xe15;&#xe23;&#xe4c;&#xe41;&#xe25;&#xe30;&#xe40;&#xe17;&#xe04;&#xe42;&#xe19;&#xe42;&#xe25;&#xe22;&#xe35;"/>
+                <StringItem index="82" value="&#xe2a;&#xe16;&#xe32;&#xe1a;&#xe31;&#xe19;&#xe01;&#xe32;&#xe23;&#xe40;&#xe23;&#xe35;&#xe22;&#xe19;&#xe23;&#xe39;&#xe49;"/>
+                <StringItem index="83" value="&#xe28;&#xe39;&#xe19;&#xe22;&#xe4c;&#xe01;&#xe32;&#xe23;&#xe08;&#xe31;&#xe14;&#xe01;&#xe32;&#xe23;&#xe14;&#xe49;&#xe32;&#xe19;&#xe1e;&#xe25;&#xe31;&#xe07;&#xe07;&#xe32;&#xe19;&#xe2a;&#xe34;&#xe48;&#xe07;&#xe41;&#xe27;&#xe14;&#xe25;&#xe49;&#xe2d;&#xe21;&#xe04;&#xe27;&#xe32;&#xe21;&#xe1b;&#xe25;&#xe2d;&#xe14;&#xe20;&#xe31;&#xe22;&#xe41;&#xe25;&#xe30;&#xe2d;&#xe32;&#xe0a;&#xe35;&#xe27;&#xe2d;&#xe19;&#xe32;&#xe21;&#xe31;&#xe22;"/>
+                <StringItem index="84" value="&#xe1a;&#xe31;&#xe13;&#xe11;&#xe34;&#xe15;&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe25;&#xe31;&#xe22;&#xe23;&#xe48;&#xe27;&#xe21;&#xe14;&#xe49;&#xe32;&#xe19;&#xe1e;&#xe25;&#xe31;&#xe07;&#xe07;&#xe32;&#xe19;&#xe41;&#xe25;&#xe30;&#xe2a;&#xe34;&#xe48;&#xe07;&#xe41;&#xe27;&#xe14;&#xe25;&#xe49;&#xe2d;&#xe21;"/>
+                <StringItem index="85" value="&#xe1a;&#xe31;&#xe13;&#xe11;&#xe34;&#xe15;&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe25;&#xe31;&#xe22;&#xe01;&#xe32;&#xe23;&#xe08;&#xe31;&#xe14;&#xe01;&#xe32;&#xe23;&#xe41;&#xe25;&#xe30;&#xe19;&#xe27;&#xe31;&#xe15;&#xe01;&#xe23;&#xe23;&#xe21;"/>
+                <StringItem index="86" value="&#xe2b;&#xe19;&#xe48;&#xe27;&#xe22;&#xe07;&#xe32;&#xe19;&#xe43;&#xe19;&#xe01;&#xe33;&#xe01;&#xe31;&#xe1a;&#xe21;&#xe2b;&#xe32;&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe25;&#xe31;&#xe22;"/>
               </StringArray>
             </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField9">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="41" green="2f" red="24" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel15">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="ThaiSans Neue" size="24" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xe04;&#xe13;&#xe30;&#xe01;&#xe23;&#xe23;&#xe21;&#xe01;&#xe32;&#xe23;&#xe08;&#xe31;&#xe14;&#xe17;&#xe33;&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;"/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="jTable1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="ThaiSans Neue" size="18" style="0"/>
+                </Property>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="5" rowCount="0">
+                    <Column editable="true" title="&#xe23;&#xe2b;&#xe31;&#xe2a;&#xe19;&#xe31;&#xe01;&#xe28;&#xe36;&#xe01;&#xe29;&#xe32;" type="java.lang.Object"/>
+                    <Column editable="true" title="&#xe0a;&#xe37;&#xe48;&#xe2d; - &#xe19;&#xe32;&#xe21;&#xe2a;&#xe01;&#xe38;&#xe25;" type="java.lang.Object"/>
+                    <Column editable="true" title="&#xe04;&#xe13;&#xe30;" type="java.lang.Object"/>
+                    <Column editable="true" title="&#xe2b;&#xe19;&#xe49;&#xe32;&#xe17;&#xe35;&#xe48;" type="java.lang.Object"/>
+                    <Column editable="true" title="&#xe40;&#xe25;&#xe37;&#xe2d;&#xe01;&#xe25;&#xe1a;" type="java.lang.Boolean"/>
+                  </Table>
+                </Property>
+                <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="check6">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="jComboBox2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="ThaiSans Neue" size="18" style="0"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="11">
+                <StringItem index="0" value="&#xe40;&#xe25;&#xe37;&#xe2d;&#xe01;"/>
+                <StringItem index="1" value="&#xe04;&#xe13;&#xe30;&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe28;&#xe32;&#xe2a;&#xe15;&#xe23;&#xe4c;"/>
+                <StringItem index="2" value="&#xe04;&#xe13;&#xe30;&#xe27;&#xe34;&#xe28;&#xe27;&#xe01;&#xe23;&#xe23;&#xe21;&#xe28;&#xe32;&#xe2a;&#xe15;&#xe23;&#xe4c;"/>
+                <StringItem index="3" value="&#xe04;&#xe13;&#xe30;&#xe04;&#xe23;&#xe38;&#xe28;&#xe32;&#xe2a;&#xe15;&#xe23;&#xe4c;&#xe2d;&#xe38;&#xe15;&#xe2a;&#xe32;&#xe2b;&#xe01;&#xe23;&#xe23;&#xe21;&#xe41;&#xe25;&#xe30;&#xe40;&#xe17;&#xe04;&#xe42;&#xe19;&#xe42;&#xe25;&#xe22;&#xe35;"/>
+                <StringItem index="4" value="&#xe04;&#xe13;&#xe30;&#xe40;&#xe17;&#xe04;&#xe42;&#xe19;&#xe42;&#xe25;&#xe22;&#xe35;&#xe2a;&#xe32;&#xe23;&#xe2a;&#xe19;&#xe40;&#xe17;&#xe28;"/>
+                <StringItem index="5" value="&#xe04;&#xe13;&#xe30;&#xe28;&#xe34;&#xe25;&#xe1b;&#xe28;&#xe32;&#xe2a;&#xe15;&#xe23;&#xe4c;"/>
+                <StringItem index="6" value="&#xe04;&#xe13;&#xe30;&#xe17;&#xe23;&#xe31;&#xe1e;&#xe22;&#xe32;&#xe01;&#xe23;&#xe0a;&#xe35;&#xe27;&#xe20;&#xe32;&#xe1e;&#xe41;&#xe25;&#xe30;&#xe40;&#xe17;&#xe04;&#xe42;&#xe19;&#xe42;&#xe25;&#xe22;&#xe35;"/>
+                <StringItem index="7" value="&#xe04;&#xe13;&#xe30;&#xe2a;&#xe16;&#xe32;&#xe1b;&#xe31;&#xe15;&#xe22;&#xe01;&#xe23;&#xe23;&#xe21;&#xe28;&#xe32;&#xe2a;&#xe15;&#xe23;&#xe4c;&#xe41;&#xe25;&#xe30;&#xe01;&#xe32;&#xe23;&#xe2d;&#xe2d;&#xe01;&#xe41;&#xe1a;&#xe1a;"/>
+                <StringItem index="8" value="&#xe04;&#xe13;&#xe30;&#xe1e;&#xe25;&#xe31;&#xe07;&#xe07;&#xe32;&#xe19;&#xe2a;&#xe34;&#xe48;&#xe07;&#xe41;&#xe27;&#xe14;&#xe25;&#xe49;&#xe2d;&#xe21;&#xe41;&#xe25;&#xe30;&#xe27;&#xe31;&#xe2a;&#xe14;&#xe38;"/>
+                <StringItem index="9" value="&#xe2a;&#xe16;&#xe32;&#xe1a;&#xe31;&#xe19;&#xe27;&#xe34;&#xe17;&#xe22;&#xe32;&#xe01;&#xe32;&#xe23;&#xe2b;&#xe38;&#xe48;&#xe19;&#xe22;&#xe19;&#xe15;&#xe4c;&#xe20;&#xe32;&#xe04;&#xe2a;&#xe19;&#xe32;&#xe21;"/>
+                <StringItem index="10" value="&#xe42;&#xe04;&#xe23;&#xe07;&#xe01;&#xe32;&#xe23;&#xe23;&#xe48;&#xe27;&#xe21;&#xe1a;&#xe23;&#xe34;&#xe2b;&#xe32;&#xe23;&#xe2b;&#xe25;&#xe31;&#xe01;&#xe2a;&#xe39;&#xe15;&#xe23;&#xe21;&#xe35;&#xe40;&#xe14;&#xe35;&#xe22;&#xe2d;&#xe32;&#xe15;&#xe2a;&#xe4c;&#xe41;&#xe25;&#xe30;&#xe40;&#xe17;&#xe04;&#xe42;&#xe19;&#xe42;&#xe25;&#xe22;&#xe35;&#xe21;&#xe35;&#xe40;&#xe14;&#xe35;&#xe22;"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="insert">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="ThaiSans Neue" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xe40;&#xe1e;&#xe34;&#xe48;&#xe21;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="delete">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="ThaiSans Neue" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xe25;&#xe1a;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel21">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="ThaiSans Neue" size="20" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xe0a;&#xe37;&#xe48;&#xe2d;-&#xe19;&#xe32;&#xe21;&#xe2a;&#xe01;&#xe38;&#xe25;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField11">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="41" green="2f" red="24" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel16">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="ThaiSans Neue" size="20" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xe23;&#xe2b;&#xe31;&#xe2a;&#xe19;&#xe31;&#xe01;&#xe28;&#xe36;&#xe01;&#xe29;&#xe32;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField7">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="41" green="2f" red="24" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="16" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel9">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="ThaiSans Neue" size="20" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xe04;&#xe13;&#xe30;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel19">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="ThaiSans Neue" size="20" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xe2b;&#xe19;&#xe49;&#xe32;&#xe17;&#xe35;&#xe48;"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="next">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="ThaiSans Neue" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xe2b;&#xe19;&#xe49;&#xe32;&#xe16;&#xe31;&#xe14;&#xe44;&#xe1b;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="back">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="ThaiSans Neue" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xe22;&#xe49;&#xe2d;&#xe19;&#xe01;&#xe25;&#xe31;&#xe1a;"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="seeComment">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="ThaiSans Neue" size="18" style="0"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#xe14;&#xe39; Comment"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="seeCommentActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="check1">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="check2">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="check3">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="check4">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="0" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="*"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="alert">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="ThaiSans Neue" size="20" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="33" green="0" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

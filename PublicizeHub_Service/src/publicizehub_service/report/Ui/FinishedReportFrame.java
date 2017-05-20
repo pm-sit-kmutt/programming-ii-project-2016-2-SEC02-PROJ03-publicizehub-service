@@ -19,21 +19,21 @@ import publicizehub_service.status.Ui.EditP1;
  * @author นัน
  */
 public class FinishedReportFrame extends javax.swing.JFrame {
-    KMUTTPublicizeService home;
-    Connection con;
-    Statement st;
-    ResultSet rs;
+    private KMUTTPublicizeService home;
+    private Connection con;
+    private Statement st;
+    private ResultSet rs;
     /**
      * Creates new form FinishedReport
      */
     public FinishedReportFrame() {
         initComponents();
-        setFrame();
     }
     
     public FinishedReportFrame(KMUTTPublicizeService home) {
         initComponents();
         this.home = home;
+        con = ConnectionBuilder.getConnection();
         setFrame();  
     }
     
@@ -41,8 +41,7 @@ public class FinishedReportFrame extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         model.removeRow(0);
         int line = 0;
-        
-        con = ConnectionBuilder.getConnection();
+
         try {
             st = con.createStatement();
             rs = st.executeQuery("select * from project where responsible = "+User.getUsername()+" and status = 0");
@@ -220,8 +219,8 @@ public class FinishedReportFrame extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(SearchFinishedReportFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
+        dispose();  
         home.setVisible(true);
-        dispose();    
     }//GEN-LAST:event_backActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -230,9 +229,9 @@ public class FinishedReportFrame extends javax.swing.JFrame {
             if(!rs.isBeforeFirst()){
                 rs.absolute(selectedRow+1);
                 User.setSelectProjectId(rs.getInt("id"));
+                setVisible(false);
                 EditP1 e1 = new EditP1(this);
                 e1.setVisible(true);
-                setVisible(false);
             }
         } catch (SQLException ex) {
             System.out.println(ex);

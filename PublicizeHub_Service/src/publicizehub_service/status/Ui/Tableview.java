@@ -17,27 +17,27 @@ import publicizehub_service.report.Ui.SubmitFrame;
  * @author dell
  */
 public class Tableview extends javax.swing.JFrame {
-    KMUTTPublicizeService home;
-    Connection con;
-    Statement st;
-    ResultSet re;
+    private KMUTTPublicizeService home;
+    private Connection con;
+    private Statement st;
+    private ResultSet re;
             
     public Tableview() {
         initComponents();
-        setFrame();
     }
 
     
     public Tableview(KMUTTPublicizeService home) {
         initComponents();
         this.home = home;
+        con = ConnectionBuilder.getConnection();
         setFrame();
     }
     
     public void setFrame(){
         DefaultTableModel de = (DefaultTableModel)viewProject.getModel();
         int line =0;
-        con = ConnectionBuilder.getConnection();
+        
         try {
             st = con.createStatement();
             re = st.executeQuery("select id, projectNameThai, openTime, status from project where not status = 0 and responsible = '"+User.getUsername()+"'");
@@ -107,16 +107,7 @@ public class Tableview extends javax.swing.JFrame {
         viewProject.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         viewProject.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "ชื่อโครงการ", "วันที่เปิดโครงการ", "สถานะของโครงการ", "ดู Comment"
@@ -189,10 +180,10 @@ public class Tableview extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(back)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addGap(42, 42, 42))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,6 +207,14 @@ public class Tableview extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        try {    
+            if(st != null){
+                st.close();
+            }
+            con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tableview.class.getName()).log(Level.SEVERE, null, ex);
+        }
         home.setVisible(true);
         dispose();
     }//GEN-LAST:event_backActionPerformed
@@ -228,6 +227,7 @@ public class Tableview extends javax.swing.JFrame {
             col = viewProject.getSelectedColumn();
        }
        if (col==2){
+           setVisible(false);
            try {
                if(!re.isBeforeFirst()){
                     re.absolute(row+1);
@@ -239,15 +239,12 @@ public class Tableview extends javax.swing.JFrame {
            if(viewProject.getValueAt(row, col).equals("รออนุมัติ")){
                EditP1 e1 = new EditP1(this);
                e1.setVisible(true);
-               setVisible(false);
            }else if(viewProject.getValueAt(row, col).equals("อนุมัติแล้ว")){
                SubmitFrame sf = new SubmitFrame(this);
                sf.setVisible(true);
-               setVisible(false);
            }else if(viewProject.getValueAt(row, col).equals("รอปิดโครงการ")){
                SubmitFrame sf = new SubmitFrame(this);
                sf.setVisible(true);
-               setVisible(false);
            }
        }if(col==3){
            try {
@@ -260,8 +257,6 @@ public class Tableview extends javax.swing.JFrame {
            } catch (SQLException ex) {
                Logger.getLogger(Tableview.class.getName()).log(Level.SEVERE, null, ex);
            }
-           
-           
        }
     }//GEN-LAST:event_viewProjectMouseClicked
 

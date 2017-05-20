@@ -9,13 +9,13 @@ package publicizehub_service.Class;
  * @author นัน
  */
 public class User {
-    private static String username = "59130500075";
+    private static String username;
     private static String id;
     private static String firstName;
     private static String lastName;
     private static String faculty;
     private static int status;
-    private static int selectProjectId = 1;
+    private static int selectProjectId;
 
     public User() {
     }

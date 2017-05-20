@@ -19,10 +19,10 @@ import publicizehub_service.status.Ui.EditP1;
  * @author นัน
  */
 public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
-    KMUTTPublicizeServiceAdmin homeAdmin;
-    Connection con = ConnectionBuilder.getConnection();
-    Statement st = null;
-    ResultSet rs;
+    private KMUTTPublicizeServiceAdmin homeAdmin;
+    private Connection con;
+    private Statement st = null;
+    private ResultSet rs;
     /**
      * Creates new form FinishedReportAdmin
      */
@@ -34,6 +34,7 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
     public SearchFinishedReportFrameAdmin(KMUTTPublicizeServiceAdmin homeAdmin) {
         initComponents();
         this.homeAdmin = homeAdmin;
+        con = ConnectionBuilder.getConnection();
         getRootPane().setDefaultButton(Search);
     }
 
@@ -94,7 +95,7 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(36, 47, 65));
 
         jTextField1.setBackground(new java.awt.Color(36, 47, 65));
-        jTextField1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel4.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
@@ -102,7 +103,7 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
         jLabel4.setText("ชื่อโครงการ");
 
         facultyComboBox.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        facultyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "สำนักงานอธิการบดี", "คณะพลังงานสิ่งแวดล้อมและวัสดุ", "สำนักคอมพิวเตอร์", "คณะวิศวกรรมศาสตร์", "สถาบันวิทยาการหุ่นยนต์ภาคสนาม", "สำนักสวนอุตสาหกรรม", "สำนักหอสมุด", "บัณฑิตวิทยาลัยร่วมด้านพลังงานและสิ่งแวดล้อม", "ศูนย์การจัดการด้านพลังงานสิ่งแวดล้อมความปลอดภัยและอาชีวอนามัย", "บัณฑิตวิทยาลัยการจัดการและนวัตกรรม", "หน่วยงานในกำกับมหาวิทยาลัย", "สำนักบัณฑิตศึกษาและกิจการนานาชาติ", "สำนักวิจัยและบริการวิทยาศาสตร์และเทคโนโลยี", "คณะเทคโนโลยีสารสนเทศ", "สถาบันการเรียนรู้", "คณะศิลปศาสตร์", "สถาบันพัฒนาและฝึกอบรมโรงงานต้นแบบ", "สำนักบริหารอาคารและสถานที่", "คณะทรัพยากรชีวภาพและเทคโนโลยี", "คณะสถาปัตยกรรมศาสตร์และการออกแบบ", "โครงการที่ปรึกษาตรวจสอบ", "วิทยาลัยสหวิทยาการ", "คณะวิทยาศาสตร์", "โครงการบริหารก่อสร้าง", "คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี" }));
+        facultyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "คณะพลังงานสิ่งแวดล้อมและวัสดุ", "คณะวิศวกรรมศาสตร์", "คณะเทคโนโลยีสารสนเทศ", "คณะศิลปศาสตร์", "คณะทรัพยากรชีวภาพและเทคโนโลยี", "คณะสถาปัตยกรรมศาสตร์และการออกแบบ", "คณะวิทยาศาสตร์", "คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี", "โครงการร่วมบริหารหลักสูตรมีเดียอาตส์และเทคโนโลยีมีเดีย", "สถาบันวิทยาการหุ่นยนต์ภาคสนาม", "สำนักงานอธิการบดี", "สำนักคอมพิวเตอร์", "สำนักสวนอุตสาหกรรม", "สำนักหอสมุด", "บัณฑิตวิทยาลัยร่วมด้านพลังงานและสิ่งแวดล้อม", "ศูนย์การจัดการด้านพลังงานสิ่งแวดล้อมความปลอดภัยและอาชีวอนามัย", "บัณฑิตวิทยาลัยการจัดการและนวัตกรรม", "สำนักบัณฑิตศึกษาและกิจการนานาชาติ", "สำนักวิจัยและบริการวิทยาศาสตร์และเทคโนโลยี", "สถาบันการเรียนรู้", "สถาบันพัฒนาและฝึกอบรมโรงงานต้นแบบ", "สำนักบริหารอาคารและสถานที่", "โครงการที่ปรึกษาตรวจสอบ", "วิทยาลัยสหวิทยาการ", "โครงการบริหารก่อสร้าง", "หน่วยงานในกำกับมหาวิทยาลัย" }));
         facultyComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facultyComboBoxActionPerformed(evt);
@@ -125,7 +126,7 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
 
         jComboBox6.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jComboBox6.setMaximumRowCount(20);
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "2557", "2558", "2559", "2560", "2561" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "2559", "2560", "2561", "2562", "2563" }));
 
         jLabel5.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -230,14 +231,14 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 567, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 41, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(342, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(29, 29, 29))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(Search)
-                        .addGap(91, 91, 91)
+                        .addComponent(Search, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(81, 81, 81)
                         .addComponent(back)
                         .addGap(74, 74, 74))))
         );
@@ -274,7 +275,7 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Search)
                     .addComponent(back))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
@@ -352,11 +353,11 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
         
         String closeYear = "_____";
         switch(jComboBox6.getSelectedIndex()){
-            case 1 : closeYear = "2014-"; break;
-            case 2 : closeYear = "2015-"; break;
-            case 3 : closeYear = "2016-"; break;
-            case 4 : closeYear = "2017-"; break;
-            case 5 : closeYear = "2018-"; break;
+            case 1 : closeYear = "2559-"; break;
+            case 2 : closeYear = "2560-"; break;
+            case 3 : closeYear = "2561-"; break;
+            case 4 : closeYear = "2562-"; break;
+            case 5 : closeYear = "2563-"; break;
         }
         
         String closeTime = "";
@@ -396,8 +397,8 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(SearchFinishedReportFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
-        homeAdmin.setVisible(true);
         dispose();
+        homeAdmin.setVisible(true);
     }//GEN-LAST:event_backActionPerformed
 
     private void searchReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchReportMouseClicked
@@ -408,9 +409,9 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
                 if(!rs.isBeforeFirst()){
                     rs.absolute(selectedRow+1);
                     User.setSelectProjectId(rs.getInt("id"));
+                    setVisible(false);
                     ApproveAdminP1 a1 = new ApproveAdminP1(this);
                     a1.setVisible(true);
-                    setVisible(false);
                 }
             } catch (SQLException ex) {
                 System.out.println(ex);

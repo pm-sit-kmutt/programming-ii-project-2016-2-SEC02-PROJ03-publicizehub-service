@@ -17,10 +17,10 @@ import publicizehub_service.connectionBuilder.ConnectionBuilder;
  * @author นัน
  */
 public class SearchSubmitFrameAdmin extends javax.swing.JFrame {
-    KMUTTPublicizeServiceAdmin homeAdmin;
-    Connection con = ConnectionBuilder.getConnection();
-    Statement st = null;
-    ResultSet rs;
+    private KMUTTPublicizeServiceAdmin homeAdmin;
+    private Connection con;
+    private Statement st = null;
+    private ResultSet rs;
     
     /**
      * Creates new form FinishedReportAdmin
@@ -32,8 +32,9 @@ public class SearchSubmitFrameAdmin extends javax.swing.JFrame {
     
     public SearchSubmitFrameAdmin(KMUTTPublicizeServiceAdmin homeAdmin) {
         initComponents();
-        getRootPane().setDefaultButton(search);
         this.homeAdmin = homeAdmin;
+        con = ConnectionBuilder.getConnection();
+        getRootPane().setDefaultButton(search);
     }
 
     /**
@@ -105,14 +106,14 @@ public class SearchSubmitFrameAdmin extends javax.swing.JFrame {
 
         jComboBox6.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jComboBox6.setMaximumRowCount(20);
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "2557", "2558", "2559", "2560", "2561" }));
+        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "2559", "2560", "2561", "2562", "2563" }));
 
         jTextField1.setBackground(new java.awt.Color(36, 47, 65));
         jTextField1.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
 
         facultyComboBox.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        facultyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "สำนักงานอธิการบดี", "คณะพลังงานสิ่งแวดล้อมและวัสดุ", "สำนักคอมพิวเตอร์", "คณะวิศวกรรมศาสตร์", "สถาบันวิทยาการหุ่นยนต์ภาคสนาม", "สำนักสวนอุตสาหกรรม", "สำนักหอสมุด", "บัณฑิตวิทยาลัยร่วมด้านพลังงานและสิ่งแวดล้อม", "ศูนย์การจัดการด้านพลังงานสิ่งแวดล้อมความปลอดภัยและอาชีวอนามัย", "บัณฑิตวิทยาลัยการจัดการและนวัตกรรม", "หน่วยงานในกำกับมหาวิทยาลัย", "สำนักบัณฑิตศึกษาและกิจการนานาชาติ", "สำนักวิจัยและบริการวิทยาศาสตร์และเทคโนโลยี", "คณะเทคโนโลยีสารสนเทศ", "สถาบันการเรียนรู้", "คณะศิลปศาสตร์", "สถาบันพัฒนาและฝึกอบรมโรงงานต้นแบบ", "สำนักบริหารอาคารและสถานที่", "คณะทรัพยากรชีวภาพและเทคโนโลยี", "คณะสถาปัตยกรรมศาสตร์และการออกแบบ", "โครงการที่ปรึกษาตรวจสอบ", "วิทยาลัยสหวิทยาการ", "คณะวิทยาศาสตร์", "โครงการบริหารก่อสร้าง", "คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี" }));
+        facultyComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "เลือก", "คณะพลังงานสิ่งแวดล้อมและวัสดุ", "คณะวิศวกรรมศาสตร์", "คณะเทคโนโลยีสารสนเทศ", "คณะศิลปศาสตร์", "คณะทรัพยากรชีวภาพและเทคโนโลยี", "คณะสถาปัตยกรรมศาสตร์และการออกแบบ", "คณะวิทยาศาสตร์", "คณะครุศาสตร์อุตสาหกรรมและเทคโนโลยี", "โครงการร่วมบริหารหลักสูตรมีเดียอาตส์และเทคโนโลยีมีเดีย", "สถาบันวิทยาการหุ่นยนต์ภาคสนาม", "สำนักงานอธิการบดี", "สำนักคอมพิวเตอร์", "สำนักสวนอุตสาหกรรม", "สำนักหอสมุด", "บัณฑิตวิทยาลัยร่วมด้านพลังงานและสิ่งแวดล้อม", "ศูนย์การจัดการด้านพลังงานสิ่งแวดล้อมความปลอดภัยและอาชีวอนามัย", "บัณฑิตวิทยาลัยการจัดการและนวัตกรรม", "สำนักบัณฑิตศึกษาและกิจการนานาชาติ", "สำนักวิจัยและบริการวิทยาศาสตร์และเทคโนโลยี", "สถาบันการเรียนรู้", "สถาบันพัฒนาและฝึกอบรมโรงงานต้นแบบ", "สำนักบริหารอาคารและสถานที่", "โครงการที่ปรึกษาตรวจสอบ", "วิทยาลัยสหวิทยาการ", "โครงการบริหารก่อสร้าง", "หน่วยงานในกำกับมหาวิทยาลัย" }));
         facultyComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 facultyComboBoxActionPerformed(evt);
@@ -204,8 +205,20 @@ public class SearchSubmitFrameAdmin extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 37, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(30, 30, 30))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
+                .addGap(358, 358, 358)
+                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(back)
+                .addGap(63, 63, 63))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(85, 85, 85)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -218,22 +231,10 @@ public class SearchSubmitFrameAdmin extends javax.swing.JFrame {
                     .addComponent(jComboBox5, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jComboBox4, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox6, javax.swing.GroupLayout.Alignment.LEADING, 0, 264, Short.MAX_VALUE)
+                    .addComponent(jComboBox6, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(facultyComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 1, Short.MAX_VALUE)
-                    .addComponent(samoComboBox, javax.swing.GroupLayout.Alignment.LEADING, 0, 1, Short.MAX_VALUE))
-                .addContainerGap(117, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 37, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(30, 30, 30))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(358, 358, 358)
-                .addComponent(search)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(back)
-                .addGap(63, 63, 63))
+                    .addComponent(samoComboBox, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,9 +303,9 @@ public class SearchSubmitFrameAdmin extends javax.swing.JFrame {
                 if(!rs.isBeforeFirst()){
                     rs.absolute(selectedRow+1);
                     User.setSelectProjectId(rs.getInt("id"));
+                    setVisible(false);
                     SubmitFrameAdmin sfa = new SubmitFrameAdmin(this);
                     sfa.setVisible(true);
-                    setVisible(false);
                 }
             } catch (SQLException ex) {
                 System.out.println(ex);
@@ -379,11 +380,11 @@ public class SearchSubmitFrameAdmin extends javax.swing.JFrame {
 
         String endYear = "_____";
         switch(jComboBox6.getSelectedIndex()){
-            case 1 : endYear = "2014-"; break;
-            case 2 : endYear = "2015-"; break;
-            case 3 : endYear = "2016-"; break;
-            case 4 : endYear = "2017-"; break;
-            case 5 : endYear = "2018-"; break;
+            case 1 : endYear = "2559-"; break;
+            case 2 : endYear = "2560-"; break;
+            case 3 : endYear = "2561-"; break;
+            case 4 : endYear = "2562-"; break;
+            case 5 : endYear = "2563-"; break;
         }
 
         String endTime = "";

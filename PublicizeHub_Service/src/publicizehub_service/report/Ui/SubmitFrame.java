@@ -5,10 +5,8 @@
  */
 package publicizehub_service.report.Ui;
 
+import java.awt.Image;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -27,29 +25,29 @@ import publicizehub_service.status.Ui.Tableview;
  * @author นัน
  */
 public class SubmitFrame extends javax.swing.JFrame {
-    ArrayList<String> file = new ArrayList<>();
-    ArrayList<String> name = new ArrayList<>();
-    Connection con = ConnectionBuilder.getConnection();
-    Tableview table;
-    int id = User.getSelectProjectId();
-    int line = 0;
-    int oldPic = 0;
-
+    private ArrayList<String> name = new ArrayList<>();
+    private ArrayList<String> imagePath = new ArrayList<>();
+    private ArrayList<byte[]> byteArray = new ArrayList<>();
+    private ArrayList<Integer> indexCheck = new ArrayList<>();
+    private Connection con;
+    private Tableview table;
+    private int id = User.getSelectProjectId();
+    private int line = 0;
+    
     public SubmitFrame() {
         initComponents();
-        setFrame();
     }
     
     public SubmitFrame(Tableview table) {
         initComponents();
         this.table = table;
+        con = ConnectionBuilder.getConnection();
         setFrame();
     }
     
     public void setFrame(){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         model.removeRow(0);
-        
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select id, projectNameThai, projectNameEnglish, budget, cost, numOfStudent, numCome from project "
@@ -64,17 +62,19 @@ public class SubmitFrame extends javax.swing.JFrame {
                 jTextField4.setText(rs.getString("numCome"));
             }
             st.close();
+            
             Statement st2 = con.createStatement();
             ResultSet rs2 = st2.executeQuery("select * from picture where projectId = "+id);
             while(rs2.next()){
                 name.add(rs2.getString("name"));
-                file.add(rs2.getString("file"));
+                byteArray.add(rs2.getBytes("image"));
                 model.addRow(new Object[0]);
                 model.setValueAt(line+1, line, 0);
                 model.setValueAt(rs2.getString("name"), line, 1);
                 line++;
+                imagePath.add("");
+                indexCheck.add(1);
             }
-            oldPic = line;
             st2.close();
         } catch (SQLException ex) {
             Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
@@ -118,6 +118,8 @@ public class SubmitFrame extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        check1 = new javax.swing.JLabel();
+        check2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
 
@@ -136,10 +138,12 @@ public class SubmitFrame extends javax.swing.JFrame {
 
         jTextField3.setEditable(false);
         jTextField3.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
         jTextField4.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
@@ -160,11 +164,12 @@ public class SubmitFrame extends javax.swing.JFrame {
         jLabel9.setText("บาท");
 
         jLabel10.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setForeground(new java.awt.Color(255, 0, 51));
         jLabel10.setText("อัฟโหลดรูปภาพหลักฐานค่าใช้จ่าย และ หลักฐานการทำโครงการ อย่างน้อย 10 ภาพ");
 
         jTextField6.setEditable(false);
         jTextField6.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField6.setForeground(new java.awt.Color(255, 255, 255));
         jTextField6.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
 
@@ -206,8 +211,7 @@ public class SubmitFrame extends javax.swing.JFrame {
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(60);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(60);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(50);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(50);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(70);
         }
 
         jLabel1.setFont(new java.awt.Font("ThaiSans Neue", 1, 24)); // NOI18N
@@ -220,6 +224,7 @@ public class SubmitFrame extends javax.swing.JFrame {
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel11.setFont(new java.awt.Font("ThaiSans Neue", 0, 18)); // NOI18N
@@ -280,6 +285,7 @@ public class SubmitFrame extends javax.swing.JFrame {
 
         jTextField5.setEditable(false);
         jTextField5.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel13.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
@@ -288,11 +294,20 @@ public class SubmitFrame extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("ThaiSans Neue", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("ระบุ จำนวนงบ ทีได้");
+        jLabel3.setText("ระบุจำนวนงบที่ได้");
 
         jTextField2.setBackground(new java.awt.Color(36, 47, 65));
+        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+
+        check1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        check1.setForeground(new java.awt.Color(255, 0, 51));
+        check1.setText("*");
+
+        check2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        check2.setForeground(new java.awt.Color(255, 0, 51));
+        check2.setText("*");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -314,7 +329,9 @@ public class SubmitFrame extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel7))))
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(check2))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -345,7 +362,9 @@ public class SubmitFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(check1)))
                 .addContainerGap(28, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
@@ -386,7 +405,8 @@ public class SubmitFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(check1))
                         .addGap(17, 17, 17)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
@@ -396,8 +416,9 @@ public class SubmitFrame extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                            .addComponent(jLabel7)
+                            .addComponent(check2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -406,12 +427,14 @@ public class SubmitFrame extends javax.swing.JFrame {
                                 .addComponent(jLabel11)
                                 .addComponent(selectImage)
                                 .addComponent(jLabel12)
-                                .addComponent(upload)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel8)))
+                                .addComponent(upload))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addGap(181, 181, 181)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(watchComment, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -468,7 +491,7 @@ public class SubmitFrame extends javax.swing.JFrame {
         if(ret == JFileChooser.APPROVE_OPTION){
             String filePath = fileopen.getSelectedFile().getPath();
             jLabel12.setText(filePath);
-            openImage(filePath);
+            openImage(filePath, null);
         }
     }//GEN-LAST:event_selectImageActionPerformed
     // อัฟโหลดรูป
@@ -477,17 +500,16 @@ public class SubmitFrame extends javax.swing.JFrame {
         String fileName = filePath.substring(filePath.lastIndexOf('\\')+1, filePath.length());
         if(!filePath.isEmpty() && !name.contains(fileName)){
             name.add(fileName);
-            try {
-                file.add(new File(".").getCanonicalPath() + "\\img\\" + name.get(line));
-                Files.copy(Paths.get(filePath),Paths.get(file.get(line)),StandardCopyOption.COPY_ATTRIBUTES,StandardCopyOption.REPLACE_EXISTING);
-            } catch (IOException ex) {
-                Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            imagePath.add(filePath);
+            byteArray.add(null);
+            indexCheck.add(0);
             DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
             model.addRow(new Object[0]);
             model.setValueAt(line+1, line, 0);
             model.setValueAt(name.get(line), line, 1);
             line++;
+        }else{
+            JOptionPane.showMessageDialog(null, "ไม่สามารถอัฟโหลดรูปภาพที่ชื่อซ้ำกันได้");
         }
     }//GEN-LAST:event_uploadActionPerformed
     // ดู comment
@@ -497,39 +519,36 @@ public class SubmitFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_watchCommentActionPerformed
     // ปิดโครงการ
     private void closedProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closedProjectActionPerformed
-        if(jTextField2.getText().isEmpty() || jTextField3.getText().isEmpty() || jTextField4.getText().isEmpty()){
+        if(jTextField2.getText().isEmpty() || jTextField4.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "โปรดกรอกข้อมูลให้ครบทุกช่อง");
         }else {
             double budget = Double.parseDouble(jTextField2.getText());
-            double pay = Double.parseDouble(jTextField3.getText());
             int people = Integer.parseInt(jTextField4.getText());
 
             try {
-                PreparedStatement pt1 = con.prepareStatement("update project set budget = ?, cost = ?, numCome = ? where id = ?");
+                PreparedStatement pt1 = con.prepareStatement("update project set budget = ?, numCome = ? where id = ?");
                 pt1.setDouble(1, budget);
-                pt1.setDouble(2, pay);
-                pt1.setInt(3, people);
-                pt1.setInt(4, id);
-                int record = pt1.executeUpdate();
-                System.out.println(record);
+                pt1.setInt(2, people);
+                pt1.setInt(3, id);
+                pt1.executeUpdate();
                 pt1.close();  
+                
+                for(int i = 0; i < indexCheck.size(); i++){
+                    if(indexCheck.get(i) == 0){
+                        InputStream is = new FileInputStream(new File(imagePath.get(i)));
+                        PreparedStatement pt2 = con.prepareStatement("insert into picture values(?, ?, ?)");
+                        pt2.setInt(1, id);
+                        pt2.setString(2, name.get(i));
+                        pt2.setBlob(3, is);
+                        pt2.executeUpdate();
+                        pt2.close();
+                    }
+                }
+                
             } catch (SQLException ex) {
                 Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
-            } 
-           
-            for(int i = oldPic; i < jTable1.getRowCount(); i++){
-                try {
-                    PreparedStatement pt2 = con.prepareStatement("insert into picture values(?, ?, ?)");
-                    pt2.setInt(1, id);
-                    pt2.setString(2, name.get(i));
-                    pt2.setString(3, file.get(i));
-                    int result = pt2.executeUpdate();
-                    System.out.println(result);
-                    pt2.close();
-                    oldPic = jTable1.getRowCount();
-                } catch (SQLException ex) {
-                    Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            } catch (FileNotFoundException ex2){
+                JOptionPane.showMessageDialog(null, "หารูปภาพไม่เจอ");
             }
             
             if(jTable1.getRowCount() < 10){
@@ -539,8 +558,7 @@ public class SubmitFrame extends javax.swing.JFrame {
                     PreparedStatement pt3 = con.prepareStatement("update project set status = ? where id = ?");
                     pt3.setInt(1, 3);
                     pt3.setInt(2, id);
-                    int result = pt3.executeUpdate();
-                    System.out.println(result);
+                    pt3.executeUpdate();
                     pt3.close();
                     con.close();
                 } catch (SQLException ex) {
@@ -579,10 +597,12 @@ public class SubmitFrame extends javax.swing.JFrame {
         for(int i = check.length-1; i >= 0 ;i--){ //วนลูปลบตัวที่เลือกออก
             if(check[i]){
                 String delete = name.remove(i);
-                file.remove(i);
+                imagePath.remove(i);
+                byteArray.remove(i);
+                indexCheck.remove(i);
                 model.removeRow(i);
                 line--;
-                oldPic--;
+                
                 try {
                     PreparedStatement pt = con.prepareStatement("delete from picture where name = ?");
                     pt.setString(1, delete);
@@ -592,7 +612,6 @@ public class SubmitFrame extends javax.swing.JFrame {
                 } catch (SQLException ex) {
                     Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
             }
         }
         
@@ -606,24 +625,32 @@ public class SubmitFrame extends javax.swing.JFrame {
         int row = jTable1.getSelectedRow();
         int col = jTable1.getSelectedColumn();
         if(col == 1){
-            try {
-                openImage(new File(".").getCanonicalPath() + "\\img\\" + name.get(row));
-            } catch (IOException ex) {
-                Logger.getLogger(SubmitFrame.class.getName()).log(Level.SEVERE, null, ex);
+            if(byteArray.get(row) == null){
+                openImage(imagePath.get(row), null);
+            }else{
+                openImage("",byteArray.get(row));
             }
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
-    public void openImage(String filePath){
+    public void openImage(String filePath, byte[] fileBytes){
         JDialog jdialog = new JDialog(this, rootPaneCheckingEnabled);
-        JLabel jlabel = new JLabel(new javax.swing.ImageIcon(filePath), JLabel.CENTER);
+        jdialog.setSize(700, 600);
+        JLabel jlabel = null;
+        if(filePath.isEmpty()){
+            Image img = getToolkit().createImage(fileBytes);
+            jlabel = new JLabel(new ImageIcon(img), JLabel.CENTER);
+        }else{
+            jlabel = new JLabel(new ImageIcon(filePath), JLabel.CENTER);
+        }
         JScrollPane sc = new JScrollPane(jlabel); 
         jdialog.add(sc);
         jdialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        jdialog.setLocation(300,200);
-        jdialog.pack();
+        jdialog.setLocation(350,200);
         jdialog.setVisible(true);
     }
+    
+    
     
     /**
      * @param args the command line arguments
@@ -663,6 +690,8 @@ public class SubmitFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
+    private javax.swing.JLabel check1;
+    private javax.swing.JLabel check2;
     private javax.swing.JButton closedProject;
     private javax.swing.JButton deleteImage;
     private javax.swing.JLabel jLabel1;
