@@ -77,7 +77,7 @@ public class ActivityCalendar extends javax.swing.JFrame {
             case 11 : month = "11"; break;
             case 12 : month = "12"; break;
         }
-        pt = con.prepareStatement("select * from project where startTime LIKE ? and status = 2 ORDER BY id");
+        pt = con.prepareStatement("select * from project where startTime LIKE ? and status = 2 ORDER BY startTime");
         pt.setString(1, year+month+"%");
         rs = pt.executeQuery();
         

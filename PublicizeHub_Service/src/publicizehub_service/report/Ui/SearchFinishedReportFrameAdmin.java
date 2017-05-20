@@ -28,6 +28,7 @@ public class SearchFinishedReportFrameAdmin extends javax.swing.JFrame {
      */
     public SearchFinishedReportFrameAdmin() {
         initComponents();
+        con = ConnectionBuilder.getConnection();
         getRootPane().setDefaultButton(Search);
     }
     

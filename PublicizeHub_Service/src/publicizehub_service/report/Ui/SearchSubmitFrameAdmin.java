@@ -27,6 +27,7 @@ public class SearchSubmitFrameAdmin extends javax.swing.JFrame {
      */
     public SearchSubmitFrameAdmin() {
         initComponents();
+        con = ConnectionBuilder.getConnection();
         getRootPane().setDefaultButton(search);
     }
     

@@ -8,6 +8,8 @@ package publicizehub_service.status.Ui;
 import publicizehub_service.report.Ui.*;
 import javax.swing.table.*;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import publicizehub_service.activity_form.Ui.KMUTTPublicizeServiceAdmin;
@@ -27,6 +29,7 @@ public class SearchApproveAdmin extends javax.swing.JFrame {
      */
     public SearchApproveAdmin() {
         initComponents();
+        con = ConnectionBuilder.getConnection();
         getRootPane().setDefaultButton(search);
     }
     
@@ -310,7 +313,6 @@ public class SearchApproveAdmin extends javax.swing.JFrame {
             model.removeRow(0);
             countRow--;
         }
-        
         int line = 0;
 
         String name = "";
